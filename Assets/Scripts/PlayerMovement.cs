@@ -7,23 +7,31 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float moveSpeed = 5f;
 
-    bool lookingLeft = true;
-    
+    bool lookingRight = true;
+    public bool GetLookingRight()
+    {
+        return lookingRight;
+    }
 
     private void FixedUpdate()
     {
 
          //calculate movement velocity as a 3D vector
         float xMov = Input.GetAxisRaw("Horizontal");
-        //float xMov = Input.GetAxis("Horizontal");
 
+        //rotate to match movement direction
+        if(xMov < 0 && lookingRight)
+        {
+            transform.Rotate(new Vector3(0, 180, 0));
+            lookingRight = false;
+        }
+        else if(xMov > 0 && !lookingRight)
+        {
+            transform.Rotate(new Vector3(0,-180, 0));
+            lookingRight = true;
+        }
 
-        //if (xMov < 0.1)
-        //{
-        //    transform.rotation.eulerAngles =  Vector3(0, 90, 0);
-        //}
-
-        Vector3 moveHorizontal = transform.right * xMov;
+        Vector3 moveHorizontal = transform.right * -xMov;
 
         //apply movement
         transform.Translate(moveHorizontal * Time.deltaTime * moveSpeed);

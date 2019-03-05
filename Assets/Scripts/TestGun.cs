@@ -7,8 +7,8 @@ namespace Player
     public class TestGun : MonoBehaviour, IWeapon
 
     {
-        public float damage { get; } = 5f;
-        public float fireRate { get; } = 1f;
+        public float Damage { get; } = 5f;
+        public float FireRate { get; } = 1f;
 
         public float bulletSpeed { get; } = 10f;
 
@@ -16,12 +16,11 @@ namespace Player
 
         [SerializeField] GameObject bullet;
 
-
+        public GameObject Owner { get; set; }
 
         public void Fire()
         {
             Instantiate(bullet, firePoint.position, firePoint.rotation);
-            Debug.Log("tfyugih");
         }
 
 
@@ -37,5 +36,6 @@ namespace Player
         {
 
         }
+        
     }
 }
