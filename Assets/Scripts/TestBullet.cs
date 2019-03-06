@@ -8,6 +8,7 @@ namespace Player
     {
         Rigidbody rb;
         float speed;
+        float damage;
         GameObject parent;
         Vector3 dir;
        
@@ -16,36 +17,22 @@ namespace Player
         {
             rb = GetComponent<Rigidbody>();
             parent = FindObjectOfType<TestGun>().gameObject;
-            speed = parent.GetComponent<TestGun>().bulletSpeed;
+            speed = parent.GetComponent<TestGun>().BulletSpeed;
+            damage = parent.GetComponent<TestGun>().Damage;
 
-            dir = new Vector3(-1, 0, 0);
-
-            Debug.Log(parent.transform.localToWorldMatrix.rotation);
-
-
-            //if (parent.GetComponent<TestGun>().Owner.GetComponent<PlayerMovement>().GetLookingRight())
-            //{
-            //    dir = new Vector3(1,0,0);
-            //}
-            //else
-            //{
-            //    dir = new Vector3(-1, 0, 0);
-            //}
+            rb.velocity = transform.forward * speed;
         }
-
-        void Update()
-        {
-
-            rb.velocity = dir * speed; // (parent.transform.rotation.normalized.eulerAngles) * speed;  //Vector3.left.normalized * speed;
-
-        }
+        
 
         private void OnTriggerEnter(Collider other)
         {
-            //if (!other.CompareTag("Player") || !other.CompareTag("Weapon"))
-            //{
-            //    Destroy(gameObject);
-            //}
+            PlayerController playerHit = other.GetComponent<PlayerController>();
+            if(playerHit != null)
+            {
+                playerHit.TakeDamage(damage);
+            }
+
+            Destroy(gameObject);
         }
     }
 }

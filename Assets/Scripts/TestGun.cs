@@ -8,9 +8,10 @@ namespace Player
 
     {
         public float Damage { get; } = 5f;
-        public float FireRate { get; } = 1f;
+        public float FireRate { get; } = 0.1f;
+        public float BulletSpeed { get; } = 10f;
 
-        public float bulletSpeed { get; } = 10f;
+        bool canFire = true;
 
         [SerializeField] Transform firePoint;
 
@@ -20,10 +21,19 @@ namespace Player
 
         public void Fire()
         {
-            Instantiate(bullet, firePoint.position, firePoint.rotation);
+            if (canFire)
+            {
+                Instantiate(bullet, firePoint.position, firePoint.rotation);
+                StartCoroutine(FireTimer(FireRate));
+            }
         }
-
-
+       
+        IEnumerator FireTimer(float timer)
+        {
+            canFire = false;
+            yield return new WaitForSeconds(timer);
+            canFire = true;
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -34,7 +44,10 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            if (!canFire)
+            {
 
+            }
         }
         
     }

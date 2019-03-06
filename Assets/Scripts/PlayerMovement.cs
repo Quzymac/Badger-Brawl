@@ -8,14 +8,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 5f;
 
     bool lookingRight = true;
-    public bool GetLookingRight()
-    {
-        return lookingRight;
-    }
 
     private void FixedUpdate()
     {
-
+        
          //calculate movement velocity as a 3D vector
         float xMov = Input.GetAxisRaw("Horizontal");
 
@@ -31,9 +27,7 @@ public class PlayerMovement : MonoBehaviour
             lookingRight = true;
         }
 
-        Vector3 moveHorizontal = transform.right * -xMov;
-
         //apply movement
-        transform.Translate(moveHorizontal * Time.deltaTime * moveSpeed);
+        transform.Translate(transform.right * -xMov * Time.deltaTime * moveSpeed);
     }
 }

@@ -17,19 +17,31 @@ namespace Player
     public class PlayerController : MonoBehaviour
     {
         GameObject weapon;
-
         GameObject canPickUp;
+
+        float jumpForce = 300f;
+
+        Rigidbody rb;
+        Vector3 jumpDir;
 
         // Start is called before the first frame update
         void Start()
         {
-            //weapon = FindObjectOfType<TestGun>().gameObject;
+            rb = GetComponent<Rigidbody>();
+            jumpDir = new Vector3(0, jumpForce, 0);
+
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                rb.AddForce(jumpDir);
+            }
+
+            if (Input.GetKey(KeyCode.Space))
             {
                 if (weapon != null)
                 {
@@ -60,12 +72,14 @@ namespace Player
                 weapon.transform.rotation = transform.rotation;
 
                 weapon.transform.parent = transform;
+                weapon.GetComponent<Collider>().enabled = false;
             }
         }
         void DropWeapon()
         {
             if (weapon != null)
             {
+                weapon.GetComponent<Collider>().enabled = true;
                 weapon.transform.parent = null;
                 weapon = null;
             }
@@ -83,6 +97,10 @@ namespace Player
             {
                 canPickUp = null;
             }
+        }
+        public void TakeDamage(float damage)
+        {
+            Debug.Log(damage + " damage taken");
         }
     }
 }
