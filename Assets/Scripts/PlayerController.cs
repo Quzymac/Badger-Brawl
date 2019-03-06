@@ -77,6 +77,9 @@ namespace Player
 
                 weapon.transform.parent = transform;
                 weapon.GetComponent<Collider>().enabled = false;
+                weapon.GetComponent<Rigidbody>().useGravity = false;
+                weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
             }
         }
         void DropWeapon()
@@ -84,6 +87,9 @@ namespace Player
             if (weapon != null)
             {
                 weapon.GetComponent<Collider>().enabled = true;
+                weapon.GetComponent<Rigidbody>().useGravity = true;
+                weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 weapon.transform.parent = null;
                 weapon = null;
             }
