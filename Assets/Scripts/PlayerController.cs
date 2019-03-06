@@ -40,6 +40,10 @@ namespace Player
             {
                 rb.AddForce(jumpDir);
             }
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                rb.AddForce(jumpDir);
+            }
 
             if (Input.GetKey(KeyCode.Space))
             {
