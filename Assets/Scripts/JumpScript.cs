@@ -19,6 +19,7 @@ public class JumpScript : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(playerbody.velocity);
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
 
@@ -28,23 +29,30 @@ public class JumpScript : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
+            
             if (collidedPlatform.transform.position.y <= gameObject.transform.position.y)
             {
-                Debug.Log("Got Here!!!!");
+                Debug.Log("Got here!!");
                 Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), player, true);
-
-                
             }
         }
 
-        if (collidedPlatform.transform.position.y >= gameObject.transform.position.y)
-        {
-            Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), player, false);
-        }
 
         if (playerbody.velocity.y <= 0 && gameObject.layer == 12)
-        {
+        {            
             gameObject.layer = 9;
+            Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), player, false);
+        }
+        else if (playerbody.velocity.y <= 0 && gameObject.layer == 9)
+        {
+            if (collidedPlatform.transform.position.y >= gameObject.transform.position.y)
+            {
+                Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), player, false);
+            }
+        }
+        else if (playerbody.velocity.y >= 0)
+        {
+            Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), player, false);
         }
     }
 
