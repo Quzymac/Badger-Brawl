@@ -138,7 +138,6 @@ namespace Player
 
             if (transform.position.y - top > 0.08f)
             {
-                Debug.Log(transform.position.y - top);
                 jumpCount = 0;
             }
         }
