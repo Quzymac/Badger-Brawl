@@ -8,7 +8,7 @@ namespace Player
 
     {
         public float Damage { get; } = 5f;
-        public float FireRate { get; } = 0.1f;
+        public float ShotsPerSecond { get; } = 5f;
         public float BulletSpeed { get; } = 10f;
 
         bool canFire = true;
@@ -24,7 +24,7 @@ namespace Player
             if (canFire)
             {
                 Instantiate(bullet, firePoint.position, firePoint.rotation);
-                StartCoroutine(FireTimer(FireRate));
+                StartCoroutine(FireTimer(1/ShotsPerSecond));
             }
         }
        

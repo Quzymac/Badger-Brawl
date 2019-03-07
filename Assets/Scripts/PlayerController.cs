@@ -7,7 +7,7 @@ namespace Player
     public interface IWeapon
     {
         float Damage { get; }
-        float FireRate { get; }
+        float ShotsPerSecond { get; }
 
         void Fire();
         GameObject Owner { get; set; }
@@ -16,11 +16,11 @@ namespace Player
     }
     public class PlayerController : MonoBehaviour
     {
-        GameObject weapon;
+        GameObject currentWeapon;
         GameObject canPickUp;
 
-        [SerializeField] float jumpForce = 500f;
-        [SerializeField] float gravity = 25f;
+        [SerializeField] float jumpForce = 600f;
+        [SerializeField] float gravity = 14f;
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
 
@@ -70,9 +70,9 @@ namespace Player
 
             if (Input.GetKey(KeyCode.Space))
             {
-                if (weapon != null)
+                if (currentWeapon != null)
                 {
-                    weapon.GetComponent<IWeapon>().Fire();
+                    currentWeapon.GetComponent<IWeapon>().Fire();
                 }
             }
 
@@ -90,31 +90,31 @@ namespace Player
         {
             if(canPickUp != null)
             {
-                if(weapon != null)
+                if(currentWeapon != null)
                 {
                     DropWeapon();
                 }
-                weapon = canPickUp.gameObject;
-                weapon.transform.position = transform.position;
-                weapon.transform.rotation = transform.rotation;
+                currentWeapon = canPickUp.gameObject;
+                currentWeapon.transform.position = transform.position;
+                currentWeapon.transform.rotation = transform.rotation;
 
-                weapon.transform.parent = transform;
-                weapon.GetComponent<Collider>().enabled = false;
-                weapon.GetComponent<Rigidbody>().useGravity = false;
-                weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                currentWeapon.transform.parent = transform;
+                currentWeapon.GetComponent<Collider>().enabled = false;
+                currentWeapon.GetComponent<Rigidbody>().useGravity = false;
+                currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
 
             }
         }
         void DropWeapon()
         {
-            if (weapon != null)
+            if (currentWeapon != null)
             {
-                weapon.GetComponent<Collider>().enabled = true;
-                weapon.GetComponent<Rigidbody>().useGravity = true;
-                weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-                weapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-                weapon.transform.parent = null;
-                weapon = null;
+                currentWeapon.GetComponent<Collider>().enabled = true;
+                currentWeapon.GetComponent<Rigidbody>().useGravity = true;
+                currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+                currentWeapon.transform.parent = null;
+                currentWeapon = null;
             }
         }
         private void OnTriggerEnter(Collider other)
