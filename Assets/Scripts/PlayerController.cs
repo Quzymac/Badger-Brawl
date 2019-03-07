@@ -19,7 +19,12 @@ namespace Player
         GameObject weapon;
         GameObject canPickUp;
 
-        float jumpForce = 300f;
+        [SerializeField] float jumpForce = 500f;
+        [SerializeField] float gravity = 25f;
+        [SerializeField] float fallMultiplier = 2.5f;
+        [SerializeField] float lowJumpMultiplier = 2f;
+
+        int jumpCount;
 
         Rigidbody rb;
         Vector3 jumpDir;
@@ -28,21 +33,39 @@ namespace Player
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-            jumpDir = new Vector3(0, jumpForce, 0);
+            
 
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
+            //move to start when testing is done --v
+            jumpDir = new Vector3(0, jumpForce, 0);
+            Physics.gravity = new Vector3(0, -gravity, 0);
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+
+            //better jump, hålla in "hopp" för längre hopp
+            if(rb.velocity.y < 0)
             {
+                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            }
+            else if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))
+            {
+                rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
+            {
+                jumpCount++;
+                rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
                 rb.AddForce(jumpDir);
             }
-            if (Input.GetKeyDown(KeyCode.W))
+            if (Input.GetKeyDown(KeyCode.W) && jumpCount < 2)
             {
-                rb.AddForce(jumpDir);
+                jumpCount++;
+                rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
+                rb.AddForce(jumpDir, ForceMode.Impulse);
             }
 
             if (Input.GetKey(KeyCode.Space))
@@ -106,6 +129,17 @@ namespace Player
             if (other.CompareTag("Weapon")) //Testing only
             {
                 canPickUp = null;
+            }
+        }
+        private void OnCollisionEnter(Collision c)
+        {
+            Vector2 platformMiddle = c.transform.position;
+            float top = platformMiddle.y + (c.transform.localScale.y / 2);
+
+            if (transform.position.y - top > 0.08f)
+            {
+                Debug.Log(transform.position.y - top);
+                jumpCount = 0;
             }
         }
         public void TakeDamage(float damage)
