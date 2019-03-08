@@ -7,29 +7,21 @@ namespace Player
     public class TestBullet : MonoBehaviour
     {
         Rigidbody rb;
-        float speed;
-        float damage;
-        GameObject parent;
-        Vector3 dir;
-       
+        public GameObject Parent { get; set; }
 
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-            parent = FindObjectOfType<TestGun>().gameObject;
-            speed = parent.GetComponent<TestGun>().BulletSpeed;
-            damage = parent.GetComponent<TestGun>().Damage;
-
-            rb.velocity = transform.forward * speed;
+            rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;
         }
-        
+
 
         private void OnTriggerEnter(Collider other)
         {
             PlayerController playerHit = other.GetComponent<PlayerController>();
             if(playerHit != null)
             {
-                playerHit.TakeDamage(damage);
+                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
             }
 
             Destroy(gameObject);

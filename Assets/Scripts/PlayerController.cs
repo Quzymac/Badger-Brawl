@@ -8,12 +8,14 @@ namespace Player
     {
         float Damage { get; }
         float ShotsPerSecond { get; }
+        float ProjectileSpeed { get; }
 
         void Fire();
         GameObject Owner { get; set; }
 
 
     }
+
     public class PlayerController : MonoBehaviour
     {
         GameObject currentWeapon;
@@ -136,7 +138,6 @@ namespace Player
 
             if (transform.position.y - top > 0.08f)
             {
-                Debug.Log(transform.position.y - top);
                 jumpCount = 0;
             }
         }

@@ -9,7 +9,7 @@ namespace Player
     {
         public float Damage { get; } = 5f;
         public float ShotsPerSecond { get; } = 5f;
-        public float BulletSpeed { get; } = 10f;
+        public float ProjectileSpeed { get; } = 20f;
 
         bool canFire = true;
 
@@ -23,7 +23,8 @@ namespace Player
         {
             if (canFire)
             {
-                Instantiate(bullet, firePoint.position, firePoint.rotation);
+                GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                newBullet.GetComponent<TestBullet>().Parent = gameObject;
                 StartCoroutine(FireTimer(1/ShotsPerSecond));
             }
         }
@@ -34,21 +35,11 @@ namespace Player
             yield return new WaitForSeconds(timer);
             canFire = true;
         }
-
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
+        
         // Update is called once per frame
         void Update()
         {
-            if (!canFire)
-            {
-
-            }
+            //move timer for fireRate here and remove corutine
         }
-        
     }
 }
