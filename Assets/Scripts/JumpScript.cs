@@ -40,10 +40,10 @@ public class JumpScript : MonoBehaviour
 
         if (playerbody.velocity.y <= 0 && gameObject.layer == 12)
         {            
-            gameObject.layer = 9;
+            gameObject.layer = 10;
             Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), player, false);
         }
-        else if (playerbody.velocity.y <= 0 && gameObject.layer == 9)
+        else if (playerbody.velocity.y <= 0 && gameObject.layer == 10)
         {
             if (collidedPlatform.transform.position.y >= gameObject.transform.position.y)
             {
