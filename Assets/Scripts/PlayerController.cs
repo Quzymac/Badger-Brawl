@@ -19,8 +19,8 @@ namespace Player
         GameObject currentWeapon;
         GameObject canPickUp;
 
-        [SerializeField] float jumpForce = 600f;
-        [SerializeField] float gravity = 14f;
+        [SerializeField] float jumpForce = 700f;
+        [SerializeField] float gravity = 16f;
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
 
@@ -50,25 +50,21 @@ namespace Player
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
-            else if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))
+            else if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))//testing, change button later
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
 
-            if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
+            //jump
+            if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)//testing, change button later
             {
                 jumpCount++;
                 rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
                 rb.AddForce(jumpDir);
             }
-            if (Input.GetKeyDown(KeyCode.W) && jumpCount < 2)
-            {
-                jumpCount++;
-                rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
-                rb.AddForce(jumpDir, ForceMode.Impulse);
-            }
-
-            if (Input.GetKey(KeyCode.Space))
+           
+            //shoot
+            if (Input.GetKey(KeyCode.Space))//testing, change button later
             {
                 if (currentWeapon != null)
                 {
@@ -76,12 +72,14 @@ namespace Player
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.M)) //testing
+            //pick up
+            if (Input.GetKeyDown(KeyCode.M)) //testing, change button later
             {
                 PickUpWeapon();
             }
 
-            if (Input.GetKeyDown(KeyCode.N)) //testing
+            //drop
+            if (Input.GetKeyDown(KeyCode.N)) //testing, change button later
             {
                 DropWeapon();
             }

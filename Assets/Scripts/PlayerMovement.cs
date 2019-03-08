@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 8f;
 
     bool lookingRight = true;
 
