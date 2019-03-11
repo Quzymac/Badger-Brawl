@@ -10,6 +10,8 @@ namespace Player
         float ShotsPerSecond { get; }
         float ProjectileSpeed { get; }
 
+        bool Firing { get; set; }
+
         void Fire();
         GameObject Owner { get; set; }
 
@@ -35,8 +37,6 @@ namespace Player
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-            
-
         }
 
         // Update is called once per frame
@@ -64,14 +64,15 @@ namespace Player
                 rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
                 rb.AddForce(jumpDir);
             }
-           
+
             //shoot
-            if (Input.GetKey(KeyCode.Space))//testing, change button later
+            if (Input.GetKey(KeyCode.Space) && currentWeapon != null)//testing, change button later
             {
-                if (currentWeapon != null)
-                {
-                    currentWeapon.GetComponent<IWeapon>().Fire();
-                }
+                currentWeapon.GetComponent<IWeapon>().Firing = true;
+            }
+            else if (currentWeapon != null && currentWeapon.GetComponent<IWeapon>().Firing)
+            {
+                currentWeapon.GetComponent<IWeapon>().Firing = false;
             }
 
             //pick up
@@ -94,6 +95,7 @@ namespace Player
                 {
                     DropWeapon();
                 }
+
                 currentWeapon = canPickUp.gameObject;
                 currentWeapon.transform.position = transform.position;
                 currentWeapon.transform.rotation = transform.rotation;
@@ -102,6 +104,7 @@ namespace Player
                 currentWeapon.GetComponent<Collider>().enabled = false;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                currentWeapon.GetComponent<IWeapon>().Owner = gameObject;
 
             }
         }
@@ -114,7 +117,10 @@ namespace Player
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 currentWeapon.transform.parent = null;
+                currentWeapon.GetComponent<IWeapon>().Owner = null;
+
                 currentWeapon = null;
+
             }
         }
         private void OnTriggerEnter(Collider other)

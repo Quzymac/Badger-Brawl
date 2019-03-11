@@ -11,8 +11,10 @@ namespace Player
 
         void Start()
         {
+            Debug.Log(Parent.GetComponent<TestGun>().Owner);
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), Parent.GetComponent<TestGun>().Owner.GetComponent<Collider>(), true);
         }
 
 

@@ -8,10 +8,11 @@ namespace Player
 
     {
         public float Damage { get; } = 5f;
-        public float ShotsPerSecond { get; } = 5f;
+        public float ShotsPerSecond { get; } = 2f;
         public float ProjectileSpeed { get; } = 20f;
 
-        bool canFire = true;
+        float timer = 0f;
+        public bool Firing { get; set; } = false;
 
         [SerializeField] Transform firePoint;
 
@@ -21,25 +22,21 @@ namespace Player
 
         public void Fire()
         {
-            if (canFire)
-            {
-                GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-                newBullet.GetComponent<TestBullet>().Parent = gameObject;
-                StartCoroutine(FireTimer(1/ShotsPerSecond));
-            }
+            GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+            newBullet.GetComponent<TestBullet>().Parent = gameObject;
         }
        
-        IEnumerator FireTimer(float timer)
-        {
-            canFire = false;
-            yield return new WaitForSeconds(timer);
-            canFire = true;
-        }
-        
-        // Update is called once per frame
         void Update()
         {
-            //move timer for fireRate here and remove corutine
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                Firing = false;
+            }
+                if(Firing && Time.time > 1/ShotsPerSecond + timer)
+                {
+                    Fire();
+                    timer = Time.time;
+                }
         }
     }
 }
