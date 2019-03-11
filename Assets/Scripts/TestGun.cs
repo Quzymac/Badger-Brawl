@@ -11,6 +11,9 @@ namespace Player
         public float ShotsPerSecond { get; } = 2f;
         public float ProjectileSpeed { get; } = 20f;
 
+        float currentShotsPerSecond;
+        float shotTimer;
+
         float timer = 0f;
         public bool Firing { get; set; } = false;
 
@@ -25,18 +28,14 @@ namespace Player
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
         }
-       
+
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Firing && Time.time > 1 / ShotsPerSecond + timer)
             {
-                Firing = false;
+                Fire();
+                timer = Time.time;
             }
-                if(Firing && Time.time > 1/ShotsPerSecond + timer)
-                {
-                    Fire();
-                    timer = Time.time;
-                }
         }
     }
 }

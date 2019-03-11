@@ -6,61 +6,49 @@ namespace Player
 {
     public class ChainGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 3f;
-        public float ShotsPerSecond { get; } = 6;
-        public float BulletSpeed { get; } = 10f;     
-        bool canFire = true;
+        public float Damage { get; } = 1f;
+        public float ShotsPerSecond { get; } = 8f;
+        public float ProjectileSpeed { get; } = 20f;
+        public bool Firing { get; set; } = false;
 
-        [SerializeField] float buildUpTime = 1f;
+        [SerializeField] float buildUpTime = 0.2f;
+
+
+        float currentShotsPerSecond;
+        [SerializeField] float minShotsPerSeconds = 2f;
+        float timer = 0f;
+        float prevTimer = 0f;
+        
 
         [SerializeField] Transform firePoint;
-
         [SerializeField] GameObject bullet;
 
         public GameObject Owner { get; set; }
 
-        public float ProjectileSpeed
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-        }
-
-        IEnumerator FireTimer(float timer)
-        {
-            canFire = false;
-            yield return new WaitForSeconds(timer);
-            canFire = true;
-        }
-
         public void Fire()
         {
-            if (canFire)
-            {
-                GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-                newBullet.GetComponent<TestBullet>().Parent = gameObject;
-                StartCoroutine(FireTimer(1 / ShotsPerSecond));
-            }
+            GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+            newBullet.GetComponent<TestBullet>().Parent = gameObject;
         }
-
-        void Start()
-        {
-
-        }
-
-        public float nextAction;
-        public float Timer = 1f;
 
         void Update()
         {
-            nextAction += Time.deltaTime;
-            if (nextAction >= Timer)
+            if (Firing && Time.time > 1 / currentShotsPerSecond + timer)
             {
                 Fire();
-                nextAction = 0;
-                
+                timer = Time.time;
+                currentShotsPerSecond += (timer - prevTimer) * buildUpTime;
+            }
+            if (currentShotsPerSecond >= ShotsPerSecond)
+            {
+                currentShotsPerSecond = ShotsPerSecond;
+            }
+            if (Firing == false)
+            {
+                currentShotsPerSecond = minShotsPerSeconds;
+                prevTimer = timer;
             }
         }
     }
 }
+
