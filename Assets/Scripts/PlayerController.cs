@@ -14,8 +14,6 @@ namespace Player
 
         void Fire();
         GameObject Owner { get; set; }
-
-
     }
 
     public class PlayerController : MonoBehaviour
@@ -27,9 +25,9 @@ namespace Player
         [SerializeField] float gravity = 16f;
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
-
-        int jumpCount;
-
+        [SerializeField] bool onGround = true;
+        [SerializeField] bool canDoubleJump = false;
+        [SerializeField] LayerMask platformLayer;
         Rigidbody rb;
         Vector3 jumpDir;
 
@@ -38,8 +36,6 @@ namespace Player
         {
             rb = GetComponent<Rigidbody>();
         }
-
-        // Update is called once per frame
         void FixedUpdate()
         {
             //move to start when testing is done --v
@@ -48,21 +44,37 @@ namespace Player
 
 
             //better jump, hålla in "hopp" för längre hopp
-            if(rb.velocity.y < 0)
+            if (rb.velocity.y < 0)
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
-            else if(rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))//testing, change button later
+            else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))//testing, change button later
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
+        }
 
+        // Update is called once per frame
+        void Update()
+        {
+            GroundDetection();
             //jump
-            if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)//testing, change button later
+            if (Input.GetKeyDown(KeyCode.UpArrow))//testing, change button later
             {
-                jumpCount++;
-                rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
-                rb.AddForce(jumpDir);
+                if (onGround)
+                {
+                    //jumpCount++;
+                    canDoubleJump = true;
+                    rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
+                    rb.AddForce(jumpDir);
+                }
+
+                else if (!onGround && canDoubleJump)
+                {
+                    canDoubleJump = false;
+                    rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
+                    rb.AddForce(jumpDir);
+                }
             }
 
             //shoot
@@ -89,9 +101,9 @@ namespace Player
         }
         void PickUpWeapon()
         {
-            if(canPickUp != null)
+            if (canPickUp != null)
             {
-                if(currentWeapon != null)
+                if (currentWeapon != null)
                 {
                     DropWeapon();
                 }
@@ -105,7 +117,6 @@ namespace Player
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 currentWeapon.GetComponent<IWeapon>().Owner = gameObject;
-
             }
         }
         void DropWeapon()
@@ -120,8 +131,33 @@ namespace Player
                 currentWeapon.GetComponent<IWeapon>().Owner = null;
 
                 currentWeapon = null;
-
             }
+        }
+        private void GroundDetection()
+        {
+            RaycastHit hit;
+            Vector2 physicsCentre = transform.position + this.GetComponent<SphereCollider>().center;
+            Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red, 1);
+
+            if (Physics.Raycast(physicsCentre, Vector2.down, out hit, 0.6f, platformLayer))
+            {
+                canDoubleJump = false;
+                onGround = true;
+            }
+            else
+            {
+                if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 0.7f, platformLayer) || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 0.7f, platformLayer))
+                {
+                    Debug.DrawRay(transform.position, new Vector2(-1, -1) * 0.7f, Color.blue, 1);
+                    Debug.DrawRay(transform.position, new Vector2(1, -1) * 0.7f, Color.green, 1);
+
+                    canDoubleJump = false;
+                    onGround = true;
+                }
+                else
+                    onGround = false;
+            }
+            Debug.Log(onGround);
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -135,16 +171,6 @@ namespace Player
             if (other.CompareTag("Weapon")) //Testing only
             {
                 canPickUp = null;
-            }
-        }
-        private void OnCollisionEnter(Collision c)
-        {
-            Vector2 platformMiddle = c.transform.position;
-            float top = platformMiddle.y + (c.transform.localScale.y / 2);
-
-            if (transform.position.y - top > 0.08f)
-            {
-                jumpCount = 0;
             }
         }
         public void TakeDamage(float damage)
