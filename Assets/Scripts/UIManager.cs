@@ -40,7 +40,7 @@ public class UIManager : MonoBehaviour
     }
 
     //this method will disable the pausepanel in Unity, set the timescale to normal and then turn the PauseMenu bool to false
-    void Back ()
+    public void Resume ()
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1f;
@@ -52,17 +52,13 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) ) // the key Escape will have two diffrent funtions depending if "bool PauseManu" is true of false
+        if (Input.GetKeyDown(KeyCode.Escape) ) // when you click on the Escape button this code will check if PauseMenu is true or false, if it is false then the pausemenu will open
         {
-            if (PauseMenu)
-            {
-                Back();
-            }
-
-            else
+            if (!PauseMenu)
             {
                 PauseGame();
             }
+
 
         }
     }

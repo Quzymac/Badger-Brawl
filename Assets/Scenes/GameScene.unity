@@ -7031,6 +7031,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7625168767899911179, guid: fc79445bc3f96ba4e8310a49e42ffbb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625168768764694395, guid: fc79445bc3f96ba4e8310a49e42ffbb8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7625168767899911175, guid: fc79445bc3f96ba4e8310a49e42ffbb8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7136,11 +7146,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7625168768764694395, guid: fc79445bc3f96ba4e8310a49e42ffbb8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7625168767570941495, guid: fc79445bc3f96ba4e8310a49e42ffbb8,
         type: 3}
       propertyPath: m_IsActive
@@ -7165,6 +7170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7625168768569390273, guid: fc79445bc3f96ba4e8310a49e42ffbb8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.224976
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc79445bc3f96ba4e8310a49e42ffbb8, type: 3}
