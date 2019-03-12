@@ -25,12 +25,17 @@ namespace Player
 
         public void Fire()
         {
+
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
         }
 
         void Update()
         {
+            if (Owner == null && Firing)
+            {
+                Firing = false;
+            }
             if (Firing && Time.time > 1 / ShotsPerSecond + timer)
             {
                 Fire();

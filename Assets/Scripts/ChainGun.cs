@@ -33,6 +33,10 @@ namespace Player
 
         void Update()
         {
+            if(Owner == null && Firing)
+            {
+                Firing = false;
+            }
             if (Firing && Time.time > 1 / currentShotsPerSecond + timer)
             {
                 Fire();
