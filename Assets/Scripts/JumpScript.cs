@@ -9,12 +9,14 @@ public class JumpScript : MonoBehaviour
 
     GameObject collidedPlatform;
 
+    bool grounded;
+
+    float jumpTime;
+    public float jumpCount;
     [SerializeField] float jumpForce = 700f;
     [SerializeField] float gravity = 16f;
     [SerializeField] float fallMultiplier = 2.5f;
     [SerializeField] float lowJumpMultiplier = 2f;
-    [SerializeField] bool onGround = true;
-    [SerializeField] bool canDoubleJump = false;
     [SerializeField] LayerMask platformLayer;
     Vector3 jumpDir;
 
@@ -29,22 +31,14 @@ public class JumpScript : MonoBehaviour
 
     public void Jump()
     {
-
-        if (onGround)
+        if (jumpCount > 0)
         {
-            //jumpCount++;
-            canDoubleJump = true;
+            if (!grounded && Time.time > jumpTime )
+                jumpCount--;
             rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
             rb.AddForce(jumpDir);
             gameObject.layer = 12;
-        }
-
-        else if (!onGround && canDoubleJump)
-        {
-            canDoubleJump = false;
-            rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
-            rb.AddForce(jumpDir);
-            gameObject.layer = 12;
+            grounded = false;
         }
     }
 
@@ -94,27 +88,24 @@ public class JumpScript : MonoBehaviour
     {
         RaycastHit hit;
         Vector2 physicsCentre = transform.position + this.GetComponent<SphereCollider>().center;
-        Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red, 1);
 
-        if (Physics.Raycast(physicsCentre, Vector2.down, out hit, 0.6f, platformLayer))
+        if (Physics.Raycast(physicsCentre, Vector2.down, out hit, 0.6f, platformLayer) && rb.velocity.y <= 0)
         {
-            //canDoubleJump = false;
-            onGround = true;
+            grounded = true;
+            jumpCount = 1;
         }
-        else
+        else if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 0.7f, platformLayer) && rb.velocity.y <= 0 || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 0.7f, platformLayer) && rb.velocity.y <= 0)
         {
-            if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 0.7f, platformLayer) || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 0.7f, platformLayer))
+            grounded = true;
+            jumpCount = 1;
+        } else
+        {
+            if (grounded)
             {
-                Debug.DrawRay(transform.position, new Vector2(-1, -1) * 0.7f, Color.blue, 1);
-                Debug.DrawRay(transform.position, new Vector2(1, -1) * 0.7f, Color.green, 1);
-
-                //canDoubleJump = false;
-                onGround = true;
+                jumpTime = Time.time + 0.2f;
             }
-            else
-                onGround = false;
+            grounded = false;
         }
-        Debug.Log(onGround);
     }
 
     private void OnCollisionEnter(Collision collision)
