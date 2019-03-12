@@ -25,7 +25,10 @@ namespace Player
                 playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
             }
 
-            Destroy(gameObject);
+            if(other.tag != "Weapon")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
