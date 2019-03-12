@@ -9,25 +9,23 @@ public class PlayerMovement : MonoBehaviour
 
     bool lookingRight = true;
 
+    public float MovDir { get; set; }
+
     private void FixedUpdate()
     {
-        
-         //calculate movement velocity as a 3D vector
-        float xMov = Input.GetAxisRaw("Horizontal");
-
         //rotate to match movement direction
-        if(xMov < 0 && lookingRight)
+        if(MovDir < 0 && lookingRight)
         {
             transform.Rotate(new Vector3(0, 180, 0));
             lookingRight = false;
         }
-        else if(xMov > 0 && !lookingRight)
+        else if(MovDir > 0 && !lookingRight)
         {
             transform.Rotate(new Vector3(0,-180, 0));
             lookingRight = true;
         }
 
         //apply movement
-        transform.Translate(transform.right * -xMov * Time.deltaTime * moveSpeed);
+        transform.Translate(transform.right * -MovDir * Time.deltaTime * moveSpeed);
     }
 }

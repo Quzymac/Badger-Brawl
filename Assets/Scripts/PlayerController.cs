@@ -20,65 +20,40 @@ namespace Player
     {
         GameObject currentWeapon;
         GameObject canPickUp;
-
-        [SerializeField] float jumpForce = 700f;
-        [SerializeField] float gravity = 16f;
-        [SerializeField] float fallMultiplier = 2.5f;
-        [SerializeField] float lowJumpMultiplier = 2f;
-        [SerializeField] bool onGround = true;
-        [SerializeField] bool canDoubleJump = false;
-        [SerializeField] LayerMask platformLayer;
+       
         Rigidbody rb;
-        Vector3 jumpDir;
+        JumpScript jumpScript;
+        PlayerMovement movementScript;
 
         // Start is called before the first frame update
         void Start()
         {
             rb = GetComponent<Rigidbody>();
-        }
-        void FixedUpdate()
-        {
-            //move to start when testing is done --v
-            jumpDir = new Vector3(0, jumpForce, 0);
-            Physics.gravity = new Vector3(0, -gravity, 0);
-
-
-            //better jump, hålla in "hopp" för längre hopp
-            if (rb.velocity.y < 0)
-            {
-                rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.UpArrow))//testing, change button later
-            {
-                rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
-            }
+            jumpScript = GetComponent<JumpScript>();
+            movementScript = GetComponent<PlayerMovement>();
         }
 
         // Update is called once per frame
         void Update()
         {
-            GroundDetection();
+
+            //calculate movement velocity
+            movementScript.MovDir = Input.GetAxisRaw("Horizontal");
+
             //jump
             if (Input.GetKeyDown(KeyCode.UpArrow))//testing, change button later
             {
-                if (onGround)
-                {
-                    //jumpCount++;
-                    canDoubleJump = true;
-                    rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
-                    rb.AddForce(jumpDir);
-                }
-
-                else if (!onGround && canDoubleJump)
-                {
-                    canDoubleJump = false;
-                    rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
-                    rb.AddForce(jumpDir);
-                }
+                jumpScript.Jump();
+            }
+            
+            //drop
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                jumpScript.DropThrough();
             }
 
             //shoot
-            if (Input.GetKey(KeyCode.Space) && currentWeapon != null)//testing, change button later
+            if (Input.GetKey(KeyCode.Space) && currentWeapon != null) //testing, change button later
             {
                 currentWeapon.GetComponent<IWeapon>().Firing = true;
             }
@@ -87,18 +62,19 @@ namespace Player
                 currentWeapon.GetComponent<IWeapon>().Firing = false;
             }
 
-            //pick up
+            //pick up weapon
             if (Input.GetKeyDown(KeyCode.M)) //testing, change button later
             {
                 PickUpWeapon();
             }
 
-            //drop
+            //drop weapon
             if (Input.GetKeyDown(KeyCode.N)) //testing, change button later
             {
                 DropWeapon();
             }
         }
+
         void PickUpWeapon()
         {
             if (canPickUp != null)
@@ -133,32 +109,7 @@ namespace Player
                 currentWeapon = null;
             }
         }
-        private void GroundDetection()
-        {
-            RaycastHit hit;
-            Vector2 physicsCentre = transform.position + this.GetComponent<SphereCollider>().center;
-            Debug.DrawRay(transform.position, Vector2.down * 0.6f, Color.red, 1);
-
-            if (Physics.Raycast(physicsCentre, Vector2.down, out hit, 0.6f, platformLayer))
-            {
-                canDoubleJump = false;
-                onGround = true;
-            }
-            else
-            {
-                if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 0.7f, platformLayer) || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 0.7f, platformLayer))
-                {
-                    Debug.DrawRay(transform.position, new Vector2(-1, -1) * 0.7f, Color.blue, 1);
-                    Debug.DrawRay(transform.position, new Vector2(1, -1) * 0.7f, Color.green, 1);
-
-                    canDoubleJump = false;
-                    onGround = true;
-                }
-                else
-                    onGround = false;
-            }
-            Debug.Log(onGround);
-        }
+      
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Weapon")) //Testing only
