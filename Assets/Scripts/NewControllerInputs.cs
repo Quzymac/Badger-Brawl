@@ -9,7 +9,7 @@ namespace Player
     {
         GameObject currentWeapon;
         GameObject canPickUp;
-
+        public int playerNumber;
         Rigidbody rb;
         JumpScript jumpScript;
         ControllerMovement movementScript;
@@ -25,44 +25,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-
-            //calculate movement velocity
-            movementScript.MovDir = Input.GetAxisRaw("HorizontalController");
-
-            //jump
-            if (Input.GetButtonDown("JumpController"))
-            {
-                jumpScript.Jump();
-            }
-
-            //drop
-            if (Input.GetAxis("VerticalController") <= -0.1f)
-            {
-                jumpScript.DropThrough();
-
-            }
-
-            //shoot
-            if (Input.GetButton("WeaponFireController") && currentWeapon != null) 
-            {
-                currentWeapon.GetComponent<IWeapon>().Firing = true;
-            }
-            else if (currentWeapon != null && currentWeapon.GetComponent<IWeapon>().Firing)
-            {
-                currentWeapon.GetComponent<IWeapon>().Firing = false;
-            }
-
-            //pick up weapon
-            if (Input.GetButtonDown("WeaponPickUp")) 
-            {
-                PickUpWeapon();
-            }
-
-            //drop weapon
-            if (Input.GetButtonDown("DropWeapon")) //testing, change button later
-            {
-                DropWeapon();
-            }
+            PlayerControlls();
         }
 
         void PickUpWeapon()
@@ -117,6 +80,48 @@ namespace Player
         public void TakeDamage(float damage)
         {
             Debug.Log(damage + " damage taken");
+        }
+
+        void PlayerControlls()
+        {
+            //calculate movement velocity
+            movementScript.MovDir = Input.GetAxisRaw("HorizontalController" + playerNumber.ToString());
+
+            //jump
+            if (Input.GetButtonDown("JumpController" + playerNumber.ToString()))
+            {
+                Debug.Log(playerNumber + " " + jumpScript.gameObject.name);
+                jumpScript.Jump();
+            }
+
+            //drop
+            if (Input.GetAxis("VerticalController" + playerNumber.ToString()) <= -0.8f)
+            {
+                jumpScript.DropThrough();
+
+            }
+
+            //shoot
+            if (Input.GetButton("WeaponFireController" + playerNumber.ToString()) && currentWeapon != null)
+            {
+                currentWeapon.GetComponent<IWeapon>().Firing = true;
+            }
+            else if (currentWeapon != null && currentWeapon.GetComponent<IWeapon>().Firing)
+            {
+                currentWeapon.GetComponent<IWeapon>().Firing = false;
+            }
+
+            //pick up weapon
+            if (Input.GetButtonDown("WeaponPickUp" + playerNumber.ToString()))
+            {
+                PickUpWeapon();
+            }
+
+            //drop weapon
+            if (Input.GetButtonDown("DropWeapon" + playerNumber.ToString())) //testing, change button later
+            {
+                DropWeapon();
+            }
         }
     }
 }
