@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CAM_CamerMovement : MonoBehaviour
 {
+
     public Transform top;
     public Transform bottom;
     public Transform target;
 
     [SerializeField]
     private float camSpeed = 5f;
-    //float yPos;
     float yTop;
     float yBottom;
     float totalDistance;
     float pctValue;
-    [SerializeField]
-    private float dmgValue;
+
+    public float pctDamage;
 
 
     private void Start()
@@ -24,60 +24,42 @@ public class CAM_CamerMovement : MonoBehaviour
         yTop = top.position.y;
         yBottom = bottom.position.y;
 
-        totalDistance = yTop - yBottom;
-        
+        totalDistance = yTop - yBottom;       
     }
 
     void FixedUpdate()
     {
-        //pctValue = totalDistance * (dmgValue / 100);
-        //Debug.Log(pctValue);
-        //target.position = new Vector3(0, pctValue, -10);
-        //target.position = new Vector3(0, yBottom + pctValue, -10);
-        CalculatePosition();
-        MoveCamera();
-
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        //CalculatePosition();
+        if(target.position != transform.position)
         {
             MoveCamera();
-        }*/
-        /*if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            yPos = transform.position.y;
-
-            yPos -= 3f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            
-
-            yPos += 3f;
-        }*/
-       
+        }       
     }
     private void MoveCamera()
     {
-
         Vector3 desiredPos = target.position;
         Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, camSpeed * Time.deltaTime);
         transform.position = smoothPos;
-        //yPos = transform.position.y;
-        //transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, yPos, transform.position.z), camSpeed * Time.deltaTime);
     }
 
-    private void CalculatePosition()
+    private void CalculatePosition() //Calcutes the position to which the camera should move to
     {
-        if(dmgValue>100)
+        if(pctDamage>100)
         {
-            dmgValue = 100;
+            pctDamage = 100;
         }
-        if (dmgValue < 0)
+        if (pctDamage < 0)
         {
-            dmgValue = 0;
+            pctDamage = 0;
         }
-        pctValue = totalDistance * (dmgValue / 100);
+        pctValue = totalDistance * (pctDamage / 100);
         Debug.Log(pctValue);
-        target.position = new Vector3(0, yBottom + pctValue, -10);
+        target.position = new Vector3(0, yBottom + pctValue, -20);
+    }
+    public void ChangeCameraPos(float value)
+    {
+        pctDamage += value;
+        CalculatePosition();
+        //MoveCamera();
     }
 }
