@@ -37,6 +37,7 @@ namespace Player
             if(playerHit != null)
             {
                 playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                playerHit.playerMovement.KnockBack(transform.position - rb.velocity, 10);
             }
 
             if(other.tag != "Weapon")
