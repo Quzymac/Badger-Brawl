@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player
+public class camerafollowplayer : MonoBehaviour
 {
-    public class camerafollowplayer : MonoBehaviour
+    Transform player;
+    // Start is called before the first frame update
+    void Start()
     {
+        player = FindObjectOfType<PlayerMovement>().transform;
+    }
 
-        Transform player;
-        // Start is called before the first frame update
-        void Start()
-        {
-            player = FindObjectOfType<PlayerMovement>().transform;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            transform.position = new Vector3(transform.position.x, player.position.y + 5, transform.position.z);
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        transform.position = new Vector3(transform.position.x, player.position.y + 5, transform.position.z);
     }
 }

@@ -23,14 +23,14 @@ namespace Player
        
         Rigidbody rb;
         JumpScript jumpScript;
-        public PlayerMovement playerMovement { get; set; }
+        PlayerMovement movementScript;
 
         // Start is called before the first frame update
         void Start()
         {
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
-            playerMovement = GetComponent<PlayerMovement>();
+            movementScript = GetComponent<PlayerMovement>();
         }
 
         // Update is called once per frame
@@ -38,7 +38,7 @@ namespace Player
         {
 
             //calculate movement velocity
-            playerMovement.MoveDir = Input.GetAxisRaw("Horizontal");
+            movementScript.MovDir = Input.GetAxisRaw("Horizontal");
 
             //jump
             if (Input.GetKeyDown(KeyCode.UpArrow))//testing, change button later
