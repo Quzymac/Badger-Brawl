@@ -9,8 +9,29 @@ public class SeletingPlayer : MonoBehaviour
     [SerializeField]int playerChoosing = 1;
    
     [SerializeField] int[] playerController = new int[4];
+    [SerializeField] int[] playerTeam = new int[4];
+    [SerializeField] int[] playerCharacter = new int[4];
+
+
     [SerializeField] Text[] PressToJoin = new Text[4];
     [SerializeField] Text[] HasJoined = new Text[4];
+
+    [SerializeField] Button[] teamButtons = new Button[8];
+    [SerializeField] Button[] characterButtons = new Button[8];
+
+
+    // button.onClick.Invoke(); för att clicka på knappar i script
+
+
+    public void SetPlayerPrefs()
+    {
+        for (int i = 0; i < playerController.Length; i++)
+        {
+            PlayerPrefs.SetInt("playerController" + i, playerController[i]);
+            PlayerPrefs.SetInt("playerTeam" + i, playerTeam[i]);
+            PlayerPrefs.SetInt("playerCharacter" + i, playerCharacter[i]);
+        }
+    }
 
     void Start()
     {
@@ -27,7 +48,6 @@ public class SeletingPlayer : MonoBehaviour
 
     void Update()
     {
-
         if (Input.GetButtonDown("PlayerJoiningGame"))
         {
             if (Input.GetButtonDown("JumpController1"))
@@ -57,7 +77,6 @@ public class SeletingPlayer : MonoBehaviour
             PressToJoin[playerChoosing - 1].enabled = false;
             HasJoined[playerChoosing - 1].enabled = true;
             playerChoosing++;
-            PlayerPrefs.SetInt("players", playerChoosing);
         }
     }
 }
