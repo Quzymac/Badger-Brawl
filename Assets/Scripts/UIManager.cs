@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-
-    
 {
+    [SerializeField] Canvas selectPlayer;
+    [SerializeField] Canvas mainCanvas;
+    [SerializeField] GameObject credits;
+    [SerializeField] GameObject options;
     //This code quits the game
     public void QuitGame()
     {
@@ -15,15 +18,23 @@ public class UIManager : MonoBehaviour
     }
      
     //This code will change from MainMenuScene to GameScene
-    public void play()
+    //public void play()
+    //{
+    //    SceneManager.LoadScene("GameScene");
+    //}
+
+    public void selectPlayers()
     {
-        SceneManager.LoadScene("GameScene");
+        selectPlayer.enabled = true;
+        selectPlayer.GetComponent<SeletingPlayer>().enabled = true;
+        mainCanvas.enabled = false;
     }
 
     //This code will change from GameScene to MainMenuScene
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenuScene");
+        selectPlayer.GetComponent<SeletingPlayer>().enabled = false;
     }
 
     public bool PauseMenu = false;
@@ -58,8 +69,19 @@ public class UIManager : MonoBehaviour
             {
                 PauseGame();
             }
-
-
         }
+        if (credits.activeSelf == true && Input.GetButtonDown("BackController"))
+        {
+            credits.SetActive(false);
+        }
+        if (options.activeSelf == true && Input.GetButtonDown("BackController"))
+        {
+            options.SetActive(false);
+        }
+    }
+
+    private void Start()
+    {
+        selectPlayer.enabled = false;
     }
 }
