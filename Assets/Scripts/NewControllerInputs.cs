@@ -9,10 +9,11 @@ namespace Player
     {
         GameObject currentWeapon;
         GameObject canPickUp;
-        public int playerNumber;
         Rigidbody rb;
         JumpScript jumpScript;
-        ControllerMovement movementScript;
+        ControllerMovement controllerMovement;
+
+        public int JoystickNumber { get; set; }
 
         // inputs for controller movement
         string horizontalAxis;
@@ -21,14 +22,13 @@ namespace Player
         string bButton;
         string xButton;
         string shootButton;
-        int controllerNumber;
 
         // Start is called before the first frame update
         void Start()
         {
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
-            movementScript = GetComponent<ControllerMovement>();
+            controllerMovement = GetComponent<ControllerMovement>();
         }
 
         // Update is called once per frame
@@ -37,15 +37,15 @@ namespace Player
             PlayerControlls();
         }
 
-        public void SetControllerNumber(int number) //sets the controller input to the right controller
+        public void SetJoystickNumber(int joystick) //sets the controller input to the right controller
         {
-            controllerNumber = number;
-            horizontalAxis = "HorizontalController" + playerNumber.ToString();
-            verticalAxis = "VerticalController" + playerNumber.ToString();
-            aButton = "JumpController" + playerNumber.ToString();
-            bButton = "DropWeapon" + playerNumber.ToString();
-            xButton = "WeaponPickUp" + playerNumber.ToString();
-            shootButton = "WeaponFireController" + playerNumber.ToString();
+            JoystickNumber = joystick;
+            horizontalAxis = "HorizontalController" + JoystickNumber.ToString();
+            verticalAxis = "VerticalController" + JoystickNumber.ToString();
+            aButton = "JumpController" + JoystickNumber.ToString();
+            bButton = "DropWeapon" + JoystickNumber.ToString();
+            xButton = "WeaponPickUp" + JoystickNumber.ToString();
+            shootButton = "WeaponFireController" + JoystickNumber.ToString();
         }
 
         void PickUpWeapon()
@@ -105,12 +105,12 @@ namespace Player
         void PlayerControlls()
         {
             //calculate movement velocity
-            movementScript.MovDir = Input.GetAxisRaw(horizontalAxis);
+            controllerMovement.MovDir = Input.GetAxisRaw(horizontalAxis);
 
             //jump
             if (Input.GetButtonDown(aButton))
             {
-                Debug.Log(playerNumber + " " + jumpScript.gameObject.name);
+                Debug.Log(JoystickNumber + " " + jumpScript.gameObject.name);
                 jumpScript.Jump();
             }
 

@@ -57,7 +57,7 @@ namespace Player {
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0 && (!Input.GetKey(KeyCode.UpArrow) && !Input.GetButton("JumpController" + controllerInputs.playerNumber.ToString()))) //testing, change button later------------------------------------------------------------
+            else if (rb.velocity.y > 0 && (!Input.GetKey(KeyCode.UpArrow) && !Input.GetButton("JumpController" + controllerInputs.JoystickNumber.ToString()))) //testing, change button later------------------------------------------------------------
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
