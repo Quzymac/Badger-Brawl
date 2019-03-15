@@ -57,6 +57,7 @@ public class SeletingPlayer : MonoBehaviour
             PressToJoin[playerChoosing - 1].enabled = false;
             HasJoined[playerChoosing - 1].enabled = true;
             playerChoosing++;
+            PlayerPrefs.SetInt("players", playerChoosing);
         }
     }
 }
