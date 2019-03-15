@@ -14,6 +14,15 @@ namespace Player
         JumpScript jumpScript;
         ControllerMovement movementScript;
 
+        // inputs for controller movement
+        string horizontalAxis;
+        string verticalAxis;
+        string aButton;
+        string bButton;
+        string xButton;
+        string shootButton;
+        int controllerNumber;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -26,6 +35,17 @@ namespace Player
         void Update()
         {
             PlayerControlls();
+        }
+
+        public void SetControllerNumber(int number) //sets the controller input to the right controller
+        {
+            controllerNumber = number;
+            horizontalAxis = "HorizontalController" + playerNumber.ToString();
+            verticalAxis = "VerticalController" + playerNumber.ToString();
+            aButton = "JumpController" + playerNumber.ToString();
+            bButton = "DropWeapon" + playerNumber.ToString();
+            xButton = "WeaponPickUp" + playerNumber.ToString();
+            shootButton = "WeaponFireController" + playerNumber.ToString();
         }
 
         void PickUpWeapon()
@@ -85,24 +105,24 @@ namespace Player
         void PlayerControlls()
         {
             //calculate movement velocity
-            movementScript.MovDir = Input.GetAxisRaw("HorizontalController" + playerNumber.ToString());
+            movementScript.MovDir = Input.GetAxisRaw(horizontalAxis);
 
             //jump
-            if (Input.GetButtonDown("JumpController" + playerNumber.ToString()))
+            if (Input.GetButtonDown(aButton))
             {
                 Debug.Log(playerNumber + " " + jumpScript.gameObject.name);
                 jumpScript.Jump();
             }
 
             //drop
-            if (Input.GetAxis("VerticalController" + playerNumber.ToString()) <= -0.8f)
+            if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
                 jumpScript.DropThrough();
 
             }
 
             //shoot
-            if (Input.GetButton("WeaponFireController" + playerNumber.ToString()) && currentWeapon != null)
+            if (Input.GetButton(shootButton) && currentWeapon != null)
             {
                 currentWeapon.GetComponent<IWeapon>().Firing = true;
             }
@@ -112,13 +132,13 @@ namespace Player
             }
 
             //pick up weapon
-            if (Input.GetButtonDown("WeaponPickUp" + playerNumber.ToString()))
+            if (Input.GetButtonDown(xButton))
             {
                 PickUpWeapon();
             }
 
             //drop weapon
-            if (Input.GetButtonDown("DropWeapon" + playerNumber.ToString())) //testing, change button later
+            if (Input.GetButtonDown(bButton)) //testing, change button later
             {
                 DropWeapon();
             }
