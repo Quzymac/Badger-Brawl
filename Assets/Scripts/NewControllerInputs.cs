@@ -26,6 +26,7 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {
+            SetJoystickNumber(JoystickNumber);
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             controllerMovement = GetComponent<ControllerMovement>();

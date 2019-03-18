@@ -16,22 +16,6 @@ public class SeletingPlayer : MonoBehaviour
     [SerializeField] Text[] PressToJoin = new Text[4];
     [SerializeField] GameObject[] selectTeam = new GameObject[4];
 
-    [SerializeField] Button[] teamButtons = new Button[8];
-    [SerializeField] Button[] characterButtons = new Button[8];
-
-
-    // button.onClick.Invoke(); för att clicka på knappar i script  button.Select(); för att välja/highlight
-
-
-    public void SetPlayerPrefs()
-    {
-        for (int i = 0; i < playerController.Length; i++)
-        {
-            PlayerPrefs.SetInt("playerController" + i, playerController[i]);
-            PlayerPrefs.SetInt("playerTeam" + i, playerTeam[i]);
-            PlayerPrefs.SetInt("playerCharacter" + i, playerCharacter[i]);
-        }
-    }
 
     void Start()
     {

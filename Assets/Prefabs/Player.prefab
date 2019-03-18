@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 1227717765674105656}
   - component: {fileID: 1227717765674105657}
   - component: {fileID: 1227717765674105638}
-  - component: {fileID: 5098318025169275577}
-  - component: {fileID: 1227717765674105639}
   - component: {fileID: 7922071893889312756}
   - component: {fileID: 5022444481609253910}
+  - component: {fileID: 8183232804320987208}
+  - component: {fileID: 7063684275059554995}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -113,31 +113,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &5098318025169275577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227717765674105636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b6a32af0575a84a9e4e948b8ccba3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1227717765674105639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227717765674105636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 940924d14100ab24c8a176cdc371dc5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 8
 --- !u!114 &7922071893889312756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,6 +147,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNumber: 0
   joystick: 0
+--- !u!114 &8183232804320987208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227717765674105636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca859873de5f82448fa0e0f1be73e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7063684275059554995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227717765674105636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2181c6b6155562146b0e84f78e79fe3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
 --- !u!1 &8640002272272918155
 GameObject:
   m_ObjectHideFlags: 0
