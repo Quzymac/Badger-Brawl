@@ -14,13 +14,13 @@ public class SeletingPlayer : MonoBehaviour
 
 
     [SerializeField] Text[] PressToJoin = new Text[4];
-    [SerializeField] Text[] HasJoined = new Text[4];
+    [SerializeField] GameObject[] selectTeam = new GameObject[4];
 
     [SerializeField] Button[] teamButtons = new Button[8];
     [SerializeField] Button[] characterButtons = new Button[8];
 
 
-    // button.onClick.Invoke(); för att clicka på knappar i script
+    // button.onClick.Invoke(); för att clicka på knappar i script  button.Select(); för att välja/highlight
 
 
     public void SetPlayerPrefs()
@@ -39,9 +39,9 @@ public class SeletingPlayer : MonoBehaviour
         {
             PressToJoin[i].enabled = true;
         }
-        for (int j = 0; j < HasJoined.Length; j++)
+        for (int j = 0; j < selectTeam.Length; j++)
         {
-            HasJoined[j].enabled = false;
+            selectTeam[j].SetActive(false);// = false;
         }
         Debug.Log(Input.GetJoystickNames());
     }
@@ -75,7 +75,9 @@ public class SeletingPlayer : MonoBehaviour
         {
             playerController[controller] = playerChoosing;
             PressToJoin[playerChoosing - 1].enabled = false;
-            HasJoined[playerChoosing - 1].enabled = true;
+            selectTeam[playerChoosing - 1].SetActive(true);// enabled = true;
+            selectTeam[playerChoosing - 1].GetComponent<SelectTeamAndCharacter>().Controller = controller + 1;
+            selectTeam[playerChoosing - 1].GetComponent<SelectTeamAndCharacter>().PlayerNum = playerChoosing;
             playerChoosing++;
         }
     }
