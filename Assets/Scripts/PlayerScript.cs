@@ -8,7 +8,7 @@ namespace Player {
         public enum PlayerTeam { none, human, badger }
         [SerializeField] public PlayerTeam Team { get; set; }
 
-        public float Health { get; set; }
+        public float Health { get; set; } = 100f;
         [SerializeField] int playerNumber;
         [SerializeField] int joystick;
 
@@ -24,5 +24,12 @@ namespace Player {
     
         return player;
         }
+
+        public void TakeDamage(float damage)
+        {
+            Health -= damage;
+            Debug.Log("Player" + playerNumber + " - " + damage + " hp");
+        }
+
     }
 }

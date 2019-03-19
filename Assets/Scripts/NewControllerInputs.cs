@@ -100,11 +100,7 @@ namespace Player
                 canPickUp = null;
             }
         }
-        public void TakeDamage(float damage)
-        {
-            Debug.Log(damage + " damage taken");
-        }
-
+        
         void PlayerControlls()
         {
             //calculate movement velocity
