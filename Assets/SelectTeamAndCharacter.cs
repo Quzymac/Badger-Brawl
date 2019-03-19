@@ -32,19 +32,6 @@ public class SelectTeamAndCharacter : MonoBehaviour
         team = 2;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            PlayerPrefs.SetInt("Player" + i.ToString(), 0);
-            PlayerPrefs.SetInt("Player" + i.ToString() + "Joystick", 0);
-            PlayerPrefs.SetInt("Player" + i.ToString() + "Team", 0);
-            PlayerPrefs.SetInt("Player" + i.ToString() + "Character", 0);
-        }
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -106,6 +93,8 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Joystick", Controller);
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Team", team);
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Character", characterNumber);
+                    Debug.Log(PlayerNum + " " + Controller + " " + team + " " + characterNumber);
+                    Debug.Log(PlayerPrefs.GetInt("Player" + PlayerNum.ToString() + "Joystick") +" " + PlayerPrefs.GetInt("Player" + PlayerNum.ToString() + "Team") +" "+ PlayerPrefs.GetInt("Player" + PlayerNum.ToString() + "Character"));
                 }
             }
         }

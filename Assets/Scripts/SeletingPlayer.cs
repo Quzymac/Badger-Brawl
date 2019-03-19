@@ -19,6 +19,14 @@ public class SeletingPlayer : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < 3; i++)
+        {
+            PlayerPrefs.SetInt("Player" + i.ToString(), 0);
+            PlayerPrefs.SetInt("Player" + i.ToString() + "Joystick", 0);
+            PlayerPrefs.SetInt("Player" + i.ToString() + "Team", 0);
+            PlayerPrefs.SetInt("Player" + i.ToString() + "Character", 0);
+        }
+
         for (int i = 0; i < PressToJoin.Length; i++)
         {
             PressToJoin[i].enabled = true;

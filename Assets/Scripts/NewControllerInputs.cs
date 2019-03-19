@@ -23,6 +23,8 @@ namespace Player
         string xButton;
         string shootButton;
 
+
+
         // Start is called before the first frame update
         void Start()
         {
@@ -106,7 +108,7 @@ namespace Player
         void PlayerControlls()
         {
             //calculate movement velocity
-            controllerMovement.MovDir = Input.GetAxisRaw(horizontalAxis);
+            controllerMovement.MoveDir = Input.GetAxisRaw(horizontalAxis);
 
             //jump
             if (Input.GetButtonDown(aButton))

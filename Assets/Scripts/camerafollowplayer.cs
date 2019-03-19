@@ -10,7 +10,7 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {
-            player = FindObjectOfType<PlayerMovement>().transform;
+            player = FindObjectOfType<PlayerScript>().transform;
         }
 
         // Update is called once per frame
