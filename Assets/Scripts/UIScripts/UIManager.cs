@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] Canvas selectPlayer;
+    [SerializeField] GameObject selectPlayer;
     [SerializeField] Canvas mainCanvas;
     [SerializeField] GameObject credits;
     [SerializeField] GameObject options;
@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void selectPlayers()
     {
-        selectPlayer.enabled = true;
+        selectPlayer.SetActive(true);
         selectPlayer.GetComponent<SeletingPlayer>().enabled = true;
         mainCanvas.enabled = false;
     }
@@ -53,6 +53,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        selectPlayer.enabled = false;
+        selectPlayer.SetActive(false);
     }
 }
