@@ -6,7 +6,7 @@ namespace Player
 {
     public class ShotgunScript : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 0.6f; //damage per bullet
+        public float Damage { get; } = 1f; //damage per bullet
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 30f;
 
@@ -14,6 +14,7 @@ namespace Player
         public GameObject Owner { get; set; }
 
         [SerializeField] Transform firePoint;
+        [SerializeField] Transform muzzleFlashPoint;
         [SerializeField] GameObject pellet;
         float timer = 0f;
         float currentShotsPerSecond;
@@ -23,15 +24,26 @@ namespace Player
         Rigidbody rb;
         [SerializeField] float minSpread;
         [SerializeField] float maxSpread;
+        [SerializeField] GameObject muzzleFlash;
+        float flashDestroy = 2f;
+        //public float amountHit { get; set; } = 0;
+        public int[] amountHit = new int[4];
 
         public void Fire()
         {
+            flashDestroy -= Time.deltaTime;
+            for (int i = 0; i < amountHit.Length; i++)
+            {
+                amountHit[i] = 0;
+            }
+            muzzleFlashPoint.SetParent(gameObject.transform);
+            GameObject thisFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);
             foreach (GameObject pel in pellets)
             {
                 GameObject thisPellet = Instantiate(pellet, firePoint.position, firePoint.rotation);
                 thisPellet.GetComponent<PelletScript>().Parent = gameObject;
                 rb = thisPellet.GetComponent<Rigidbody>();
-                rb.velocity = transform.forward * ProjectileSpeed + new Vector3(0, Random.Range(minSpread, maxSpread), 0);
+                rb.velocity = transform.forward * ProjectileSpeed + new Vector3(0, Random.Range(minSpread, maxSpread), 0);              
             }
         }
 
@@ -46,6 +58,7 @@ namespace Player
 
         void Update()
         {
+            
             if (Owner == null && Firing)
             {
                 Firing = false;
@@ -55,6 +68,24 @@ namespace Player
                 Fire();
                 timer = Time.time;
             }
+            if (flashDestroy <= 0) // förstör inte gameobjektet ordentligt, kan optimeras
+            {
+                Destroy(muzzleFlash);
+                flashDestroy = 2f;
+            }
+        }
+
+        float thisDamage;
+
+        public void MultiplePlayerHit(PlayerScript hitPlayer) //hanterar skada ifall olika kulor skullle träffa olika spelare
+        {
+            thisDamage = Damage;
+            for (int i = 0; i < amountHit[hitPlayer.playerNumber - 1]; i++)
+            {
+                thisDamage *= 0.5f;
+            }
+            hitPlayer.TakeDamage(thisDamage);
+            Debug.Log(thisDamage);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Player {
         [SerializeField] public PlayerTeam Team { get; set; }
 
         public float Health { get; set; } = 100f;
-        [SerializeField] int playerNumber;
+        public int playerNumber;
         [SerializeField] int joystick;
 
 

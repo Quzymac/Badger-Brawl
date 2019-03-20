@@ -32,6 +32,7 @@ Transform:
   m_Children:
   - {fileID: 3568287274720327975}
   - {fileID: 545992808}
+  - {fileID: 7011330590388210264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -77,10 +78,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 545992808}
+  muzzleFlashPoint: {fileID: 7011330590388210264}
   pellet: {fileID: 8354293733068291351, guid: 9983719a239e19742af1341765987683, type: 3}
   pelletCount: 5
   minSpread: -5
   maxSpread: 5
+  muzzleFlash: {fileID: 6073938426378784194, guid: cbf9d4f7936e18b48a08855e438f18b9,
+    type: 3}
 --- !u!1 &7540380858725901468
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,4 +205,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8570027640299894375}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8833142929906873472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7011330590388210264}
+  m_Layer: 0
+  m_Name: MuzzleFlashPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7011330590388210264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8833142929906873472}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0, y: 0, z: 0.8025}
+  m_LocalScale: {x: 0.63231117, y: 0.64796215, z: 1.0000002}
+  m_Children: []
+  m_Father: {fileID: 8570027640299894375}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

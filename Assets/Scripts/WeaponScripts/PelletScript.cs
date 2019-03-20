@@ -11,6 +11,7 @@ namespace Player
         //Vector3 currentPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
+        
 
         void Start()
         {
@@ -31,11 +32,13 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            PlayerController playerHit = other.GetComponent<PlayerController>();
+            PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if (playerHit != null)
             {
-                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
-                playerHit.playerMovement.KnockBack(transform.position - rb.velocity, 10);
+                Parent.GetComponent<ShotgunScript>().amountHit[playerHit.playerNumber - 1]++;
+                Parent.GetComponent<ShotgunScript>().MultiplePlayerHit(playerHit);
+                //playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
             }
 
             if (other.tag != "Weapon" && other.tag != "Pellet")
