@@ -27,7 +27,7 @@ namespace Player
             distTraveled += Vector3.Distance(transform.position, lastPos);
             lastPos = transform.position;
 
-            if (distTraveled > 5)
+            if (distTraveled > 8)
             {
                 Destroy(gameObject);
             }
