@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9738,7 +9738,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -14495,7 +14495,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 2.5
-      minScalar: 0.53
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -18975,6 +18975,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5255831688567592005}
+  - component: {fileID: 1101589877}
+  - component: {fileID: 1101589878}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -19000,3 +19002,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1101589877
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255831688567592006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1101589878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5255831688567592006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4832b43a6939b84188ac63c0a9d8015, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

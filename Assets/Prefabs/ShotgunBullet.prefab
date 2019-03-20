@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 6388065461217648567}
   - component: {fileID: 8598869114338675694}
   - component: {fileID: 8739373510132181278}
-  - component: {fileID: 5163497294122584707}
   - component: {fileID: 2586365009285190060}
+  - component: {fileID: 9222179973954129879}
   m_Layer: 0
-  m_Name: TestBullet
-  m_TagString: Untagged
+  m_Name: ShotgunBullet
+  m_TagString: Pellet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 8354293733068291351}
   m_LocalRotation: {x: 0, y: 0.9914449, z: 0, w: 0.13052629}
   m_LocalPosition: {x: -0.711, y: 1.009, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.14527611, y: 0.14527611, z: 0.14527611}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -93,18 +93,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5163497294122584707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8354293733068291351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e851aedb07a6c24698700244671c633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!54 &2586365009285190060
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,3 +109,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 1
+--- !u!114 &9222179973954129879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8354293733068291351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d94992e4a33f77458901b3e0577736c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
