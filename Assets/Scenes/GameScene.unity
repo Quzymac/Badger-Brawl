@@ -3602,6 +3602,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a8b468b4a425f6b40b9b4fa291eea3c4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad4be26fae48bf489df5e2a42559aed, type: 3}
+--- !u!1 &1222504267 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1329560041, guid: b640d038c3cbbd24680a47eb513d773f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1454963518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1222504272
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222504267}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32bf009b0efa8ff4db77c3ab6b024a94, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &1232722011 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6105078804580655438, guid: 8ad4be26fae48bf489df5e2a42559aed,
@@ -4425,6 +4450,21 @@ PrefabInstance:
     - target: {fileID: 1082835422, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 498579319772387662, guid: b640d038c3cbbd24680a47eb513d773f,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8152141738664788024, guid: b640d038c3cbbd24680a47eb513d773f,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6900369829356989200, guid: b640d038c3cbbd24680a47eb513d773f,
+        type: 3}
+      propertyPath: m_UpdateMode
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
