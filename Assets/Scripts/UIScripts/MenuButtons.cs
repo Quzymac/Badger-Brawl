@@ -31,7 +31,7 @@ public class MenuButtons : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetAxis("MenuVertical2") > 0.5f && Time.time > 0.2f + timer) //move up
+        if (Input.GetAxis("MenuVertical2") > 0.5f && Time.unscaledTime > 0.2f + timer) //move up
         {
             currentButton--;
             if (currentButton <= 0)
@@ -40,18 +40,18 @@ public class MenuButtons : MonoBehaviour
             }
             SelectButton(currentButton);
 
-            timer = Time.time;
+            timer = Time.unscaledTime;
         }
-        if (Input.GetAxis("MenuVertical2") < -0.5f && Time.time > 0.2f + timer) //move down
+        if (Input.GetAxis("MenuVertical2") < -0.5f && Time.unscaledTime > 0.2f + timer) //move down
         {
             currentButton++;
-            if (currentButton >= 3)
+            if (currentButton >= (buttons.Length - 1))
             {
-                currentButton = 3;
+                currentButton = (buttons.Length - 1);
             }
             SelectButton(currentButton);
 
-            timer = Time.time;
+            timer = Time.unscaledTime;
         }
         if (Input.GetButtonDown("PlayerJoiningGame")) //click
         {
