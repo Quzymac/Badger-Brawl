@@ -20,7 +20,7 @@ namespace Player
         {
             for (int i = 0; i < 3; i++)
             {
-                
+                playerNum[i] = PlayerPrefs.GetInt("Player" + (i+1).ToString());
                 playerController[i] = PlayerPrefs.GetInt("Player" + (i+1).ToString() + "Joystick");
                 playerTeam[i] = PlayerPrefs.GetInt("Player" + (i + 1).ToString() + "Team");
                 playerCharacter[i] = PlayerPrefs.GetInt("Player" + (i + 1).ToString() + "Character");

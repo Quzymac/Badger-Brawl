@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574123378}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -4.52, y: 0.92, z: 0}
   m_LocalScale: {x: 1, y: 1.5433, z: 1.5815}
   m_Children:
@@ -83,8 +83,9 @@ MonoBehaviour:
   pelletCount: 5
   minSpread: -5
   maxSpread: 5
-  muzzleFlash: {fileID: 6073938426378784194, guid: cbf9d4f7936e18b48a08855e438f18b9,
+  muzzleFlash: {fileID: 6073938426378784194, guid: 18ecfe543431ec8409fe0bc3beaa5b77,
     type: 3}
+  amountHit: 00000000000000000000000000000000
 --- !u!1 &7540380858725901468
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 64f1205a6dfe3224091dd0ffb71e207f, type: 2}
+  - {fileID: 2100000, guid: 2d425e75e2d2fe841b23091cbcf86295, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

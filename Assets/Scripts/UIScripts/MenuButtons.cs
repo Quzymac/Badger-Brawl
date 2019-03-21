@@ -8,11 +8,12 @@ public class MenuButtons : MonoBehaviour
 {
 
     [SerializeField] Button[] buttons = new Button[4];
-    public int currentButton = 0;
+    int currentButton;
     float timer;
 
     void Start()
     {
+        currentButton = 0;
         buttons[0].Select();
     }
 
