@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PauseManager : MonoBehaviour
 {
     //This code will change from GameScene to MainMenuScene
-    public void GoToMainMenu()
+    public void QuitGame()
     {
         SceneManager.LoadScene("MainMenuScene");
         //selectPlayer.GetComponent<SeletingPlayer>().enabled = false;
@@ -18,6 +18,7 @@ public class PauseManager : MonoBehaviour
 
     public GameObject PausePanel;
     public GameObject OptionsPanel;
+    public GameObject ExitToMainMenuPanel;
 
     //this method will enable the pausepanel in Unity, set the timescale to 0 so the game will pause and then turn the PauseMenu bool to true 
     void PauseGame()
@@ -26,7 +27,6 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 0f;
 
         PauseMenu = true;
-        
 
     }
 
@@ -35,7 +35,7 @@ public class PauseManager : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1f;
-
+        
         PauseMenu = false;
     }
 
@@ -43,25 +43,33 @@ public class PauseManager : MonoBehaviour
 
     public void OpenOption()
     {
-        
         OptionsPanel.SetActive(true);
-        PausePanel.SetActive(false);
     }
 
     //this method close the optionpanel and opens the pausepanel
     public void OptionBack()
     {
-        
-        PausePanel.SetActive(true);
-        OptionsPanel.SetActive(false);
-        
+        OptionsPanel.SetActive(false);    
     }
+
+    //this method opens the panel that asks you 
+    public void QuitGamePanel()
+    {
+        ExitToMainMenuPanel.SetActive(true);
+    }
+
+    public void DoNotQuit()
+    {
+        ExitToMainMenuPanel.SetActive(false);
+    }
+
+   
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) // when you click on the Escape button this code will check if PauseMenu is true or false, if it is false then the pausemenu will open
+        if (Input.GetKeyDown(KeyCode.Escape) || (Input.GetButtonDown("StartGame"))) // when you click on the Escape button this code will check if PauseMenu is true or false, if it is false then the pausemenu will open
         {
             
             if (!PauseMenu)
