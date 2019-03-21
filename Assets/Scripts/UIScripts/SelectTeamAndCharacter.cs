@@ -57,6 +57,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
             {
                 selectingCharacter = false;
                 selectingTeam = true;
+                playerSelectScript.playerDone[PlayerNum - 1] = false;
             }
             if (!CurrentlySelecting && selectingCharacter)
             {
@@ -157,6 +158,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 if (Input.GetButtonDown("JumpController" + Controller.ToString()))
                 {
                     readyText.text = "Player " + PlayerNum + " ready!";
+                    playerSelectScript.playerDone[PlayerNum - 1] = true;
                     CurrentlySelecting = false;
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString(), PlayerNum);
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Joystick", Controller);

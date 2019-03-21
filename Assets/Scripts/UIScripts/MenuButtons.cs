@@ -10,8 +10,9 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] Button[] buttons;
     int currentButton;
     float timer;
+    bool canMove = true;
 
-    void Start()
+    void Awake()
     {
         buttonsAnimator = new Animator[buttons.Length];
         for (int i = 0; i < buttons.Length; i++)
@@ -19,48 +20,63 @@ public class MenuButtons : MonoBehaviour
             buttonsAnimator[i] = buttons[i].GetComponent<Animator>();
         }
         currentButton = 0;
-        SelectButton(currentButton);
+        buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
     }
 
-    void SelectButton(int button)
+    void SelectButton(int button, bool moveUp)
     {
-        buttons[button].Select();
+        buttonsAnimator[button].SetTrigger(buttons[button].animationTriggers.normalTrigger);
 
-        buttonsAnimator[button].SetTrigger(buttons[button].animationTriggers.highlightedTrigger);
-    }
-
-    void Update()
-    {
-        if (Input.GetAxis("MenuVertical2") > 0.5f && Time.unscaledTime > 0.2f + timer) //move up
+        if (moveUp)
         {
-            buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
-
             currentButton--;
             if (currentButton <= 0)
             {
                 currentButton = 0;
             }
-            SelectButton(currentButton);
-
-            timer = Time.unscaledTime;
         }
-        if (Input.GetAxis("MenuVertical2") < -0.5f && Time.unscaledTime > 0.2f + timer) //move down
+        else
         {
-            buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
-
             currentButton++;
             if (currentButton >= (buttons.Length - 1))
             {
                 currentButton = (buttons.Length - 1);
             }
-            SelectButton(currentButton);
-
-            timer = Time.unscaledTime;
         }
-        if (Input.GetButtonDown("PlayerJoiningGame")) //click
+        buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.highlightedTrigger);
+
+        timer = Time.unscaledTime;
+    }
+    private void OnEnable() //when canvas is enabled
+    {
+        canMove = true;
+        buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.highlightedTrigger);
+    }
+
+    void Update()
+    {
+        if (canMove)
+        {
+            if (Input.GetAxis("MenuVertical2") > 0.5f && Time.unscaledTime > 0.2f + timer) //move up
+            {
+                SelectButton(currentButton, true);
+            }
+            if (Input.GetAxis("MenuVertical2") < -0.5f && Time.unscaledTime > 0.2f + timer) //move down
+            {
+                SelectButton(currentButton, false);
+            }
+            if (Input.GetButtonDown("PlayerJoiningGame")) //click button
+            {
+                StartCoroutine(ClickButton(currentButton));
+            }
+        }
+        IEnumerator ClickButton(int button)
         {
             buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
-            buttons[currentButton].onClick.Invoke();
+            canMove = false;
+            yield return new WaitForSecondsRealtime(0.15f); //timer to let button animation finish
+            buttons[button].onClick.Invoke();
+
         }
     }
 }

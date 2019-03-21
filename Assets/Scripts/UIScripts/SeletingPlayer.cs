@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class SeletingPlayer : MonoBehaviour
 {
+    public bool[] playerDone = new bool[4];
     bool playersAreReady = false;
     [SerializeField] GameObject playersReadyText;
    
@@ -18,6 +19,8 @@ public class SeletingPlayer : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
+            playerDone[i] = false;
+
             PlayerPrefs.SetInt("Player" + i.ToString(), 0);
             PlayerPrefs.SetInt("Player" + i.ToString() + "Joystick", 0);
             PlayerPrefs.SetInt("Player" + i.ToString() + "Team", 0);
@@ -59,23 +62,23 @@ public class SeletingPlayer : MonoBehaviour
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         }
-        if(!playersAreReady && PlayersReady() && AnyPlayerSet())
+        if(!playersAreReady && PlayersReady() && AnyPlayerDone())
         {
             playersAreReady = true;
             playersReadyText.SetActive(true);
         }
-        if (playersAreReady && !PlayersReady() && AnyPlayerSet())
+        if (playersAreReady && !PlayersReady() && AnyPlayerDone())
         {
             playersAreReady = false;
             playersReadyText.SetActive(false);
         }
     }
 
-    bool AnyPlayerSet()
+    bool AnyPlayerDone()
     {
         for (int i = 0; i < 3; i++)
         {
-            if(PlayerPrefs.GetInt("Player" + (i + 1).ToString()) > 0)
+            if(playerDone[i])
             {
                 return true;
             }

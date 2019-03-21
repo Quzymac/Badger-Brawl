@@ -23,8 +23,8 @@ public class PauseManager : MonoBehaviour
     //this method will enable the pausepanel in Unity, set the timescale to 0 so the game will pause and then turn the PauseMenu bool to true 
     void PauseGame()
     {
-        PausePanel.SetActive(true);
         Time.timeScale = 0f;
+        PausePanel.SetActive(true);
 
         PauseMenu = true;
 
@@ -43,13 +43,15 @@ public class PauseManager : MonoBehaviour
 
     public void OpenOption()
     {
+        PausePanel.SetActive(false);
         OptionsPanel.SetActive(true);
     }
 
     //this method close the optionpanel and opens the pausepanel
     public void OptionBack()
     {
-        OptionsPanel.SetActive(false);    
+        OptionsPanel.SetActive(false);
+        PausePanel.SetActive(true);
     }
 
     //this method opens the panel that asks you 
