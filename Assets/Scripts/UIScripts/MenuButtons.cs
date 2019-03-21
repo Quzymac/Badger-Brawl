@@ -33,8 +33,6 @@ public class MenuButtons : MonoBehaviour
     {
         if (Input.GetAxis("MenuVertical2") > 0.5f && Time.unscaledTime > 0.2f + timer) //move up
         {
-            buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
-
             currentButton--;
             if (currentButton <= 0)
             {
@@ -46,8 +44,6 @@ public class MenuButtons : MonoBehaviour
         }
         if (Input.GetAxis("MenuVertical2") < -0.5f && Time.unscaledTime > 0.2f + timer) //move down
         {
-            buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
-
             currentButton++;
             if (currentButton >= (buttons.Length - 1))
             {
@@ -59,6 +55,7 @@ public class MenuButtons : MonoBehaviour
         }
         if (Input.GetButtonDown("PlayerJoiningGame")) //click
         {
+            buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
             buttons[currentButton].onClick.Invoke();
         }
     }
