@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &70774609 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3284058568985877479, guid: 510266f63da77e94d8573a7000f1b0a4,
+    type: 3}
+  m_PrefabInstance: {fileID: 3284058569015181357}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &356975215
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +344,6 @@ GameObject:
   m_Component:
   - component: {fileID: 970582739}
   - component: {fileID: 970582738}
-  - component: {fileID: 970582740}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -359,7 +364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectPlayer: {fileID: 1363972986}
-  mainCanvas: {fileID: 1501761332}
+  mainCanvas: {fileID: 70774609}
   credits: {fileID: 1378240023}
   options: {fileID: 793698829}
 --- !u!4 &970582739
@@ -376,22 +381,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &970582740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970582737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdeb290ec3013934dba1e1b547558ee5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PauseMenu: 0
-  PausePanel: {fileID: 0}
-  OptionsPanel: {fileID: 0}
-  ExitToMainMenuPanel: {fileID: 0}
 --- !u!1 &1015065938
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,12 +526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttons:
   - {fileID: 962590077}
---- !u!223 &1501761332 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3284058568985877472, guid: 510266f63da77e94d8573a7000f1b0a4,
-    type: 3}
-  m_PrefabInstance: {fileID: 3284058569015181357}
-  m_PrefabAsset: {fileID: 0}
+  currentButton: 0
 --- !u!1 &1822784345 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3284058567736121845, guid: 510266f63da77e94d8573a7000f1b0a4,
@@ -580,6 +564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3284058567772864525, guid: 510266f63da77e94d8573a7000f1b0a4,
+        type: 3}
+      propertyPath: m_Transition
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3284058568571073344, guid: 510266f63da77e94d8573a7000f1b0a4,
         type: 3}
       propertyPath: m_IsActive
@@ -594,6 +583,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Transition
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3284058567736121847, guid: 510266f63da77e94d8573a7000f1b0a4,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SelectPlayers
       objectReference: {fileID: 0}
     - target: {fileID: 3284058568985877475, guid: 510266f63da77e94d8573a7000f1b0a4,
         type: 3}
@@ -824,11 +818,6 @@ PrefabInstance:
       propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3284058567772864525, guid: 510266f63da77e94d8573a7000f1b0a4,
-        type: 3}
-      propertyPath: m_Transition
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510266f63da77e94d8573a7000f1b0a4, type: 3}
 --- !u!1001 &8766616373773645726
@@ -948,5 +937,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8766616372114778161, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
+        type: 3}
+      propertyPath: mainCanvas
+      value: 
+      objectReference: {fileID: 70774609}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89ad18bdd195fa54eac61ddb462c6ecc, type: 3}

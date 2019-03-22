@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class SeletingPlayer : MonoBehaviour
 {
+    [SerializeField] GameObject mainCanvas;
+
     public bool[] playerDone = new bool[4];
     bool playersAreReady = false;
     [SerializeField] GameObject playersReadyText;
-   
+
     [SerializeField] int[] playerController = new int[4];
 
 
@@ -17,7 +19,7 @@ public class SeletingPlayer : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             playerDone[i] = false;
 
@@ -39,6 +41,11 @@ public class SeletingPlayer : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetButtonDown("BackController") && !AnyPlayerDone() && PlayersReady()) 
+        {
+            mainCanvas.SetActive(true);
+            gameObject.SetActive(false);
+        }
         if (Input.GetButtonDown("PlayerJoiningGame"))
         {
             if (Input.GetButtonDown("JumpController1"))

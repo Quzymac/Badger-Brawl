@@ -8,7 +8,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
 
     public int Controller { get; set; } = 0;
     public int PlayerNum { get; set; } = 0;
-    int team = 0;
+    int team = 1;
     int characterNumber = 0;
 
     public bool CurrentlySelecting { get; set; } = false;

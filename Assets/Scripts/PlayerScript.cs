@@ -11,7 +11,13 @@ namespace Player {
         public float Health { get; set; } = 100f;
         public int playerNumber;
         [SerializeField] int joystick;
+        [SerializeField] PlayerTeam t;
 
+        private void Start()
+        {
+            t = Team;
+
+        }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
         {

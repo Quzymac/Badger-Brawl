@@ -20,7 +20,10 @@ public class MenuButtons : MonoBehaviour
             buttonsAnimator[i] = buttons[i].GetComponent<Animator>();
         }
         currentButton = 0;
-        buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
+    }
+    private void Start()
+    {
+        buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.highlightedTrigger);
     }
 
     void SelectButton(int button, bool moveUp)
@@ -49,6 +52,7 @@ public class MenuButtons : MonoBehaviour
     }
     private void OnEnable() //when canvas is enabled
     {
+        currentButton = 0;
         canMove = true;
         buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.highlightedTrigger);
     }
