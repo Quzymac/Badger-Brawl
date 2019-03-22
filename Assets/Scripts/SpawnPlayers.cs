@@ -6,6 +6,7 @@ namespace Player
 {
     public class SpawnPlayers : MonoBehaviour
     {
+        [SerializeField] GameManager gameManager;
         GameObject[,] characters = new GameObject[2, 2];
         [SerializeField]GameObject player;
 
@@ -18,7 +19,8 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {
-            for (int i = 0; i < 3; i++)
+            //gameManager = FindObjectOfType<GameManager>();
+            for (int i = 0; i < 4; i++)
             {
                 playerNum[i] = PlayerPrefs.GetInt("Player" + (i+1).ToString());
                 playerController[i] = PlayerPrefs.GetInt("Player" + (i+1).ToString() + "Joystick");
@@ -27,6 +29,15 @@ namespace Player
                 if(playerController[i] != 0)
                 {
                     GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], player, new Vector3(0, 0, 0));
+
+                    if (playerTeam[i] == 1)
+                    {
+                        gameManager.Humans.Add(players.GetComponent<PlayerScript>());
+                    }
+                    else if (playerTeam[i] == 2)
+                    {
+                        gameManager.Badgers.Add(players.GetComponent<PlayerScript>());
+                    }
                 }
             }
 

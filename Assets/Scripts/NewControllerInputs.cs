@@ -71,7 +71,7 @@ namespace Player
                 currentWeapon.GetComponent<IWeapon>().Owner = gameObject;
             }
         }
-        void DropWeapon()
+        public void DropWeapon()
         {
             if (currentWeapon != null)
             {

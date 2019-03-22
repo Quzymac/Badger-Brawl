@@ -9,9 +9,12 @@ namespace Player
         public float ShotsPerSecond { get; } = 30f; // how many shots per second the weapon can shot
         public float ProjectileSpeed { get; } = 20f;  //the speed of the fire
 
+        public PlayerScript[] playersHit = new PlayerScript[4];
 
         float currentShotsPerSecond;
         float shotTimer;
+        bool damageCooldown = false;
+        float fireDamageTime;
 
         float timer = 0f;
         public bool Firing { get; set; } = false;
@@ -45,6 +48,30 @@ namespace Player
             }
         }
 
+        public void DamageImmunity()
+        {
+            if (damageCooldown && fireDamageTime >= 2)
+            {
+                damageCooldown = false;
+            }
+        }
+
+        float thisDamage;
+
+        public void DamagePlayer(PlayerScript playerHit) //Nya metoden för att hantera damage 
+        {
+            thisDamage = Damage;
+            if (!damageCooldown)
+            {
+                playerHit.TakeDamage(thisDamage);
+                damageCooldown = true;
+                fireDamageTime = Time.time;
+            }
+            else
+            {
+                DamageImmunity();
+            }
+        }
 
     }
 }

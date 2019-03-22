@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 106500465}
   - component: {fileID: 106500464}
   - component: {fileID: 106500468}
+  - component: {fileID: 106500469}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -475,11 +476,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bcad0a8c715b1346898763ddb78b416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   player: {fileID: 1227717765674105636, guid: f0a516d0853c513448b200861b4806bf, type: 3}
   playerNum: 00000000000000000000000000000000
   playerController: 00000000000000000000000000000000
   playerTeam: 00000000000000000000000000000000
   playerCharacter: 00000000000000000000000000000000
+--- !u!114 &106500469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106500463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8618ffde36e4aad4d914c980f1ba5df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &130413968
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4451,6 +4465,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1082835418, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 498579319772387662, guid: b640d038c3cbbd24680a47eb513d773f,
         type: 3}
       propertyPath: m_UpdateMode
@@ -4465,10 +4483,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UpdateMode
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1082835418, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
