@@ -13,6 +13,7 @@ namespace Player
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
 
+        [SerializeField] private GameObject shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] Transform muzzleFlashPoint;
         [SerializeField] GameObject pellet;
@@ -31,6 +32,7 @@ namespace Player
 
         public void Fire()
         {
+            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
             flashDestroy -= Time.deltaTime;
             for (int i = 0; i < amountHit.Length; i++)
             {

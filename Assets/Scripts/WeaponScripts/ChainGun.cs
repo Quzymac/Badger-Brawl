@@ -10,9 +10,11 @@ namespace Player
         public float ShotsPerSecond { get; } = 8f;
         public float ProjectileSpeed { get; } = 20f;
         public bool Firing { get; set; } = false;
+        
 
         [SerializeField] float buildUpTime = 0.2f;
 
+        [SerializeField] private GameObject shotSound;
 
         float currentShotsPerSecond;
         [SerializeField] float minShotsPerSeconds = 2f;
@@ -27,6 +29,9 @@ namespace Player
 
         public void Fire()
         {
+            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
+
+            
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
         }

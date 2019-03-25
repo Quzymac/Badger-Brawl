@@ -5,6 +5,7 @@ namespace Player
 {
     public class FlameThrower : MonoBehaviour, IWeapon
     {
+        public GameObject shotSound { get; set; }
         public float Damage { get; } = 1f;  //how much damage the weapon does
         public float ShotsPerSecond { get; } = 30f; // how many shots per second the weapon can shot
         public float ProjectileSpeed { get; } = 20f;  //the speed of the fire

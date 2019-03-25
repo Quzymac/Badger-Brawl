@@ -18,6 +18,7 @@ namespace Player
         float getHoldValue = 0f;
         float maxHoldThrow = 3f;
 
+        [SerializeField] private GameObject shotSound;
         Rigidbody rb;
         bool isThrown = false;
         bool startExplosion = false;

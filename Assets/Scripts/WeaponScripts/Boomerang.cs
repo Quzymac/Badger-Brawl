@@ -11,9 +11,8 @@ namespace Player
 
         float timer = 0f;
 
-
+        [SerializeField] private GameObject shotSound;
         [SerializeField] Transform firePoint;
-
         [SerializeField] GameObject boomer;
 
         public bool Firing { get; set; } = false;
@@ -43,7 +42,7 @@ namespace Player
         }
         public void Fire()
         {
-
+            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
             GameObject clone = Instantiate(boomer, firePoint.position, firePoint.rotation);
             //clone = Instantiate(boomer, new Vector3(transform.position.x, transform.position.y + 1, 0), transform.rotation) as GameObject;
             clone.GetComponent<BoomerangBullet>().Owner = gameObject;

@@ -16,6 +16,7 @@ namespace Player
         float timer = 0f;
         public bool Firing { get; set; } = false;
 
+        [SerializeField] private GameObject shotSound;
         [SerializeField]
         Transform firePoint;
 
@@ -26,6 +27,7 @@ namespace Player
 
         public void Fire()
         {
+            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
             GameObject newFlame = Instantiate(flame, firePoint.position, firePoint.rotation);
             newFlame.GetComponent<Flame>().Parent = gameObject;
         }
