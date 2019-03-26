@@ -37,7 +37,7 @@ namespace Player
             {
                 Parent.GetComponent<ShotgunScript>().amountHit[playerHit.playerNumber - 1]++;
                 Parent.GetComponent<ShotgunScript>().MultiplePlayerHit(playerHit);
-                //playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
                 playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
             }
 

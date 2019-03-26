@@ -10,28 +10,41 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject mainCanvas;
     [SerializeField] GameObject credits;
     [SerializeField] GameObject options;
+    [SerializeField] GameObject quit;
     
+    float buttonTimer = 0.1f;
 
-    //This code quits the game
+
     public void QuitGame()
     {
-        Debug.Log("closed");
+        Debug.Log("Quit");
         Application.Quit();
     }
-     
-    //This code will change from MainMenuScene to GameScene
-    //public void play()
-    //{
-    //    SceneManager.LoadScene("GameScene");
-    //}
-
-    public void SelectPlayers()
+    
+    public void OpenCanvas(GameObject canvas)
     {
-        selectPlayer.SetActive(true);
+        StartCoroutine(OpenTimer(canvas));
+    }
+    IEnumerator OpenTimer(GameObject canvas)
+    {
+        yield return new WaitForSecondsRealtime(buttonTimer);
+        canvas.SetActive(true);
         mainCanvas.SetActive(false);
     }
 
-    
+    public void BackToMain()
+    {
+        StartCoroutine(BackToMainTimer());
+    }
+    IEnumerator BackToMainTimer()
+    {
+        yield return new WaitForSecondsRealtime(buttonTimer);
+        mainCanvas.SetActive(true);
+        selectPlayer.SetActive(false);
+        credits.SetActive(false);
+        options.SetActive(false);
+        quit.SetActive(false);
+    }
 
   
 
@@ -39,14 +52,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (credits.activeSelf == true && Input.GetButtonDown("BackController"))
+        if ((credits.activeInHierarchy || options.activeInHierarchy || quit.activeInHierarchy) && Input.GetButtonDown("BackController"))
         {
-            credits.SetActive(false);
-        }
-        if (options.activeSelf == true && Input.GetButtonDown("BackController"))
-        {
-            options.SetActive(false);
+            BackToMain();
         }
     }
 

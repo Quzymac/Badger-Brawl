@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SeletingPlayer : MonoBehaviour
 {
-    [SerializeField] GameObject mainCanvas;
+    [SerializeField] UIManager uiManager;
 
     public bool[] playerDone = new bool[4];
     bool playersAreReady = false;
@@ -43,8 +43,7 @@ public class SeletingPlayer : MonoBehaviour
     {
         if (Input.GetButtonDown("BackController") && !AnyPlayerDone() && PlayersReady()) 
         {
-            mainCanvas.SetActive(true);
-            gameObject.SetActive(false);
+            uiManager.BackToMain();
         }
         if (Input.GetButtonDown("PlayerJoiningGame"))
         {

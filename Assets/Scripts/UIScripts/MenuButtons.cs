@@ -8,7 +8,7 @@ public class MenuButtons : MonoBehaviour
 {
     Animator[] buttonsAnimator;
     [SerializeField] Button[] buttons;
-    int currentButton;
+    int currentButton = 0;
     float timer;
     bool canMove = true;
 
@@ -52,7 +52,7 @@ public class MenuButtons : MonoBehaviour
     }
     private void OnEnable() //when canvas is enabled
     {
-        currentButton = 0;
+        //currentButton = 0;
         canMove = true;
         buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.highlightedTrigger);
     }
@@ -61,11 +61,11 @@ public class MenuButtons : MonoBehaviour
     {
         if (canMove)
         {
-            if (Input.GetAxis("MenuVertical2") > 0.5f && Time.unscaledTime > 0.2f + timer) //move up
+            if ((Input.GetAxis("MenuVertical2") > 0.5f || Input.GetAxis("MenuHorizontal2") > 0.5f) && Time.unscaledTime > 0.2f + timer) //move up
             {
                 SelectButton(currentButton, true);
             }
-            if (Input.GetAxis("MenuVertical2") < -0.5f && Time.unscaledTime > 0.2f + timer) //move down
+            if ((Input.GetAxis("MenuVertical2") < -0.5f || Input.GetAxis("MenuHorizontal2") < -0.5f) && Time.unscaledTime > 0.2f + timer) //move down
             {
                 SelectButton(currentButton, false);
             }

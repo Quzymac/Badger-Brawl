@@ -19,7 +19,9 @@ public class PauseManager : MonoBehaviour
     public GameObject PausePanel;
     public GameObject OptionsPanel;
     public GameObject ExitToMainMenuPanel;
- 
+
+    float buttonTimer = 0.1f;
+
     //this method will enable the pausepanel in Unity, set the timescale to 0 so the game will pause and then turn the PauseMenu bool to true 
     void PauseGame()
     {
@@ -35,41 +37,31 @@ public class PauseManager : MonoBehaviour
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1f;
-        
+
         PauseMenu = false;
     }
-
-    // this code opens the optionpanel and closes the pausepanel
-
-    public void OpenOption()
+    public void OpenCanvas(GameObject canvas)
     {
-        
+        StartCoroutine(OpenTimer(canvas));
+    }
+    IEnumerator OpenTimer(GameObject canvas)
+    {
+        yield return new WaitForSecondsRealtime(buttonTimer);
+        canvas.SetActive(true);
         PausePanel.SetActive(false);
-        OptionsPanel.SetActive(true);
     }
 
-    //this method close the optionpanel and opens the pausepanel
-    public void OptionBack()
+    public void BackToPauseMenu()
     {
-        
-        OptionsPanel.SetActive(false);
         PausePanel.SetActive(true);
-    }
-
-    //this method opens the panel that asks you if you're sure you want to quit 
-    public void QuitGamePanel()
-    {
-        
-        ExitToMainMenuPanel.SetActive(true);
-        PausePanel.SetActive(false);
+        OptionsPanel.SetActive(false);
+        ExitToMainMenuPanel.SetActive(false);
     }
 
     //this method will make you go back to the pausemenu 
-    public void DoNotQuit()
+    public void MainMenuScene()
     {
-        
-        PausePanel.SetActive(true);
-        ExitToMainMenuPanel.SetActive(false);
+        SceneManager.LoadScene("MainMenuScene");
     }
 
    
@@ -79,11 +71,9 @@ public class PauseManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) || (Input.GetButtonDown("StartGame"))) // when you click on the Escape button this code will check if PauseMenu is true or false, if it is false then the pausemenu will open
         {
-            
             if (!PauseMenu)
             {
                 PauseGame();
-                
             }
         }
     }
