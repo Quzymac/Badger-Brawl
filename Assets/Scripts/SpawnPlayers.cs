@@ -17,7 +17,7 @@ namespace Player
 
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             //gameManager = FindObjectOfType<GameManager>();
             for (int i = 0; i < 4; i++)
@@ -38,6 +38,7 @@ namespace Player
                     {
                         gameManager.Badgers.Add(players.GetComponent<PlayerScript>());
                     }
+                    gameManager.GetComponent<HealthBarManager>().Players.Add(players.GetComponent<PlayerScript>());
                 }
             }
 
