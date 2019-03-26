@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8096e20f5b73064ca1650811e638514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotSound: {fileID: 1666706938121975551, guid: fd490b6a6eaba624da6b8c65d746f684,
+    type: 3}
   firePoint: {fileID: 545992808}
   muzzleFlashPoint: {fileID: 7011330590388210264}
   pellet: {fileID: 8354293733068291351, guid: 9983719a239e19742af1341765987683, type: 3}

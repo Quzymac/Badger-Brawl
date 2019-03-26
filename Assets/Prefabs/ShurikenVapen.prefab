@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3895767881819167555}
   - component: {fileID: 3895767881819167554}
   m_Layer: 0
-  m_Name: BytUtOchTaBort
+  m_Name: ShurikenVapen
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd0d16a0a4e4324ea5b76b76649f3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shotSound: {fileID: 8829417947017883652, guid: c14376d7d61528849bb9ffb078e55f8e,
+    type: 3}
   firePoint: {fileID: 8377389747834339670}
   shurikenBull: {fileID: 2342671995219535642, guid: d331fb69005ed294682e574d73ab1792,
     type: 3}

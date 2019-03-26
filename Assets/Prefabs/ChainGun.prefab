@@ -77,6 +77,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildUpTime: 0.2
+  shotSound: {fileID: 422935506538400868, guid: 3be304ffc1929914d9f0c0da1b8a79a0,
+    type: 3}
   minShotsPerSeconds: 2
   firePoint: {fileID: 3692721282046853312}
   bullet: {fileID: 8354293733068291351, guid: 81bb547e240e42d408e496be63548382, type: 3}

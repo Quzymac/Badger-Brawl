@@ -6,13 +6,16 @@ namespace Player
     public class BoomerangBullet : MonoBehaviour
     {
         public GameObject Owner { get; set; }
+        public GameObject Parent { get; set; }
         bool go;
+
+        [SerializeField]GameObject boomerangWeapon;
         [SerializeField] GameObject player;
         [SerializeField] GameObject boomerang;
         [SerializeField] Transform itemToRotate;
 
         Vector3 locationInFrontOfPlayer;
-        // Start is called before the first frame update
+
         void Start()
         {
             go = false;
@@ -34,24 +37,43 @@ namespace Player
             yield return new WaitForSeconds(0.6f);
             go = false;
         }
-        // Update is called once per frame
+
         void Update()
         {
-                itemToRotate.transform.Rotate(0, 0, Time.deltaTime * 600);
-                if (go)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 20);
-                }
-                if (!go)
-                {
-                    transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, 0), Time.deltaTime * 20);
-                }
-                if (!go && Vector3.Distance(player.transform.position, transform.position) < 1.5f)
-                {
-                    boomerang.GetComponent<MeshRenderer>().enabled = true;
-                    Destroy(this.gameObject);
-                }
+            itemToRotate.transform.Rotate(0, 0, Time.deltaTime * 600);
+            if (go)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, locationInFrontOfPlayer, Time.deltaTime * 20);
             }
+            if (!go)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, player.transform.position.y + 1, 0), Time.deltaTime * 20);
+            }
+            if (!go && Vector3.Distance(player.transform.position, transform.position) < 1.5f)
+            {
+                boomerang.GetComponent<MeshRenderer>().enabled = true;
+                Destroy(this.gameObject);
+            }
+        }
+        Vector3 offset = new Vector3(0.5f,0,0);
+        Vector3 negativeOffset = new Vector3(-0.5f, 0, 0);
+        public void OnCollisionEnter(Collision collision)
+        {
+            if(collision.gameObject.tag == "Wall")
+            {
+                if(transform.position.x >= 0)
+                {
+                    Parent.transform.position = transform.position + negativeOffset;
+                }
+                else
+                {
+                    Parent.transform.position = transform.position + offset;
+                }
 
+                player.GetComponent<NewControllerInputs>().DropWeapon();
+                boomerang.GetComponent<MeshRenderer>().enabled = true;
+                Destroy(this.gameObject);
+            }
         }
     }
+}

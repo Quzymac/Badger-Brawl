@@ -17,19 +17,15 @@ namespace Player
 
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
-        // Start is called before the first frame update
+
         void Start()
         {
 
         }
 
-        // Update is called once per frame
         void Update()
         {
-            //if (Input.GetKeyDown(KeyCode.Space))
-            //{
-            //    Fire();
-            //}
+
             if (Owner == null && Firing)
             {
                 Firing = false;
@@ -44,8 +40,8 @@ namespace Player
         {
             GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
             GameObject clone = Instantiate(boomer, firePoint.position, firePoint.rotation);
-            //clone = Instantiate(boomer, new Vector3(transform.position.x, transform.position.y + 1, 0), transform.rotation) as GameObject;
             clone.GetComponent<BoomerangBullet>().Owner = gameObject;
+            clone.GetComponent<BoomerangBullet>().Parent = gameObject;
         }
     }
 }
