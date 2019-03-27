@@ -9,15 +9,20 @@ namespace Player
         public GameObject Parent { get; set; }
         bool go;
 
-        [SerializeField]GameObject boomerangWeapon;
+        [SerializeField] GameObject boomerangWeapon;
         [SerializeField] GameObject player;
         [SerializeField] GameObject boomerang;
         [SerializeField] Transform itemToRotate;
+
+        Rigidbody rb;
 
         Vector3 locationInFrontOfPlayer;
 
         void Start()
         {
+            rb = GetComponent<Rigidbody>();
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), Parent.GetComponent<IWeapon>().Owner.GetComponent<Collider>(), true);
+
             go = false;
 
             player = Owner.GetComponent<IWeapon>().Owner;
@@ -55,13 +60,13 @@ namespace Player
                 Destroy(this.gameObject);
             }
         }
-        Vector3 offset = new Vector3(0.5f,0,0);
+        Vector3 offset = new Vector3(0.5f, 0, 0);
         Vector3 negativeOffset = new Vector3(-0.5f, 0, 0);
         public void OnCollisionEnter(Collision collision)
         {
-            if(collision.gameObject.tag == "Wall")
+            if (collision.gameObject.tag == "Wall")
             {
-                if(transform.position.x >= 0)
+                if (transform.position.x >= 0)
                 {
                     Parent.transform.position = transform.position + negativeOffset;
                 }
@@ -80,7 +85,10 @@ namespace Player
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if (playerHit != null)
             {
-                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                if (playerHit.Team != Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team)
+                {
+                    playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                }
             }
 
             if (other.tag == "Player")
