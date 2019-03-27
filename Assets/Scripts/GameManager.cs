@@ -18,9 +18,30 @@ namespace Player {
         }
 
 
-        void Update()
+        public bool TeamIsDead(PlayerScript.PlayerTeam team)
         {
-
+            if (team == PlayerScript.PlayerTeam.human)
+            {
+                for (int i = 0; i < humans.Count; i++)
+                {
+                    if (humans[i].dead == false)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            else
+            {
+                for (int i = 0; i < badgers.Count; i++)
+                {
+                    if (badgers[i].dead == false)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
     }
 }

@@ -32,12 +32,16 @@ namespace Player
         {
             distTraveled = Vector3.Distance(transform.position, startPos);
 
-            Vector3 vel = rb.velocity - enemyPosition.transform.position;
-            Debug.Log(vel);
-            rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght;
-            rb.velocity = rb.velocity.normalized * Parent.GetComponent<IWeapon>().ProjectileSpeed;
-            transform.LookAt(enemyPosition.transform.position - rb.velocity);
+            
 
+            if (enemyPosition != null)
+            {
+                Vector3 vel = rb.velocity - enemyPosition.transform.position;
+                Debug.Log(vel);
+                rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght;
+                rb.velocity = rb.velocity.normalized * Parent.GetComponent<IWeapon>().ProjectileSpeed;
+                transform.LookAt(enemyPosition.transform.position - rb.velocity);
+            }
             if (distTraveled > 40)
             {
                 Destroy(gameObject);
@@ -61,23 +65,24 @@ namespace Player
             if (Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team == PlayerScript.PlayerTeam.badger)
             {
                 enemies.AddRange(gameManager.Humans);
-                Debug.Log("badge enemy" + enemies[0].Team);
 
             }
             else if (Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team == PlayerScript.PlayerTeam.human)
             {
                 enemies.AddRange(gameManager.Badgers);
-                Debug.Log("human enemy"+ enemies[0].Team);
             }
             Debug.Log(enemies.Count);
             GameObject closestEnemy = null;
             float minDistance = 1000;
-            foreach (PlayerScript enemy in enemies)
+            if (enemies.Count > 0)
             {
-                if (Vector2.Distance(enemy.transform.position, transform.position) < minDistance)
+                foreach (PlayerScript enemy in enemies)
                 {
-                    closestEnemy = enemy.gameObject;
-                    Debug.Log(closestEnemy);
+                    if (enemy != null && Vector2.Distance(enemy.transform.position, transform.position) < minDistance)
+                    {
+                        closestEnemy = enemy.gameObject;
+                        Debug.Log(closestEnemy);
+                    }
                 }
             }
             return closestEnemy;

@@ -16,6 +16,10 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
+            if (player == null)
+            {
+                player = FindObjectOfType<PlayerScript>().transform;
+            }
             transform.position = new Vector3(transform.position.x, player.position.y + 5, transform.position.z);
         }
     }

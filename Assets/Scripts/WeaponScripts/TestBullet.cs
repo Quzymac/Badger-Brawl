@@ -33,11 +33,11 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            PlayerController playerHit = other.GetComponent<PlayerController>();
+            PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if(playerHit != null)
             {
                 playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
-                playerHit.playerMovement.KnockBack(transform.position - rb.velocity, 10);
+                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
             }
 
             if(other.tag != "Weapon")

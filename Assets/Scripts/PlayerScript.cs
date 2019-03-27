@@ -8,15 +8,19 @@ namespace Player {
         public enum PlayerTeam { none, human, badger }
         [SerializeField] public PlayerTeam Team { get; set; }
 
+        GameManager gameManager;
+        HealthBar healthBar;
         public float Health { get; set; } = 100f;
         public int playerNumber;
         [SerializeField] int joystick;
         [SerializeField] PlayerTeam t;
+        public bool dead = false;
 
         private void Start()
         {
             t = Team;
-
+            gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+            healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
         }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
@@ -34,8 +38,21 @@ namespace Player {
         public void TakeDamage(float damage)
         {
             Health -= damage;
+            if (Health <= 0)
+            {
+                Health = 0;
+                Death();
+            }
+            healthBar.UpdateHealthBar();
             Debug.Log("Player" + playerNumber + " - " + damage + " hp");
         }
 
+        void Death()
+        {
+            dead = true;
+            Destroy(gameObject);
+
+            Debug.Log("team dead = " + gameManager.TeamIsDead((PlayerTeam)playerNumber));
+        }
     }
 }

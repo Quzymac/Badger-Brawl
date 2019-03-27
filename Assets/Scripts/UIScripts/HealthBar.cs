@@ -6,16 +6,19 @@ namespace Player
 {
     public class HealthBar : MonoBehaviour
     {
-        Transform bar;
+        [SerializeField] Transform bar; // själva health baren
         public PlayerScript SpecificPlayer { get; set; }
         float maxHealth;
 
         void Start()
         {
-            Transform bar = transform.Find("Bar");
             if (SpecificPlayer == null)
             {
                 gameObject.SetActive(false);
+            }
+            else
+            {
+                maxHealth = SpecificPlayer.GetComponent<PlayerScript>().Health;
             }
         }
 
@@ -24,14 +27,11 @@ namespace Player
             
         }
 
-        void TakingDamage()
+        public void UpdateHealthBar()
         {
+            bar.localScale = new Vector3(SpecificPlayer.Health / maxHealth, 1f);
 
-        }
-
-        public void SetSize(float sizeNormalized)
-        {
-            bar.localScale = new Vector3(sizeNormalized, 1f);
+            Debug.Log(SpecificPlayer.playerNumber + " Hit");
         }
     }
 }

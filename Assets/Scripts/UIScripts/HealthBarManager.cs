@@ -5,9 +5,8 @@ namespace Player
 {
     public class HealthBarManager : MonoBehaviour
     {
-        [SerializeField] GameManager gameManager;
         public List<PlayerScript> Players = new List<PlayerScript>(); //spelarna som ska få rätt health bar
-        [SerializeField] HealthBar[] healthBars = new HealthBar[4];
+        public HealthBar[] healthBars = new HealthBar[4];
 
         void Start()
         {
@@ -17,7 +16,6 @@ namespace Player
             {
 
                 healthBars[i].SpecificPlayer = Players[i];
-                healthBars[i].SetSize(0.5f);
                 Debug.Log(healthBars[i].SpecificPlayer);
             }
         }
