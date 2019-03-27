@@ -36,13 +36,19 @@ namespace Player
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if(playerHit != null)
             {
-                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
-                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
+                if (playerHit.Team != Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team)
+                {
+                    playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                    playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
+                    Destroy(gameObject);
+                }
             }
-
-            if(other.tag != "Weapon")
+            else
             {
-                Destroy(gameObject);
+                if (other.tag != "Weapon")
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
