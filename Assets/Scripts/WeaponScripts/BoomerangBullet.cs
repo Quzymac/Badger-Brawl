@@ -75,5 +75,30 @@ namespace Player
                 Destroy(this.gameObject);
             }
         }
+        private void OnTriggerEnter(Collider other)
+        {
+            PlayerScript playerHit = other.GetComponent<PlayerScript>();
+            if (playerHit != null)
+            {
+                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
+            }
+
+            if (other.tag == "Player")
+            {
+                if (transform.position.x >= 0)
+                {
+                    Parent.transform.position = transform.position + negativeOffset;
+                }
+                else
+                {
+                    Parent.transform.position = transform.position + offset;
+                }
+
+                player.GetComponent<NewControllerInputs>().DropWeapon();
+                boomerang.GetComponent<MeshRenderer>().enabled = true;
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
