@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 283658692859732810}
   - component: {fileID: 283658692858634634}
   - component: {fileID: 7214631080625047465}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Boomeranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -197,6 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7bf4650d216c24ea13a621a776b2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotSound: {fileID: 0}
+  shotSound: {fileID: 8829417947017883652, guid: c14376d7d61528849bb9ffb078e55f8e,
+    type: 3}
   firePoint: {fileID: 2467013648387528566}
   boomer: {fileID: 8738569617030950674, guid: 8e36196c87b79204ba80fa046d675ec8, type: 3}
