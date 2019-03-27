@@ -15,6 +15,11 @@ namespace Player
         [SerializeField] int[] playerTeam = new int[4];
         [SerializeField] int[] playerCharacter = new int[4];
 
+        [SerializeField] List<Transform> spawnPositions = new List<Transform>();
+        List<Transform> usedSpawnPositions = new List<Transform>();
+        [SerializeField] Transform upperCollider;
+        [SerializeField] Transform bottomCollider;
+
      
         public void Spawn()
         {
@@ -23,7 +28,7 @@ namespace Player
             {
                 if (playerController[i] != 0)
                 {
-                    GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], player, new Vector3(0, 0, 0));
+                    GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], player, CheckSpawnPosition().position);
 
                     if (playerTeam[i] == 1)
                     {
@@ -40,6 +45,7 @@ namespace Player
         }
         void ResetPlayers()
         {
+            usedSpawnPositions.Clear();
             for (int i = 0; i < 4; i++)
             {
                 gameManager.GetComponent<HealthBarManager>().Players.Clear();
@@ -58,6 +64,19 @@ namespace Player
                 playerCharacter[i] = PlayerPrefs.GetInt("Player" + (i + 1).ToString() + "Character");
             }
             Spawn();
+        }
+
+        Transform CheckSpawnPosition()
+        {
+            while (true)
+            {
+                int randomSpawn = Random.Range(0, spawnPositions.Count);
+                if (spawnPositions[randomSpawn].position.y > bottomCollider.position.y && spawnPositions[randomSpawn].position.y < upperCollider.position.y && !usedSpawnPositions.Contains(spawnPositions[randomSpawn]))
+                {
+                    usedSpawnPositions.Add(spawnPositions[randomSpawn]);
+                    return spawnPositions[randomSpawn];
+                }
+            }
         }
     }
 }

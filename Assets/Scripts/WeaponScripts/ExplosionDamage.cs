@@ -7,6 +7,7 @@ namespace Player
     public class ExplosionDamage : MonoBehaviour
     {
         float damageTimer = 0.3f;
+        public float Damage { get; set; }
 
         public GameObject Weapon { get; set; }
 
@@ -29,7 +30,7 @@ namespace Player
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if (playerHit != null)
             {
-                playerHit.TakeDamage(Weapon.GetComponent<IWeapon>().Damage);
+                playerHit.TakeDamage(Damage);
                 playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position, 10);
             }
         }

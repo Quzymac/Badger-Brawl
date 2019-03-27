@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class MenuButtons : MonoBehaviour
 {
     Animator[] buttonsAnimator;
+    public GameObject Audio;
     [SerializeField] Button[] buttons;
     int currentButton = 0;
     float timer;
@@ -29,6 +30,7 @@ public class MenuButtons : MonoBehaviour
     void SelectButton(int button, bool moveUp)
     {
         buttonsAnimator[button].SetTrigger(buttons[button].animationTriggers.normalTrigger);
+        Audio.GetComponent<UIAudioScript>().uiSounds.PlayOneShot(Audio.GetComponent<UIAudioScript>().hoverSound);
 
         if (moveUp)
         {
@@ -76,6 +78,7 @@ public class MenuButtons : MonoBehaviour
         }
         IEnumerator ClickButton(int button)
         {
+            Audio.GetComponent<UIAudioScript>().uiSounds.PlayOneShot(Audio.GetComponent<UIAudioScript>().clickSound);
             buttonsAnimator[currentButton].SetTrigger(buttons[currentButton].animationTriggers.normalTrigger);
             canMove = false;
             yield return new WaitForSecondsRealtime(0.15f); //timer to let button animation finish

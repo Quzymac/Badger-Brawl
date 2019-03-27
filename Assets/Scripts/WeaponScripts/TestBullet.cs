@@ -11,9 +11,11 @@ namespace Player
         Vector3 currentPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
+        PlayerScript.PlayerTeam team;
 
         void Start()
         {
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             lastPos = transform.position;
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;
@@ -36,7 +38,7 @@ namespace Player
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if(playerHit != null)
             {
-                if (playerHit.Team != Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team)
+                if (playerHit.Team != team)
                 {
                     playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
                     playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);

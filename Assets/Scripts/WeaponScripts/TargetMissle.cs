@@ -13,6 +13,7 @@ namespace Player
         [SerializeField] GameObject Explosion; 
         [SerializeField]GameManager gameManager;
         public GameObject enemyPosition;
+        public float Damage { get; set; }
        
 
         List<PlayerScript> enemies = new List<PlayerScript>();
@@ -53,7 +54,7 @@ namespace Player
             if (other.tag != "Weapon")
             {
                 GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
-                explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
+                explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<TargetGun>().Damage;
 
                 Destroy(gameObject);
             }

@@ -12,9 +12,36 @@ namespace Player {
         List<PlayerScript> humans = new List<PlayerScript>(); //hålla koll på humans
         public List<PlayerScript> Humans { get { return humans; } set { humans = value; } } //hålla koll på humans
 
-        void Start()
+        CAM_CamerMovement cameraMovement;
+        float cameraValue = 20f;
+
+        int winningPlayer;
+
+        private void Update()
         {
-            Debug.Log(Badgers.Count + " " + Humans.Count);
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                foreach (var badger in badgers)
+                {
+                    if(badger != null)
+                    {
+                       Destroy(badger.gameObject);
+                    }
+                }
+                foreach (var human in humans)
+                {
+                    if(human != null)
+                    {
+                        Destroy(human.gameObject);
+                    }
+                }
+                gameObject.GetComponent<SpawnPlayers>().Spawn();
+            }
+        }
+
+        void Start()
+        {           
+            cameraMovement = FindObjectOfType<CAM_CamerMovement>();
         }
 
 
@@ -29,6 +56,7 @@ namespace Player {
                         return false;
                     }
                 }
+                NewRound(PlayerScript.PlayerTeam.badger);
                 return true;
             }
             else
@@ -40,8 +68,38 @@ namespace Player {
                         return false;
                     }
                 }
+                NewRound(PlayerScript.PlayerTeam.human);
                 return true;
             }
+        }
+
+
+        public void NewRound(PlayerScript.PlayerTeam winner)
+        {
+            if (winner == PlayerScript.PlayerTeam.badger)
+            {
+                cameraMovement.ChangeCameraPos(cameraValue);
+            }
+            else if (winner == PlayerScript.PlayerTeam.human)
+            {
+                cameraMovement.ChangeCameraPos(-cameraValue);
+            }
+
+            foreach (var badger in badgers)
+            {
+                if (badger != null)
+                {
+                    Destroy(badger.gameObject);
+                }
+            }
+            foreach (var human in humans)
+            {
+                if (human != null)
+                {
+                    Destroy(human.gameObject);
+                }
+            }
+            gameObject.GetComponent<SpawnPlayers>().Spawn();
         }
     }
 }

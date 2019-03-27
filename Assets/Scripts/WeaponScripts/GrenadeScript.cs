@@ -33,16 +33,6 @@ namespace Player
 
         void Update()
         {
-            //if (Owner == null && Firing)
-            //{
-            //    Firing = false;
-            //}
-            //if (Firing && Time.time > 1 / ShotsPerSecond + timer)
-            //{
-            //   Fire();
-            //    timer = Time.time;
-            //}
-
             if (Firing == true)
             {
                 holdIncreaseThrow += Time.deltaTime;
@@ -85,7 +75,7 @@ namespace Player
                 if (blowUpTimer <= 0)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
-                    explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
+                    explosion.GetComponent<ExplosionDamage>().Damage = Damage;
                     Destroy(gameObject);
                     startExplosion = false;
                     //blowUpTimer = 5f;
@@ -95,8 +85,6 @@ namespace Player
 
         public void Fire()
         {
-            //GameObject grenade = Instantiate(gameObject, Owner.transform.position, Owner.transform.rotation);
-            //rb.velocity = transform.forward * (ProjectileSpeed + holdIncreaseThrow) + new Vector3(0, holdIncreaseThrow * 20, 0);
             blowUpTimer = 5f;
             rb.AddForce(transform.forward * (ProjectileSpeed * (getHoldValue * 20)) + new Vector3(0, getHoldValue * 100, 0));
         }

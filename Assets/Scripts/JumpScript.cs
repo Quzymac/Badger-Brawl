@@ -18,11 +18,16 @@ namespace Player {
         [SerializeField] float gravity = 16f;
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
-        [SerializeField] LayerMask platformLayer;
+        LayerMask platformLayer;
+
         Vector3 jumpDir;
 
         void Start()
         {
+            platformLayer |= (1 << LayerMask.NameToLayer("Platform"));
+            platformLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
+
+
             rb = GetComponent<Rigidbody>();
             playerCollider = GetComponent<Collider>();
             controllerInputs = GetComponent<NewControllerInputs>();
@@ -46,7 +51,7 @@ namespace Player {
 
         public void DropThrough()
         {
-            if (collidedPlatform != null && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
+            if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
             {
                 Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), playerCollider, true);
             }

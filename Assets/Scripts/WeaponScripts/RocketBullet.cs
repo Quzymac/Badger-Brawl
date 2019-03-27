@@ -10,6 +10,7 @@ namespace Player
         Vector3 startPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
+        public float Damage { get; set; }
 
         [SerializeField] GameObject Explosion; // Tillfällig explosionseffekt
 
@@ -37,7 +38,7 @@ namespace Player
             if (other.tag != "Weapon")
             {
                 GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
-                explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
+                explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<RocketLauncher>().Damage;
 
                 Destroy(gameObject);
             }

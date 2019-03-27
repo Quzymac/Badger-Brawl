@@ -50,6 +50,7 @@ namespace Player {
         void Death()
         {
             dead = true;
+            gameObject.GetComponent<NewControllerInputs>().DropWeapon();
             Destroy(gameObject);
 
             Debug.Log("team dead = " + gameManager.TeamIsDead((PlayerTeam)playerNumber));
