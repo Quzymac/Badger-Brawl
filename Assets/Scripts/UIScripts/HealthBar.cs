@@ -9,8 +9,8 @@ namespace Player
         [SerializeField] Transform bar; // själva health baren
         public PlayerScript SpecificPlayer { get; set; }
         float maxHealth;
-
-        void Start()
+        
+        public void SetHealthbarsActive()
         {
             if (SpecificPlayer == null)
             {
@@ -19,12 +19,8 @@ namespace Player
             else
             {
                 maxHealth = SpecificPlayer.GetComponent<PlayerScript>().Health;
+                UpdateHealthBar();
             }
-        }
-
-        void Update()
-        {
-            
         }
 
         public void UpdateHealthBar()
