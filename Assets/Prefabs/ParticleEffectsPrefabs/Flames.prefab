@@ -659,8 +659,8 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
-    angle: 18.773396
+    type: 4
+    angle: 58.106606
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -9407,7 +9407,7 @@ GameObject:
   - component: {fileID: 2198371986330289353}
   - component: {fileID: 5266728835727775117}
   - component: {fileID: 950211791781999242}
-  - component: {fileID: 4568561405028461231}
+  - component: {fileID: 1472421404234590368}
   m_Layer: 0
   m_Name: Flames
   m_TagString: Untagged
@@ -9459,7 +9459,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!135 &4568561405028461231
+--- !u!135 &1472421404234590368
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9470,5 +9470,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.19112082
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.21337159
+  m_Center: {x: 0, y: 0, z: 0.0686162}

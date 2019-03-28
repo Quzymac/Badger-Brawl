@@ -11,7 +11,8 @@ namespace Player
         Vector3 currentPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
-
+        bool damageCooldown = false;
+        float fireDamageTime;
 
         void Start()
         {
@@ -37,20 +38,20 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)  //code about what happens when the fire hits the opponent
         {
- 
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
+
             if (playerHit != null)
             {
-                Parent.GetComponent<FlameThrower>().playersHit[playerHit.playerNumber - 1] = playerHit;
-                Debug.Log(playerHit.playerNumber);
+
+                Parent.GetComponent<FlameThrower>().TargetHit(playerHit);
             }
 
-           
-            //if (other.tag != "Weapon")
-            //{
-            //    Destroy(gameObject);
-            //}
+                if (other.tag == "Platform")
+                {
+                    Destroy(gameObject);
+                }
+            }
+
+
         }
-       
     }
-}
