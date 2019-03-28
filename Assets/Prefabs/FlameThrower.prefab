@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2158067891753745955}
   - component: {fileID: 2158067891753746012}
   - component: {fileID: 2158067891753746013}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: FlameThrower
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1e493505bd28c45ac6dcead84cad8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireSpace: {fileID: 0}
   shotSound: {fileID: 8829417947017883652, guid: c14376d7d61528849bb9ffb078e55f8e,
     type: 3}
   firePoint: {fileID: 2158067892267576322}

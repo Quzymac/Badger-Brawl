@@ -7,16 +7,20 @@ namespace Player
     public class Flame : MonoBehaviour
     {
         float distTraveled;
-        Vector3 lastPos;
+        Vector3 startPos;
         Vector3 currentPos;
         Rigidbody rb;
+
+        float range;
         public GameObject Parent { get; set; }
-        bool damageCooldown = false;
-        float fireDamageTime;
+
+        [SerializeField] BoxCollider col;
+
 
         void Start()
         {
-            lastPos = transform.position;
+            range = Parent.GetComponent<FlameThrower>().Range;
+            startPos = transform.position;
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;
             Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), Parent.GetComponent<IWeapon>().Owner.GetComponent<Collider>(), true);
@@ -24,17 +28,14 @@ namespace Player
 
         private void Update()
         {
-            distTraveled += Vector3.Distance(transform.position, lastPos);
-            lastPos = transform.position;
+            distTraveled = Vector3.Distance(transform.position, startPos);
 
-            if (distTraveled > 8)
+            if (distTraveled > range)
             {
                 Destroy(gameObject);
             }
+            col.size = new Vector3(1f, distTraveled * 0.25f, 0.25f);
         }
-
-        //eventuellt flytta till en spelarklass
-
 
         private void OnTriggerEnter(Collider other)  //code about what happens when the fire hits the opponent
         {
@@ -42,16 +43,13 @@ namespace Player
 
             if (playerHit != null)
             {
-
-                Parent.GetComponent<FlameThrower>().TargetHit(playerHit);
+                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage *0.1f);
             }
 
-                if (other.tag == "Platform")
-                {
-                    Destroy(gameObject);
-                }
+            if (other.tag == "Platform")
+            {
+                Destroy(gameObject);
             }
-
-
+        }
         }
     }
