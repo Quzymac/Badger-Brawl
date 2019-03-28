@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6947968730138349884
+--- !u!1 &2804229538860892919
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6947968730138349856}
-  - component: {fileID: 6947968730138349863}
-  - component: {fileID: 6947968730138349862}
-  - component: {fileID: 934529161}
+  - component: {fileID: 2804229538860892921}
+  - component: {fileID: 2804229538860892918}
+  - component: {fileID: 2804229538860892920}
+  - component: {fileID: 2804229538860892923}
+  - component: {fileID: 2804229538860892922}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -19,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6947968730138349856
+--- !u!4 &2804229538860892921
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947968730138349884}
+  m_GameObject: {fileID: 2804229538860892919}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,43 +34,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6947968730138349863
+--- !u!114 &2804229538860892918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947968730138349884}
+  m_GameObject: {fileID: 2804229538860892919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5bcad0a8c715b1346898763ddb78b416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 6947968730138349862}
+  gameManager: {fileID: 2804229538860892920}
   player: {fileID: 1227717765674105636, guid: f0a516d0853c513448b200861b4806bf, type: 3}
   playerNum: 00000000000000000000000000000000
   playerController: 00000000000000000000000000000000
   playerTeam: 00000000000000000000000000000000
   playerCharacter: 00000000000000000000000000000000
---- !u!114 &6947968730138349862
+  spawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  upperCollider: {fileID: 0}
+  bottomCollider: {fileID: 0}
+--- !u!114 &2804229538860892920
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947968730138349884}
+  m_GameObject: {fileID: 2804229538860892919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8618ffde36e4aad4d914c980f1ba5df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &934529161
+--- !u!114 &2804229538860892923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6947968730138349884}
+  m_GameObject: {fileID: 2804229538860892919}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b4ad1dde327bd7840a5100e1d90dd60d, type: 3}
@@ -81,3 +105,49 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &2804229538860892922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2804229538860892919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc38cdda6a84af46b1c663859e04a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapons:
+  - {fileID: 3692721280842994397, guid: d18b2ee004a52b844a2c3a2f4fe4944c, type: 3}
+  - {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75, type: 3}
+  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
+  - {fileID: 4388685767232541812, guid: 255dc44c27d2d8945b05004e9624b0b6, type: 3}
+  - {fileID: 1574123378, guid: 87361835c0af1c440b8255df16a2dc99, type: 3}
+  - {fileID: 252582501, guid: 27744ead126e74a44ac01c0339056f63, type: 3}
+  - {fileID: 1709704426, guid: c41ade66fd5fee04382d55e02d95ca57, type: 3}
+  - {fileID: 3895767881819167553, guid: 754de78ae95a975408981e2c8c7313ee, type: 3}
+  - {fileID: 8738569617030950674, guid: 9b3234d5162ed59499659247e8c2313d, type: 3}
+  spawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  upperCollider: {fileID: 0}
+  bottomCollider: {fileID: 0}
+  maxNumberOfWeapons: 6

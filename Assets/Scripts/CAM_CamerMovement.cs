@@ -43,7 +43,7 @@ namespace Player
             transform.position = smoothPos;
         }
 
-        private void CalculatePosition() //Calcutes the position to which the camera should move to
+        private void CalculatePosition() //Calcutes the position to which the camera should move to. Win condition needs to be here
         {
             if (pctDamage > 100)
             {

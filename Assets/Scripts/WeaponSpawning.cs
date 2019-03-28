@@ -9,30 +9,69 @@ namespace Player
         public List<GameObject> weapons = new List<GameObject>();
         public List<GameObject> spawnPositions = new List<GameObject>();
         List<Transform> usedSpawnPositions = new List<Transform>();
+        List<GameObject> spawnedWeapons = new List<GameObject>();
 
         [SerializeField] Transform upperCollider;
         [SerializeField] Transform bottomCollider;
 
+        [SerializeField] int maxNumberOfWeapons = 6;
+        public int numberOfWeapons { get; set; } = 0;
+        int waitSpawnCounter = 0; 
+
         void Start()
         {
-
+            
         }
 
         void Update()
         {
-
+            waitSpawnCounter++;
+            if (waitSpawnCounter >= 2)
+            {
+                if (numberOfWeapons < maxNumberOfWeapons)
+                {
+                    waitSpawnCounter = 0;
+                    SpawnWeapon();
+                }
+            }
+          
         }
-        Transform CheckSpawnPosition()
+
+        Transform CheckSpawnPosition() 
         {
             while (true)
             {
                 int randomSpawn = Random.Range(0, spawnPositions.Count);
-                if (spawnPositions[randomSpawn].transform.position.y > bottomCollider.position.y && spawnPositions[randomSpawn].transform.position.y < upperCollider.position.y && !usedSpawnPositions.Contains(spawnPositions[randomSpawn].transform))
+                if (spawnPositions[randomSpawn].transform.position.y > bottomCollider.position.y && spawnPositions[randomSpawn].transform.position.y < upperCollider.position.y && spawnPositions[randomSpawn].GetComponent<WeaponSpawnPosition>().occupied == false)
                 {
-                    usedSpawnPositions.Add(spawnPositions[randomSpawn].transform);
                     return spawnPositions[randomSpawn].transform;
                 }
             }
+        }
+
+        public void SpawnWeapon()
+        {
+            numberOfWeapons++;
+            int randomWeapon = Random.Range(0, weapons.Count);
+            GameObject specificWeapon = Instantiate(weapons[randomWeapon], CheckSpawnPosition().position, Quaternion.Euler(0, 90, 0));
+            spawnedWeapons.Add(specificWeapon);
+        }
+
+        public void ClearWeapons()
+        {
+            foreach (GameObject spawnPos in spawnPositions)
+            {
+                spawnPos.GetComponent<WeaponSpawnPosition>().occupied = false;
+            }
+            numberOfWeapons = 0;
+            foreach (GameObject weapon in spawnedWeapons)
+            {
+                if (weapon != null)
+                {
+                    Destroy(weapon);
+                }
+            }
+            spawnedWeapons.Clear();
         }
     }
 }

@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 252582505}
   - component: {fileID: 252582504}
   - component: {fileID: 1595591175374396528}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: RocketLauncher
   m_TagString: Weapon
   m_Icon: {fileID: 0}

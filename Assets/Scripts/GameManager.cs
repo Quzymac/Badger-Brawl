@@ -76,6 +76,8 @@ namespace Player {
 
         public void NewRound(PlayerScript.PlayerTeam winner)
         {
+            gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
+            
             if (winner == PlayerScript.PlayerTeam.badger)
             {
                 cameraMovement.ChangeCameraPos(cameraValue);

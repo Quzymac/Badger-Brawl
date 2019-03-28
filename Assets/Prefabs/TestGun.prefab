@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4388685767232541813}
   - component: {fileID: 1382474895}
   - component: {fileID: 42352435}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: TestGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}

@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 1709704430}
   - component: {fileID: 1709704429}
   - component: {fileID: 6722676209802411602}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: MissleLauncher
   m_TagString: Weapon
   m_Icon: {fileID: 0}

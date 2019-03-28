@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3674556570517094115}
   - component: {fileID: 3895767881819167555}
   - component: {fileID: 3895767881819167554}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: ShurikenVapen
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 353930734570600615}
   - component: {fileID: 5724572307273152783}
   - component: {fileID: 6535947564809445093}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class WeaponSpawnPosition : MonoBehaviour //trigger för vapnet som kollar om det finns ett vapen där.
 {
+    public bool occupied = false;
 
-    public bool occupied;
-    
-
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerStay(Collider other)
     {
-        
+        if (other.gameObject.tag == "Weapon" && occupied == false)
+        {
+            occupied = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider other)
     {
-        
+        occupied = false;
+        Debug.Log("Bajs");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag != "Weapon")
+        {
+            Physics.IgnoreCollision(other, gameObject.GetComponent<Collider>());
+        }
     }
 }

@@ -78,6 +78,15 @@ namespace Player
                 }
             }
         }
+
+        private void Update()
+        {
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                Debug.Log(upperCollider.position.y + " " + bottomCollider.position.y);
+            }
+        }
     }
 }
 
