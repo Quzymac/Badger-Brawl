@@ -196,7 +196,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+          type: 3}
         m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
@@ -345,7 +346,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+          type: 3}
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -494,7 +496,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+          type: 3}
         m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
@@ -537,6 +540,7 @@ GameObject:
   - component: {fileID: 8858894330816941987}
   - component: {fileID: 8858894330816941996}
   - component: {fileID: 8858894330816941997}
+  - component: {fileID: 8251947939286419528}
   m_Layer: 5
   m_Name: HumansWin
   m_TagString: Untagged
@@ -603,6 +607,22 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &8251947939286419528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858894330816941998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3c904025851cc48b5018e49d96751a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 92250356347589736, guid: 24f98aa0ed7dd9d41966cba8480a8282, type: 3}
+  buttons:
+  - {fileID: 8858894330501375278}
+  - {fileID: 8858894330686611233}
 --- !u!1 &8858894330843218672
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,7 +740,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+          type: 3}
         m_MethodName: PlayAgain
         m_Mode: 1
         m_Arguments:
@@ -921,13 +942,14 @@ GameObject:
   - component: {fileID: 8858894331482289082}
   - component: {fileID: 8858894331482289080}
   - component: {fileID: 8858894331482289081}
+  - component: {fileID: 3594161381436537096}
   m_Layer: 5
   m_Name: BadgersWin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8858894331482289082
 RectTransform:
   m_ObjectHideFlags: 0
@@ -987,6 +1009,22 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &3594161381436537096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858894331482289083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3c904025851cc48b5018e49d96751a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Audio: {fileID: 92250356347589736, guid: 24f98aa0ed7dd9d41966cba8480a8282, type: 3}
+  buttons:
+  - {fileID: 8858894330843218677}
+  - {fileID: 8858894330580496456}
 --- !u!1 &8858894331617430702
 GameObject:
   m_ObjectHideFlags: 0

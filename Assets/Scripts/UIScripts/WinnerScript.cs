@@ -6,14 +6,9 @@ using UnityEngine.UI;
 
 public class WinnerScript : MonoBehaviour
 {
-    [SerializeField] Canvas WinnerCanvas;
+    
     [SerializeField] GameObject HumansWin;  //winnerpanel for humans
     [SerializeField] GameObject BadgersWin;  // winnerpanel for bagders
-    
-    bool humansWon = false;
-    bool badgersWon = false;
-    bool winnerScreen = false;
-
 
     public void PlayAgain() // code that will reload the current scene (in this case the GameScene)
     {
@@ -26,24 +21,17 @@ public class WinnerScript : MonoBehaviour
 
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void humansWon() // method to stop the time and enable the humans win panel
     {
-       while (winnerScreen)
-        {
-            
-            Time.timeScale = 0f;
-
-            if (humansWon)
-            {
-                HumansWin.SetActive(true);
-            }
-            if (badgersWon)
-            {
-                BadgersWin.SetActive(true);
-            }
-            
-        }
+        Time.timeScale = 0f;
+        HumansWin.SetActive(true);
     }
+
+    public void badgersWon() // method to stop the time and enable the badgers win panel
+    {
+        Time.timeScale = 0f;
+        BadgersWin.SetActive(true);
+
+    }
+  
 }
