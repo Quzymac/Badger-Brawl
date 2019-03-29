@@ -2,29 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponSpawnPosition : MonoBehaviour //trigger för vapnet som kollar om det finns ett vapen där.
+namespace Player
 {
-    public bool occupied = false;
-
-    private void OnTriggerStay(Collider other)
+    public class WeaponSpawnPosition : MonoBehaviour //trigger för vapnet som kollar om det finns ett vapen där.
     {
-        if (other.gameObject.tag == "Weapon" && occupied == false)
+        public bool occupied = false;
+        GameManager gameManager;
+
+        private void Start()
         {
-            occupied = true;
+            gameManager = FindObjectOfType<GameManager>();
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        occupied = false;
-        Debug.Log("Bajs");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag != "Weapon")
+        private void OnTriggerStay(Collider other)
         {
-            Physics.IgnoreCollision(other, gameObject.GetComponent<Collider>());
+            if (other.gameObject.tag == "Weapon" && occupied == false)
+            {
+                occupied = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other) //fungerar inte och behövs förmodligen inte
+        {
+            if (other.gameObject.tag == "Weapon")
+            {
+                occupied = false;
+            }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag != "Weapon")
+            {
+                Physics.IgnoreCollision(other, gameObject.GetComponent<Collider>());
+            }
+        }
+        private void Update()
+        {
+            if (gameManager.GetComponent<WeaponSpawning>().newRound == true)
+            {
+                occupied = false;
+            }
         }
     }
 }

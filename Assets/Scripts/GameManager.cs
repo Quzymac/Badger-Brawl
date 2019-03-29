@@ -14,6 +14,7 @@ namespace Player {
 
         CAM_CamerMovement cameraMovement;
         float cameraValue = 20f;
+        float changeValue = 20f;
 
         int winningPlayer;
 
@@ -76,7 +77,7 @@ namespace Player {
 
         public void NewRound(PlayerScript.PlayerTeam winner)
         {
-            gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
+            
             
             if (winner == PlayerScript.PlayerTeam.badger)
             {
@@ -101,6 +102,7 @@ namespace Player {
                     Destroy(human.gameObject);
                 }
             }
+            gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
             gameObject.GetComponent<SpawnPlayers>().Spawn();
         }
     }

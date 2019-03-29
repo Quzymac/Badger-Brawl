@@ -23,6 +23,7 @@ namespace Player
      
         public void Spawn()
         {
+   
             ResetPlayers();
             for (int i = 0; i < 4; i++)
             {

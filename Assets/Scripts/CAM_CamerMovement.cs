@@ -10,13 +10,13 @@ namespace Player
         public Transform top;
         public Transform bottom;
         public Transform target;
-
         [SerializeField]
         private float camSpeed = 5f;
         float yTop;
         float yBottom;
         float totalDistance;
         float pctValue;
+
 
         public float pctDamage;
 
