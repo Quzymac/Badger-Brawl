@@ -94,14 +94,14 @@ namespace Player {
         private void GroundDetection()
         {
             RaycastHit hit;
-            Vector2 physicsCentre = transform.position + this.GetComponent<SphereCollider>().center;
+            Vector2 physicsCentre = transform.position + this.GetComponent<CapsuleCollider>().center;
 
-            if (Physics.Raycast(physicsCentre, Vector2.down, out hit, 0.6f, platformLayer) && rb.velocity.y <= 0)
+            if (Physics.Raycast(physicsCentre, Vector2.down, out hit, 1.1f, platformLayer) && rb.velocity.y <= 0)
             {
                 grounded = true;
                 jumpCount = 1;
             }
-            else if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 0.7f, platformLayer) && rb.velocity.y <= 0 || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 0.7f, platformLayer) && rb.velocity.y <= 0)
+            else if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 1.2f, platformLayer) && rb.velocity.y <= 0 || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 1.2f, platformLayer) && rb.velocity.y <= 0)
             {
                 grounded = true;
                 jumpCount = 1;
