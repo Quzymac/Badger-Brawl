@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2804229538860892920}
-  player: {fileID: 1227717765674105636, guid: f0a516d0853c513448b200861b4806bf, type: 3}
+  player: {fileID: 242719694596590642, guid: 27193fc47255a5d408ff9217b81712a9, type: 3}
   playerNum: 00000000000000000000000000000000
   playerController: 00000000000000000000000000000000
   playerTeam: 00000000000000000000000000000000
@@ -129,6 +129,23 @@ MonoBehaviour:
   - {fileID: 3895767881819167553, guid: 754de78ae95a975408981e2c8c7313ee, type: 3}
   - {fileID: 8738569617030950674, guid: 9b3234d5162ed59499659247e8c2313d, type: 3}
   spawnPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

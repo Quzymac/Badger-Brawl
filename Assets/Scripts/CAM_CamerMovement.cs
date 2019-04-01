@@ -16,6 +16,7 @@ namespace Player
         float yBottom;
         float totalDistance;
         float pctValue;
+        public bool cameraMoving = false;
 
         [SerializeField] ProgressBar progs;
         WinnerScript winnerScript;
@@ -40,6 +41,11 @@ namespace Player
             if (target.position != transform.position)
             {
                 MoveCamera();
+                cameraMoving = true;
+            }
+            else if(cameraMoving && target.position == transform.position)
+            {
+                cameraMoving = false;
             }
         }
         private void MoveCamera()

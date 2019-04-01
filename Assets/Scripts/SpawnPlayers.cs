@@ -72,7 +72,7 @@ namespace Player
             while (true)
             {
                 int randomSpawn = Random.Range(0, spawnPositions.Count);
-                if (spawnPositions[randomSpawn].position.y > bottomCollider.position.y && spawnPositions[randomSpawn].position.y < upperCollider.position.y && !usedSpawnPositions.Contains(spawnPositions[randomSpawn]))
+                if (spawnPositions[randomSpawn].position.y > bottomCollider.position.y && spawnPositions[randomSpawn].position.y < upperCollider.position.y +3 && !usedSpawnPositions.Contains(spawnPositions[randomSpawn]))
                 {
                     usedSpawnPositions.Add(spawnPositions[randomSpawn]);
                     return spawnPositions[randomSpawn];

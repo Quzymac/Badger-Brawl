@@ -145,6 +145,8 @@ MonoBehaviour:
   bottom: {fileID: 0}
   target: {fileID: 0}
   camSpeed: 5
+  cameraMoving: 0
+  progs: {fileID: 0}
   pctDamage: 50
 --- !u!1 &4290861066449578303
 GameObject:

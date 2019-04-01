@@ -102,8 +102,17 @@ namespace Player {
                     Destroy(human.gameObject);
                 }
             }
+            StartCoroutine(Wait());
+
+            //gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
+            //gameObject.GetComponent<SpawnPlayers>().Spawn();
+        }
+        IEnumerator Wait()
+        {
+            yield return new WaitForSeconds(2f);
+
             gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
-            gameObject.GetComponent<SpawnPlayers>().Spawn();
+                    gameObject.GetComponent<SpawnPlayers>().Spawn();
         }
     }
 }
