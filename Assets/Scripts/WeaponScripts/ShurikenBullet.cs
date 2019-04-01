@@ -11,9 +11,11 @@ namespace Player
         Vector3 currentPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
+        PlayerScript.PlayerTeam team;
 
         void Start()
         {
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             lastPos = transform.position;
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;
@@ -34,11 +36,16 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            PlayerController playerHit = other.GetComponent<PlayerController>();
-            if(playerHit != null)
+            PlayerScript playerHit = other.GetComponent<PlayerScript>();
+
+            if (playerHit != null)
             {
-                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
-                playerHit.playerMovement.KnockBack(transform.position - rb.velocity, 10);
+                if (playerHit.Team != team)
+                {
+                    playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
+                    playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
+                    Destroy(gameObject);
+                }
             }
 
             if(other.tag != "Weapon")
