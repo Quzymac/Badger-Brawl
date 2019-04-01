@@ -7,8 +7,9 @@ namespace Player
     public class SpawnPlayers : MonoBehaviour
     {
         [SerializeField] GameManager gameManager;
-        GameObject[,] characters = new GameObject[2, 2];
-        [SerializeField] GameObject player;
+        [SerializeField] GameObject[] characters = new GameObject[2];
+        //[SerializeField] GameObject player;
+        //[SerializeField] GameObject badger;
 
         [SerializeField] int[] playerNum = new int[4];
         [SerializeField] int[] playerController = new int[4];
@@ -29,7 +30,7 @@ namespace Player
             {
                 if (playerController[i] != 0)
                 {
-                    GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], player, CheckSpawnPosition().position);
+                    GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], characters[playerTeam[i]-1], CheckSpawnPosition().position);
 
                     if (playerTeam[i] == 1)
                     {
@@ -72,7 +73,7 @@ namespace Player
             while (true)
             {
                 int randomSpawn = Random.Range(0, spawnPositions.Count);
-                if (spawnPositions[randomSpawn].position.y > bottomCollider.position.y && spawnPositions[randomSpawn].position.y < upperCollider.position.y +3 && !usedSpawnPositions.Contains(spawnPositions[randomSpawn]))
+                if (spawnPositions[randomSpawn].position.y > bottomCollider.position.y && spawnPositions[randomSpawn].position.y < upperCollider.position.y - 5 && !usedSpawnPositions.Contains(spawnPositions[randomSpawn]))
                 {
                     usedSpawnPositions.Add(spawnPositions[randomSpawn]);
                     return spawnPositions[randomSpawn];

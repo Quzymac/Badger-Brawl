@@ -6518,6 +6518,24 @@ PrefabInstance:
       propertyPath: bottomCollider
       value: 
       objectReference: {fileID: 1613878851}
+    - target: {fileID: 2804229538860892918, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: badger
+      value: 
+      objectReference: {fileID: 7685049824314815063, guid: dca4900f072455241aff6e1961207b32,
+        type: 3}
+    - target: {fileID: 2804229538860892918, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: characters.Array.data[0]
+      value: 
+      objectReference: {fileID: 242719694596590642, guid: 27193fc47255a5d408ff9217b81712a9,
+        type: 3}
+    - target: {fileID: 2804229538860892918, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: characters.Array.data[1]
+      value: 
+      objectReference: {fileID: 7685049824314815063, guid: dca4900f072455241aff6e1961207b32,
+        type: 3}
     - target: {fileID: 2804229538860892923, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: healthBars.Array.data[0]
