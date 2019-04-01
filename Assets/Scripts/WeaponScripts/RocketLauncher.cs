@@ -15,15 +15,19 @@ namespace Player
         float timer = 0f;
         public bool Firing { get; set; } = false;
 
-        [SerializeField] private GameObject shotSound;
+        [SerializeField] private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject rocket;
 
         public GameObject Owner { get; set; }
 
+        public void Start()
+        {
+            shotSound = GetComponent<AudioSource>();
+        }
         public void Fire()
         {
-            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
+            shotSound.Play();
             GameObject newBullet = Instantiate(rocket, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<RocketBullet>().Parent = gameObject;
         }

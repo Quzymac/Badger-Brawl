@@ -11,7 +11,7 @@ namespace Player
 
         float timer = 0f;
 
-        [SerializeField] private GameObject shotSound;
+        [SerializeField] private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject boomer;
 
@@ -20,7 +20,7 @@ namespace Player
 
         void Start()
         {
-
+            shotSound = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -38,7 +38,7 @@ namespace Player
         }
         public void Fire()
         {
-            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
+            shotSound.Play();
             GameObject clone = Instantiate(boomer, firePoint.position, firePoint.rotation);
             clone.GetComponent<BoomerangBullet>().Owner = gameObject;
             clone.GetComponent<BoomerangBullet>().Parent = gameObject;

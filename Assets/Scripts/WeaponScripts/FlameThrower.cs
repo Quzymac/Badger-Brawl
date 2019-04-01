@@ -14,7 +14,7 @@ namespace Player
         public bool Firing { get; set; } = false;
 
         [SerializeField]
-        private GameObject shotSound;
+        private AudioSource shotSound;
         [SerializeField]
         Transform firePoint;
 
@@ -22,10 +22,13 @@ namespace Player
         GameObject flame;
 
         public GameObject Owner { get; set; }  //depends on which player picks up the flamethrower
-
+        public void Start()
+        {
+            shotSound = GetComponent<AudioSource>();
+        }
         public void Fire()
         {
-            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
+            shotSound.Play();
             GameObject newFlame = Instantiate(flame, firePoint.position, firePoint.rotation);
             newFlame.GetComponent<Flame>().Parent = gameObject;
 

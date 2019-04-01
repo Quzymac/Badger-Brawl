@@ -14,7 +14,7 @@ namespace Player
 
         [SerializeField] float buildUpTime = 0.2f;
 
-        [SerializeField] private GameObject shotSound;
+        [SerializeField] private AudioSource shotSound;
 
         float currentShotsPerSecond;
         [SerializeField] float minShotsPerSeconds = 2f;
@@ -27,11 +27,14 @@ namespace Player
 
         public GameObject Owner { get; set; }
 
+        public void Start()
+        {
+            shotSound = GetComponent<AudioSource>();
+        }
         public void Fire()
         {
-            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
+            shotSound.Play();
 
-            
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
         }
