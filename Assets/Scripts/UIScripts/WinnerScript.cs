@@ -12,13 +12,14 @@ public class WinnerScript : MonoBehaviour
 
     public void PlayAgain() // code that will reload the current scene (in this case the GameScene)
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MainMenu() // code that goes to MainMenuScene
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenuScene");
-
     }
 
     public void humansWon() // method to stop the time and enable the humans win panel

@@ -18,12 +18,17 @@ namespace Player
         float pctValue;
 
         [SerializeField] ProgressBar progs;
+        WinnerScript winnerScript;
 
         public float pctDamage;
+
+        bool lastRoundBadger = false;
+        bool lastRoundHuman = false;
 
 
         private void Start()
         {
+            winnerScript = FindObjectOfType<WinnerScript>().GetComponent<WinnerScript>();
             yTop = top.position.y;
             yBottom = bottom.position.y;
             totalDistance = yTop - yBottom;
@@ -49,24 +54,39 @@ namespace Player
             if (pctDamage > 100)
             {
                 pctDamage = 100;
-                Debug.Log("Humans win");
+                if (lastRoundHuman)
+                {
+                    winnerScript.humansWon();
+                }
+                lastRoundHuman = true;
             }
             if (pctDamage < 0)
             {
                 pctDamage = 0;
-                Debug.Log("Badgers win");
+                if (lastRoundBadger)
+                {
+                    winnerScript.badgersWon();
+                }
+                lastRoundBadger = true;
             }
             pctValue = totalDistance * (pctDamage / 100);
             Debug.Log(pctValue);
             target.position = new Vector3(0, yBottom + pctValue, -20);
             progs.dpctDamage = pctDamage;
+            progs.CalculatePosition();
         }
         public void ChangeCameraPos(float value)
         {
+            if (value > 0 && lastRoundBadger)
+            {
+                lastRoundBadger = false;
+            }
+            if (value < 0 && lastRoundHuman)
+            {
+                lastRoundHuman = false;
+            }
             pctDamage += value;
             CalculatePosition();
-            //MoveCamera();
         }
-  
     }
 }

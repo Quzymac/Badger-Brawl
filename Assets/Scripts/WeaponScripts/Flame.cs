@@ -46,10 +46,11 @@ namespace Player
                 playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage *0.1f);
             }
 
-            if (other.tag == "Platform")
-            {
-                Destroy(gameObject);
-            }
+            //if (other.tag == "Platform")
+            //{
+            //    Debug.Log("Pl");
+            //    Destroy(gameObject);
+            //}
         }
         }
     }

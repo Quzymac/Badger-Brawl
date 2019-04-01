@@ -31,7 +31,6 @@ namespace Player
             dyBottom = dbottom.position.y;
             dtotalDistance = dyTop - dyBottom;
 
-            //CalculatePosition();
             if (dtarget.position != transform.position)
             {
                 MoveCamera();
@@ -44,7 +43,7 @@ namespace Player
             transform.position = smoothPos;
         }
 
-        private void CalculatePosition() //Calcutes the position to which the camera should move to. Win condition needs to be here
+        public void CalculatePosition() //Calcutes the position to which the camera should move to. Win condition needs to be here
         {
             if (dpctDamage > 100)
             {
@@ -64,8 +63,6 @@ namespace Player
         {
             dpctDamage += value;
             CalculatePosition();
-            //MoveCamera();
         }
-  
     }
 }
