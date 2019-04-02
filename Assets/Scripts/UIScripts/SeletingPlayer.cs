@@ -37,6 +37,8 @@ public class SeletingPlayer : MonoBehaviour
         {
             selectTeam[j].SetActive(false);// = false;
         }
+        PlayerPrefs.DeleteAll();
+
     }
 
     void Update()
