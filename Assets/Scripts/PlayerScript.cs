@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Player {
+namespace Player
+{
     public class PlayerScript : MonoBehaviour
     {
         public enum PlayerTeam { none, human, badger }
@@ -20,13 +21,18 @@ namespace Player {
         [SerializeField] int joystick;
         [SerializeField] PlayerTeam t;
         public bool dead = false;
-        
-        
+
+        [SerializeField] AudioSource audioSource;
+        [SerializeField] List<AudioClip> specificDeathSound = new List<AudioClip>();
+
+
         private void Start()
         {
+            audioSource = GetComponent<AudioSource>();
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
+
         }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
@@ -37,11 +43,11 @@ namespace Player {
             playerScript.joystick = joystickNum;
             playerScript.Team = playerTeam;
             player.GetComponent<NewControllerInputs>().SetJoystickNumber(joystickNum);
-    
-        return player;
+
+            return player;
         }
 
-        IEnumerator ColourTime () // the players will flash red
+        IEnumerator ColourTime() // the players will flash red
         {
             GFX.GetComponent<Renderer>().material = redMaterial; //the material of the GFX will change to a red material
             yield return new WaitForSeconds(0.1f);  // a timer of 0,1 seconds will start before the next code start
@@ -63,6 +69,8 @@ namespace Player {
 
         void Death()
         {
+            audioSource.clip = specificDeathSound[Random.Range(0, specificDeathSound.Count)];
+            audioSource.Play();
             dead = true;
             gameObject.GetComponent<NewControllerInputs>().DropWeapon();
             gameManager.TeamIsDead((PlayerTeam)playerNumber);
