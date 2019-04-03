@@ -10,17 +10,24 @@ namespace Player {
 
         GameManager gameManager;
         HealthBar healthBar;
+        [SerializeField]
+        Material defaultMaterial;
+        [SerializeField]
+        Material redMaterial;
+        [SerializeField] GameObject GFX;
         public float Health { get; set; } = 100f;
         public int playerNumber;
         [SerializeField] int joystick;
         [SerializeField] PlayerTeam t;
         public bool dead = false;
-
+        
+        
         private void Start()
         {
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
+            
         }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
@@ -35,9 +42,17 @@ namespace Player {
         return player;
         }
 
+        IEnumerator ColourTime () // the players will flash red
+        {
+            GFX.GetComponent<Renderer>().material = redMaterial; //the material of the GFX will change to a red material
+            yield return new WaitForSeconds(0.1f);  // a timer of 0,1 seconds will start before the next code start
+            GFX.GetComponent<Renderer>().material = defaultMaterial; //the material of the GFX will change to its original material
+        }
+
         public void TakeDamage(float damage)
         {
             Health -= damage;
+            StartCoroutine(ColourTime());  //the coroutine with the materialchanges will start here
             if (Health <= 0)
             {
                 Health = 0;

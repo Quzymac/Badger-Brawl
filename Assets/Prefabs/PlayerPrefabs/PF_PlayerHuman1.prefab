@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9107265497011145665}
   - component: {fileID: 7868348457407521787}
   m_Layer: 10
-  m_Name: PlayerHuman1
+  m_Name: PF_PlayerHuman1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -102,6 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3751db08439943b988a15c43af78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 852734996c9e75941a6ecf69cd0d08f1, type: 2}
+  redMaterial: {fileID: 2100000, guid: 01b7e030bc04aa140b6b8c9505fdd26e, type: 2}
+  GFX: {fileID: 2132755882426506116}
   playerNumber: 0
   joystick: 0
   t: 0
@@ -312,6 +315,12 @@ PrefabInstance:
 --- !u!4 &890699691407596617 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8045056624724478066, guid: 4162494bd51cf5f4b9ff413cee2fd967,
+    type: 3}
+  m_PrefabInstance: {fileID: 7203981245883962427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2132755882426506116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9106486161996861375, guid: 4162494bd51cf5f4b9ff413cee2fd967,
     type: 3}
   m_PrefabInstance: {fileID: 7203981245883962427}
   m_PrefabAsset: {fileID: 0}
