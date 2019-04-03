@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 4485508696310047966}
   - component: {fileID: 494644808709798204}
   m_Layer: 10
-  m_Name: PF_bikerbeast
+  m_Name: PF_PlayerBadger1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,6 +515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3751db08439943b988a15c43af78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: 9ffb4b62d6e721a4e9d6bf909446b52f, type: 2}
+  redMaterial: {fileID: 2100000, guid: 01b7e030bc04aa140b6b8c9505fdd26e, type: 2}
+  GFX: {fileID: 8183490849061494696}
   playerNumber: 0
   joystick: 0
   t: 0
@@ -531,6 +534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fca859873de5f82448fa0e0f1be73e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  holdPosition: {fileID: 3883646346246614237}
 --- !u!114 &2155059766987098915
 MonoBehaviour:
   m_ObjectHideFlags: 0
