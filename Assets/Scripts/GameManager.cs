@@ -13,8 +13,7 @@ namespace Player {
         public List<PlayerScript> Humans { get { return humans; } set { humans = value; } } //hålla koll på humans
 
         CAM_CamerMovement cameraMovement;
-        float cameraValue = 20f;
-        float changeValue = 20f;
+        float cameraValue = 25f;
 
         int winningPlayer;
 

@@ -57,21 +57,23 @@ namespace Player
 
         private void CalculatePosition() //Calcutes the position to which the camera should move to. Win condition needs to be here
         {
-            if (pctDamage > 100)
+            if (pctDamage >= 100)
             {
                 pctDamage = 100;
                 if (lastRoundHuman)
                 {
                     winnerScript.humansWon();
+                    lastRoundHuman = false;
                 }
                 lastRoundHuman = true;
             }
-            if (pctDamage < 0)
+            if (pctDamage <= 0)
             {
                 pctDamage = 0;
                 if (lastRoundBadger)
                 {
                     winnerScript.badgersWon();
+                    lastRoundBadger = false;
                 }
                 lastRoundBadger = true;
             }
