@@ -27,7 +27,6 @@ namespace Player {
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
-            
         }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
@@ -37,7 +36,7 @@ namespace Player {
             playerScript.playerNumber = playerNum;
             playerScript.joystick = joystickNum;
             playerScript.Team = playerTeam;
-            player.GetComponent<NewControllerInputs>().JoystickNumber = joystickNum;
+            player.GetComponent<NewControllerInputs>().SetJoystickNumber(joystickNum);
     
         return player;
         }

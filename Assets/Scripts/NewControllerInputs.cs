@@ -29,7 +29,6 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {
-            SetJoystickNumber(JoystickNumber);
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             controllerMovement = GetComponent<ControllerMovement>();
@@ -144,9 +143,8 @@ namespace Player
                 jumpScript.DropThrough();
 
             }
-
             //shoot
-            if (Input.GetButton(shootButton) && currentWeapon != null)
+            if (Input.GetAxisRaw(shootButton)> 0.2f && currentWeapon != null)
             {
                 currentWeapon.GetComponent<IWeapon>().Firing = true;
             }
