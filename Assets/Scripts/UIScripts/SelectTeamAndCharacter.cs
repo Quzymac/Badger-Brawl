@@ -34,6 +34,14 @@ public class SelectTeamAndCharacter : MonoBehaviour
     {
         SetButtonColor(human, buttonColor);
         SetButtonColor(character[0], buttonColor);
+
+        int c = 0;
+        string[] joy = Input.GetJoystickNames();
+        foreach (var item in joy)
+        {
+            c++;
+            Debug.Log(c + " " + item);
+        }
     }
 
     void SetButtonColor(Button button, Color color)

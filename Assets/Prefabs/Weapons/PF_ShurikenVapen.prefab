@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 3895767881819167555}
   - component: {fileID: 7282744546544433339}
   m_Layer: 15
-  m_Name: ShurikenVapen
+  m_Name: PF_ShurikenVapen
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -135,7 +135,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cf67dd9c7304f2b4182e36765efcc01a, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

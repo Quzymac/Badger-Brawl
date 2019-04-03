@@ -99,17 +99,5 @@ namespace Player
                 }
             }
         }
-
-        //private void OnCollisionEnter(Collision collision)
-        //{
-        //    if (startExplosion == true)
-        //    {
-        //        if (collision.collider.tag == "Player")
-        //        {
-        //            Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider, true);
-        //        }
-        //    }
-
-        //}
     }
 }

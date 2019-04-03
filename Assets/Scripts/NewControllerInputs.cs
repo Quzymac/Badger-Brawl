@@ -12,6 +12,7 @@ namespace Player
         Rigidbody rb;
         JumpScript jumpScript;
         ControllerMovement controllerMovement;
+        [SerializeField] Transform holdPosition; // players hand holding the weapon
 
         public int JoystickNumber { get; set; }
 
@@ -65,14 +66,33 @@ namespace Player
                 }
 
                 currentWeapon = canPickUp.gameObject;
-                currentWeapon.transform.position = transform.position;
-                currentWeapon.transform.rotation = transform.rotation;
+                currentWeapon.transform.position = holdPosition.position;
+                //currentWeapon.transform.rotation = holdPosition.rotation;
 
                 currentWeapon.transform.parent = transform;
                 currentWeapon.GetComponent<Collider>().enabled = false;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 currentWeapon.GetComponent<IWeapon>().Owner = gameObject;
+                
+
+                //ändrar rotation på vapnet när man plockar upp det. Buggar däremot ibland. Ej löst.
+                if (currentWeapon.transform.rotation.y < currentWeapon.transform.parent.rotation.y)
+                {
+                    Debug.Log("rotating");
+                    currentWeapon.transform.Rotate(0, 180, 0);
+                }
+                
+                else if (currentWeapon.transform.rotation.y > currentWeapon.transform.parent.rotation.y)
+                {
+                    Debug.Log("Rotaded other way");
+                    currentWeapon.transform.Rotate(0, -180, 0);                  
+                }
+                //else if (currentWeapon.transform.rotation.y < 0 && currentWeapon.transform.parent.rotation.y < 0)
+                //{
+                //    Debug.Log("now we got here");
+                //    currentWeapon.transform.Rotate(0, 180, 0);
+                //}
             }
         }
         public void DropWeapon()
@@ -81,6 +101,7 @@ namespace Player
             {
                 currentWeapon.GetComponent<Collider>().enabled = true;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = true;
+               
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 currentWeapon.transform.parent = null;

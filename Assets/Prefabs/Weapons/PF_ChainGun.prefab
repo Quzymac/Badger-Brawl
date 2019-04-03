@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3692721280842994386}
   - component: {fileID: 7576872137447007172}
   m_Layer: 15
-  m_Name: ChainGun
+  m_Name: PF_ChainGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 31ee2306ee3095942b1a9d2701cfd6f5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

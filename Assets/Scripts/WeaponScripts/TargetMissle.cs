@@ -45,6 +45,7 @@ namespace Player
             }
             if (distTraveled > 40)
             {
+                Instantiate(Explosion, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }

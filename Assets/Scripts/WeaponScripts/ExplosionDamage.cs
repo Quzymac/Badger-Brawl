@@ -11,7 +11,14 @@ namespace Player
 
         public GameObject Weapon { get; set; }
 
-       
+        [SerializeField] List<AudioClip> explosionSounds = new List<AudioClip>();
+        [SerializeField] AudioSource audioSource;
+
+        private void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+            GetRandomSound();
+        }
 
         void Update()
         {
@@ -33,6 +40,12 @@ namespace Player
                 playerHit.TakeDamage(Damage);
                 playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position, 10);
             }
+        }
+
+        void GetRandomSound()
+        {
+            audioSource.clip = explosionSounds[Random.Range(0, explosionSounds.Count)];
+            audioSource.Play();
         }
     }
 }

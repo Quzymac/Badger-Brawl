@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 6722676209802411602}
   - component: {fileID: 800166492341949087}
   m_Layer: 15
-  m_Name: MissleLauncher
+  m_Name: PF_MissleLauncher
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,9 +213,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c368c42c732342d41b4a548e80f8077c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 10b47aea2b437934a995fcdf4974ef37, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

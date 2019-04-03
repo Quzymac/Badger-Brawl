@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1574123379}
   - component: {fileID: 5069725472185866802}
   m_Layer: 15
-  m_Name: Shotgun
+  m_Name: PF_Shotgun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1bdc3cc58bd2ec64e8f061f16aa1ec12, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

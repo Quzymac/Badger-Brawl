@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 5247671084043571991}
   - component: {fileID: 5713645230928028313}
   m_Layer: 15
-  m_Name: ShotgunBlunderbuss
+  m_Name: PF_ShotgunBlunderbuss
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -161,7 +161,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1bdc3cc58bd2ec64e8f061f16aa1ec12, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
