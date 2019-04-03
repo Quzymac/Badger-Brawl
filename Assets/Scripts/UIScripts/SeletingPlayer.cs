@@ -65,6 +65,14 @@ public class SeletingPlayer : MonoBehaviour
             {
                 SelectPlayerController(3);
             }
+            else if (Input.GetButtonDown("JumpController5"))
+            {
+                SelectPlayerController(4);
+            }
+            else if (Input.GetButtonDown("JumpController6"))
+            {
+                SelectPlayerController(5);
+            }
         }
         if(Input.GetButtonDown("StartGame") && playersAreReady)
         {
