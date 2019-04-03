@@ -11,7 +11,7 @@ public class SeletingPlayer : MonoBehaviour
     bool playersAreReady = false;
     [SerializeField] GameObject playersReadyText;
 
-    [SerializeField] int[] playerController = new int[4];
+    [SerializeField] int[] playerController = new int[6];
 
 
     [SerializeField] Text[] PressToJoin = new Text[4];
@@ -19,7 +19,7 @@ public class SeletingPlayer : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < playerController.Length; i++)
         {
             playerDone[i] = false;
 
