@@ -83,6 +83,8 @@ MonoBehaviour:
   minShotsPerSeconds: 2
   firePoint: {fileID: 3692721282046853312}
   bullet: {fileID: 8354293733068291351, guid: 81bb547e240e42d408e496be63548382, type: 3}
+  muzzleFlash: {fileID: 6073938426378784194, guid: c3b138d484b499d438db53f00912756b,
+    type: 3}
 --- !u!82 &7576872137447007172
 AudioSource:
   m_ObjectHideFlags: 0

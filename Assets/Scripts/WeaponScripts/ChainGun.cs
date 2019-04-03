@@ -24,6 +24,7 @@ namespace Player
 
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject bullet;
+        [SerializeField] GameObject muzzleFlash;
 
         public GameObject Owner { get; set; }
 
@@ -37,6 +38,10 @@ namespace Player
 
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
+
+            GameObject newParticleEffect = Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
+            
+
         }
 
         void Update()
