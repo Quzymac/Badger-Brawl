@@ -14,8 +14,7 @@ namespace Player
         public GameObject Owner { get; set; }
 
         [SerializeField] private AudioSource shotSound;
-        [SerializeField] Transform firePoint;
-        [SerializeField] Transform muzzleFlashPoint;
+        [SerializeField] Transform firePoint;    
         [SerializeField] GameObject pellet;
         float timer = 0f;
         float currentShotsPerSecond;
@@ -38,8 +37,8 @@ namespace Player
             {
                 amountHit[i] = 0;
             }
-            muzzleFlashPoint.SetParent(gameObject.transform);
-            GameObject thisFlash = Instantiate(muzzleFlash, muzzleFlashPoint.position, muzzleFlashPoint.rotation);
+            firePoint.SetParent(gameObject.transform);
+            GameObject thisFlash = Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
             foreach (GameObject pel in pellets)
             {
                 GameObject thisPellet = Instantiate(pellet, firePoint.position, firePoint.rotation);

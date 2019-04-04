@@ -33,7 +33,6 @@ Transform:
   m_Children:
   - {fileID: 8853086076922126196}
   - {fileID: 545992808}
-  - {fileID: 7011330590388210264}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -81,12 +80,11 @@ MonoBehaviour:
   shotSound: {fileID: 1666706938121975551, guid: fd490b6a6eaba624da6b8c65d746f684,
     type: 3}
   firePoint: {fileID: 545992808}
-  muzzleFlashPoint: {fileID: 7011330590388210264}
   pellet: {fileID: 8354293733068291351, guid: 9983719a239e19742af1341765987683, type: 3}
   pelletCount: 5
   minSpread: -5
   maxSpread: 5
-  muzzleFlash: {fileID: 6073938426378784194, guid: 18ecfe543431ec8409fe0bc3beaa5b77,
+  muzzleFlash: {fileID: 7575112730694906672, guid: 6aed509d9a7373047a2eeb485cfc74e4,
     type: 3}
   amountHit: 00000000000000000000000000000000
 --- !u!82 &5069725472185866802
@@ -222,41 +220,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8508645928115346709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.75}
+  m_LocalPosition: {x: 0, y: 0.067, z: 1.921}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children: []
   m_Father: {fileID: 8570027640299894375}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8833142929906873472
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7011330590388210264}
-  m_Layer: 0
-  m_Name: MuzzleFlashPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7011330590388210264
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8833142929906873472}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0.8025}
-  m_LocalScale: {x: 0.63231117, y: 0.64796215, z: 1.0000002}
-  m_Children: []
-  m_Father: {fileID: 8570027640299894375}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1310536641862341709
 PrefabInstance:
