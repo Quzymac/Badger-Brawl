@@ -46,7 +46,6 @@ namespace Player
             {
 
             }
-            GameObject gunShot = Instantiate(shotSound, this.transform.position, this.transform.rotation) as GameObject;
             GameObject newBullet = Instantiate(shurikenBull, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<ShurikenBullet>().Parent = gameObject;
         }
