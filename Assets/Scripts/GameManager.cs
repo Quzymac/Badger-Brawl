@@ -17,6 +17,9 @@ namespace Player {
 
         int winningPlayer;
 
+        public SoundManager soundManager;
+
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.S))
@@ -111,7 +114,7 @@ namespace Player {
             yield return new WaitForSeconds(2f);
 
             gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
-                    gameObject.GetComponent<SpawnPlayers>().Spawn();
+            gameObject.GetComponent<SpawnPlayers>().Spawn();
         }
     }
 }

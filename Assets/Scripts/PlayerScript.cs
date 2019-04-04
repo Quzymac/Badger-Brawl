@@ -20,15 +20,11 @@ namespace Player
         public int playerNumber;
         [SerializeField] int joystick;
         [SerializeField] PlayerTeam t;
-        public bool dead = false;
-
-        [SerializeField] AudioSource audioSource;
-        [SerializeField] List<AudioClip> specificDeathSound = new List<AudioClip>();
+        public bool dead { get; set; } = false;
 
 
         private void Start()
         {
-            audioSource = GetComponent<AudioSource>();
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
@@ -69,14 +65,11 @@ namespace Player
 
         void Death()
         {
-            audioSource.clip = specificDeathSound[Random.Range(0, specificDeathSound.Count)];
-            audioSource.Play();
             dead = true;
+            gameManager.soundManager.PlayDeathSounds(this);
             gameObject.GetComponent<NewControllerInputs>().DropWeapon();
             gameManager.TeamIsDead((PlayerTeam)playerNumber);
-
             Destroy(gameObject);
-
         }
     }
 }
