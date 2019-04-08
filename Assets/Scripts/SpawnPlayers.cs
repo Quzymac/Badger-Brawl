@@ -6,6 +6,7 @@ namespace Player
 {
     public class SpawnPlayers : MonoBehaviour
     {
+        [SerializeField]MultipleTargetCam addTargets;
         [SerializeField] GameManager gameManager;
         [SerializeField] GameObject[] characters = new GameObject[2];
         //[SerializeField] GameObject player;
@@ -41,19 +42,25 @@ namespace Player
                         gameManager.Badgers.Add(players.GetComponent<PlayerScript>());
                     }
                     gameManager.GetComponent<HealthBarManager>().Players.Add(players.GetComponent<PlayerScript>());
+                    addTargets.targets.Add(players.transform);
                 }
             }
+
             gameManager.GetComponent<HealthBarManager>().NewRound();
         }
         void ResetPlayers()
         {
+            addTargets.targets.Clear();
             usedSpawnPositions.Clear();
             for (int i = 0; i < 4; i++)
             {
                 gameManager.GetComponent<HealthBarManager>().Players.Clear();
                 gameManager.Badgers.Clear();
                 gameManager.Humans.Clear();
+
+
             }
+            
         }
 
         void Awake()
