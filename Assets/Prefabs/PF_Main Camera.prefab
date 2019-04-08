@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4290861065969031629
 Transform:
   m_ObjectHideFlags: 0
@@ -56,8 +56,9 @@ GameObject:
   - component: {fileID: 4290861066268700750}
   - component: {fileID: 4290861066268700749}
   - component: {fileID: 4290861066268700736}
+  - component: {fileID: 587052439}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: PF_Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,6 +149,27 @@ MonoBehaviour:
   cameraMoving: 0
   progs: {fileID: 0}
   pctDamage: 50
+--- !u!114 &587052439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290861066268700748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ddd2b6111d86e40a0f7cd47fb3e4c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets: []
+  offset: {x: 0, y: 0, z: -20}
+  smoothTime: 1
+  minZoom: 60
+  maxZoom: 10
+  zoomLimiter: 20
+  bounds: 0
+  minCameraPos: {x: -100, y: -100, z: -30}
+  maxCameraPos: {x: 100, y: 100, z: -10}
 --- !u!1 &4290861066449578303
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4290861066449578288
 Transform:
   m_ObjectHideFlags: 0
