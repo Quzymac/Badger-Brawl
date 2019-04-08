@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ed74f4a5ea084424684646c5c103163f
+guid: 96c7a03d1e1ec4de6bd1652870d45ff0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -11,7 +11,7 @@ ModelImporter:
     4300000: AK47
   externalObjects: {}
   materials:
-    importMaterials: 0
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -43,7 +43,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -71,7 +71,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 0
+  importAnimation: 1
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

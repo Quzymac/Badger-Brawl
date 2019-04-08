@@ -1,14 +1,14 @@
 fileFormatVersion: 2
-guid: 1e97b23915f7a40bd868d3b6c7f54758
+guid: 3afa437fe8dae4bcb956d11f38ea13ce
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert6
+    2100000: lambert11
     2300000: //RootNode
     3300000: //RootNode
-    4300000: House
+    4300000: Brickhouse
   externalObjects: {}
   materials:
     importMaterials: 1
