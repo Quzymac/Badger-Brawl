@@ -21,6 +21,7 @@ namespace Player
         [SerializeField] int joystick;
         [SerializeField] PlayerTeam t;
         public bool dead { get; set; } = false;
+        MultipleTargetCam multipleTargetCam;
 
         Rigidbody rb;
         public bool falling  = false;
@@ -28,6 +29,7 @@ namespace Player
 
         private void Start()
         {
+            multipleTargetCam = FindObjectOfType<MultipleTargetCam>();
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             t = Team;
@@ -74,7 +76,9 @@ namespace Player
             gameManager.soundManager.PlayDeathSounds(this);
             gameObject.GetComponent<NewControllerInputs>().DropWeapon();
             gameManager.TeamIsDead((PlayerTeam)playerNumber);
+            multipleTargetCam.targets.Remove(transform);
             Destroy(gameObject);
+
         }
 
         public void CheckVelocity()

@@ -15,6 +15,7 @@ namespace Player
 
         
         private AudioSource shotSound;
+        float soundTimer = 0.2f;
         [SerializeField]
         Transform firePoint;
 
@@ -28,7 +29,7 @@ namespace Player
         }
         public void Fire()
         {
-            shotSound.Play();
+       
             GameObject newFlame = Instantiate(flame, firePoint.position, firePoint.rotation);
             newFlame.GetComponent<Flame>().Parent = gameObject;
 
@@ -43,6 +44,13 @@ namespace Player
             }
             if (Firing && Time.time > 1 / ShotsPerSecond + timer)
             {
+                soundTimer -= Time.deltaTime;
+                if (soundTimer <= 0)
+                {
+                    shotSound.Play();
+                    soundTimer = 0.5f;
+                }
+
                 Fire();
                 timer = Time.time;
             }
