@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5164392603590305353}
   - component: {fileID: 5164392603590305352}
   m_Layer: 0
-  m_Name: GameMusic
+  m_Name: PF_GameMusic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,8 @@ AudioSource:
   m_GameObject: {fileID: 5164392603590305334}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243478236366521218, guid: 694dedb6ece6f7c49896ce46de2bc618,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: fbf8e4e6461e01d45ba04ba53a3c45b9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
