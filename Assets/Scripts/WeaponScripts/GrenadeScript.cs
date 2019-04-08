@@ -18,7 +18,7 @@ namespace Player
         float getHoldValue = 0f;
         float maxHoldThrow = 3f;
 
-        [SerializeField] private AudioSource shotSound;
+        private AudioSource shotSound;
         Rigidbody rb;
         bool isThrown = false;
         bool startExplosion = false;

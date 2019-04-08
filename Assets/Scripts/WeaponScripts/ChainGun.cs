@@ -14,7 +14,7 @@ namespace Player
 
         [SerializeField] float buildUpTime = 0.2f;
 
-        [SerializeField] private AudioSource shotSound;
+        private AudioSource shotSound;
 
         float currentShotsPerSecond;
         [SerializeField] float minShotsPerSeconds = 2f;

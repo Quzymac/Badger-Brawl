@@ -18,7 +18,7 @@ namespace Player
         float timer = 0f;
         public bool Firing { get; set; } = false;
 
-        [SerializeField] private AudioSource shotSound;
+        private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject rocket;
 
