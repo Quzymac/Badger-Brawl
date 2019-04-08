@@ -84,12 +84,10 @@ namespace Player {
             if (winner == PlayerScript.PlayerTeam.badger)
             {
                 cameraMovement.ChangeCameraPos(-cameraValue);
-                cameraMovement.UpdateCamPos();
             }
             else if (winner == PlayerScript.PlayerTeam.human)
             {
                 cameraMovement.ChangeCameraPos(cameraValue);
-                cameraMovement.UpdateCamPos();
             }
 
             foreach (var badger in badgers)
