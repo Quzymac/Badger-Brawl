@@ -22,9 +22,14 @@ namespace Player
         [SerializeField] PlayerTeam t;
         public bool dead { get; set; } = false;
 
+        Rigidbody rb;
+        public bool falling  = false;
+        JumpScript jumpScript;
 
         private void Start()
         {
+            rb = GetComponent<Rigidbody>();
+            jumpScript = GetComponent<JumpScript>();
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
@@ -70,6 +75,19 @@ namespace Player
             gameObject.GetComponent<NewControllerInputs>().DropWeapon();
             gameManager.TeamIsDead((PlayerTeam)playerNumber);
             Destroy(gameObject);
+        }
+
+        public void CheckVelocity()
+        {
+            if (rb.velocity.y < 0 && falling == false && jumpScript.grounded == false)
+            {
+                falling = true;
+            }
+        }
+
+        private void Update()
+        {
+            CheckVelocity();
         }
     }
 }

@@ -504,6 +504,9 @@ MonoBehaviour:
   gravity: 16
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
+  jumpSound: {fileID: 8300000, guid: 7fb0111c468e3c84d9d7d665810d1a37, type: 3}
+  landingSound: {fileID: 8300000, guid: 310063e7cc138f440a76dd9905423ec7, type: 3}
+  audioSource: {fileID: 0}
 --- !u!114 &479448943163281813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -522,11 +525,6 @@ MonoBehaviour:
   playerNumber: 0
   joystick: 0
   t: 0
-  dead: 0
-  audioSource: {fileID: 0}
-  specificDeathSound:
-  - {fileID: 8300000, guid: 09eafdf5d8a80e249888229a23bdf38e, type: 3}
-  - {fileID: 8300000, guid: 5e0db4518994b8c48b7cf9df26f02bdd, type: 3}
 --- !u!114 &5029545083805020651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -595,7 +593,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0

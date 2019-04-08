@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Player {
+namespace Player
+{
     public class JumpScript : MonoBehaviour
     {
         Rigidbody rb;
         Collider playerCollider;
         NewControllerInputs controllerInputs;
         GameObject collidedPlatform;
-
-    bool grounded;
-
+        public bool grounded;
         float jumpTime;
         public float jumpCount;
         [SerializeField] float jumpForce = 700f;
@@ -19,11 +16,18 @@ namespace Player {
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
         LayerMask platformLayer;
-
         Vector3 jumpDir;
+        PlayerScript player;
+
+        [SerializeField] AudioClip jumpSound;
+        [SerializeField] AudioClip landingSound;
+        [SerializeField] AudioSource audioSource;
+        public bool landed = false;
 
         void Start()
         {
+            player = GetComponent<PlayerScript>();
+            audioSource = GetComponent<AudioSource>();
             platformLayer |= (1 << LayerMask.NameToLayer("Platform"));
             platformLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
 
@@ -40,6 +44,8 @@ namespace Player {
         {
             if (jumpCount > 0)
             {
+                audioSource.clip = jumpSound;
+                audioSource.Play();
                 if (!grounded && Time.time > jumpTime)
                     jumpCount--;
                 rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
@@ -72,6 +78,14 @@ namespace Player {
         void Update()
         {
             GroundDetection();
+            if (landed == true)
+            {
+                audioSource.clip = landingSound;
+                audioSource.volume = 0.2f;
+                audioSource.Play();
+                landed = false;
+                player.falling = false;
+            }
 
             if (rb.velocity.y < 0 && gameObject.layer == 12 && collidedPlatform != null)
             {
@@ -100,11 +114,13 @@ namespace Player {
             {
                 grounded = true;
                 jumpCount = 1;
+   
             }
             else if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 1.2f, platformLayer) && rb.velocity.y <= 0 || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 1.2f, platformLayer) && rb.velocity.y <= 0)
             {
                 grounded = true;
                 jumpCount = 1;
+                
             } else
             {
                 if (grounded)
@@ -112,6 +128,11 @@ namespace Player {
                     jumpTime = Time.time + 0.2f;
                 }
                 grounded = false;
+            }
+
+            if (player.falling == true && landed == false && grounded == true)
+            {
+                landed = true;
             }
         }
 
