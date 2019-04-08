@@ -8,6 +8,7 @@ namespace Player
     {
         [SerializeField] GameManager gameManager;
         [SerializeField] GameObject[] characters = new GameObject[2];
+        [SerializeField] MultipleTargetCam addTargets;
         //[SerializeField] GameObject player;
         //[SerializeField] GameObject badger;
 
@@ -41,12 +42,14 @@ namespace Player
                         gameManager.Badgers.Add(players.GetComponent<PlayerScript>());
                     }
                     gameManager.GetComponent<HealthBarManager>().Players.Add(players.GetComponent<PlayerScript>());
+                    addTargets.targets.Add(players.transform);
                 }
             }
             gameManager.GetComponent<HealthBarManager>().NewRound();
         }
         void ResetPlayers()
         {
+            addTargets.targets.Clear();
             usedSpawnPositions.Clear();
             for (int i = 0; i < 4; i++)
             {

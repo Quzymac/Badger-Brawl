@@ -40,7 +40,7 @@ namespace Player
             //CalculatePosition();
             if (target.position != transform.position)
             {
-                MoveCamera();
+                //UpdateCamPos();
                 cameraMoving = true;
             }
             else if(cameraMoving && target.position == transform.position)
@@ -48,7 +48,7 @@ namespace Player
                 cameraMoving = false;
             }
         }
-        private void MoveCamera()
+        public void UpdateCamPos()
         {
             Vector3 desiredPos = target.position;
             Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, camSpeed * Time.deltaTime);
