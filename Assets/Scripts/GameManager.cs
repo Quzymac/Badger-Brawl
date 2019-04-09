@@ -13,16 +13,36 @@ namespace Player {
         public List<PlayerScript> Humans { get { return humans; } set { humans = value; } } //hålla koll på humans
 
         [SerializeField] MultipleTargetCam removeTargets;
-        CAM_CamerMovement cameraMovement;
+        //CAM_CamerMovement cameraMovement;
         float cameraValue = 25f;
 
         int winningPlayer;
 
         public SoundManager soundManager;
 
+        public Transform top;
+        public Transform bottom;
+        [SerializeField] Transform target;
+
+        float yTop;
+        float yBottom;
+        float totalDistance;
+        public float pctDamage;
+        public float pctValue;
+
+        [SerializeField] ProgressBar progs;
+        WinnerScript winnerScript;
+
+        bool lastRoundBadger = false;
+        bool lastRoundHuman = false;
+
 
         private void Update()
         {
+            if(removeTargets.targets.Count == 0)
+            {
+                removeTargets.UpdateCamPos();
+            }
             if (Input.GetKeyDown(KeyCode.S))
             {
 
@@ -46,7 +66,11 @@ namespace Player {
 
         void Start()
         {           
-            cameraMovement = FindObjectOfType<CAM_CamerMovement>();
+            //cameraMovement = FindObjectOfType<CAM_CamerMovement>();
+            winnerScript = FindObjectOfType<WinnerScript>().GetComponent<WinnerScript>();
+            yTop = top.position.y;
+            yBottom = bottom.position.y;
+            totalDistance = yTop - yBottom;
         }
 
 
@@ -85,13 +109,11 @@ namespace Player {
             
             if (winner == PlayerScript.PlayerTeam.badger)
             {
-                cameraMovement.ChangeCameraPos(-cameraValue);
-                cameraMovement.UpdateCamPos();
+                ChangeCameraPos(-cameraValue);
             }
             else if (winner == PlayerScript.PlayerTeam.human)
             {
-                cameraMovement.ChangeCameraPos(cameraValue);
-                cameraMovement.UpdateCamPos();
+                ChangeCameraPos(cameraValue);
             }
 
             foreach (var badger in badgers)
@@ -122,5 +144,57 @@ namespace Player {
             gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
             gameObject.GetComponent<SpawnPlayers>().Spawn();
         }
+        private void CalculatePosition() //Calcutes the position to which the camera should move to. Win condition needs to be here
+        {
+            if (pctDamage >= 100)
+            {
+                pctDamage = 100;
+                if (lastRoundHuman)
+                {
+                    winnerScript.humansWon();
+                    lastRoundHuman = false;
+                }
+                lastRoundHuman = true;
+            }
+            if (pctDamage <= 0)
+            {
+                pctDamage = 0;
+                if (lastRoundBadger)
+                {
+                    winnerScript.badgersWon();
+                    lastRoundBadger = false;
+                }
+                lastRoundBadger = true;
+            }
+            pctValue = totalDistance * (pctDamage / 100);
+            Debug.Log(pctValue);
+            target.position = new Vector3(0, yBottom + pctValue, -20);
+            progs.dpctDamage = pctDamage;
+            progs.CalculatePosition();
+        }
+        public void ChangeCameraPos(float value)
+        {
+            if (value > 0 && lastRoundBadger)
+            {
+                lastRoundBadger = false;
+            }
+            if (value < 0 && lastRoundHuman)
+            {
+                lastRoundHuman = false;
+            }
+            pctDamage += value;
+            CalculatePosition();
+        }
+
+        public Vector3 GetTargetPosition()
+        {
+            return target.position;
+        }
+        //public void UpdateCamPos()
+        //{
+        //    Vector3 desiredPos = target.position;
+        //    Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, camSpeed * Time.deltaTime);
+        //    transform.position = smoothPos;
+        //}
     }
 }

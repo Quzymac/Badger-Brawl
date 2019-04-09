@@ -137,6 +137,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1214476624}
   - component: {fileID: 1214476625}
+  - component: {fileID: 553094432368521832}
+  - component: {fileID: 2509607673400512989}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -161,6 +163,40 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1214476625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214476623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c41f78789dd224cbd05fa07dc1037e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSounds:
+  - {fileID: 8300000, guid: 09eafdf5d8a80e249888229a23bdf38e, type: 3}
+  - {fileID: 8300000, guid: 5e0db4518994b8c48b7cf9df26f02bdd, type: 3}
+  - {fileID: 8300000, guid: 7f12d0eda4b38904099f2c530552562c, type: 3}
+  deathSound: {fileID: 1129905104}
+--- !u!114 &553094432368521832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214476623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c41f78789dd224cbd05fa07dc1037e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSounds:
+  - {fileID: 8300000, guid: 09eafdf5d8a80e249888229a23bdf38e, type: 3}
+  - {fileID: 8300000, guid: 5e0db4518994b8c48b7cf9df26f02bdd, type: 3}
+  - {fileID: 8300000, guid: 7f12d0eda4b38904099f2c530552562c, type: 3}
+  deathSound: {fileID: 1129905104}
+--- !u!114 &2509607673400512989
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,7 +305,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8618ffde36e4aad4d914c980f1ba5df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundManager: {fileID: 1214476625}
+  removeTargets: {fileID: 0}
+  soundManager: {fileID: 2509607673400512989}
+  top: {fileID: 0}
+  bottom: {fileID: 0}
+  target: {fileID: 0}
+  pctDamage: 50
+  pctValue: 0
+  progs: {fileID: 0}
 --- !u!114 &2804229538860892923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,13 +345,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 5247671084043571990, guid: 2b19704c697ef6c4ab0acf42dd61ad8e, type: 3}
-  - {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75, type: 3}
+  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
   - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
   - {fileID: 1574123378, guid: 87361835c0af1c440b8255df16a2dc99, type: 3}
-  - {fileID: 1574123378, guid: 87361835c0af1c440b8255df16a2dc99, type: 3}
+  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
   - {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75, type: 3}
-  - {fileID: 1709704426, guid: c41ade66fd5fee04382d55e02d95ca57, type: 3}
-  - {fileID: 3895767881819167553, guid: 754de78ae95a975408981e2c8c7313ee, type: 3}
+  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
+  - {fileID: 252582501, guid: 27744ead126e74a44ac01c0339056f63, type: 3}
   - {fileID: 7848728012517841259, guid: b6a15ee1c11d62648ae9b6d73cc57f81, type: 3}
   spawnPositions:
   - {fileID: 0}
