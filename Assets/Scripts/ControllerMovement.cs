@@ -24,12 +24,12 @@ public class ControllerMovement : MonoBehaviour
         //rotate to match movement direction
         if (MoveDir < 0 && lookingRight)
         {
-            transform.Rotate(new Vector3(0, 180, 0));
+            //transform.Rotate(new Vector3(0, 180, 0));
             lookingRight = false;
         }
         else if (MoveDir > 0 && !lookingRight)
         {
-            transform.Rotate(new Vector3(0, -180, 0));
+            //transform.Rotate(new Vector3(0, -180, 0));
             lookingRight = true;
         }
 

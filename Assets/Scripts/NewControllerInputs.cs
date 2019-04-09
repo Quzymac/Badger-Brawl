@@ -24,17 +24,29 @@ namespace Player
         string xButton;
         string shootButton;
 
+        string aimHorizontal;
+        string aimVertical;
 
+        float holdPosXRotationQuat;
+        float holdPosYRotationEuler;
+        float holdPosZRotationEuler;
+        
+        Quaternion targetAngle = new Quaternion(1, 0, 0, 0); //right at start
+        float aimSpeed = 9f;
 
-        // Start is called before the first frame update
+        bool lookingRight = true;
+
         void Start()
         {
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             controllerMovement = GetComponent<ControllerMovement>();
+
+            holdPosXRotationQuat = holdPosition.localRotation.x;
+            holdPosYRotationEuler = holdPosition.localRotation.eulerAngles.y;
+            holdPosZRotationEuler = holdPosition.localRotation.eulerAngles.z;
         }
 
-        // Update is called once per frame
         void Update()
         {
             if (Time.timeScale == 0)
@@ -53,6 +65,8 @@ namespace Player
             bButton = "DropWeapon" + JoystickNumber.ToString();
             xButton = "WeaponPickUp" + JoystickNumber.ToString();
             shootButton = "WeaponFireController" + JoystickNumber.ToString();
+            aimHorizontal = "AimHorizontal" + JoystickNumber.ToString();
+            aimVertical = "AimVertical" + JoystickNumber.ToString();
         }
 
         void PickUpWeapon()
@@ -66,9 +80,9 @@ namespace Player
 
                 currentWeapon = canPickUp.gameObject;
                 currentWeapon.transform.position = holdPosition.position;
-                currentWeapon.transform.rotation = transform.rotation;
+                currentWeapon.transform.rotation = holdPosition.rotation;
 
-                currentWeapon.transform.parent = transform;
+                currentWeapon.transform.parent = holdPosition;
                 currentWeapon.GetComponent<Collider>().enabled = false;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -94,30 +108,86 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Weapon")) //Testing only
+            if (other.CompareTag("Weapon"))
             {
                 canPickUp = other.gameObject;
             }
         }
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Weapon")) //Testing only
+            if (other.CompareTag("Weapon"))
             {
                 canPickUp = null;
             }
         }
-        
+        bool canJump = true; //testing
         void PlayerControlls()
         {
+            //aiming  WIP
+            Vector3 aimDir;
+            if (lookingRight)
+            {
+                aimDir = Vector3.forward * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
+            }
+            else
+            {
+                aimDir = Vector3.back * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
+            }
+            if (aimDir.sqrMagnitude > 0.5f) //aim sensitivity when to apply rotation
+            {
+                targetAngle = Quaternion.LookRotation(aimDir, Vector3.down);
+                targetAngle = Quaternion.Euler(targetAngle.eulerAngles.x, holdPosYRotationEuler, holdPosZRotationEuler); //aim staright, set y and z to start rotation
+            }
+
+            //Rotate to look left/ right
+            if (lookingRight && Input.GetAxis(aimHorizontal) < 0)
+            {
+                transform.Rotate(new Vector3(0, -180, 0));
+                lookingRight = false;
+            }
+            if (!lookingRight && Input.GetAxis(aimHorizontal) > 0)
+            {
+                transform.Rotate(new Vector3(0, 180, 0));
+                lookingRight = true;
+            }
+            //Rotate Aim
+            if (holdPosition.transform.localRotation != targetAngle)
+            {
+                holdPosition.transform.localRotation = Quaternion.Lerp(holdPosition.transform.localRotation, targetAngle, Time.deltaTime * aimSpeed);
+            }
+
+
+            //Aim up and down
+            //if (aimDir.sqrMagnitude > 0.5f)
+            //{
+            //    holdPosition.Rotate(new Vector3(Input.GetAxis(aimVertical) * -5, 0, 0), Space.Self);
+            //    float aim = Input.GetAxis(aimVertical) * -90;
+
+
+            //    //float aim = Input.GetAxis(aimVertical) * -90;
+            //    //holdPosition.localRotation = Quaternion.Euler(new Vector3(holdPosXRotation + aim + 180f, holdPosition.localRotation.y, holdPosition.localRotation.z));
+            //}
+
+
             //calculate movement velocity
             controllerMovement.MoveDir = Input.GetAxisRaw(horizontalAxis);
 
             //jump
             if (Input.GetButtonDown(aButton))
             {
-                Debug.Log(JoystickNumber + " " + jumpScript.gameObject.name);
                 jumpScript.Jump();
+
             }
+            //if (Input.GetAxis("j") > 0.8f && canJump)
+            //{
+            //    Debug.Log(JoystickNumber + " " + jumpScript.gameObject.name);
+            //    jumpScript.Jump();
+            //    canJump = false;
+            //}
+            //if (Input.GetAxis("j") < 0.8f && !canJump)
+            //{
+            //    canJump = true;
+            //}
 
             //drop
             if (Input.GetAxis(verticalAxis) <= -0.8f)
