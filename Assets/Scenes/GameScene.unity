@@ -4145,32 +4145,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &587052438 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4290861066268700748, guid: f67e0d47362cd404b993c37241f9d459,
-    type: 3}
-  m_PrefabInstance: {fileID: 1613878849}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &587052442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587052438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: db0592fb7c3a4ce4abb3f9ba966c7469, type: 2}
 --- !u!114 &587052443 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 587052439, guid: f67e0d47362cd404b993c37241f9d459,
     type: 3}
   m_PrefabInstance: {fileID: 1613878849}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 587052438}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33ddd2b6111d86e40a0f7cd47fb3e4c0, type: 3}
@@ -9120,11 +9101,6 @@ PrefabInstance:
       propertyPath: progs
       value: 
       objectReference: {fileID: 551442645}
-    - target: {fileID: 4290861066268700750, guid: f67e0d47362cd404b993c37241f9d459,
-        type: 3}
-      propertyPath: m_AllowMSAA
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f67e0d47362cd404b993c37241f9d459, type: 3}
 --- !u!20 &1613878850 stripped
@@ -10235,6 +10211,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72,
         type: 3}
+    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72,
+        type: 3}
     - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: HumansWin
@@ -10250,6 +10232,11 @@ PrefabInstance:
       propertyPath: soundManager
       value: 
       objectReference: {fileID: 1214476625}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: removeTargets
+      value: 
+      objectReference: {fileID: 587052443}
     m_RemovedComponents:
     - {fileID: 1129905107, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc, type: 3}

@@ -15,12 +15,12 @@ namespace Player
 
         
         private AudioSource shotSound;
-        float soundTimer = 0.2f;
+        float soundTimer = 0;
         [SerializeField]
         Transform firePoint;
 
         [SerializeField]
-        GameObject flame;
+        GameObject flame;    
 
         public GameObject Owner { get; set; }  //depends on which player picks up the flamethrower
         public void Start()
@@ -38,21 +38,26 @@ namespace Player
 
         void Update()
         {
+            soundTimer -= Time.deltaTime;
             if (Owner == null && Firing)
             {
                 Firing = false;
             }
             if (Firing && Time.time > 1 / ShotsPerSecond + timer)
             {
-                soundTimer -= Time.deltaTime;
+                
                 if (soundTimer <= 0)
                 {
                     shotSound.Play();
-                    soundTimer = 0.5f;
+                    soundTimer = 5f;
                 }
-
                 Fire();
                 timer = Time.time;
+            }
+            else if (Firing == false)
+            {
+                soundTimer = 0;
+                shotSound.Stop();
             }
         }
     }

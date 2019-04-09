@@ -17,7 +17,8 @@ namespace Player
 
         [SerializeField] int maxNumberOfWeapons = 6;
         public int numberOfWeapons { get; set; } = 0;
-        int waitSpawnCounter = 0; 
+        int waitSpawnCounter = 0;
+        float nextWeaponSpawnTimer = 0;
 
         void Start()
         {
@@ -27,12 +28,17 @@ namespace Player
         void Update()
         {
             waitSpawnCounter++;
+            nextWeaponSpawnTimer -= Time.deltaTime;
             if (waitSpawnCounter >= 2)
             {
                 if (numberOfWeapons < maxNumberOfWeapons)
                 {
                     waitSpawnCounter = 0;
-                    SpawnWeapon();
+                    if (nextWeaponSpawnTimer <= 0)
+                    {
+                        SpawnWeapon();
+                        nextWeaponSpawnTimer = 5;
+                    }
                 }
             }
           
