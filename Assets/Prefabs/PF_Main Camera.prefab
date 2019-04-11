@@ -166,11 +166,11 @@ MonoBehaviour:
   offset: {x: 0, y: 0, z: -20}
   smoothTime: 1
   minZoom: 60
-  maxZoom: 10
+  maxZoom: 30
   zoomLimiter: 20
   cameraMoving: 0
-  minCameraPos: {x: -100, y: -100, z: -30}
-  maxCameraPos: {x: 100, y: 100, z: -10}
+  minCameraPos: {x: -11, y: -7, z: -30}
+  maxCameraPos: {x: 11, y: 7, z: -10}
 --- !u!114 &587052442
 MonoBehaviour:
   m_ObjectHideFlags: 0

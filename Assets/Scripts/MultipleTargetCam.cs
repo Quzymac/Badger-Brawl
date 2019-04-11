@@ -56,6 +56,7 @@ namespace Player
             {
                 cameraMoving = false;
             }
+
         }
         void Move()
         {
@@ -67,9 +68,13 @@ namespace Player
             //CameraLocked(newPosition);
             transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
 
-            transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
+            if (cam.fieldOfView <= 40)
+            {
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
                    Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y),
                    Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
+            }
+
 
         }
 
