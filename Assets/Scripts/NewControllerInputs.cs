@@ -33,15 +33,25 @@ namespace Player
         
         Quaternion targetAngle = new Quaternion(1, 0, 0, 0); //right at start
         float aimSpeed = 9f;
-
+    
         bool lookingRight = true;
+
+        AnimationHandler animationHandler;
+        Animator anim;
+        PlayerScript playerScript;
+
+        RaycastHit hit;
+        int groundLayer;
 
         void Start()
         {
+            anim = GetComponent<Animator>();
+            groundLayer = LayerMask.NameToLayer("PlatformJumpThrough");
+            playerScript = GetComponent<PlayerScript>();
+            animationHandler = GetComponent<AnimationHandler>();
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             controllerMovement = GetComponent<ControllerMovement>();
-
             holdPosXRotationQuat = holdPosition.localRotation.x;
             holdPosYRotationEuler = holdPosition.localRotation.eulerAngles.y;
             holdPosZRotationEuler = holdPosition.localRotation.eulerAngles.z;
@@ -121,43 +131,88 @@ namespace Player
             }
         }
         bool canJump = true; //testing
+
+        [SerializeField] Transform aimCenter;
+        [SerializeField] Transform aimTowards;
+        [SerializeField] Transform chest;
+        [SerializeField] Vector3 offset;
+
+        Vector2 aimInput;
+        Quaternion rotation;
+        float rotationInputThreshold = 0.2f;
+
         void PlayerControlls()
         {
-            //aiming  WIP
-            Vector3 aimDir;
-            if (lookingRight)
-            {
-                aimDir = Vector3.forward * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
-            }
-            else
-            {
-                aimDir = Vector3.back * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
-            }
-            if (aimDir.sqrMagnitude > 0.5f) //aim sensitivity when to apply rotation
-            {
-                targetAngle = Quaternion.LookRotation(aimDir, Vector3.down);
-                targetAngle = Quaternion.Euler(targetAngle.eulerAngles.x, holdPosYRotationEuler, holdPosZRotationEuler); //aim staright, set y and z to start rotation
-            }
-
             //Rotate to look left/ right
-            if (lookingRight && Input.GetAxis(aimHorizontal) < 0)
+            if (lookingRight && Input.GetAxis(aimHorizontal) < -rotationInputThreshold)
             {
                 transform.Rotate(new Vector3(0, -180, 0));
                 lookingRight = false;
             }
-            if (!lookingRight && Input.GetAxis(aimHorizontal) > 0)
+            if (!lookingRight && Input.GetAxis(aimHorizontal) > rotationInputThreshold)
             {
                 transform.Rotate(new Vector3(0, 180, 0));
                 lookingRight = true;
             }
-            //Rotate Aim
-            if (holdPosition.transform.localRotation != targetAngle)
+
+            //Aiming V.4
+            aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
+
+            if (aimInput.magnitude > 0.5f && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
             {
-                holdPosition.transform.localRotation = Quaternion.Lerp(holdPosition.transform.localRotation, targetAngle, Time.deltaTime * aimSpeed);
+                if (lookingRight)
+                {
+                    aimCenter.rotation = Quaternion.Euler(0, 0, aimInput.y * 89f);
+                }
+                else
+                {
+                    aimCenter.rotation = Quaternion.Euler(0, 180, aimInput.y * 89f);
+                }
             }
+            rotation = Quaternion.LookRotation(aimTowards.position - chest.position, Vector3.up);
+            rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0); //reset z-rotation
+            chest.rotation = rotation;
+            chest.Rotate(new Vector3(0, 0, -90f));
+            chest.rotation = chest.rotation * Quaternion.Euler(offset);
 
 
-            //Aim up and down
+            //// Aiming V.3
+            //aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
+
+            //if (aimInput.magnitude > rotationInputThreshold && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
+            //{
+            //    aimDir = holdPosition.position + new Vector3(aimInput.x, aimInput.y, 0).normalized; 
+            //    aimTowards.position = aimDir;
+            //    rotation = Quaternion.LookRotation(aimTowards.position - holdPosition.position, Vector3.up);
+            //    rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0); //reset z-rotation
+            //}
+            //holdPosition.rotation = Quaternion.Lerp(holdPosition.rotation, rotation, aimSpeed * Time.deltaTime); //lerp rotation
+            ////holdPosition.rotation = rotation; //instant rotation
+
+
+            ////aiming  V.1
+            //Vector3 aimDir;
+            //if (lookingRight)
+            //{
+            //    aimDir = Vector3.forward * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
+            //}
+            //else
+            //{
+            //    aimDir = Vector3.back * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
+            //}
+            //if (aimDir.sqrMagnitude > 0.5f) //aim sensitivity when to apply rotation
+            //{
+            //    targetAngle = Quaternion.LookRotation(aimDir, Vector3.down);
+            //    targetAngle = Quaternion.Euler(targetAngle.eulerAngles.x, holdPosYRotationEuler, holdPosZRotationEuler); //aim staright, set y and z to start rotation
+            //}
+
+            ////Rotate Aim
+            //if (holdPosition.transform.localRotation != targetAngle)
+            //{
+            //    holdPosition.transform.localRotation = Quaternion.Lerp(holdPosition.transform.localRotation, targetAngle, Time.deltaTime * aimSpeed);
+            //}
+
+            //Aim V.  up and down
             //if (aimDir.sqrMagnitude > 0.5f)
             //{
             //    holdPosition.Rotate(new Vector3(Input.GetAxis(aimVertical) * -5, 0, 0), Space.Self);
@@ -172,12 +227,38 @@ namespace Player
             //calculate movement velocity
             controllerMovement.MoveDir = Input.GetAxisRaw(horizontalAxis);
 
+
+            if ((Input.GetAxisRaw(horizontalAxis) > 0 || Input.GetAxisRaw(horizontalAxis) < 0) && jumpScript.grounded == true && animationHandler.IdleBool == true)
+            {
+                animationHandler.IdleBool = false;
+                animationHandler.IdleRun();
+            }
+            else if(Input.GetAxisRaw(horizontalAxis) == 0 && jumpScript.grounded == true && animationHandler.IdleBool == false)
+            {
+                animationHandler.IdleBool = true;
+                animationHandler.RunningIdle();
+            }
+            else if (jumpScript.grounded == false && rb.velocity.y > 0 || jumpScript.grounded == false && rb.velocity.y < 0)
+            {
+                animationHandler.IdleBool = false;
+            }
+           
+
             //jump
             if (Input.GetButtonDown(aButton))
             {
-                jumpScript.Jump();
 
+                if (animationHandler.IdleBool == true)
+                {
+                    animationHandler.IdleJump();
+                }
+                else if (animationHandler.IdleBool == false)
+                {
+                    animationHandler.RunningJumping();
+                }
+                jumpScript.Jump();
             }
+
             //if (Input.GetAxis("j") > 0.8f && canJump)
             //{
             //    Debug.Log(JoystickNumber + " " + jumpScript.gameObject.name);
@@ -192,8 +273,29 @@ namespace Player
             //drop
             if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
-                jumpScript.DropThrough();
 
+                //animation för falla igenom
+                if (animationHandler.IdleBool == true)
+                {
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
+                    {
+                        if (hit.transform.gameObject.layer == groundLayer)
+                        {
+                            animationHandler.IdleFalling();
+                        }
+                    }
+                }
+                else if (animationHandler.IdleBool == false)
+                {
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
+                    {
+                        if (hit.transform.gameObject.layer == groundLayer)
+                        {
+                            animationHandler.RunningFalling();
+                        }
+                    }
+                }
+                jumpScript.DropThrough();
             }
             //shoot
             if (Input.GetAxisRaw(shootButton)> 0.2f && currentWeapon != null)

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3afa437fe8dae4bcb956d11f38ea13ce
+guid: ea2ef393f58ed40739b41b7786a3db1c
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,10 +8,10 @@ ModelImporter:
     2100000: lambert11
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Brickhouse
+    4300000: House
   externalObjects: {}
   materials:
-    importMaterials: 1
+    importMaterials: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -43,7 +43,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
+    useSRGBMaterialColor: 0
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -71,7 +71,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2

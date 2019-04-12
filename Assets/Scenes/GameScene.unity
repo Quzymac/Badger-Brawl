@@ -10237,6 +10237,26 @@ PrefabInstance:
       propertyPath: removeTargets
       value: 
       objectReference: {fileID: 587052443}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1460941962}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: top
+      value: 
+      objectReference: {fileID: 1460941960}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: bottom
+      value: 
+      objectReference: {fileID: 1460941961}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: progs
+      value: 
+      objectReference: {fileID: 551442645}
     m_RemovedComponents:
     - {fileID: 1129905107, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc, type: 3}

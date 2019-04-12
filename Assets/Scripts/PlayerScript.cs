@@ -26,12 +26,14 @@ namespace Player
         Rigidbody rb;
         public bool falling  = false;
         JumpScript jumpScript;
+        AnimationHandler animationHandler;
 
         private void Start()
         {
             multipleTargetCam = FindObjectOfType<MultipleTargetCam>();
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
+            animationHandler = GetComponent<AnimationHandler>();
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
@@ -85,7 +87,18 @@ namespace Player
         {
             if (rb.velocity.y < 0 && falling == false && jumpScript.grounded == false)
             {
+                if (jumpScript.Running == true)
+                {
+                    animationHandler.RunningFalling(); //animation från spring til falla
+                }
                 falling = true;
+            }
+            if (rb.velocity.y < 0 && falling == true)
+            {
+                if (jumpScript.Running == false)
+                {
+                    animationHandler.IdleFalling();
+                }            
             }
         }
 

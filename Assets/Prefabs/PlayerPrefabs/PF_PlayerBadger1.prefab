@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 4485508696310047966}
   - component: {fileID: 494644808709798204}
   - component: {fileID: 4200199519562993856}
+  - component: {fileID: 4570121796904113859}
   m_Layer: 10
   m_Name: PF_PlayerBadger1
   m_TagString: Player
@@ -711,6 +712,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4570121796904113859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7685049824314815063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65209019b75b88341bb38fb3204302db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7847658380315942496
 GameObject:
   m_ObjectHideFlags: 0

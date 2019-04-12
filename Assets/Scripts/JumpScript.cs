@@ -23,11 +23,15 @@ namespace Player
         [SerializeField] AudioClip landingSound;
         [SerializeField] AudioSource audioSource;
         public bool landed = false;
+        public bool Running { get; set; }
+
+        AnimationHandler animationHandler;
 
         void Start()
         {
             player = GetComponent<PlayerScript>();
             audioSource = GetComponent<AudioSource>();
+            animationHandler = GetComponent<AnimationHandler>();
             platformLayer |= (1 << LayerMask.NameToLayer("Platform"));
             platformLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
 
@@ -44,6 +48,7 @@ namespace Player
         {
             if (jumpCount > 0)
             {
+                animationHandler.Jumping = true;
                 audioSource.clip = jumpSound;
                 audioSource.Play();
                 if (!grounded && Time.time > jumpTime)
@@ -60,6 +65,7 @@ namespace Player
             if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
             {
                 Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), playerCollider, true);
+
             }
         }
         private void FixedUpdate()
@@ -75,16 +81,39 @@ namespace Player
             }
         }
 
+
+        void CheckRunning()
+        {
+            if (rb.velocity.x > 0 && rb.velocity.x < 0)
+            {
+                Running = true;
+            }
+            else if(rb.velocity.x == 0)
+            {
+                Running = false;
+            }
+        }
         void Update()
         {
+            CheckRunning();
             GroundDetection();
             if (landed == true)
             {
+                Debug.Log("Landed");
+                animationHandler.Jumping = false;
                 audioSource.clip = landingSound;
                 audioSource.volume = 0.2f;
                 audioSource.Play();
-                landed = false;
                 player.falling = false;
+                if (Running == true)
+                {
+                    animationHandler.FallingRunning();            
+                }
+                else if (Running == false)
+                {
+                    animationHandler.FallingLanding();
+                }
+                landed = false;
             }
 
             if (rb.velocity.y < 0 && gameObject.layer == 12 && collidedPlatform != null)
@@ -133,12 +162,15 @@ namespace Player
             if (player.falling == true && landed == false && grounded == true)
             {
                 landed = true;
-            }
+            }           
         }
-
+       
+        
         private void OnCollisionEnter(Collision collision)
         {
             collidedPlatform = collision.gameObject;
         }
+
+       
     }
 }

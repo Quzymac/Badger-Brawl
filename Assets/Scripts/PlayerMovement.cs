@@ -16,7 +16,6 @@ namespace Player
 
         float speed;
         float moveForce = 50;
-
         JumpScript jumpScript;
 
         private void Start()
