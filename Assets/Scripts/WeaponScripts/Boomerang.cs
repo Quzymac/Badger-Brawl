@@ -7,8 +7,9 @@ namespace Player
     {
         public float Damage { get; } = 5f;
         public float ShotsPerSecond { get; } = 1f;
-        public float ProjectileSpeed { get; } = 25f;
-
+        public float ProjectileSpeed { get; } = 20f;
+        public float SeakingStrenght { get { return seakingStrenght; } }
+        [SerializeField] float seakingStrenght = 0.4f;
         float timer = 0f;
 
         [SerializeField] private AudioSource shotSound;
@@ -40,8 +41,9 @@ namespace Player
         {
             shotSound.Play();
             GameObject clone = Instantiate(boomer, firePoint.position, firePoint.rotation);
-            clone.GetComponent<BoomerangBullet>().Owner = gameObject;
-            clone.GetComponent<BoomerangBullet>().Parent = gameObject;
+
+            clone.GetComponent<Boomeranger>().Owner = gameObject;
+            clone.GetComponent<Boomeranger>().Parent = gameObject;
         }
     }
 }
