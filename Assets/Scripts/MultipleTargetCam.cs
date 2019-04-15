@@ -6,7 +6,6 @@ namespace Player
     [RequireComponent(typeof(Camera))]
     public class MultipleTargetCam : MonoBehaviour
     {
-        CAM_CamerMovement cameraMovement;
         GameManager gameManager;
 
         public List<Transform> targets;
@@ -85,7 +84,7 @@ namespace Player
         {
             if (targets.Count == 0)
             {
-                cameraMovement.UpdateCamPos();
+                UpdateCamPos();
             }
 
             if (targets.Count == 1)
