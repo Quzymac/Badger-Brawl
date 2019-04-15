@@ -29,7 +29,8 @@ namespace Player {
         float totalDistance;
         public float pctDamage;
         public float pctValue;
-
+        [SerializeField] int camRoundPosition = 0;
+        public int _camRoundPosition { get { return camRoundPosition; }}
         [SerializeField] ProgressBar progs;
         WinnerScript winnerScript;
 
@@ -109,10 +110,12 @@ namespace Player {
             
             if (winner == PlayerScript.PlayerTeam.badger)
             {
+                camRoundPosition--;
                 ChangeCameraPos(-cameraValue);
             }
             else if (winner == PlayerScript.PlayerTeam.human)
             {
+                camRoundPosition++;
                 ChangeCameraPos(cameraValue);
             }
 
@@ -189,6 +192,11 @@ namespace Player {
         public Vector3 GetTargetPosition()
         {
             return target.position;
+        }
+
+        public int GetCamCount()
+        {
+            return camRoundPosition;
         }
         //public void UpdateCamPos()
         //{
