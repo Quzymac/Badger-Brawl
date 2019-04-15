@@ -284,6 +284,56 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6826072846628686810, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826072846628686814, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826072846628686814, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_Name
+      value: CreditsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6996352144484969670, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.20000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 6959068132633088276, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1909639312}
+    - target: {fileID: 6959068132633088276, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: NextOne
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431966137691896273, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3205509319117037261, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.20000076
+      objectReference: {fileID: 0}
+    - target: {fileID: 208642168548459071, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1506849939}
+    - target: {fileID: 208642168548459071, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: BackToMain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c7dce4574dc3fc4b83971476ad1dc31, type: 3}
 --- !u!1 &383598264 stripped
@@ -664,6 +714,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1506849939 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 423727389099893399, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 383598261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd1cff1549b8ad4b9fe2e5399935786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1909639312 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2904215085650928088, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 383598261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 003182bd351c2484bb37cefc35bf4c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &92250356517482824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -671,11 +745,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 473457247}
     m_Modifications:
-    - target: {fileID: 92250356347589736, guid: 24f98aa0ed7dd9d41966cba8480a8282,
-        type: 3}
-      propertyPath: m_Name
-      value: UISounds
-      objectReference: {fileID: 0}
     - target: {fileID: 92250356347589737, guid: 24f98aa0ed7dd9d41966cba8480a8282,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -730,6 +799,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 92250356347589736, guid: 24f98aa0ed7dd9d41966cba8480a8282,
+        type: 3}
+      propertyPath: m_Name
+      value: UISounds
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f98aa0ed7dd9d41966cba8480a8282, type: 3}
