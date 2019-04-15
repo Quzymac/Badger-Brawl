@@ -6445,6 +6445,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214476625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1214476625, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1791099352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c41f78789dd224cbd05fa07dc1037e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1223866963
 GameObject:
   m_ObjectHideFlags: 0
@@ -10202,7 +10214,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soundManager
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1214476625}
     - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: removeTargets

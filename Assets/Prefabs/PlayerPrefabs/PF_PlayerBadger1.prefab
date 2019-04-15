@@ -592,6 +592,11 @@ MonoBehaviour:
   joystick: 0
   t: 0
   falling: 0
+  deathParticle:
+  - {fileID: 7670490129525665866, guid: 36fb5fc742bf2434594eb26443fd19c1, type: 3}
+  - {fileID: 4774358612833044476, guid: 30e3c867d745b994586a4b4365ca0d2f, type: 3}
+  - {fileID: 6981391071913534503, guid: 3b958e399a974b844b3183cd136976d4, type: 3}
+  - {fileID: 6897514049768183285, guid: 1f28a48ead89e244faab603a3da4cb1f, type: 3}
 --- !u!114 &5029545083805020651
 MonoBehaviour:
   m_ObjectHideFlags: 0

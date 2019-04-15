@@ -27,11 +27,10 @@ namespace Player
         public bool falling  = false;
         JumpScript jumpScript;
         AnimationHandler animationHandler;
-        Collider col;
+        [SerializeField] List<GameObject> deathParticle = new List<GameObject>();
 
         private void Start()
         {
-            col = GetComponent<Collider>();
             multipleTargetCam = FindObjectOfType<MultipleTargetCam>();
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
@@ -81,6 +80,7 @@ namespace Player
             gameObject.GetComponent<NewControllerInputs>().DropWeapon();
             gameManager.TeamIsDead((PlayerTeam)playerNumber);
             multipleTargetCam.targets.Remove(transform);
+            Instantiate(deathParticle[playerNumber - 1], transform.position, transform.rotation);
             Destroy(gameObject);
 
         }

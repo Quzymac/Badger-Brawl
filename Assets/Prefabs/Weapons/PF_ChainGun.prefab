@@ -210,19 +210,6 @@ Transform:
   m_Father: {fileID: 3692721280842994385}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7963308640608966524
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8437178642693982222}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.0148516, y: 1.0479126, z: 1.091833}
-  m_Center: {x: 0.00000017881396, y: 0, z: 0}
 --- !u!1001 &4023113454759351514
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -234,11 +221,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Chaingun
-      objectReference: {fileID: 0}
-    - target: {fileID: 4810434947859815636, guid: 26b93e43071764ac58ff5b5ebb9345c1,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 2457066856605051705, guid: 26b93e43071764ac58ff5b5ebb9345c1,
         type: 3}
@@ -295,24 +277,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2457066856605051705, guid: 26b93e43071764ac58ff5b5ebb9345c1,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 2457066856605051705, guid: 26b93e43071764ac58ff5b5ebb9345c1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0000002
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26b93e43071764ac58ff5b5ebb9345c1, type: 3}
---- !u!1 &8437178642693982222 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4810434947859815636, guid: 26b93e43071764ac58ff5b5ebb9345c1,
-    type: 3}
-  m_PrefabInstance: {fileID: 4023113454759351514}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1571115351634280419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2457066856605051705, guid: 26b93e43071764ac58ff5b5ebb9345c1,
