@@ -1,32 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 namespace Player
 {
     [RequireComponent(typeof(Camera))]
     public class MultipleTargetCam : MonoBehaviour
     {
-
         CAM_CamerMovement cameraMovement;
         GameManager gameManager;
 
         public List<Transform> targets;
 
+        [SerializeField] Vector3 minCameraPos;
+        [SerializeField] Vector3 maxCameraPos;
         public Vector3 offset;
         private Vector3 velocity;
 
-        public float smoothTime = 0.5f;
+        [SerializeField] float smoothTime = 1f;
         private float camSpeed = 5f;
-        public float minZoom = 40f;
-        public float maxZoom = 10f;
-        public float zoomLimiter = 40.75f;
+        [SerializeField] float minZoom = 60f;
+        [SerializeField] float maxZoom = 30f;
+        [SerializeField] float zoomLimiter = 20f;
 
         public bool cameraMoving = false;
-        //public bool bounds;
-        public Vector3 minCameraPos;
-        public Vector3 maxCameraPos;
 
         private Camera cam;
 
@@ -38,11 +34,12 @@ namespace Player
 
         private void LateUpdate()
         {
+            Vector3 pos = Camera.main.WorldToViewportPoint(transform.position);
+
             if (targets.Count == 0)
             {
                 return;
             }
-            //CameraLocked();
             Move();
             Zoom();
         }
@@ -56,39 +53,24 @@ namespace Player
             {
                 cameraMoving = false;
             }
-
         }
         void Move()
         {
-
             Vector3 centerPoint = GetCenterPoint();
-
             Vector3 newPosition = centerPoint + offset;
 
-            //CameraLocked(newPosition);
             transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
 
-            if (cam.fieldOfView <= 40)
-            {
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
-                   Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y),
-                   Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
-            }
-            if (cam.fieldOfView > 40)
-            {
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
-                   Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y),
-                   Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
-            }
+            int camClampOffset = gameManager._camRoundPosition;
 
-
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, ((60 - cam.fieldOfView) / -2.5f), ((60 - cam.fieldOfView) / +2.5f)),
+            Mathf.Clamp(transform.position.y, ((60 - cam.fieldOfView) / -5) + camClampOffset * 6, ((60 - cam.fieldOfView) / +5) + camClampOffset * 6),
+            Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
         }
-
         void Zoom()
         {
             float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
-            //GetGreatestDistance();
         }
         float GetGreatestDistance()
         {
@@ -117,7 +99,6 @@ namespace Player
                 bounds.Encapsulate(targets[i].position);
             }
             return bounds.center;
-
         }
         public void UpdateCamPos()
         {
@@ -126,15 +107,5 @@ namespace Player
             transform.position = smoothPos;
             cam.fieldOfView = 60f;
         }
-
-
-        //private void CameraLocked(Vector3 newPosition)
-        //{
-        //    transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
-        //        transform.position = new Vector3(Mathf.Clamp(transform.position.x, minCameraPos.x, maxCameraPos.x),
-        //            Mathf.Clamp(transform.position.y, minCameraPos.y, maxCameraPos.y),
-        //            Mathf.Clamp(transform.position.z, minCameraPos.z, maxCameraPos.z));
-
-        //}
     }
 }

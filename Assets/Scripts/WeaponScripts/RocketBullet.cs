@@ -28,6 +28,9 @@ namespace Player
 
             if (distTraveled > 20)
             {
+                GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<RocketLauncher>().Damage;
+
                 Destroy(gameObject);
             }
 

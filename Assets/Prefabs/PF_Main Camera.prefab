@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 4290861066268700751}
   - component: {fileID: 4290861066268700750}
   - component: {fileID: 4290861066268700749}
-  - component: {fileID: 4290861066268700736}
   - component: {fileID: 587052439}
   - component: {fileID: 587052442}
   m_Layer: 0
@@ -131,25 +130,6 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4290861066268700748}
   m_Enabled: 1
---- !u!114 &4290861066268700736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4290861066268700748}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ec7f55b22d25ec418733583a8723752, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  top: {fileID: 0}
-  bottom: {fileID: 0}
-  target: {fileID: 0}
-  camSpeed: 5
-  cameraMoving: 0
-  progs: {fileID: 0}
-  pctDamage: 50
 --- !u!114 &587052439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,14 +143,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
+  minCameraPos: {x: -11, y: -7, z: -30}
+  maxCameraPos: {x: 11, y: 7, z: -10}
   offset: {x: 0, y: 0, z: -20}
   smoothTime: 1
   minZoom: 60
   maxZoom: 30
   zoomLimiter: 20
   cameraMoving: 0
-  minCameraPos: {x: -11, y: -7, z: -30}
-  maxCameraPos: {x: 11, y: 7, z: -10}
 --- !u!114 &587052442
 MonoBehaviour:
   m_ObjectHideFlags: 0
