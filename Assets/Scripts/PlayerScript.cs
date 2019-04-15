@@ -27,9 +27,11 @@ namespace Player
         public bool falling  = false;
         JumpScript jumpScript;
         AnimationHandler animationHandler;
+        Collider col;
 
         private void Start()
         {
+            col = GetComponent<Collider>();
             multipleTargetCam = FindObjectOfType<MultipleTargetCam>();
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
@@ -93,13 +95,13 @@ namespace Player
                 }
                 falling = true;
             }
-            if (rb.velocity.y < 0 && falling == true)
-            {
-                if (jumpScript.Running == false)
-                {
-                    animationHandler.IdleFalling();
-                }            
-            }
+            //if (rb.velocity.y < 0 && falling == true)
+            //{
+            //    if (jumpScript.Running == false)
+            //    {
+            //        animationHandler.IdleFalling();
+            //    }            
+            //}
         }
 
         private void Update()

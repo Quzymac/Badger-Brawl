@@ -81,5 +81,11 @@ namespace Player
             anim.SetBool("Falling", false);
             anim.SetBool("Running", true);
         }
+
+        public void FallingIdle()
+        {
+            anim.SetBool("Falling", false);
+            anim.SetBool("Idle", true);
+        }
     }
 }

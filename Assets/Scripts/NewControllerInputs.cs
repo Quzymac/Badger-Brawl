@@ -237,11 +237,12 @@ namespace Player
             {
                 animationHandler.IdleBool = true;
                 animationHandler.RunningIdle();
+                Debug.Log("Runnning idle pls");
             }
-            else if (jumpScript.grounded == false && rb.velocity.y > 0 || jumpScript.grounded == false && rb.velocity.y < 0)
-            {
-                animationHandler.IdleBool = false;
-            }
+            //else if (jumpScript.grounded == false && rb.velocity.y > 0 || jumpScript.grounded == false && rb.velocity.y < 0)
+            //{
+            //    animationHandler.IdleBool = false;
+            //}
            
 
             //jump

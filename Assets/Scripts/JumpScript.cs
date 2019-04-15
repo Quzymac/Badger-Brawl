@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Player
 {
@@ -24,6 +26,7 @@ namespace Player
         [SerializeField] AudioSource audioSource;
         public bool landed = false;
         public bool Running { get; set; }
+        bool checkLanding = false;
 
         AnimationHandler animationHandler;
 
@@ -97,24 +100,26 @@ namespace Player
         {
             CheckRunning();
             GroundDetection();
-            if (landed == true)
-            {
-                Debug.Log("Landed");
-                animationHandler.Jumping = false;
-                audioSource.clip = landingSound;
-                audioSource.volume = 0.2f;
-                audioSource.Play();
-                player.falling = false;
-                if (Running == true)
-                {
-                    animationHandler.FallingRunning();            
-                }
-                else if (Running == false)
-                {
-                    animationHandler.FallingLanding();
-                }
-                landed = false;
-            }
+            CheckLanded();
+            //if (landed == true)
+            //{
+            //    Debug.Log("Landed");
+            //    animationHandler.Jumping = false;
+            //    audioSource.clip = landingSound;
+            //    audioSource.volume = 0.2f;
+            //    audioSource.Play();
+            //    player.falling = false;
+            //    if (Running == true)
+            //    {
+            //        animationHandler.FallingRunning();
+            //    }
+            //    else if (Running == false)
+            //    {
+            //        animationHandler.FallingLanding();
+            //        animationHandler.LandingIdle();
+            //    }
+            //    landed = false;
+            //}
 
             if (rb.velocity.y < 0 && gameObject.layer == 12 && collidedPlatform != null)
             {
@@ -171,6 +176,33 @@ namespace Player
             collidedPlatform = collision.gameObject;
         }
 
-       
+
+        public void CheckLanded()
+        {
+            if (landed == true)
+            {
+
+                Debug.Log("Landed");
+                animationHandler.Jumping = false;
+                audioSource.clip = landingSound;
+                audioSource.volume = 0.2f;
+                audioSource.Play();
+                player.falling = false;
+                if (Running == true)
+                {
+                    animationHandler.FallingRunning();
+                    landed = false;
+                    Debug.Log("Falling running");
+                }
+                else if (Running == false)
+                {
+                    animationHandler.FallingLanding();
+                    animationHandler.LandingIdle();
+                    landed = false;
+                    Debug.Log("Falling landing");
+                }
+            }
+        }
+
     }
 }
