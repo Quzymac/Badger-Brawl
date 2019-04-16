@@ -100,7 +100,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8188709470453412375}
-  - component: {fileID: 2993172801625954722}
   - component: {fileID: 3799965630784259870}
   - component: {fileID: 158755951206834896}
   - component: {fileID: 4711726255658089652}
@@ -126,24 +125,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2993172801625954722
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738569617030950674}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a6959d7d3ee83f4d9fa2ed4b6122946, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boomerangWeapon: {fileID: 8738569617030950674, guid: 9b3234d5162ed59499659247e8c2313d,
-    type: 3}
-  player: {fileID: 0}
-  boomerang: {fileID: 0}
-  itemToRotate: {fileID: 0}
-  lastWeaponPos: {x: 0, y: 0, z: 0}
 --- !u!65 &3799965630784259870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -185,5 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744c70be3a9752a478e1dd39bcedc9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boomerang: {fileID: 0}
   gameManager: {fileID: 0}
   owner: {fileID: 0}
+  itemToRotate: {fileID: 0}

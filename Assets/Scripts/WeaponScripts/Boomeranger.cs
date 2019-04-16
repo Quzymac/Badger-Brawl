@@ -11,7 +11,7 @@ namespace Player
         public GameObject Parent { get; set; }
         public float Damage { get; set; }
 
-        [SerializeField] GameObject boomerang;
+        [SerializeField] MeshRenderer boomerang;
         [SerializeField] GameManager gameManager;
         [SerializeField] GameObject owner;
         
@@ -30,9 +30,9 @@ namespace Player
             itemToRotate = gameObject.transform.GetChild(0);
             gameManager = FindObjectOfType<GameManager>();
             owner = Owner.GetComponent<IWeapon>().Owner;
-            boomerang = GameObject.Find("Boomeranger");
+            boomerang = Parent.GetComponent<Boomerang>().boomerangerMesh;
 
-            boomerang.GetComponent<MeshRenderer>().enabled = false;
+            boomerang.enabled = false;
             locationInFrontOfPlayer = new Vector3(owner.transform.position.x, owner.transform.position.y + 1, 0) + owner.transform.forward * 10f;
             startPos = transform.position;
             rb = GetComponent<Rigidbody>();
@@ -56,14 +56,14 @@ namespace Player
                 locationInFrontOfPlayer = Parent.transform.position;
                 if (transform.position == Parent.transform.position)
                 {
-                    boomerang.GetComponent<MeshRenderer>().enabled = true;
+                    boomerang.enabled = true;
                     Destroy(this.gameObject);
                 }
 
             }
             if (!go && Vector3.Distance(Parent.transform.position, transform.position) < 1.5f)
             {
-                boomerang.GetComponent<MeshRenderer>().enabled = true;
+                boomerang.enabled = true;
                 Destroy(this.gameObject);
             }
         }
@@ -84,7 +84,7 @@ namespace Player
                 }
 
                 owner.GetComponent<NewControllerInputs>().DropWeapon();
-                boomerang.GetComponent<MeshRenderer>().enabled = true;
+                boomerang.enabled = true;
                 Destroy(this.gameObject);
             }
         }
@@ -115,7 +115,7 @@ namespace Player
                 }
 
                 owner.GetComponent<NewControllerInputs>().DropWeapon();
-                boomerang.GetComponent<MeshRenderer>().enabled = true;
+                boomerang.enabled = true;
                 Destroy(this.gameObject);
             }
         }

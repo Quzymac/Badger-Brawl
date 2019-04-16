@@ -13,6 +13,7 @@ namespace Player
         float timer = 0f;
         [SerializeField] Transform leftHandPos;
         [SerializeField] Transform rightHandPos;
+        public MeshRenderer boomerangerMesh;
 
         public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }

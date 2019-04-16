@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &1014000249531827142
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326772766007584360}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6772265, y: 0.67769027, z: 0.1839326}
-  m_Center: {x: -0.5757545, y: 0.0017804652, z: 0.005600594}
 --- !u!1 &7557136681470447198
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,10 +108,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seakingStrenght: 0.4
+  leftHandPos: {fileID: 0}
+  rightHandPos: {fileID: 0}
+  boomerangerMesh: {fileID: 433209179127490401}
   shotSound: {fileID: 8829417947017883652, guid: c14376d7d61528849bb9ffb078e55f8e,
     type: 3}
   firePoint: {fileID: 2467013648387528566}
-  boomer: {fileID: 8738569617030950674, guid: 8e36196c87b79204ba80fa046d675ec8, type: 3}
+  boomer: {fileID: 4666175471752378852, guid: 0a3552b1fcf3d3547a348f6befbee186, type: 3}
 --- !u!82 &5563427448553272977
 AudioSource:
   m_ObjectHideFlags: 0
@@ -233,20 +223,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Boomerang
       objectReference: {fileID: 0}
-    - target: {fileID: 8593423934925760679, guid: b56a3b1bf756b4e778646ac7ec24940a,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.528
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
@@ -256,22 +241,22 @@ PrefabInstance:
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
@@ -291,19 +276,19 @@ PrefabInstance:
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56a3b1bf756b4e778646ac7ec24940a, type: 3}
---- !u!1 &1326772766007584360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8593423934925760679, guid: b56a3b1bf756b4e778646ac7ec24940a,
-    type: 3}
-  m_PrefabInstance: {fileID: 7289178547331894991}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6653662583427370668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7289178547331894991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &433209179127490401 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7145889006575200686, guid: b56a3b1bf756b4e778646ac7ec24940a,
     type: 3}
   m_PrefabInstance: {fileID: 7289178547331894991}
   m_PrefabAsset: {fileID: 0}
