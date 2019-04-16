@@ -18,8 +18,8 @@ public class OptionsScript : MonoBehaviour
 
     void Start ()
     {
-        am.SetFloat("BGmusic", PlayerPrefs.GetFloat("musicvolume")); 
-        am.SetFloat("Sfx", PlayerPrefs.GetFloat("sfxvolume"));
+        //am.SetFloat("BGmusic", PlayerPrefs.GetFloat("musicvolume")); 
+        //am.SetFloat("Sfx", PlayerPrefs.GetFloat("sfxvolume"));
         m.value = PlayerPrefs.GetFloat("musicvolume");
         s.value = PlayerPrefs.GetFloat("sfxvolume");
         Debug.Log("ljud");
