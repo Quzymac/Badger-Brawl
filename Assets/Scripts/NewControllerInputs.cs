@@ -43,11 +43,6 @@ namespace Player
         Vector2 aimInput;
         float rotationInputThreshold = 0.6f;
 
-        private void Awake()
-        {
-            SetJoystickNumber(1);//FORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTING
-
-        }
         void Start()
         {
             ikHandler = GetComponent<IKHandler>();
