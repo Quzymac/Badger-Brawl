@@ -8745,10 +8745,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1082835417, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1082835422, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8834,11 +8830,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3122479788569633300, guid: b640d038c3cbbd24680a47eb513d773f,
-        type: 3}
-      propertyPath: Audio
-      value: 
-      objectReference: {fileID: 490918844}
-    - target: {fileID: 4323999288315133221, guid: b640d038c3cbbd24680a47eb513d773f,
         type: 3}
       propertyPath: Audio
       value: 
