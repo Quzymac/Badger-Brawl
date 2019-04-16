@@ -23,17 +23,9 @@ namespace Player
         string bButton;
         string xButton;
         string shootButton;
-
         string aimHorizontal;
         string aimVertical;
-
-        float holdPosXRotationQuat;
-        float holdPosYRotationEuler;
-        float holdPosZRotationEuler;
         
-        Quaternion targetAngle = new Quaternion(1, 0, 0, 0); //right at start
-        float aimSpeed = 9f;
-    
         bool lookingRight = true;
 
         AnimationHandler animationHandler;
@@ -44,6 +36,13 @@ namespace Player
         int groundLayer;
 
         IKHandler ikHandler;
+
+        [SerializeField] Transform aimCenter;
+        [SerializeField] Transform aimTowards;
+
+        Vector2 aimInput;
+        float rotationInputThreshold = 0.6f;
+
         private void Awake()
         {
             SetJoystickNumber(1);//FORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTING
@@ -59,9 +58,6 @@ namespace Player
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             controllerMovement = GetComponent<ControllerMovement>();
-            holdPosXRotationQuat = holdPosition.localRotation.x;
-            holdPosYRotationEuler = holdPosition.localRotation.eulerAngles.y;
-            holdPosZRotationEuler = holdPosition.localRotation.eulerAngles.z;
         }
 
         void Update()
@@ -100,10 +96,7 @@ namespace Player
                 currentWeapon.transform.rotation = aimTowards.rotation;
 
                 currentWeapon.transform.parent = aimTowards;
-                //currentWeapon.transform.position = holdPosition.position;
-                //currentWeapon.transform.rotation = holdPosition.rotation;
-
-                //currentWeapon.transform.parent = holdPosition;
+                
                 currentWeapon.GetComponent<Collider>().enabled = false;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
@@ -146,17 +139,6 @@ namespace Player
                 canPickUp = null;
             }
         }
-        bool canJump = true; //testing
-
-        [SerializeField] Transform aimCenter;
-        [SerializeField] Transform aimTowards;
-        [SerializeField] Transform chest;
-
-        [SerializeField] Vector3 offset;
-
-        Vector2 aimInput;
-        Quaternion rotation;
-        float rotationInputThreshold = 0.6f;
         
         void PlayerControlls()
         {
@@ -172,7 +154,7 @@ namespace Player
                 lookingRight = true;
             }
 
-            //AIMING V.5
+            //AIMING
             aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
 
             if (aimInput.magnitude > 0.5f && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
@@ -186,82 +168,11 @@ namespace Player
                     aimCenter.rotation = Quaternion.Euler(transform.rotation.x, 180, aimInput.y * 89f);
                 }
             }
-        
-
-
-            ////Aiming V.4
-            //aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
-
-            //if (aimInput.magnitude > 0.5f && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
-            //{
-            //    if (lookingRight)
-            //    {
-            //        aimCenter.rotation = Quaternion.Euler(0, 0, aimInput.y * 89f);
-            //    }
-            //    else
-            //    {
-            //        aimCenter.rotation = Quaternion.Euler(0, 180, aimInput.y * 89f);
-            //    }
-            //}
-            //rotation = Quaternion.LookRotation(aimTowards.position - chest.position, Vector3.up);
-            //rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0); //reset z-rotation
-            //chest.rotation = rotation;
-            //chest.Rotate(new Vector3(0, 0, -90f));
-            //chest.rotation = chest.rotation * Quaternion.Euler(offset);
-
-
-            //// Aiming V.3
-            //aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
-
-            //if (aimInput.magnitude > rotationInputThreshold && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
-            //{
-            //    aimDir = holdPosition.position + new Vector3(aimInput.x, aimInput.y, 0).normalized; 
-            //    aimTowards.position = aimDir;
-            //    rotation = Quaternion.LookRotation(aimTowards.position - holdPosition.position, Vector3.up);
-            //    rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0); //reset z-rotation
-            //}
-            //holdPosition.rotation = Quaternion.Lerp(holdPosition.rotation, rotation, aimSpeed * Time.deltaTime); //lerp rotation
-            ////holdPosition.rotation = rotation; //instant rotation
-
-
-            ////aiming  V.1
-            //Vector3 aimDir;
-            //if (lookingRight)
-            //{
-            //    aimDir = Vector3.forward * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
-            //}
-            //else
-            //{
-            //    aimDir = Vector3.back * -Input.GetAxisRaw(aimHorizontal) + Vector3.up * -Input.GetAxisRaw(aimVertical);
-            //}
-            //if (aimDir.sqrMagnitude > 0.5f) //aim sensitivity when to apply rotation
-            //{
-            //    targetAngle = Quaternion.LookRotation(aimDir, Vector3.down);
-            //    targetAngle = Quaternion.Euler(targetAngle.eulerAngles.x, holdPosYRotationEuler, holdPosZRotationEuler); //aim staright, set y and z to start rotation
-            //}
-
-            ////Rotate Aim
-            //if (holdPosition.transform.localRotation != targetAngle)
-            //{
-            //    holdPosition.transform.localRotation = Quaternion.Lerp(holdPosition.transform.localRotation, targetAngle, Time.deltaTime * aimSpeed);
-            //}
-
-            //Aim V.  up and down
-            //if (aimDir.sqrMagnitude > 0.5f)
-            //{
-            //    holdPosition.Rotate(new Vector3(Input.GetAxis(aimVertical) * -5, 0, 0), Space.Self);
-            //    float aim = Input.GetAxis(aimVertical) * -90;
-
-
-            //    //float aim = Input.GetAxis(aimVertical) * -90;
-            //    //holdPosition.localRotation = Quaternion.Euler(new Vector3(holdPosXRotation + aim + 180f, holdPosition.localRotation.y, holdPosition.localRotation.z));
-            //}
-
 
             //calculate movement velocity
             controllerMovement.MoveDir = Input.GetAxisRaw(horizontalAxis);
 
-
+            //Animations
             if ((Input.GetAxisRaw(horizontalAxis) > 0 || Input.GetAxisRaw(horizontalAxis) < 0) && jumpScript.grounded == true && animationHandler.IdleBool == true)
             {
                 animationHandler.IdleBool = false;
@@ -294,21 +205,9 @@ namespace Player
                 jumpScript.Jump();
             }
 
-            //if (Input.GetAxis("j") > 0.8f && canJump)
-            //{
-            //    Debug.Log(JoystickNumber + " " + jumpScript.gameObject.name);
-            //    jumpScript.Jump();
-            //    canJump = false;
-            //}
-            //if (Input.GetAxis("j") < 0.8f && !canJump)
-            //{
-            //    canJump = true;
-            //}
-
             //drop
             if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
-
                 //animation för falla igenom
                 if (animationHandler.IdleBool == true)
                 {
@@ -349,7 +248,7 @@ namespace Player
             }
 
             //drop weapon
-            if (Input.GetButtonDown(bButton)) //testing, change button later
+            if (Input.GetButtonDown(bButton))
             {
                 DropWeapon();
             }
