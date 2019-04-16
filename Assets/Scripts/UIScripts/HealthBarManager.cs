@@ -7,7 +7,6 @@ namespace Player
     {
         public List<PlayerScript> Players = new List<PlayerScript>(); //spelarna som ska få rätt health bar
         public HealthBar[] healthBars = new HealthBar[4];
-
       
         public void NewRound()
         {
