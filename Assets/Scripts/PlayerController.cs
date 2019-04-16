@@ -4,17 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public interface IWeapon
-    {
-        float Damage { get; }
-        float ShotsPerSecond { get; }
-        float ProjectileSpeed { get; }
-
-        bool Firing { get; set; }
-
-        void Fire();
-        GameObject Owner { get; set; }
-    }
+    
 
     public class PlayerController : MonoBehaviour
     {

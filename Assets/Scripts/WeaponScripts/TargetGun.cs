@@ -17,7 +17,11 @@ namespace Player
 
         float timer = 0f;
         public bool Firing { get; set; } = false;
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
 
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject rocket;

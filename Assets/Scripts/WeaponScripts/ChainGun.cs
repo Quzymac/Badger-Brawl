@@ -20,7 +20,11 @@ namespace Player
         [SerializeField] float minShotsPerSeconds = 2f;
         float timer = 0f;
         float prevTimer = 0f;
-        
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
+
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
 
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject bullet;

@@ -43,8 +43,15 @@ namespace Player
         RaycastHit hit;
         int groundLayer;
 
+        IKHandler ikHandler;
+        private void Awake()
+        {
+            SetJoystickNumber(1);//FORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTINGFORTESTING
+
+        }
         void Start()
         {
+            ikHandler = GetComponent<IKHandler>();
             anim = GetComponent<Animator>();
             groundLayer = LayerMask.NameToLayer("PlatformJumpThrough");
             playerScript = GetComponent<PlayerScript>();
@@ -89,15 +96,21 @@ namespace Player
                 }
 
                 currentWeapon = canPickUp.gameObject;
-                currentWeapon.transform.position = holdPosition.position;
-                currentWeapon.transform.rotation = holdPosition.rotation;
+                currentWeapon.transform.position = aimTowards.position;
+                currentWeapon.transform.rotation = aimTowards.rotation;
 
-                currentWeapon.transform.parent = holdPosition;
+                currentWeapon.transform.parent = aimTowards;
+                //currentWeapon.transform.position = holdPosition.position;
+                //currentWeapon.transform.rotation = holdPosition.rotation;
+
+                //currentWeapon.transform.parent = holdPosition;
                 currentWeapon.GetComponent<Collider>().enabled = false;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 currentWeapon.GetComponent<IWeapon>().Owner = gameObject;
-               
+
+                ikHandler.RightHand = currentWeapon.GetComponent<IWeapon>().RightHand;
+                ikHandler.LeftHand = currentWeapon.GetComponent<IWeapon>().LeftHand;
             }
         }
         public void DropWeapon()
@@ -111,6 +124,9 @@ namespace Player
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 currentWeapon.transform.parent = null;
                 currentWeapon.GetComponent<IWeapon>().Owner = null;
+
+                ikHandler.RightHand = null;
+                ikHandler.LeftHand = null;
 
                 currentWeapon = null;
             }
@@ -135,12 +151,13 @@ namespace Player
         [SerializeField] Transform aimCenter;
         [SerializeField] Transform aimTowards;
         [SerializeField] Transform chest;
+
         [SerializeField] Vector3 offset;
 
         Vector2 aimInput;
         Quaternion rotation;
-        float rotationInputThreshold = 0.2f;
-
+        float rotationInputThreshold = 0.6f;
+        
         void PlayerControlls()
         {
             //Rotate to look left/ right
@@ -149,31 +166,48 @@ namespace Player
                 transform.Rotate(new Vector3(0, -180, 0));
                 lookingRight = false;
             }
-            if (!lookingRight && Input.GetAxis(aimHorizontal) > rotationInputThreshold)
+            else if (!lookingRight && Input.GetAxis(aimHorizontal) > rotationInputThreshold)
             {
                 transform.Rotate(new Vector3(0, 180, 0));
                 lookingRight = true;
             }
 
-            //Aiming V.4
+            //AIMING V.5
             aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
 
             if (aimInput.magnitude > 0.5f && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
             {
                 if (lookingRight)
                 {
-                    aimCenter.rotation = Quaternion.Euler(0, 0, aimInput.y * 89f);
+                    aimCenter.rotation = Quaternion.Euler(transform.rotation.x, 0, aimInput.y * 89f);
                 }
                 else
                 {
-                    aimCenter.rotation = Quaternion.Euler(0, 180, aimInput.y * 89f);
+                    aimCenter.rotation = Quaternion.Euler(transform.rotation.x, 180, aimInput.y * 89f);
                 }
             }
-            rotation = Quaternion.LookRotation(aimTowards.position - chest.position, Vector3.up);
-            rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0); //reset z-rotation
-            chest.rotation = rotation;
-            chest.Rotate(new Vector3(0, 0, -90f));
-            chest.rotation = chest.rotation * Quaternion.Euler(offset);
+        
+
+
+            ////Aiming V.4
+            //aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
+
+            //if (aimInput.magnitude > 0.5f && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
+            //{
+            //    if (lookingRight)
+            //    {
+            //        aimCenter.rotation = Quaternion.Euler(0, 0, aimInput.y * 89f);
+            //    }
+            //    else
+            //    {
+            //        aimCenter.rotation = Quaternion.Euler(0, 180, aimInput.y * 89f);
+            //    }
+            //}
+            //rotation = Quaternion.LookRotation(aimTowards.position - chest.position, Vector3.up);
+            //rotation.eulerAngles = new Vector3(rotation.eulerAngles.x, rotation.eulerAngles.y, 0); //reset z-rotation
+            //chest.rotation = rotation;
+            //chest.Rotate(new Vector3(0, 0, -90f));
+            //chest.rotation = chest.rotation * Quaternion.Euler(offset);
 
 
             //// Aiming V.3

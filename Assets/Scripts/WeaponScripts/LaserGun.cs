@@ -9,7 +9,11 @@ namespace Player
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
         public GameObject Parent { get; set; }
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
 
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
 
         float timer = 0f;
 

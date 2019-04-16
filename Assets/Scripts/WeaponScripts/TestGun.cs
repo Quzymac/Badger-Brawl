@@ -3,9 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Player
 {
+    public interface IWeapon
+    {
+        float Damage { get; }
+        float ShotsPerSecond { get; }
+        float ProjectileSpeed { get; }
+
+        bool Firing { get; set; }
+
+        void Fire();
+        GameObject Owner { get; set; }
+
+        Transform RightHand { get; set; }
+        Transform LeftHand { get; set; }
+    }
 
     public class TestGun : MonoBehaviour, IWeapon
-
     {
         public float Damage { get; } = 5f;
         public float ShotsPerSecond { get; } = 2f;
@@ -23,6 +36,14 @@ namespace Player
         [SerializeField] GameObject bullet;
 
         public GameObject Owner { get; set; }
+
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
+
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
+
+
 
         public void Start()
         {

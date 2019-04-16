@@ -12,7 +12,11 @@ namespace Player
 
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
 
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         [SerializeField] private AudioSource shotSound;
         [SerializeField] Transform firePoint;    
         [SerializeField] GameObject pellet;

@@ -11,7 +11,11 @@ namespace Player
         public float SeakingStrenght { get { return seakingStrenght; } }
         [SerializeField] float seakingStrenght = 0.4f;
         float timer = 0f;
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
 
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         [SerializeField] private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject boomer;

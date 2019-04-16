@@ -18,7 +18,11 @@ namespace Player
         [SerializeField] private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject rocket;
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
 
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         public GameObject Owner { get; set; }
 
         public void Start()

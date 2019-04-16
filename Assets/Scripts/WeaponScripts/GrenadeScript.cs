@@ -17,7 +17,11 @@ namespace Player
         float holdIncreaseThrow = 0f;
         float getHoldValue = 0f;
         float maxHoldThrow = 3f;
+        [SerializeField] Transform leftHandPos;
+        [SerializeField] Transform rightHandPos;
 
+        public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
+        public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         private AudioSource shotSound;
         Rigidbody rb;
         bool isThrown = false;
@@ -63,7 +67,10 @@ namespace Player
                 rb.constraints = RigidbodyConstraints.None;
                 rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 transform.parent = null;
-                GetComponent<IWeapon>().Owner = null;
+                Owner.GetComponent<IKHandler>().RightHand = null;
+                Owner.GetComponent<IKHandler>().LeftHand = null;
+                Owner = null;
+
                 Fire();
                 startExplosion = true;
             }
