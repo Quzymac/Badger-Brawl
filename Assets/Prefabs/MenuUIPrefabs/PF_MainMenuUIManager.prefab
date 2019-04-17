@@ -1221,7 +1221,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &567868121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4262,7 +4262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2057590558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4339,7 +4339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2094584503
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4693,11 +4693,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 3284058568985877479, guid: 510266f63da77e94d8573a7000f1b0a4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3284058568985877475, guid: 510266f63da77e94d8573a7000f1b0a4,
         type: 3}
@@ -5808,11 +5803,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSelectCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8766616372114778164, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8766616372114778160, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5923,6 +5913,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 86
       objectReference: {fileID: 0}
+    - target: {fileID: 8766616373059295961, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -39.99994
+      objectReference: {fileID: 0}
     - target: {fileID: 8766616372491234005, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5983,6 +5978,11 @@ PrefabInstance:
       propertyPath: selectTeam.Array.data[3]
       value: 
       objectReference: {fileID: 2094584502}
+    - target: {fileID: 8766616373866069637, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8766616373866069633, guid: 89ad18bdd195fa54eac61ddb462c6ecc,
         type: 3}
       propertyPath: character.Array.size
