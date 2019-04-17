@@ -1,5 +1,65 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &840341259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840341260}
+  m_Layer: 0
+  m_Name: RightHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840341260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840341259}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.033, y: 0.36, z: 0.846}
+  m_LocalScale: {x: 0.20000166, y: 0.2, z: 0.20000164}
+  m_Children: []
+  m_Father: {fileID: 4388685767232541809}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1305549023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305549024}
+  m_Layer: 0
+  m_Name: LeftHand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305549024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305549023}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.582, y: 0.334, z: 0.556}
+  m_LocalScale: {x: 0.20000166, y: 0.2, z: 0.20000164}
+  m_Children: []
+  m_Father: {fileID: 4388685767232541809}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4007379543500558244
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,6 +123,8 @@ Transform:
   m_Children:
   - {fileID: 889272909252401772}
   - {fileID: 5917344547601350658}
+  - {fileID: 840341260}
+  - {fileID: 1305549024}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -80,6 +142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 5917344547601350658}
   bullet: {fileID: 271554094, guid: e77949d143e6fc74e982a16136ca29b4, type: 3}
+  leftHandPos: {fileID: 1305549024}
+  rightHandPos: {fileID: 840341260}
 --- !u!65 &1382474895
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -91,8 +155,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 1.03, y: 0.76, z: 0.91}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!54 &42352435
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -217,7 +281,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0496557, y: 0.7916738, z: 0.20912686}
+  m_Size: {x: 0.9, y: 0.64, z: 0.20912686}
   m_Center: {x: 0.14573476, y: 0.09408283, z: -0.00094756857}
 --- !u!1001 &8305847473072046087
 PrefabInstance:
@@ -239,17 +303,17 @@ PrefabInstance:
     - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.145
+      value: -0.13
       objectReference: {fileID: 0}
     - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.251
+      value: -0.077
       objectReference: {fileID: 0}
     - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.065
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
         type: 3}
@@ -290,6 +354,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dec8a56e1dd924f5e8d0e80ce6f531f0, type: 3}
