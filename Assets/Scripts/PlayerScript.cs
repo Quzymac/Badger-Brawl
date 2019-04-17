@@ -41,8 +41,18 @@ namespace Player
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
+            if (Team == PlayerTeam.badger)
+            {
+                healthBar.badger.enabled = true;
+            }
+            if (Team == PlayerTeam.human)
+            {
+                healthBar.human.enabled = true;
+            }
+
             mat = PolySurface.GetComponent<Renderer>();
             mat.material = specificMaterial[playerNumber - 1];
+
         }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
