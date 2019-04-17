@@ -80,7 +80,7 @@ MonoBehaviour:
   shotSound: {fileID: 5595949130563578821, guid: df3062529cbc49341931a91e1d91f74f,
     type: 3}
   firePoint: {fileID: 252582502}
-  rocket: {fileID: 8354293733068291351, guid: a02d788b26b0fc949993ecc004574451, type: 3}
+  rocket: {fileID: 1124216278253915095, guid: fb0b3ae3c4f00b946bb61615cb05ff05, type: 3}
 --- !u!82 &227119451886228909
 AudioSource:
   m_ObjectHideFlags: 0
@@ -228,6 +228,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 252582506}
     m_Modifications:
+    - target: {fileID: 6860696434856750078, guid: d05a1967a43a041ff9d9f1546ab15430,
+        type: 3}
+      propertyPath: m_Name
+      value: PF_Rocketlauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860696434856750078, guid: d05a1967a43a041ff9d9f1546ab15430,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 815907445076209687, guid: d05a1967a43a041ff9d9f1546ab15430,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,16 +307,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6992031
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860696434856750078, guid: d05a1967a43a041ff9d9f1546ab15430,
-        type: 3}
-      propertyPath: m_Name
-      value: PF_Rocketlauncher
-      objectReference: {fileID: 0}
-    - target: {fileID: 6860696434856750078, guid: d05a1967a43a041ff9d9f1546ab15430,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d05a1967a43a041ff9d9f1546ab15430, type: 3}

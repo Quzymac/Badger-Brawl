@@ -28,6 +28,9 @@ namespace Player
         JumpScript jumpScript;
         AnimationHandler animationHandler;
         [SerializeField] List<GameObject> deathParticle = new List<GameObject>();
+        [SerializeField] List<Material> specificMaterial = new List<Material>();
+        [SerializeField] GameObject PolySurface;
+        Renderer mat;
 
         private void Start()
         {
@@ -38,7 +41,8 @@ namespace Player
             t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
-
+            mat = PolySurface.GetComponent<Renderer>();
+            mat.material = specificMaterial[playerNumber - 1];
         }
 
         public static GameObject CreatePlayer(int playerNum, int joystickNum, PlayerTeam playerTeam, GameObject playerPrefab, Vector3 position)
@@ -47,9 +51,8 @@ namespace Player
             PlayerScript playerScript = player.GetComponent<PlayerScript>();
             playerScript.playerNumber = playerNum;
             playerScript.joystick = joystickNum;
-            playerScript.Team = playerTeam;
+            playerScript.Team = playerTeam;            
             player.GetComponent<NewControllerInputs>().SetJoystickNumber(joystickNum);
-
             return player;
         }
 
@@ -57,7 +60,7 @@ namespace Player
         {
             GFX.GetComponent<Renderer>().material = redMaterial; //the material of the GFX will change to a red material
             yield return new WaitForSeconds(0.1f);  // a timer of 0,1 seconds will start before the next code start
-            GFX.GetComponent<Renderer>().material = defaultMaterial; //the material of the GFX will change to its original material
+            GFX.GetComponent<Renderer>().material = specificMaterial[playerNumber - 1]; //the material of the GFX will change to its original material
         }
 
         public void TakeDamage(float damage)
@@ -82,7 +85,7 @@ namespace Player
             multipleTargetCam.targets.Remove(transform);
             Instantiate(deathParticle[playerNumber - 1], transform.position, transform.rotation);
             Destroy(gameObject);
-
+            
         }
 
         public void CheckVelocity()

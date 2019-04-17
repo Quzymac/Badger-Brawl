@@ -597,6 +597,12 @@ MonoBehaviour:
   - {fileID: 4774358612833044476, guid: 30e3c867d745b994586a4b4365ca0d2f, type: 3}
   - {fileID: 6981391071913534503, guid: 3b958e399a974b844b3183cd136976d4, type: 3}
   - {fileID: 6897514049768183285, guid: 1f28a48ead89e244faab603a3da4cb1f, type: 3}
+  specificMaterial:
+  - {fileID: 2100000, guid: 304bf56ecabc69a4d9cffa947b0b5481, type: 2}
+  - {fileID: 2100000, guid: 52d757ebda0d2bb4b867039b29860b23, type: 2}
+  - {fileID: 2100000, guid: ded5794b1163b8746a6bcad06370e81d, type: 2}
+  - {fileID: 2100000, guid: b7bccab7466443740840b0dd2371fd87, type: 2}
+  PolySurface: {fileID: 8183490849061494696}
 --- !u!114 &5029545083805020651
 MonoBehaviour:
   m_ObjectHideFlags: 0

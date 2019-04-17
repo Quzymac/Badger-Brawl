@@ -39,6 +39,7 @@ namespace Player
 
         [SerializeField] Transform aimCenter;
         [SerializeField] Transform aimTowards;
+        public bool holding;
 
         Vector2 aimInput;
         float rotationInputThreshold = 0.6f;
@@ -99,6 +100,8 @@ namespace Player
 
                 ikHandler.RightHand = currentWeapon.GetComponent<IWeapon>().RightHand;
                 ikHandler.LeftHand = currentWeapon.GetComponent<IWeapon>().LeftHand;
+                holding = true;
+                animationHandler.PickUp();
             }
         }
         public void DropWeapon()
@@ -117,6 +120,7 @@ namespace Player
                 ikHandler.LeftHand = null;
 
                 currentWeapon = null;
+                holding = false;
             }
         }
 

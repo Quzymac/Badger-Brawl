@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   seakingStrenght: 0.4
   firePoint: {fileID: 1709704427}
-  rocket: {fileID: 8354293733068291351, guid: 82e80c6cca8b0e243b6e77348b25567e, type: 3}
+  rocket: {fileID: 309690025, guid: a41998940b1132f428a9179f7ce81418, type: 3}
 --- !u!82 &800166492341949087
 AudioSource:
   m_ObjectHideFlags: 0

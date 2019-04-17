@@ -8,12 +8,20 @@ namespace Player
     public class AnimationHandler : MonoBehaviour //behöver fler animationer, vapen pickup och så
     {
         Animator anim;
+        PlayerScript playerScript;
+        PlayerController playerController;
+        JumpScript jumpScript;
+        Rigidbody rb;
         public bool IdleBool { get; set; }
         public bool Jumping { get; set; }
 
         private void Start()
         {
             anim = GetComponent<Animator>();
+            playerScript = GetComponent<PlayerScript>();
+            playerController = GetComponent<PlayerController>();
+            jumpScript = GetComponent<JumpScript>();
+            rb = GetComponent<Rigidbody>();
         }
 
         public void IdleJump() //Animation från idle till jump
@@ -86,6 +94,127 @@ namespace Player
         {
             anim.SetBool("Falling", false);
             anim.SetBool("Idle", true);
+        }
+
+
+
+        //Animationer för att hålla i vapen börjar här. 1H = 1 hand. 2H = 2 händer.
+
+        //Pickup
+        public void PickupIdleHold()
+        {
+            anim.SetBool("Idle", false);
+            anim.SetBool("IdleHold", true);
+        }
+
+        public void IdleDrop()
+        {
+            anim.SetBool("IdleHold", false);
+            anim.SetBool("Idle", true);
+        }
+
+        //Idle
+        public void IdleHoldRun()
+        {
+            anim.SetBool("RunningHold", false);
+            anim.SetBool("IdleHold", true);
+        }
+
+        //RunningPickup
+        public void PickupRunningHold()
+        {
+            anim.SetBool("Running", false);
+            anim.SetBool("RunningHold", true);
+        }
+
+        public void RunningDrop()
+        {
+            anim.SetBool("RunningHold", false);
+            anim.SetBool("Running", true);
+        }
+
+        //Running
+        public void RunningHold()
+        {
+            anim.SetBool("idleHold", false);
+            anim.SetBool("RunningHold", true);
+        }
+
+        //Jumping
+        public void JumpingHoldIdle()
+        {
+            anim.SetBool("IdleHold", false);
+            anim.SetBool("jumpingHold", true);
+        }
+
+        public void JumpingHoldRunning()
+        {
+            anim.SetBool("RunningHold", false);
+            anim.SetBool("JumpingHold", true);
+        }
+
+
+        //public void JumpingDrop()
+        //{
+        //    anim.SetBool("JumpingHold", false);
+        //    anim.SetBool("Jumping", true);
+        //}
+
+        //Falling
+        public void FallingHold()
+        {
+            anim.SetBool("JumpingHold", false);
+            anim.SetBool("FallingHold", true);
+        }
+
+        public void FallingDrop()
+        {
+            anim.SetBool("FallingHold", false);
+            anim.SetBool("Falling", true);
+        }
+
+        //Landing
+        public void LandingFallingHold()
+        {
+            anim.SetBool("FallingHold", false);
+            anim.SetBool("LandingHold", true);
+        }
+
+        public void LandingRunningHold()
+        {
+            anim.SetBool("FallingHold", false);
+            anim.SetBool("RunningHold", true);
+        }
+
+        public void LandingIdleHold()
+        {
+            anim.SetBool("LandingHold", false);
+            anim.SetBool("IdleHold", true);
+        }
+
+        //Metoder för att kolla vilken animation den ska spela
+        public void PickUp() // kolla om spelaren rör på sig eller står stilla när denna plockar upp vapen
+        {
+            if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1 || IdleBool == false)
+            {
+                PickupRunningHold();
+            }
+            else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
+            {
+                PickupIdleHold();
+            }
+        }
+
+        public void DropWeapon() //kolla om man rör på sig ellelr står stilla för att
+        {
+            if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1 || IdleBool == false)
+            {
+                RunningDrop();
+            }
+            else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
+            {
+                IdleDrop();
+            }
         }
     }
 }
