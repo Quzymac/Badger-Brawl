@@ -190,7 +190,7 @@ MonoBehaviour:
     m_NormalTrigger: NormalB
     m_HighlightedTrigger: HighlightedB
     m_PressedTrigger: PressedB
-    m_DisabledTrigger: Disabled
+    m_DisabledTrigger: DisabledB
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3075873484195841933}
   m_OnClick:
@@ -336,10 +336,10 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
+    m_NormalTrigger: NormalB
+    m_HighlightedTrigger: HighlightedB
+    m_PressedTrigger: PressedB
+    m_DisabledTrigger: DisabledB
   m_Interactable: 1
   m_TargetGraphic: {fileID: 3075873484443960292}
   m_OnClick:
@@ -556,12 +556,12 @@ GameObject:
   - component: {fileID: 3075873485705796434}
   - component: {fileID: 3075873485705796437}
   m_Layer: 5
-  m_Name: QuitCanvas
+  m_Name: PF_QuitCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3075873485705796463
 RectTransform:
   m_ObjectHideFlags: 0

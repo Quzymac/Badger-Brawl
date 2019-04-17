@@ -10,7 +10,10 @@ public class SelectTeamAndCharacter : MonoBehaviour
     public int PlayerNum { get; set; } = 0;
     int team = 1;
     int characterNumber = 0;
-
+    [SerializeField] Sprite humanImage;
+    [SerializeField] Sprite humanImage1;
+    [SerializeField] Sprite badgerImage;
+    [SerializeField] Sprite badgerImage1;
     public bool CurrentlySelecting { get; set; } = false;
     bool selectingTeam = true;
     bool selectingCharacter = false;
@@ -20,10 +23,11 @@ public class SelectTeamAndCharacter : MonoBehaviour
     [SerializeField] Text readyText;
     [SerializeField] GameObject teams;
     [SerializeField] GameObject characters;
-    [SerializeField] Button human;
-    [SerializeField] Button badger;
+    [SerializeField] Image human;
+    [SerializeField] Image badger;
 
-    [SerializeField] Button[] character = new Button[4];
+    [SerializeField] Image[] character = new Image[2];
+    [SerializeField] Image[] highlight = new Image[2];
 
     Color buttonDefaultColor = Color.white;
     [SerializeField] Color buttonColor;
@@ -33,7 +37,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
     private void Start()
     {
         SetButtonColor(human, buttonColor);
-        SetButtonColor(character[0], buttonColor);
+        SetButtonColor(highlight[0], buttonColor);
 
         int c = 0;
         string[] joy = Input.GetJoystickNames();
@@ -44,11 +48,11 @@ public class SelectTeamAndCharacter : MonoBehaviour
         }
     }
 
-    void SetButtonColor(Button button, Color color)
+    void SetButtonColor(Image button, Color col)
     {
-        ColorBlock c = button.colors;
-        c.normalColor = color;
-        button.colors = c;
+        button.color = col;
+        //c.normalColor = color;
+        //c= ;
     }
 
     // Update is called once per frame
@@ -96,6 +100,10 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     SetButtonColor(human, buttonColor);
 
                     team = 1;
+                    character[0].sprite = humanImage;
+                    character[1].sprite = humanImage1;
+
+                    //character[1].image.sprite = humanImage1;
                     timer = Time.time;
                 }
                 //move down
@@ -105,6 +113,8 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     SetButtonColor(badger, buttonColor);
 
                     team = 2;
+                    character[0].sprite = badgerImage;
+                    character[1].sprite = badgerImage1;
                     timer = Time.time;
                 }
                 if (Input.GetButtonDown("JumpController" + Controller.ToString()))
@@ -132,7 +142,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 {
                     if (characterNumber >= 0)
                     {
-                        SetButtonColor(character[characterNumber], buttonDefaultColor);
+                        SetButtonColor(highlight[characterNumber], buttonDefaultColor);
                     }
 
                     characterNumber--;
@@ -140,7 +150,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     {
                         characterNumber = 0;
                     }
-                    SetButtonColor(character[characterNumber], buttonColor);
+                    SetButtonColor(highlight[characterNumber], buttonColor);
 
                     timer = Time.time;
 
@@ -150,14 +160,14 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 {
                     if (characterNumber >= 0)
                     {
-                        SetButtonColor(character[characterNumber], buttonDefaultColor);
+                        SetButtonColor(highlight[characterNumber], buttonDefaultColor);
                     }
                     characterNumber++;
-                    if (characterNumber >= 3)
+                    if (characterNumber >= 1)
                     {
-                        characterNumber = 3;
+                        characterNumber = 1;
                     }
-                    SetButtonColor(character[characterNumber], buttonColor);
+                    SetButtonColor(highlight[characterNumber], buttonColor);
 
                     timer = Time.time;
 
