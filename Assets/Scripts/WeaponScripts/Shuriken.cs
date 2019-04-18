@@ -18,17 +18,19 @@ namespace Player
 
         float timer = 0f;
 
-        [SerializeField] private GameObject shotSound;
+        private AudioSource shotSound;
         [SerializeField] Transform firePoint;
 
         [SerializeField] GameObject shurikenBull;
+        
 
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
         // Start is called before the first frame update
         void Start()
         {
-
+            shotSound = GetComponent<AudioSource>();
+            shotSound.Stop();
         }
 
         // Update is called once per frame
@@ -46,12 +48,14 @@ namespace Player
         }
         public void Fire()
         {
+            shotSound.Play();
             if(currentShotFrame == 0)
             {
 
             }
             GameObject newBullet = Instantiate(shurikenBull, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<ShurikenBullet>().Parent = gameObject;
+            
         }
     }
 }
