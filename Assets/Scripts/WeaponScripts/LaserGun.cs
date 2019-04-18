@@ -34,6 +34,7 @@ namespace Player
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
+            audioSource.Stop();
         }
 
 

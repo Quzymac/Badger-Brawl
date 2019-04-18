@@ -29,10 +29,13 @@ namespace Player
         [SerializeField] GameObject Explosion;
         float blowUpTimer = 5f;
 
+        
 
         void Start()
         {
-            rb = GetComponent<Rigidbody>();          
+            rb = GetComponent<Rigidbody>();
+            shotSound = GetComponent<AudioSource>();
+            shotSound.Stop();
         }
 
         void Update()
@@ -92,8 +95,12 @@ namespace Player
 
         public void Fire()
         {
+            shotSound.Play();
+
             blowUpTimer = 5f;
             rb.AddForce(transform.forward * (ProjectileSpeed * (getHoldValue * 20)) + new Vector3(0, getHoldValue * 100, 0));
+
+            
         }
 
         private void OnTriggerEnter(Collider other)
