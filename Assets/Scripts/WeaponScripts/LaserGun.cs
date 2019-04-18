@@ -21,9 +21,11 @@ namespace Player
         float getChargeValue = 0f;
         float maxCharge = 2f;
 
-        [SerializeField] private AudioSource shotSound;
+        private AudioSource audioSource;
         [SerializeField] Transform firePoint;
-        [SerializeField] GameObject shurikenBull;
+        [SerializeField] ParticleSystem beam;
+        [SerializeField] ParticleSystem beamStart;
+
 
 
         public bool Firing { get; set; } = false;
@@ -31,7 +33,7 @@ namespace Player
 
         void Start()
         {
-            shotSound = GetComponent<AudioSource>();
+            audioSource = GetComponent<AudioSource>();
         }
 
 
@@ -39,26 +41,14 @@ namespace Player
         {
             if (Firing == true)
             {
+                if(!beamStart.isPlaying)
+                {
+                    beamStart.Play();
+;               }
                 holdCharge += Time.deltaTime;
                 if (holdCharge >= maxCharge)
                 {
-                    RaycastHit hit;
-                    Vector3 aim = firePoint.transform.TransformDirection(Vector3.forward) * 10;
-                    Debug.DrawRay(firePoint.transform.position, aim, Color.green);
-                    shotSound.Play();
-                    holdCharge = 0;
-                    if (Physics.Raycast(firePoint.transform.position, aim, out hit, 10))
-                    {
-                        if (hit.collider.gameObject.tag == "Player")
-                        {
-                            PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
-
-                                Debug.Log("player hit");
-                                playerHit.TakeDamage(Damage);
-                            
-                            
-                        }
-                    }
+                    Fire();
                 }
             }
             else if (Firing == false && holdCharge > 1)
@@ -71,10 +61,30 @@ namespace Player
                 getChargeValue = holdCharge;
 
             }
+            if (!Firing && beamStart.isPlaying)
+            {
+                beamStart.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            }
         }
         public void Fire()
         {
+            beam.Play();
 
+            RaycastHit hit;
+            Vector3 aim = firePoint.transform.TransformDirection(Vector3.forward) * 10;
+            Debug.DrawRay(firePoint.transform.position, aim, Color.green);
+            audioSource.Play();
+            holdCharge = 0;
+            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 10))
+            {
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
+
+                    Debug.Log("player hit");
+                    playerHit.TakeDamage(Damage);
+                }
+            }
         }
     }
 }
