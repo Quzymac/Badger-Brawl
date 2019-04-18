@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 116}
+  m_AnchoredPosition: {x: 0, y: 121.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4873474408589701382
@@ -68,7 +68,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dc0014351ec8e54e98957fa47865720, type: 3}
-    m_FontSize: 13
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2024,7 +2024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000076293945, y: -84}
+  m_AnchoredPosition: {x: -0.0000076293945, y: -25}
   m_SizeDelta: {x: 512, y: 151.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &864626855467543156
@@ -2057,7 +2057,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dc0014351ec8e54e98957fa47865720, type: 3}
-    m_FontSize: 13
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2068,8 +2068,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Weapon SFX\r\nImphenzia - Universal sound FX (Unity asset store, 2018)\r\n\r\nCharacter
-    SFX\r\n"
+  m_Text: "Weapon SFX\r:\nImphenzia - Universal sound FX (Unity asset store, 2018)\nKodack
+    - Unrelenting Shotgun\r\nMarregheriti - shotgun.wav\r\nLeMudCrab - AK47 Shot\r\nnengisuls
+    - musslie 1.wav\r\nmorganpurkis - CAS Missile Launching.wav\r\nsunnyflower - Laser
+    Gun.wav\r\nxxchr0nosxx - Swing.MP3\n\r\nCharacter SFX\r:\n"
 --- !u!1 &5408934162418309788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,8 +2645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -135.7}
-  m_SizeDelta: {x: 512, y: 244.4}
+  m_AnchoredPosition: {x: 0, y: -139.14}
+  m_SizeDelta: {x: 512, y: 251.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &477197918693793901
 CanvasRenderer:
@@ -2676,10 +2678,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dc0014351ec8e54e98957fa47865720, type: 3}
-    m_FontSize: 13
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -2687,14 +2689,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Skybox\r\nFREE Skybox - Cubemap Extended (BOXOPHOBIC, 2018). \r\n\r\nTextures\r\nNew
-    Italian Ceramic Rooftiles (textures.com)\r\n3D Scanned Asphalt (textures.com)\r\nGrass0053
-    (textures.com]\r\n3D Scanned Wood Planks (textures.com)\r\nGrass Stylized (Ralle,
-    substance share)\r\nCartoony Building Facade (with Poster) (Jadothar, substance
-    share) \r\nCorrugated Plates Bare - PBR0139 (textures.com)\r\nCracked Ground (Game
-    Textures, substance share)\r\nMolten red hot steel (textures.com)\r\nFantasy Ground
-    (Game Textures, substance share)\r\nWorn Wooden Planks (Game textures, substance
-    share)\r\nFonts\r\n"
+  m_Text: "Skybox\r\nFREE Skybox - Cubemap Extended (BOXOPHOBIC, 2018). \r\n\r\nTextures\r\n3D
+    Scanned Asphalt (textures.com)\r\nGrass0053 (textures.com]\r\n3D Scanned Wood
+    Planks (textures.com)\r\nGrass Stylized (Ralle, substance share)\r\nCartoony Building
+    Facade (with Poster) (Jadothar, substance share) \r\nCorrugated Plates Bare -
+    PBR0139 (textures.com)\r\nCracked Ground (Game Textures, substance share)\r\nMolten
+    red hot steel (textures.com)\r\nFantasy Ground (Game Textures, substance share)\r\nWorn
+    Wooden Planks (Game textures, substance share)\r\nmordor_rock (bewarethemidgets,
+    substance share)\r\n\nFonts:\nRay Latabie - Hurry Up Regular\r\nRay Latabie -
+    Beveuse Regular\r\nJoe Lucio - SP Caffeine Regular Regular\n"
 --- !u!1 &6654994137188707807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,8 +2732,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 81}
-  m_SizeDelta: {x: 512, y: 99.4}
+  m_AnchoredPosition: {x: 0, y: 91.7}
+  m_SizeDelta: {x: 512, y: 78.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2331614418715656564
 CanvasRenderer:
@@ -2762,10 +2765,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dc0014351ec8e54e98957fa47865720, type: 3}
-    m_FontSize: 13
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 7
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -2773,9 +2776,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Game Music\nFrankum - Vintage elecro pop loop \r\nFrankum - Invisible world
-    base track electro pop\r\n\r\nMenu Music\r\nJohn Leonard French - ultimate game
-    music collection (Unity asset store, 2018)"
+  m_Text: "Game Music:\nFrankum - Vintage elecro pop loop \r\nFrankum - Invisible
+    world base track electro pop\r\n\r\nMenu Music\r:\nJohn Leonard French - ultimate
+    game music collection (Unity asset store, 2018)"
 --- !u!1 &7307027451113671176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,7 +2927,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3dc0014351ec8e54e98957fa47865720, type: 3}
-    m_FontSize: 18
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2935,9 +2938,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '
-
-'
+  m_Text: "Shader\r:\nOutline Regular - http://wiki.unity3d.com/index.php/Outlined_Diffuse_3
+    (Luke Kabat)\n"
 --- !u!1 &7631801616556457606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2973,7 +2975,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 112.3}
+  m_AnchoredPosition: {x: 0, y: 122}
   m_SizeDelta: {x: 512, y: 27.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6156740841802598987
