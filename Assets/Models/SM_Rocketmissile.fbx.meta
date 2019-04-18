@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 2e5cc122536c346b18453454ae393834
+guid: f2bb7d8e20f484556b49f42a2464f49f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
+    2100000: lambert2
     2300000: //RootNode
     3300000: //RootNode
     4300000: Rocketmissile
