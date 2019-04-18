@@ -102,11 +102,8 @@ namespace Player
         {
             if (rb.velocity.y < 0 && falling == false && jumpScript.grounded == false)
             {
-                if (jumpScript.Running == true)
-                {
-                    animationHandler.RunningFalling(); //animation från spring til falla
-                }
                 falling = true;
+                animationHandler.JumpingToFalling();
             }
             //if (rb.velocity.y < 0 && falling == true)
             //{

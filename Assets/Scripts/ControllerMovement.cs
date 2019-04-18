@@ -54,11 +54,17 @@ namespace Player {
             if (MoveDir * rb.velocity.x < speed)
             {
                 rb.AddForce(Vector2.right * MoveDir * moveForce);
-                jumpScript.Running = true;
+
             }
-            else if (MoveDir == 0)
+            if (MoveDir > 0.1 || MoveDir < -0.1)
+            {
+                jumpScript.Running = true;
+                animationHandler.IdleToRun();
+            }
+            else if (MoveDir < 0.1 || MoveDir > -0.1)
             {
                 jumpScript.Running = false;
+                animationHandler.RunToIdle();
             }
             if (Mathf.Abs(rb.velocity.x) > speed)
             {

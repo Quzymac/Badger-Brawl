@@ -39,7 +39,6 @@ namespace Player
 
         [SerializeField] Transform aimCenter;
         [SerializeField] Transform aimTowards;
-        public bool holding;
 
         Vector2 aimInput;
         float rotationInputThreshold = 0.6f;
@@ -86,7 +85,7 @@ namespace Player
                 {
                     DropWeapon();
                 }
-
+                
                 currentWeapon = canPickUp.gameObject;
                 currentWeapon.transform.position = aimTowards.position;
                 currentWeapon.transform.rotation = aimTowards.rotation;
@@ -100,7 +99,6 @@ namespace Player
 
                 ikHandler.RightHand = currentWeapon.GetComponent<IWeapon>().RightHand;
                 ikHandler.LeftHand = currentWeapon.GetComponent<IWeapon>().LeftHand;
-                holding = true;
                 animationHandler.PickUp();
             }
         }
@@ -108,6 +106,7 @@ namespace Player
         {
             if (currentWeapon != null)
             {
+ 
                 currentWeapon.GetComponent<Collider>().enabled = true;
                 currentWeapon.GetComponent<Rigidbody>().useGravity = true;
                
@@ -120,7 +119,7 @@ namespace Player
                 ikHandler.LeftHand = null;
 
                 currentWeapon = null;
-                holding = false;
+                animationHandler.DropWeapon();
             }
         }
 
@@ -172,34 +171,31 @@ namespace Player
             controllerMovement.MoveDir = Input.GetAxisRaw(horizontalAxis);
 
             //Animations
-            if ((Input.GetAxisRaw(horizontalAxis) > 0 || Input.GetAxisRaw(horizontalAxis) < 0) && jumpScript.grounded == true && animationHandler.IdleBool == true)
-            {
-                animationHandler.IdleBool = false;
-                animationHandler.IdleRun();
-            }
-            else if(Input.GetAxisRaw(horizontalAxis) == 0 && jumpScript.grounded == true && animationHandler.IdleBool == false)
-            {
-                animationHandler.IdleBool = true;
-                animationHandler.RunningIdle();
-                Debug.Log("Runnning idle pls");
-            }
+            //if ((Input.GetAxisRaw(horizontalAxis) > 0 || Input.GetAxisRaw(horizontalAxis) < 0) && jumpScript.grounded == true)
+            //{
+            //    animationHandler.IdleToRun();
+            //}
+            //else if (Input.GetAxisRaw(horizontalAxis) == 0 && jumpScript.grounded == true)
+            //{
+            //    animationHandler.RunToIdle();
+            //}
+
             //else if (jumpScript.grounded == false && rb.velocity.y > 0 || jumpScript.grounded == false && rb.velocity.y < 0)
             //{
             //    animationHandler.IdleBool = false;
             //}
-           
+
 
             //jump
             if (Input.GetButtonDown(aButton))
             {
-
-                if (animationHandler.IdleBool == true)
+                if (jumpScript.Running == false)
                 {
-                    animationHandler.IdleJump();
+                    animationHandler.IdleToJump();
                 }
-                else if (animationHandler.IdleBool == false)
+                else if (jumpScript.Running == true)
                 {
-                    animationHandler.RunningJumping();
+                    animationHandler.RunToJump();
                 }
                 jumpScript.Jump();
             }
@@ -208,23 +204,23 @@ namespace Player
             if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
                 //animation för falla igenom
-                if (animationHandler.IdleBool == true)
+                if (jumpScript.Running == false)
                 {
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
                     {
                         if (hit.transform.gameObject.layer == groundLayer)
                         {
-                            animationHandler.IdleFalling();
+                            animationHandler.IdleToFall();
                         }
                     }
                 }
-                else if (animationHandler.IdleBool == false)
+                else if (jumpScript.Running == true)
                 {
                     if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
                     {
                         if (hit.transform.gameObject.layer == groundLayer)
                         {
-                            animationHandler.RunningFalling();
+                            animationHandler.RunningToFall();
                         }
                     }
                 }

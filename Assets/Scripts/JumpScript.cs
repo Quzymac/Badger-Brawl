@@ -87,11 +87,11 @@ namespace Player
 
         void CheckRunning()
         {
-            if (rb.velocity.x > 0 && rb.velocity.x < 0)
+            if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1)
             {
                 Running = true;
             }
-            else if(rb.velocity.x == 0)
+            else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
             {
                 Running = false;
             }
@@ -101,25 +101,19 @@ namespace Player
             CheckRunning();
             GroundDetection();
             CheckLanded();
-            //if (landed == true)
-            //{
-            //    Debug.Log("Landed");
-            //    animationHandler.Jumping = false;
-            //    audioSource.clip = landingSound;
-            //    audioSource.volume = 0.2f;
-            //    audioSource.Play();
-            //    player.falling = false;
-            //    if (Running == true)
-            //    {
-            //        animationHandler.FallingRunning();
-            //    }
-            //    else if (Running == false)
-            //    {
-            //        animationHandler.FallingLanding();
-            //        animationHandler.LandingIdle();
-            //    }
-            //    landed = false;
-            //}
+            if (checkLanding == true)
+            {
+                if (Running == true)
+                {
+                    animationHandler.LandingToRunning();
+                    checkLanding = false;
+                }
+                else if (Running == false)
+                {
+                    animationHandler.LandingToIdle();
+                    checkLanding = false;
+                }
+            }
 
             if (rb.velocity.y < 0 && gameObject.layer == 12 && collidedPlatform != null)
             {
@@ -164,10 +158,14 @@ namespace Player
                 grounded = false;
             }
 
-            if (player.falling == true && landed == false && grounded == true)
+            if (player.falling == true && landed == false && grounded == true && animationHandler.Jumping == true)
             {
                 landed = true;
-            }           
+            }
+            //else if (landed == true && grounded == true && player.falling == false && animationHandler.Jumping == false)
+            //{
+            //    landed = false;
+            //}
         }
        
         
@@ -177,30 +175,26 @@ namespace Player
         }
 
 
-        public void CheckLanded()
+        public void CheckLanded() //HÄR LIGGER EN DEL AV PROBLEMT MED ANIMATIONER TYP (SPECIFIKT LANDING)
         {
             if (landed == true)
             {
-
-                Debug.Log("Landed");
-                animationHandler.Jumping = false;
                 audioSource.clip = landingSound;
                 audioSource.volume = 0.2f;
                 audioSource.Play();
                 player.falling = false;
-                if (Running == true)
-                {
-                    animationHandler.FallingRunning();
-                    landed = false;
-                    Debug.Log("Falling running");
-                }
-                else if (Running == false)
-                {
-                    animationHandler.FallingLanding();
-                    animationHandler.LandingIdle();
-                    landed = false;
-                    Debug.Log("Falling landing");
-                }
+                animationHandler.Jumping = false;
+                animationHandler.FallingToLanding();
+                //if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1)
+                //{
+                //    animationHandler.LandingToRunning();
+                //}
+                //else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
+                //{
+                //    animationHandler.LandingToIdle();
+                //}
+                landed = false;
+                checkLanding = true;
             }
         }
 

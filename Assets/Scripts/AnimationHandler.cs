@@ -9,7 +9,7 @@ namespace Player
     {
         Animator anim;
         PlayerScript playerScript;
-        PlayerController playerController;
+        NewControllerInputs newControllerInputs;
         JumpScript jumpScript;
         Rigidbody rb;
         public bool IdleBool { get; set; }
@@ -19,7 +19,7 @@ namespace Player
         {
             anim = GetComponent<Animator>();
             playerScript = GetComponent<PlayerScript>();
-            playerController = GetComponent<PlayerController>();
+            newControllerInputs = GetComponent<NewControllerInputs>();
             jumpScript = GetComponent<JumpScript>();
             rb = GetComponent<Rigidbody>();
         }
@@ -56,20 +56,23 @@ namespace Player
 
         public void JumpingFalling() //animation från jumping till falling
         {
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Falling", true);
+            //anim.SetBool("Jumping", false);
+            //anim.SetBool("Falling", true);
+            anim.SetTrigger("JumpingFallingTrigger");
         }
 
         public void FallingLanding() //animation från falling till landing
         {
-            anim.SetBool("Falling", false);
-            anim.SetBool("Landing", true);
+            //anim.SetBool("Falling", false);
+            //anim.SetBool("Landing", true);
+            anim.SetTrigger("LandingTrigger");
         }
 
         public void LandingIdle() //animation från landing till idle
         {
-            anim.SetBool("Landing", false);
-            anim.SetBool("Idle", true);
+            //anim.SetBool("Landing", false);
+            //anim.SetBool("Idle", true);
+            anim.SetTrigger("LandingIdleTrigger");
         }
 
         public void RunningFalling() //animation från running till falling
@@ -80,8 +83,9 @@ namespace Player
 
         public void LandingRunning()
         {
-            anim.SetBool("Landing", false);
-            anim.SetBool("Running", true);
+            //anim.SetBool("Landing", false);
+            //anim.SetBool("Running", true);
+            anim.SetTrigger("LandingRunningTrigger");
         }
 
         public void FallingRunning()
@@ -96,15 +100,22 @@ namespace Player
             anim.SetBool("Idle", true);
         }
 
+        public void JumpingIdle()
+        {
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Idle", true);
+        }
 
 
-        //Animationer för att hålla i vapen börjar här. 1H = 1 hand. 2H = 2 händer.
+
+        //Animationer för att hålla i vapen börjar här.
 
         //Pickup
         public void PickupIdleHold()
         {
-            anim.SetBool("Idle", false);
-            anim.SetBool("IdleHold", true);
+            //anim.SetBool("Idle", false);
+            //anim.SetBool("IdleHold", true);
+            anim.SetTrigger("PickUpTrigger");
         }
 
         public void IdleDrop()
@@ -114,7 +125,7 @@ namespace Player
         }
 
         //Idle
-        public void IdleHoldRun()
+        public void RunningIdleHold()
         {
             anim.SetBool("RunningHold", false);
             anim.SetBool("IdleHold", true);
@@ -134,23 +145,26 @@ namespace Player
         }
 
         //Running
-        public void RunningHold()
+        public void IdleRunHold()
         {
-            anim.SetBool("idleHold", false);
+            anim.SetBool("IdleHold", false);
             anim.SetBool("RunningHold", true);
+            //anim.SetTrigger("IdleRunHoldTrigger");
         }
 
         //Jumping
-        public void JumpingHoldIdle()
+        public void IdleJumpHold()
         {
-            anim.SetBool("IdleHold", false);
-            anim.SetBool("jumpingHold", true);
+            //anim.SetBool("IdleHold", false);
+            //anim.SetBool("JumpingHold", true);
+            anim.SetTrigger("IdleJumpHoldTrigger");
         }
 
-        public void JumpingHoldRunning()
+        public void RunningJumpingHold()
         {
-            anim.SetBool("RunningHold", false);
-            anim.SetBool("JumpingHold", true);
+            //anim.SetBool("RunningHold", false);
+            //anim.SetBool("JumpingHold", true);
+            anim.SetTrigger("RunningJumpingHoldTrigger");
         }
 
 
@@ -161,10 +175,11 @@ namespace Player
         //}
 
         //Falling
-        public void FallingHold()
+        public void JumpingFallingHold()
         {
-            anim.SetBool("JumpingHold", false);
-            anim.SetBool("FallingHold", true);
+            //anim.SetBool("JumpingHold", false);
+            //anim.SetBool("FallingHold", true);
+            anim.SetTrigger("JumpingFallingHoldTrigger");
         }
 
         public void FallingDrop()
@@ -174,46 +189,236 @@ namespace Player
         }
 
         //Landing
-        public void LandingFallingHold()
+        public void FallingLandingHold()
         {
-            anim.SetBool("FallingHold", false);
-            anim.SetBool("LandingHold", true);
+            //anim.SetBool("FallingHold", false);
+            //anim.SetBool("LandingHold", true);
+            anim.SetTrigger("LandingTriggerHold");
         }
 
-        public void LandingRunningHold()
+        public void FallingIdleHold()
+        {
+            anim.SetBool("FallingHold", false);
+            anim.SetBool("IdleHold", true);
+        }
+
+        public void FallingRunningHold()
         {
             anim.SetBool("FallingHold", false);
             anim.SetBool("RunningHold", true);
         }
 
+        public void IdleFallingHold()
+        {
+            anim.SetBool("IdleHold", false);
+            anim.SetBool("FallingHold", true);
+        }
+
+        public void RunningFallingHold()
+        {
+            anim.SetBool("RunningHold", false);
+            anim.SetBool("FallingHold", true);
+        }
+
         public void LandingIdleHold()
         {
-            anim.SetBool("LandingHold", false);
+            //anim.SetBool("LandingHold", false);
+            //anim.SetBool("IdleHold", true);
+            anim.SetTrigger("LandingIdleHoldTrigger");
+        }
+
+        public void LandingRunningHold()
+        {
+            //anim.SetBool("LandingHold", false);
+            //anim.SetBool("RunningHold", true);
+            anim.SetTrigger("LandingRunningHoldTrigger");
+        }
+
+        public void JumpingIdleHold()
+        {
+            anim.SetBool("JumpingHold", false);
             anim.SetBool("IdleHold", true);
         }
 
         //Metoder för att kolla vilken animation den ska spela
         public void PickUp() // kolla om spelaren rör på sig eller står stilla när denna plockar upp vapen
         {
-            if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1 || IdleBool == false)
+            if (jumpScript.Running == true)
             {
                 PickupRunningHold();
             }
-            else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
+            else if (jumpScript.Running == false)
             {
                 PickupIdleHold();
             }
         }
 
-        public void DropWeapon() //kolla om man rör på sig ellelr står stilla för att
+        public void DropWeapon() //kolla om man rör på sig eller står stilla för att
         {
-            if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1 || IdleBool == false)
+            if (jumpScript.Running == true)
             {
                 RunningDrop();
             }
-            else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
+            else if (jumpScript.Running == false)
             {
                 IdleDrop();
+            }
+        }
+
+        public void IdleToRun() //kolla om karaktären håller i vapnet när den går från idle till run animationen
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                IdleRunHold();
+                Debug.Log("Should play running hold animation");
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                IdleRun();
+            }
+        }
+
+        public void RunToIdle() //kolla om karaktären håller i vapen när den går från Run till idle animationen
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                RunningIdleHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                RunningIdle();
+            }
+        }
+
+        public void RunToJump()//kolla om karaktären håller i vapen när den går från Run till jump animationen
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                RunningJumpingHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                RunningJumping();
+            }
+        }
+
+        public void JumpingToFalling()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                JumpingFallingHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                JumpingFalling();
+            }
+        }
+
+        public void IdleToJump() //kolla om karaktären håller i vapen när den går från Idle till jump animationen
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                IdleJumpHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                IdleJump();
+            }
+        }
+
+        public void IdleToFall() //kolla om karaktären håller i vapen när den går från idle till fall animationen
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                IdleFallingHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                IdleFalling();
+            }
+        }
+
+        public void RunningToFall() //kolla om karaktären håller i vapen när den går från running till falling animationen
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                RunningFallingHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                RunningFalling();
+            }
+        }
+
+        public void FallingToLanding()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                FallingLandingHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                FallingLanding();
+            }
+        }
+
+        public void FallingToIdle()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                FallingIdleHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                FallingIdle();
+            }
+        }
+
+        public void FallingToRunning()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                FallingRunningHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                FallingRunning();
+            }
+        }
+
+        public void LandingToIdle()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                LandingIdleHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                LandingIdle();
+            }
+        }
+
+        public void LandingToRunning()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                LandingRunningHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                LandingRunning();
+            }
+        }
+
+        public void JumpingToIdle()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                JumpingIdleHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                JumpingIdle();
             }
         }
     }
