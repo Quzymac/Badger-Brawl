@@ -7,7 +7,8 @@ namespace Player
     public class SpawnPlayers : MonoBehaviour
     {
         [SerializeField] GameManager gameManager;
-        [SerializeField] GameObject[] characters = new GameObject[2];
+        [SerializeField] GameObject[] humanCharacters = new GameObject[2];
+        [SerializeField] GameObject[] badgerCharacters = new GameObject[2];
         [SerializeField] MultipleTargetCam addTargets;
         //[SerializeField] GameObject player;
         //[SerializeField] GameObject badger;
@@ -31,7 +32,16 @@ namespace Player
             {
                 if (playerController[i] != 0)
                 {
-                    GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], characters[playerTeam[i]-1], CheckSpawnPosition().position);
+                    GameObject[] teamCharacter = new GameObject[2];
+                    if(playerTeam[i] == (int)PlayerScript.PlayerTeam.human)
+                    {
+                        teamCharacter = humanCharacters;
+                    }
+                    else
+                    {
+                        teamCharacter = badgerCharacters;
+                    }
+                    GameObject players = PlayerScript.CreatePlayer(playerNum[i], playerController[i], (PlayerScript.PlayerTeam)playerTeam[i], teamCharacter[playerCharacter[i]], CheckSpawnPosition().position);
 
                     if (playerTeam[i] == 1)
                     {

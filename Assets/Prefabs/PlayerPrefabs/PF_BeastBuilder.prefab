@@ -560,7 +560,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6088017714779087161}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.5181522, y: 0.14111233, z: -1.0808849}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -568,7 +568,7 @@ Transform:
   - {fileID: 8992054867460491375}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9055435778729132281
 Animator:
   serializedVersion: 3
@@ -651,10 +651,10 @@ MonoBehaviour:
   - {fileID: 6981391071913534503, guid: 3b958e399a974b844b3183cd136976d4, type: 3}
   - {fileID: 6897514049768183285, guid: 1f28a48ead89e244faab603a3da4cb1f, type: 3}
   specificMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 29b621f7b75202a47b4ab72fd06f8d3f, type: 2}
+  - {fileID: 2100000, guid: ea807b3753bc3e846b4c709a1bd6d809, type: 2}
+  - {fileID: 2100000, guid: 384e89f89e5b45f42bb43ef60f6d58ac, type: 2}
+  - {fileID: 2100000, guid: 8323043def858ab43bd6287dac02d617, type: 2}
   PolySurface: {fileID: 5267171130464411547}
 --- !u!114 &6903586366378165026
 MonoBehaviour:
@@ -709,7 +709,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.7
   m_Pitch: 1
   Loop: 0

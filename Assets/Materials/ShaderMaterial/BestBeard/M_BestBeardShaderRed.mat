@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_BeastBuilder
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: M_BestBeardShaderRed
+  m_Shader: {fileID: 4800000, guid: ba91a6f7b8c84654c9f801bb05cbdb8c, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: c7c747d54b77b854b9b14d46cae1fc35, type: 3}
+        m_Texture: {fileID: 2800000, guid: a9836ac14ad17f54583696274fe8d687, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1c7f15b0355b058469238bd12f7d07ff, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7f33928cc5a08a048bae4d60063e5269, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 626a224596754974497d39c92212b812, type: 3}
+        m_Texture: {fileID: 2800000, guid: 443e278299034b44399d4ec91f00b819, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
