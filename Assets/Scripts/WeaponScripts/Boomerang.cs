@@ -9,7 +9,7 @@ namespace Player
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
         public float SeakingStrenght { get { return seakingStrenght; } }
-        [SerializeField] float seakingStrenght = 0.4f;
+        float seakingStrenght = 0.4f;
         float timer = 0f;
         [SerializeField] Transform leftHandPos;
         [SerializeField] Transform rightHandPos;
@@ -17,7 +17,7 @@ namespace Player
 
         public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
-        [SerializeField] private AudioSource shotSound;
+        private AudioSource shotSound;
         [SerializeField] Transform firePoint;
         [SerializeField] GameObject boomer;
 

@@ -11,18 +11,17 @@ namespace Player
         public GameObject Parent { get; set; }
         public float Damage { get; set; }
 
-        [SerializeField] MeshRenderer boomerang;
-        [SerializeField] GameManager gameManager;
-        [SerializeField] GameObject owner;
-        
+        MeshRenderer boomerang;
+        GameManager gameManager;
+        GameObject owner;
+
         Rigidbody rb;
-        [SerializeField] Transform itemToRotate;
+        Transform itemToRotate;
         Vector3 locationInFrontOfPlayer;
         Vector3 lastWeaponPos;
         Vector3 startPos;
         float distTraveled;
-        float seakingStrenght = 0.4f;
-        bool go;      
+        bool go;
 
         void Start()
         {
@@ -44,11 +43,9 @@ namespace Player
         {
             distTraveled = Vector3.Distance(transform.position, startPos);
             itemToRotate.transform.Rotate(0, 0, Time.deltaTime * 600);
-            //Vector3 vel = rb.velocity - locationInFrontOfPlayer;
-            //Debug.Log(vel);
+
             rb.velocity -= (transform.position - locationInFrontOfPlayer);
             rb.velocity = rb.velocity.normalized * ProjectileSpeed;
-            //transform.LookAt(locationInFrontOfPlayer - rb.velocity);
 
             if (distTraveled > 5)
             {
@@ -88,7 +85,6 @@ namespace Player
                 Destroy(this.gameObject);
             }
         }
-
         private void OnTriggerEnter(Collider other)
         {
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
@@ -113,7 +109,6 @@ namespace Player
                 {
                     Parent.transform.position = transform.position + offset;
                 }
-
                 owner.GetComponent<NewControllerInputs>().DropWeapon();
                 boomerang.enabled = true;
                 Destroy(this.gameObject);
