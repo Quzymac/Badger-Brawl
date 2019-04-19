@@ -227,7 +227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2804229538860892920}
   humanCharacters:
-  - {fileID: 242719694596590642, guid: 27193fc47255a5d408ff9217b81712a9, type: 3}
+  - {fileID: 242719694596590642, guid: 2fb286cd15187404981add4867ac6678, type: 3}
   - {fileID: 7573615816348176929, guid: 9f70ead09b1b2574085634282b971ee9, type: 3}
   badgerCharacters:
   - {fileID: 6088017714779087161, guid: 45645063ec379df4f8a36692fe60851f, type: 3}
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8618ffde36e4aad4d914c980f1ba5df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  removeTargets: {fileID: 0}
+  multipleTargetCam: {fileID: 0}
   soundManager: {fileID: 1214476625}
   top: {fileID: 0}
   bottom: {fileID: 0}
