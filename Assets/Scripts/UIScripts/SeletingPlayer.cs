@@ -14,7 +14,9 @@ public class SeletingPlayer : MonoBehaviour
     [SerializeField] int[] playerController = new int[6];
 
 
-    [SerializeField] Text[] PressToJoin = new Text[4];
+    [SerializeField] Image[] PressToJoin = new Image[4];
+    [SerializeField] Text[] PressToJoinText = new Text[4];
+
     [SerializeField] GameObject[] selectTeam = new GameObject[4];
 
     void Start()
@@ -31,7 +33,8 @@ public class SeletingPlayer : MonoBehaviour
 
         for (int i = 0; i < PressToJoin.Length; i++)
         {
-            PressToJoin[i].enabled = true;
+            PressToJoin[i].enabled = false;
+            PressToJoinText[i].enabled = true;
         }
         for (int j = 0; j < selectTeam.Length; j++)
         {
@@ -124,7 +127,9 @@ public class SeletingPlayer : MonoBehaviour
         int temp = playerController[joystick - 1] - 1;
         playerController[joystick-1] = 0;
         
-        PressToJoin[temp].enabled = true;
+        PressToJoin[temp].enabled = false;
+        PressToJoinText[temp].enabled = true;
+
         selectTeam[temp].SetActive(false);
         selectTeam[temp].GetComponent<SelectTeamAndCharacter>().Controller = 0;
         selectTeam[temp].GetComponent<SelectTeamAndCharacter>().PlayerNum = 0;
@@ -150,7 +155,9 @@ public class SeletingPlayer : MonoBehaviour
             int player = SetPlayerNumber();
 
             playerController[controller] = player;
-            PressToJoin[player - 1].enabled = false;
+            PressToJoin[player - 1].enabled = true;
+            PressToJoinText[player - 1].enabled = false;
+
             selectTeam[player - 1].SetActive(true);
             selectTeam[player - 1].GetComponent<SelectTeamAndCharacter>().Controller = controller + 1;
             selectTeam[player - 1].GetComponent<SelectTeamAndCharacter>().PlayerNum = player;

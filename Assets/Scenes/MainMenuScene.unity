@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuUIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2914444748597769060, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: Audio
+      value: 
+      objectReference: {fileID: 975234336}
     - target: {fileID: 423727389099893398, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -137,7 +142,7 @@ PrefabInstance:
     - target: {fileID: 423727389099893398, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 344.22305
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 423727389099893398, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
@@ -179,11 +184,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2914444748597769060, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
-        type: 3}
-      propertyPath: Audio
-      value: 
-      objectReference: {fileID: 975234336}
     - target: {fileID: 423727390014419486, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: Audio

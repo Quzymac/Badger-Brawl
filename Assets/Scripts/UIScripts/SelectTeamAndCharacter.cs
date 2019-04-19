@@ -23,8 +23,8 @@ public class SelectTeamAndCharacter : MonoBehaviour
     [SerializeField] Text readyText;
     [SerializeField] GameObject teams;
     [SerializeField] GameObject characters;
-    [SerializeField] Image human;
-    [SerializeField] Image badger;
+    [SerializeField] GameObject human;
+    [SerializeField] GameObject badger;
 
     [SerializeField] Image[] character = new Image[2];
     [SerializeField] Image[] highlight = new Image[2];
@@ -36,8 +36,14 @@ public class SelectTeamAndCharacter : MonoBehaviour
 
     private void Start()
     {
-        SetButtonColor(human, buttonColor);
-        SetButtonColor(highlight[0], buttonColor);
+        //SetButtonColor(human, buttonColor);
+        for (int i = 0; i < highlight.Length; i++)
+        {
+            highlight[i].color = buttonColor;
+            highlight[i].enabled = false;
+        }
+        highlight[0].enabled = true;
+
 
         int c = 0;
         string[] joy = Input.GetJoystickNames();
@@ -51,8 +57,6 @@ public class SelectTeamAndCharacter : MonoBehaviour
     void SetButtonColor(Image button, Color col)
     {
         button.color = col;
-        //c.normalColor = color;
-        //c= ;
     }
 
     // Update is called once per frame
@@ -78,9 +82,9 @@ public class SelectTeamAndCharacter : MonoBehaviour
         }
         if (CurrentlySelecting)
         {
-            if(readyText.text != "Player " + PlayerNum)
+            if(readyText.enabled)
             {
-                readyText.text = "Player " + PlayerNum;
+                readyText.enabled = false;
             }
 
             if (selectingTeam) //select team
@@ -96,8 +100,10 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 //move up
                 if (Input.GetAxis("VerticalController" + Controller.ToString()) > 0.5f)
                 {
-                    SetButtonColor(badger, buttonDefaultColor);
-                    SetButtonColor(human, buttonColor);
+                    badger.SetActive(false);
+                    human.SetActive(true);
+                   // SetButtonColor(badger, buttonDefaultColor);
+                   // SetButtonColor(human, buttonColor);
 
                     team = 1;
                     character[0].sprite = humanImage;
@@ -109,8 +115,10 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 //move down
                 if (Input.GetAxis("VerticalController" + Controller.ToString()) < -0.5f)
                 {
-                    SetButtonColor(human, buttonDefaultColor);
-                    SetButtonColor(badger, buttonColor);
+                    human.SetActive(false);
+                    badger.SetActive(true);
+                    //SetButtonColor(human, buttonDefaultColor);
+                    //SetButtonColor(badger, buttonColor);
 
                     team = 2;
                     character[0].sprite = badgerImage;
@@ -142,7 +150,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 {
                     if (characterNumber >= 0)
                     {
-                        SetButtonColor(highlight[characterNumber], buttonDefaultColor);
+                        highlight[characterNumber].enabled = false;
                     }
 
                     characterNumber--;
@@ -150,7 +158,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     {
                         characterNumber = 0;
                     }
-                    SetButtonColor(highlight[characterNumber], buttonColor);
+                    highlight[characterNumber].enabled = true;
 
                     timer = Time.time;
 
@@ -160,14 +168,14 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 {
                     if (characterNumber >= 0)
                     {
-                        SetButtonColor(highlight[characterNumber], buttonDefaultColor);
+                        highlight[characterNumber].enabled = false;
                     }
                     characterNumber++;
                     if (characterNumber >= 1)
                     {
                         characterNumber = 1;
                     }
-                    SetButtonColor(highlight[characterNumber], buttonColor);
+                    highlight[characterNumber].enabled = true;
 
                     timer = Time.time;
 
@@ -175,14 +183,13 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 //confirm selected character
                 if (Input.GetButtonDown("JumpController" + Controller.ToString()))
                 {
-                    readyText.text = "Player " + PlayerNum + " ready!";
+                    readyText.enabled = true;
                     playerSelectScript.playerDone[PlayerNum - 1] = true;
                     CurrentlySelecting = false;
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString(), PlayerNum);
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Joystick", Controller);
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Team", team);
                     PlayerPrefs.SetInt("Player" + PlayerNum.ToString() + "Character", characterNumber);
-                    // show ready icon here
                 }
                 
             }
