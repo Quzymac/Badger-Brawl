@@ -22,6 +22,9 @@ public class PauseManager : MonoBehaviour
 
     float buttonTimer = 0.1f;
 
+
+   
+
     //this method will enable the pausepanel in Unity, set the timescale to 0 so the game will pause and then turn the PauseMenu bool to true 
     void PauseGame()
     {
@@ -36,8 +39,7 @@ public class PauseManager : MonoBehaviour
     public void Resume()
     {
         PausePanel.SetActive(false);
-        Time.timeScale = 1f;
-
+        GetComponent<CountDownPause>().countdownCanvas.SetActive(true);
         PauseMenu = false;
     }
     public void OpenCanvas(GameObject canvas)
@@ -73,6 +75,8 @@ public class PauseManager : MonoBehaviour
         {
             if (!PauseMenu)
             {
+                GetComponent<CountDownPause>().countdownCanvas.SetActive(false);
+                GetComponent<CountDownPause>().count = -1; //resets timer
                 PauseGame();
             }
         }
