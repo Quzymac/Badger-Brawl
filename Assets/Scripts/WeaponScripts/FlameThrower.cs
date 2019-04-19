@@ -9,7 +9,9 @@ namespace Player
         public float ShotsPerSecond { get; } = 20f; // how many shots per second the weapon can shot
         public float ProjectileSpeed { get; } = 20f;  //the speed of the fire
         public float Range { get; } = 8f;
-        
+
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
+
         float timer = 0f;
         public bool Firing { get; set; } = false;
 

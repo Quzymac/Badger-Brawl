@@ -10,6 +10,7 @@ namespace Player
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 30f;
 
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
         [SerializeField] Transform leftHandPos;

@@ -16,6 +16,8 @@ namespace Player
 
         Transform RightHand { get; set; }
         Transform LeftHand { get; set; }
+
+        TestGun.TypeOfWeapon typeOfWeapon { get; set;}
     }
 
     public class TestGun : MonoBehaviour, IWeapon
@@ -23,6 +25,9 @@ namespace Player
         public float Damage { get; } = 5f;
         public float ShotsPerSecond { get; } = 2f;
         public float ProjectileSpeed { get; } = 20f;
+
+        public enum TypeOfWeapon { Shooting, throwable };
+        public TypeOfWeapon typeOfWeapon { get; set; } = TypeOfWeapon.Shooting;
 
         float currentShotsPerSecond;
         float shotTimer;

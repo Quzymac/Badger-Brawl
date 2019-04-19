@@ -25,6 +25,8 @@ namespace Player
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         public GameObject Owner { get; set; }
 
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
+
         public void Start()
         {
             shotSound = GetComponent<AudioSource>();

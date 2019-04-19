@@ -10,6 +10,8 @@ namespace Player
         public float ShotsPerSecond { get; } = 0.5f;
         public float ProjectileSpeed { get; } = 25f;
         public bool Firing { get; set; } = false;
+
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.throwable;
         public GameObject Owner { get; set; }
         float timer = 0f;
         public GameObject Parent { get; set; }

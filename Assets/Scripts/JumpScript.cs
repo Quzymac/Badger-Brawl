@@ -112,7 +112,7 @@ namespace Player
                 {
                     animationHandler.LandingToIdle();
                     checkLanding = false;
-                }
+                }               
             }
 
             if (rb.velocity.y < 0 && gameObject.layer == 12 && collidedPlatform != null)

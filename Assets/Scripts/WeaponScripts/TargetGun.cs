@@ -12,6 +12,8 @@ namespace Player
         float currentShotsPerSecond;
         float shotTimer;
 
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
+
         [SerializeField] float seakingStrenght = 0.4f;
         public float SeakingStrenght { get { return seakingStrenght; } }
 

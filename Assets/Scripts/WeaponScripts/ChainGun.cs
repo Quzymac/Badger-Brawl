@@ -10,7 +10,8 @@ namespace Player
         public float ShotsPerSecond { get; } = 8f;
         public float ProjectileSpeed { get; } = 20f;
         public bool Firing { get; set; } = false;
-        
+
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
 
         [SerializeField] float buildUpTime = 0.2f;
 

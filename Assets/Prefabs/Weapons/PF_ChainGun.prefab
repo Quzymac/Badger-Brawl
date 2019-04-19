@@ -144,7 +144,7 @@ MonoBehaviour:
   leftHandPos: {fileID: 668868791}
   rightHandPos: {fileID: 1896129141}
   firePoint: {fileID: 3692721282046853312}
-  bullet: {fileID: 271554094, guid: e77949d143e6fc74e982a16136ca29b4, type: 3}
+  bullet: {fileID: 6654680314636503775, guid: 2a9e1850142334406aafb22c65695e70, type: 3}
   muzzleFlash: {fileID: 6073938426378784194, guid: c3b138d484b499d438db53f00912756b,
     type: 3}
 --- !u!82 &7576872137447007172

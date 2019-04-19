@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 150122349505695005}
-  bullet: {fileID: 271554094, guid: e77949d143e6fc74e982a16136ca29b4, type: 3}
+  bullet: {fileID: 6654680314636503775, guid: 2a9e1850142334406aafb22c65695e70, type: 3}
   leftHandPos: {fileID: 746500711}
   rightHandPos: {fileID: 1267376922}
 --- !u!65 &5767975295677835664

@@ -230,6 +230,10 @@ namespace Player
             if (Input.GetAxisRaw(shootButton)> 0.2f && currentWeapon != null)
             {
                 currentWeapon.GetComponent<IWeapon>().Firing = true;
+                if (GetComponentInChildren<IWeapon>().typeOfWeapon == TestGun.TypeOfWeapon.throwable)
+                {
+                    anim.SetTrigger("Throwing");
+                }
             }
             else if (currentWeapon != null && currentWeapon.GetComponent<IWeapon>().Firing)
             {

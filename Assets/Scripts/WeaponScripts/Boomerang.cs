@@ -15,6 +15,8 @@ namespace Player
         [SerializeField] Transform rightHandPos;
         public MeshRenderer boomerangerMesh;
 
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.throwable;
+
         public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         private AudioSource shotSound;

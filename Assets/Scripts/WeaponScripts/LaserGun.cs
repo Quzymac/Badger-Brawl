@@ -12,6 +12,7 @@ namespace Player
         [SerializeField] Transform leftHandPos;
         [SerializeField] Transform rightHandPos;
 
+        public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
         public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
 

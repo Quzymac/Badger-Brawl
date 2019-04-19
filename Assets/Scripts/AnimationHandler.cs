@@ -52,6 +52,7 @@ namespace Player
         {
             anim.SetBool("Running", false);
             anim.SetBool("Jumping", true);
+            //anim.SetTrigger("RunningJumpingTrigger");
         }
 
         public void JumpingFalling() //animation från jumping till falling
@@ -106,7 +107,11 @@ namespace Player
             anim.SetBool("Idle", true);
         }
 
-
+        public void JumpingRunning()
+        {
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Running", true);
+        }
 
         //Animationer för att hålla i vapen börjar här.
 
@@ -238,6 +243,12 @@ namespace Player
         {
             anim.SetBool("JumpingHold", false);
             anim.SetBool("IdleHold", true);
+        }
+
+        public void JumpingRunningHold()
+        {
+            anim.SetBool("JumpingHold", false);
+            anim.SetBool("RunningHold", true);
         }
 
         //Metoder för att kolla vilken animation den ska spela
@@ -420,6 +431,23 @@ namespace Player
             {
                 JumpingIdle();
             }
+        }
+
+        public void JumpingToRunning()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                JumpingRunningHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                JumpingRunning();
+            }
+        }
+
+        public void Throwing()
+        {
+            anim.SetTrigger("Throwing");
         }
     }
 }
