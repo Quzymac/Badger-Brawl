@@ -14,6 +14,7 @@ public class CountDownPause : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Time.timeScale = 0;
         countdownCanvas.SetActive(true);
         count = gameStartTimer + 0.49f;
     }
