@@ -12,7 +12,7 @@ namespace Player {
         List<PlayerScript> humans = new List<PlayerScript>(); //hålla koll på humans
         public List<PlayerScript> Humans { get { return humans; } set { humans = value; } } //hålla koll på humans
 
-        [SerializeField] MultipleTargetCam removeTargets;
+        [SerializeField] MultipleTargetCam multipleTargetCam;
         //CAM_CamerMovement cameraMovement;
         float cameraValue = 25f;
 
@@ -40,9 +40,9 @@ namespace Player {
 
         private void Update()
         {
-            if(removeTargets.targets.Count == 0)
+            if(multipleTargetCam.targets.Count == 0)
             {
-                removeTargets.UpdateCamPos();
+                multipleTargetCam.UpdateCamPos();
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -123,7 +123,7 @@ namespace Player {
             {
                 if (badger != null)
                 {
-                    removeTargets.targets.Clear();
+                    multipleTargetCam.targets.Clear();
                     Destroy(badger.gameObject);
                 }
             }
@@ -131,7 +131,7 @@ namespace Player {
             {
                 if (human != null)
                 {
-                    removeTargets.targets.Clear();
+                    multipleTargetCam.targets.Clear();
                     Destroy(human.gameObject);
                 }
             }
