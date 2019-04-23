@@ -76,46 +76,6 @@ public class SeletingPlayer : MonoBehaviour
             {
                 SelectPlayerController(5);
             }
-            else if (Input.GetButtonDown("JumpController7"))
-            {
-                SelectPlayerController(6);
-            }
-            else if (Input.GetButtonDown("JumpController8"))
-            {
-                SelectPlayerController(7);
-            }
-            else if (Input.GetButtonDown("JumpController9"))
-            {
-                SelectPlayerController(8);
-            }
-            else if (Input.GetButtonDown("JumpController10"))
-            {
-                SelectPlayerController(9);
-            }
-            else if (Input.GetButtonDown("JumpController11"))
-            {
-                SelectPlayerController(10);
-            }
-            else if (Input.GetButtonDown("JumpController12"))
-            {
-                SelectPlayerController(11);
-            }
-            else if (Input.GetButtonDown("JumpController13"))
-            {
-                SelectPlayerController(12);
-            }
-            else if (Input.GetButtonDown("JumpController14"))
-            {
-                SelectPlayerController(13);
-            }
-            else if (Input.GetButtonDown("JumpController15"))
-            {
-                SelectPlayerController(14);
-            }
-            else if (Input.GetButtonDown("JumpController16"))
-            {
-                SelectPlayerController(15);
-            }
         }
         if(Input.GetButtonDown("StartGame") && playersAreReady)
         {
