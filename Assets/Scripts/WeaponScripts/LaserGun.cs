@@ -28,7 +28,6 @@ namespace Player
         [SerializeField] ParticleSystem beamStart;
 
 
-
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
 
@@ -37,8 +36,6 @@ namespace Player
             audioSource = GetComponent<AudioSource>();
             audioSource.Stop();
         }
-
-
         void Update()
         {
             if (Firing == true)
@@ -71,13 +68,36 @@ namespace Player
         public void Fire()
         {
             beam.Play();
-
+            Vector3 firePointOfsett = new Vector3(0, 0, 0.3f);
             RaycastHit hit;
             Vector3 aim = firePoint.transform.TransformDirection(Vector3.forward) * 10;
             Debug.DrawRay(firePoint.transform.position, aim, Color.green);
+            Debug.DrawRay(firePoint.transform.position + firePointOfsett, aim, Color.red);
+            Debug.DrawRay(firePoint.transform.position - firePointOfsett, aim, Color.red);
             audioSource.Play();
             holdCharge = 0;
+            
             if (Physics.Raycast(firePoint.transform.position, aim, out hit, 10))
+            {
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
+
+                    Debug.Log("player hit");
+                    playerHit.TakeDamage(Damage);
+                }
+            }
+            if (Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 10))
+            {
+                if (hit.collider.gameObject.tag == "Player")
+                {
+                    PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
+
+                    Debug.Log("player hit");
+                    playerHit.TakeDamage(Damage);
+                }
+            }
+            if (Physics.Raycast(firePoint.transform.position - firePointOfsett, aim, out hit, 10))
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
