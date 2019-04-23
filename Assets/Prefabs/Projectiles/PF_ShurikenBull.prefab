@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1550154297179974516}
   - component: {fileID: 9120679383491604875}
   - component: {fileID: 825289537258795482}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PF_ShurikenBull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2342671995219535642}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.0006779015, y: 0.060000006, z: 0.059999984}
