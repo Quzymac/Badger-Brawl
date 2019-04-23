@@ -30,6 +30,7 @@ namespace Player
 
         AnimationHandler animationHandler;
 
+        float dropTimer = 0;
         void Start()
         {
             player = GetComponent<PlayerScript>();
@@ -67,10 +68,11 @@ namespace Player
         {
             if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
             {
-                Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), playerCollider, true);
-
+                gameObject.layer = 12;
+                dropTimer = 0;
             }
         }
+        
         private void FixedUpdate()
         {
             //better jump, hålla in "hopp" för längre hopp
@@ -78,7 +80,7 @@ namespace Player
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
-            else if (rb.velocity.y > 0 && (!Input.GetKey(KeyCode.UpArrow) && !Input.GetButton("JumpController" + controllerInputs.JoystickNumber.ToString()))) //testing, change button later------------------------------------------------------------
+            else if (rb.velocity.y > 0 && !Input.GetButton("JumpController" + controllerInputs.JoystickNumber.ToString()))
             {
                 rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
@@ -115,22 +117,11 @@ namespace Player
                 }               
             }
 
-            if (rb.velocity.y < 0 && gameObject.layer == 12 && collidedPlatform != null)
+            if (rb.velocity.y < 0f && gameObject.layer == 12 && collidedPlatform != null &&  dropTimer > 0.2f) // resets layer 
             {
                 gameObject.layer = 10;
-                Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), playerCollider, false);
             }
-            else if (rb.velocity.y < 0 && gameObject.layer == 10)
-            {
-                if (collidedPlatform != null && collidedPlatform.transform.position.y >= gameObject.transform.position.y)
-                {
-                    Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), playerCollider, false);
-                }
-            }
-            else if (rb.velocity.y > 0 && collidedPlatform != null)
-            {
-                Physics.IgnoreCollision(collidedPlatform.GetComponent<Collider>(), playerCollider, false);
-            }
+            dropTimer += Time.deltaTime;
         }
 
         private void GroundDetection()
