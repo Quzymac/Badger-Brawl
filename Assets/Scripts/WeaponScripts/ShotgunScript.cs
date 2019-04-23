@@ -44,6 +44,7 @@ namespace Player
             }
             firePoint.SetParent(gameObject.transform);
             GameObject thisFlash = Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
+            thisFlash.transform.parent = firePoint;
             foreach (GameObject pel in pellets)
             {
                 GameObject thisPellet = Instantiate(pellet, firePoint.position, firePoint.rotation);

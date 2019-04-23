@@ -45,7 +45,8 @@ namespace Player
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
 
             GameObject newParticleEffect = Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
-            
+            newParticleEffect.transform.parent = firePoint;
+
 
         }
 
