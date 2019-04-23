@@ -83,6 +83,7 @@ public class MenuButtons : MonoBehaviour
             canMove = false;
             yield return new WaitForSecondsRealtime(0.15f); //timer to let button animation finish
             buttons[button].onClick.Invoke();
+            canMove = true;
 
         }
     }
