@@ -48,10 +48,10 @@ namespace Player
             else {
                 if (other.tag != "Weapon")
                 {
+                    Debug.Log("destroy");
                     Destroy(gameObject);
                 }
             }
-            
         }
     }
 }
