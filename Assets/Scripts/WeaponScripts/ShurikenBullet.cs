@@ -15,7 +15,6 @@ namespace Player
 
         void Start()
         {
-            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             lastPos = transform.position;
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;

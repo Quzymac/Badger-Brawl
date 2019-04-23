@@ -144,7 +144,7 @@ MonoBehaviour:
   shotSound: {fileID: 1666706938121975551, guid: fd490b6a6eaba624da6b8c65d746f684,
     type: 3}
   firePoint: {fileID: 545992808}
-  pellet: {fileID: 8354293733068291351, guid: 9983719a239e19742af1341765987683, type: 3}
+  pellet: {fileID: 6654680314636503775, guid: 828aaa491e9c87842817e82aba6d14f6, type: 3}
   pelletCount: 5
   minSpread: -5
   maxSpread: 5

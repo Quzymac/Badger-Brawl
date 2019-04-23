@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7992661981560907257}
   - component: {fileID: 9087098491249635224}
   - component: {fileID: 1885222051253764902}
+  - component: {fileID: 4289863215793203136}
   m_Layer: 0
-  m_Name: SM_Shuriken
+  m_Name: PF_Shuriken
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6323238142375607294}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.395699, y: -17.111443, z: -34.012608}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -77,3 +78,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &4289863215793203136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323238142375607294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61af61f0a08e6914f83317521ad2adff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
