@@ -11,7 +11,7 @@ public class SeletingPlayer : MonoBehaviour
     bool playersAreReady = false;
     [SerializeField] GameObject playersReadyText;
 
-    [SerializeField] int[] playerController = new int[6];
+    [SerializeField] int[] playerController = new int[16];
 
 
     [SerializeField] Image[] PressToJoin = new Image[4];
@@ -21,7 +21,7 @@ public class SeletingPlayer : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < playerController.Length; i++)
+        for (int i = 0; i < playerDone.Length; i++)
         {
             playerDone[i] = false;
 
@@ -38,7 +38,7 @@ public class SeletingPlayer : MonoBehaviour
         }
         for (int j = 0; j < selectTeam.Length; j++)
         {
-            selectTeam[j].SetActive(false);// = false;
+            selectTeam[j].SetActive(false);
         }
         PlayerPrefs.DeleteAll();
 

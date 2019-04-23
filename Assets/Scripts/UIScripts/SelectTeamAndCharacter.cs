@@ -36,7 +36,9 @@ public class SelectTeamAndCharacter : MonoBehaviour
 
     private void Start()
     {
-        //SetButtonColor(human, buttonColor);
+        selectingTeam = true;
+        selectingCharacter = false;
+
         for (int i = 0; i < highlight.Length; i++)
         {
             highlight[i].color = buttonColor;
