@@ -17,9 +17,11 @@ namespace Player
        
 
         List<PlayerScript> enemies = new List<PlayerScript>();
+        PlayerScript.PlayerTeam team;
 
         void Start()
         {
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             gameManager = FindObjectOfType<GameManager>();
             
             enemyPosition = FindingEnemy();
@@ -51,13 +53,26 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag != "Weapon")
+            PlayerScript playerHit = other.GetComponent<PlayerScript>();
+            if (playerHit != null)
             {
+                if (playerHit.Team != team)
+                {
+                    GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<TargetGun>().Damage;
+                    Destroy(gameObject);
+                }
+            }
+            else
+            {
+                if (other.tag != "Weapon")
+                {
                 GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
                 explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<TargetGun>().Damage;
-
                 Destroy(gameObject);
+                }
             }
+            
         }
 
         GameObject FindingEnemy()

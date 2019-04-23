@@ -37,7 +37,6 @@ namespace Player
         private void OnTriggerEnter(Collider other)
         {
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
-
             if (playerHit != null)
             {
                 if (playerHit.Team != team)
@@ -47,11 +46,13 @@ namespace Player
                     Destroy(gameObject);
                 }
             }
-
-            if(other.tag != "Weapon")
-            {
-                Destroy(gameObject);
+            else {
+                if (other.tag != "Weapon")
+                {
+                    Destroy(gameObject);
+                }
             }
+            
         }
     }
 }

@@ -22,9 +22,11 @@ namespace Player
         Vector3 startPos;
         float distTraveled;
         bool go;
+        PlayerScript.PlayerTeam team;
 
         void Start()
         {
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             go = true;
             itemToRotate = gameObject.transform.GetChild(0);
             gameManager = FindObjectOfType<GameManager>();
@@ -98,20 +100,22 @@ namespace Player
                     Destroy(gameObject);
                 }
             }
-
-            if (other.tag == "Player")
+            else
             {
-                if (transform.position.x >= 0)
+                if (other.tag == "Player")
                 {
-                    Parent.transform.position = transform.position + negativeOffset;
+                    if (transform.position.x >= 0)
+                    {
+                        Parent.transform.position = transform.position + negativeOffset;
+                    }
+                    else
+                    {
+                        Parent.transform.position = transform.position + offset;
+                    }
+                    owner.GetComponent<NewControllerInputs>().DropWeapon();
+                    boomerang.enabled = true;
+                    Destroy(this.gameObject);
                 }
-                else
-                {
-                    Parent.transform.position = transform.position + offset;
-                }
-                owner.GetComponent<NewControllerInputs>().DropWeapon();
-                boomerang.enabled = true;
-                Destroy(this.gameObject);
             }
         }
     }

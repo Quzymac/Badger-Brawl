@@ -15,10 +15,11 @@ namespace Player
         public GameObject Parent { get; set; }
 
         [SerializeField] BoxCollider col;
-
+        PlayerScript.PlayerTeam team;
 
         void Start()
         {
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             range = Parent.GetComponent<FlameThrower>().Range;
             startPos = transform.position;
             rb = GetComponent<Rigidbody>();
@@ -43,7 +44,10 @@ namespace Player
 
             if (playerHit != null)
             {
-                playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage *0.1f);
+                if (playerHit.Team != team)
+                {
+                    playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage * 0.1f);
+                }
             }
 
             //if (other.tag == "Platform")
