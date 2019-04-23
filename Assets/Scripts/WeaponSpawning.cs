@@ -49,7 +49,7 @@ namespace Player
             while (true)
             {
                 int randomSpawn = Random.Range(0, spawnPositions.Count);
-                if (spawnPositions[randomSpawn].transform.position.y > bottomCollider.position.y && spawnPositions[randomSpawn].transform.position.y < upperCollider.position.y - 2 && spawnPositions[randomSpawn].GetComponent<WeaponSpawnPosition>().occupied == false)
+                if (spawnPositions[randomSpawn].transform.position.y > bottomCollider.position.y + 3 && spawnPositions[randomSpawn].transform.position.y < upperCollider.position.y - 3 && spawnPositions[randomSpawn].GetComponent<WeaponSpawnPosition>().occupied == false)
                 {
                     return spawnPositions[randomSpawn].transform;
                 }

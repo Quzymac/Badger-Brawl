@@ -227,11 +227,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 2804229538860892920}
   humanCharacters:
-  - {fileID: 242719694596590642, guid: 2fb286cd15187404981add4867ac6678, type: 3}
+  - {fileID: 242719694596590642, guid: 27193fc47255a5d408ff9217b81712a9, type: 3}
   - {fileID: 7573615816348176929, guid: 9f70ead09b1b2574085634282b971ee9, type: 3}
   badgerCharacters:
-  - {fileID: 6088017714779087161, guid: 45645063ec379df4f8a36692fe60851f, type: 3}
   - {fileID: 570735910292819638, guid: b7080db2e7d4e9e4e86c686692f5cf7c, type: 3}
+  - {fileID: 6088017714779087161, guid: 45645063ec379df4f8a36692fe60851f, type: 3}
   addTargets: {fileID: 0}
   playerNum: 00000000000000000000000000000000
   playerController: 00000000000000000000000000000000
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8618ffde36e4aad4d914c980f1ba5df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multipleTargetCam: {fileID: 0}
+  removeTargets: {fileID: 0}
   soundManager: {fileID: 1214476625}
   top: {fileID: 0}
   bottom: {fileID: 0}
@@ -312,15 +312,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapons:
+  - {fileID: 4388685767232541812, guid: 255dc44c27d2d8945b05004e9624b0b6, type: 3}
+  - {fileID: 4388685767232541812, guid: 255dc44c27d2d8945b05004e9624b0b6, type: 3}
+  - {fileID: 4388685767232541812, guid: 255dc44c27d2d8945b05004e9624b0b6, type: 3}
   - {fileID: 5247671084043571990, guid: 2b19704c697ef6c4ab0acf42dd61ad8e, type: 3}
-  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
-  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
+  - {fileID: 5247671084043571990, guid: 2b19704c697ef6c4ab0acf42dd61ad8e, type: 3}
   - {fileID: 1574123378, guid: 87361835c0af1c440b8255df16a2dc99, type: 3}
-  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
-  - {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75, type: 3}
-  - {fileID: 2158067891753746014, guid: 61d51813ef88cf84a9fedc79a6c46f72, type: 3}
-  - {fileID: 252582501, guid: 27744ead126e74a44ac01c0339056f63, type: 3}
+  - {fileID: 1574123378, guid: 87361835c0af1c440b8255df16a2dc99, type: 3}
   - {fileID: 7848728012517841259, guid: b6a15ee1c11d62648ae9b6d73cc57f81, type: 3}
+  - {fileID: 7848728012517841259, guid: b6a15ee1c11d62648ae9b6d73cc57f81, type: 3}
+  - {fileID: 7848728012517841259, guid: b6a15ee1c11d62648ae9b6d73cc57f81, type: 3}
+  - {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75, type: 3}
+  - {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75, type: 3}
+  - {fileID: 3895767881819167553, guid: 754de78ae95a975408981e2c8c7313ee, type: 3}
+  - {fileID: 3895767881819167553, guid: 754de78ae95a975408981e2c8c7313ee, type: 3}
+  - {fileID: 8738569617030950674, guid: 9b3234d5162ed59499659247e8c2313d, type: 3}
+  - {fileID: 8738569617030950674, guid: 9b3234d5162ed59499659247e8c2313d, type: 3}
+  - {fileID: 3692721280842994397, guid: d18b2ee004a52b844a2c3a2f4fe4944c, type: 3}
+  - {fileID: 3692721280842994397, guid: d18b2ee004a52b844a2c3a2f4fe4944c, type: 3}
+  - {fileID: 894467303231372668, guid: f39fd8def3f14c740b44f5f195e71772, type: 3}
+  - {fileID: 1709704426, guid: c41ade66fd5fee04382d55e02d95ca57, type: 3}
+  - {fileID: 252582501, guid: 27744ead126e74a44ac01c0339056f63, type: 3}
+  - {fileID: 252582501, guid: 27744ead126e74a44ac01c0339056f63, type: 3}
   spawnPositions:
   - {fileID: 0}
   - {fileID: 0}
