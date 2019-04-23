@@ -22,9 +22,9 @@ namespace Player
 
     public class TestGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 5f;
-        public float ShotsPerSecond { get; } = 2f;
-        public float ProjectileSpeed { get; } = 20f;
+        public float Damage { get { return dmg; } }
+        public float ShotsPerSecond { get { return shotsPerSecond; }}
+        public float ProjectileSpeed { get { return projectileSpeed; }}
 
         public enum TypeOfWeapon { Shooting, throwable };
         public TypeOfWeapon typeOfWeapon { get; set; } = TypeOfWeapon.Shooting;
@@ -34,6 +34,10 @@ namespace Player
 
         float timer = 0f;
         public bool Firing { get; set; } = false;
+
+        [SerializeField] float dmg = 5f;
+        [SerializeField] float shotsPerSecond = 5f;
+        [SerializeField] float projectileSpeed = 20f;
 
         private AudioSource shotSound;
         [SerializeField] Transform firePoint;
