@@ -12,6 +12,7 @@ public class OptionsScript : MonoBehaviour
     [SerializeField] GameObject optionpanel;
     [SerializeField] GameObject screenpanel;
     [SerializeField] GameObject soundpanel;
+    [SerializeField] GameObject howToPlayPanel;
     [SerializeField] AudioMixer am; //our audiomixer from unity
     [SerializeField] Slider m;
     [SerializeField] Slider s;
@@ -56,6 +57,18 @@ public class OptionsScript : MonoBehaviour
     public void screenBack()
     {
         screenpanel.SetActive(false);
+        optionpanel.SetActive(true);
+    }
+
+    public void HowToPlayChosen()
+    {
+        howToPlayPanel.SetActive(true);
+        optionpanel.SetActive(false);
+    }
+
+    public void HowToPlayBack()
+    {
+        howToPlayPanel.SetActive(false);
         optionpanel.SetActive(true);
     }
    
