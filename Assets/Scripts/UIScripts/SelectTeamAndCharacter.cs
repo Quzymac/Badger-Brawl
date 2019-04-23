@@ -34,26 +34,15 @@ public class SelectTeamAndCharacter : MonoBehaviour
 
     float timer;
 
+   
     private void Start()
     {
-        selectingTeam = true;
-        selectingCharacter = false;
-
         for (int i = 0; i < highlight.Length; i++)
         {
             highlight[i].color = buttonColor;
             highlight[i].enabled = false;
         }
         highlight[0].enabled = true;
-
-
-        int c = 0;
-        string[] joy = Input.GetJoystickNames();
-        foreach (var item in joy)
-        {
-            c++;
-            Debug.Log(c + " " + item);
-        }
     }
 
     void SetButtonColor(Image button, Color col)
@@ -104,14 +93,11 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 {
                     badger.SetActive(false);
                     human.SetActive(true);
-                   // SetButtonColor(badger, buttonDefaultColor);
-                   // SetButtonColor(human, buttonColor);
 
                     team = 1;
                     character[0].sprite = humanImage;
                     character[1].sprite = humanImage1;
 
-                    //character[1].image.sprite = humanImage1;
                     timer = Time.time;
                 }
                 //move down
@@ -119,8 +105,6 @@ public class SelectTeamAndCharacter : MonoBehaviour
                 {
                     human.SetActive(false);
                     badger.SetActive(true);
-                    //SetButtonColor(human, buttonDefaultColor);
-                    //SetButtonColor(badger, buttonColor);
 
                     team = 2;
                     character[0].sprite = badgerImage;
@@ -148,7 +132,7 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     characters.SetActive(true);
                 }
                 //move up
-                if (Input.GetAxisRaw("VerticalController" + Controller.ToString()) > 0.5f && Time.time > 0.2f + timer)
+                if (Input.GetAxisRaw("VerticalController" + Controller.ToString()) > 0.5f && Time.unscaledTime > 0.2f + timer)
                 {
                     if (characterNumber >= 0)
                     {
@@ -162,11 +146,11 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     }
                     highlight[characterNumber].enabled = true;
 
-                    timer = Time.time;
+                    timer = Time.unscaledTime;
 
                 }
                 //move down
-                if (Input.GetAxisRaw("VerticalController" + Controller.ToString()) < -0.5f && Time.time > 0.2f + timer)
+                if (Input.GetAxisRaw("VerticalController" + Controller.ToString()) < -0.5f && Time.unscaledTime > 0.2f + timer)
                 {
                     if (characterNumber >= 0)
                     {
@@ -179,10 +163,10 @@ public class SelectTeamAndCharacter : MonoBehaviour
                     }
                     highlight[characterNumber].enabled = true;
 
-                    timer = Time.time;
+                    timer = Time.unscaledTime;
 
                 }
-                //confirm selected character
+                //confirm selected character and team
                 if (Input.GetButtonDown("JumpController" + Controller.ToString()))
                 {
                     readyText.enabled = true;

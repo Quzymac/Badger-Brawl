@@ -19,16 +19,39 @@ public class SeletingPlayer : MonoBehaviour
 
     [SerializeField] GameObject[] selectTeam = new GameObject[4];
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < playerDone.Length; i++)
+        {
+            playerDone[i] = false;
+
+            PlayerPrefs.DeleteKey("Player" + i.ToString());
+            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Joystick");
+            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Team");
+            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Character");
+        }
+
+        for (int i = 0; i < PressToJoin.Length; i++)
+        {
+            PressToJoin[i].enabled = false;
+            PressToJoinText[i].enabled = true;
+        }
+        for (int j = 0; j < selectTeam.Length; j++)
+        {
+            selectTeam[j].SetActive(false);
+        }
+        PlayerPrefs.DeleteAll();
+    }
     void Start()
     {
         for (int i = 0; i < playerDone.Length; i++)
         {
             playerDone[i] = false;
 
-            PlayerPrefs.SetInt("Player" + i.ToString(), 0);
-            PlayerPrefs.SetInt("Player" + i.ToString() + "Joystick", 0);
-            PlayerPrefs.SetInt("Player" + i.ToString() + "Team", 0);
-            PlayerPrefs.SetInt("Player" + i.ToString() + "Character", 0);
+            PlayerPrefs.DeleteKey("Player" + i.ToString());
+            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Joystick");
+            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Team");
+            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Character");
         }
 
         for (int i = 0; i < PressToJoin.Length; i++)
