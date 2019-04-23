@@ -17,6 +17,9 @@ namespace Player
         [SerializeField] float seakingStrenght = 0.4f;
         public float SeakingStrenght { get { return seakingStrenght; } }
 
+        [SerializeField] float maxTravelTime = 4f;
+        public float MaxTravelTime { get { return maxTravelTime; } }
+
         float timer = 0f;
         public bool Firing { get; set; } = false;
         [SerializeField] Transform leftHandPos;

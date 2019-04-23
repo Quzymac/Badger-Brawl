@@ -6,7 +6,6 @@ namespace Player
 {
     public class TargetMissle : MonoBehaviour
     {
-        float distTraveled;
         Vector3 startPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
@@ -19,8 +18,12 @@ namespace Player
         List<PlayerScript> enemies = new List<PlayerScript>();
         PlayerScript.PlayerTeam team;
 
+        float time;
+        float minDistance = 1000;
+
         void Start()
         {
+            time = 0.0f;
             team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             gameManager = FindObjectOfType<GameManager>();
             
@@ -33,9 +36,7 @@ namespace Player
 
         private void Update()
         {
-            distTraveled = Vector3.Distance(transform.position, startPos);
-
-            
+            time += Time.deltaTime;
 
             if (enemyPosition != null)
             {
@@ -44,7 +45,7 @@ namespace Player
                 rb.velocity = rb.velocity.normalized * Parent.GetComponent<IWeapon>().ProjectileSpeed;
                 transform.LookAt(enemyPosition.transform.position - rb.velocity);
             }
-            if (distTraveled > 40)
+            if (time > Parent.GetComponent<TargetGun>().MaxTravelTime)
             {
                 Instantiate(Explosion, transform.position, transform.rotation);
                 Destroy(gameObject);
@@ -89,7 +90,6 @@ namespace Player
             }
             Debug.Log(enemies.Count);
             GameObject closestEnemy = null;
-            float minDistance = 1000;
             if (enemies.Count > 0)
             {
                 foreach (PlayerScript enemy in enemies)
