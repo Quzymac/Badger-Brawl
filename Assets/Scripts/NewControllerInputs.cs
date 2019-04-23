@@ -224,7 +224,8 @@ namespace Player
                         }
                     }
                 }
-                jumpScript.DropThrough();
+                //Invoke("JumpScript.DropThrough", 0.5f);
+               jumpScript.DropThrough();
             }
             //shoot
             if (Input.GetAxisRaw(shootButton)> 0.2f && currentWeapon != null)
