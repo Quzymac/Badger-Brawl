@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 1258323330}
   m_Layer: 9
   m_Name: downCollider
-  m_TagString: Untagged
+  m_TagString: DamageOverTime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

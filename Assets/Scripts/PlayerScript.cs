@@ -22,7 +22,7 @@ namespace Player
         [SerializeField] PlayerTeam t;
         public bool dead { get; set; } = false;
         MultipleTargetCam multipleTargetCam;
-
+        public bool takeDmgOverTime;
         Rigidbody rb;
         public bool falling  = false;
         JumpScript jumpScript;
@@ -117,6 +117,28 @@ namespace Player
         private void Update()
         {
             CheckVelocity();
+        }
+        private void FixedUpdate()
+        {
+            if (takeDmgOverTime == true)
+            {
+                TakeDamage(0.5f);
+            }
+        }
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "DamageOverTime")
+            {
+
+                takeDmgOverTime = true;
+            }
+        }
+        private void OnCollisionExit(Collision collision)
+        {
+            if (collision.gameObject.tag == "DamageOverTime")
+            {
+                takeDmgOverTime = false;
+            }
         }
     }
 }
