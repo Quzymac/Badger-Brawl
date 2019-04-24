@@ -5,7 +5,7 @@ namespace Player
 {
     public class LaserGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 50f;
+        public float Damage { get; } = 20f;
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
         public GameObject Parent { get; set; }
@@ -24,9 +24,12 @@ namespace Player
 
         private AudioSource audioSource;
         [SerializeField] Transform firePoint;
+        [SerializeField] Transform particlePoint;
+
         [SerializeField] ParticleSystem beam;
         [SerializeField] ParticleSystem beamStart;
 
+        LayerMask layerMask;
 
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
@@ -35,9 +38,12 @@ namespace Player
         {
             audioSource = GetComponent<AudioSource>();
             audioSource.Stop();
+            layerMask |= (1 << LayerMask.NameToLayer("Player"));
+            layerMask |= (1 << LayerMask.NameToLayer("jumpingPlayer"));
         }
         void Update()
         {
+            Debug.DrawRay(firePoint.position, firePoint.TransformDirection(Vector3.forward) *10,Color.red, 0.1f, true);
             if (Firing == true)
             {
                 if (!beamStart.isPlaying)
@@ -66,35 +72,28 @@ namespace Player
                 beamStart.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             }
         }
-        public void Fire()
+        IEnumerator ShootLaser()
         {
-            beam.Play();
-            Vector3 firePointOfsett = new Vector3(0, 0, 0.3f);
+            yield return new WaitForSeconds(0.1f);
             RaycastHit hit;
-            Vector3 aim = firePoint.transform.TransformDirection(Vector3.forward) * 10;
-            audioSource.Play();
-            holdCharge = 0;
+            Vector3 aim = firePoint.forward;
 
-            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 50))
+            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 20f, layerMask))
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
-
-                    Debug.Log("player hit");
-                    playerHit.TakeDamage(Damage);
-                }
-                else if (Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 50) || Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 50))
-                {
-                    if (hit.collider.gameObject.tag == "Player")
-                    {
-                        PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
-
-                        Debug.Log("player hit");
-                        playerHit.TakeDamage(Damage);
-                    }
+                    hit.collider.GetComponent<PlayerScript>().TakeDamage(Damage);
                 }
             }
+        }
+        public void Fire()
+        {
+            beam.Play();
+            
+            audioSource.Play();
+            holdCharge = 0;
+
+            StartCoroutine(ShootLaser());
         }
     }
 }
