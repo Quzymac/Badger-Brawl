@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1550154297179974516}
   - component: {fileID: 9120679383491604875}
   - component: {fileID: 825289537258795482}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: PF_ShurikenBull
   m_TagString: Untagged
   m_Icon: {fileID: 0}

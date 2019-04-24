@@ -40,10 +40,10 @@ namespace Player
 
             if (enemyPosition != null)
             {
-                Vector3 vel = rb.velocity - enemyPosition.transform.position;
                 rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght;
                 rb.velocity = rb.velocity.normalized * Parent.GetComponent<IWeapon>().ProjectileSpeed;
-                transform.LookAt(enemyPosition.transform.position - rb.velocity);
+                Vector3 vel = enemyPosition.transform.position - rb.velocity;
+                transform.LookAt(vel);
             }
             if (time > Parent.GetComponent<TargetGun>().MaxTravelTime)
             {
