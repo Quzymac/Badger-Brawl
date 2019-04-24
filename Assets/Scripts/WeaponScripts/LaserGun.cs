@@ -75,7 +75,7 @@ namespace Player
             audioSource.Play();
             holdCharge = 0;
 
-            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 10))
+            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 50))
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
@@ -84,7 +84,7 @@ namespace Player
                     Debug.Log("player hit");
                     playerHit.TakeDamage(Damage);
                 }
-                else if (Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 10) || Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 10))
+                else if (Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 50) || Physics.Raycast(firePoint.transform.position + firePointOfsett, aim, out hit, 50))
                 {
                     if (hit.collider.gameObject.tag == "Player")
                     {
