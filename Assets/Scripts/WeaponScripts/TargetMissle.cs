@@ -60,7 +60,10 @@ namespace Player
                 if (playerHit.Team != team)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
-                    explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<TargetGun>().Damage;
+                    explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<IWeapon>().Damage;
+                    explosion.GetComponent<ExplosionDamage>().KnockBackPower = Parent.GetComponent<IWeapon>().KnockBackPower;
+
+                    explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
                     Destroy(gameObject);
                 }
             }
@@ -68,9 +71,12 @@ namespace Player
             {
                 if (other.tag != "Weapon")
                 {
-                GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
-                explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<TargetGun>().Damage;
-                Destroy(gameObject);
+                    GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<IWeapon>().Damage;
+                    explosion.GetComponent<ExplosionDamage>().KnockBackPower = Parent.GetComponent<IWeapon>().KnockBackPower;
+
+                    explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
+                    Destroy(gameObject);
                 }
             }
             
