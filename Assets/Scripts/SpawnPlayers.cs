@@ -30,7 +30,7 @@ namespace Player
             ResetPlayers();
             for (int i = 0; i < 4; i++)
             {
-                if (playerController[i] != 0)
+                if (playerNum[i] != 0)
                 {
                     GameObject[] teamCharacter = new GameObject[2];
                     if(playerTeam[i] == (int)PlayerScript.PlayerTeam.human)
@@ -91,15 +91,6 @@ namespace Player
                     usedSpawnPositions.Add(spawnPositions[randomSpawn]);
                     return spawnPositions[randomSpawn];
                 }
-            }
-        }
-
-        private void Update()
-        {
-
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                Debug.Log(upperCollider.position.y + " " + bottomCollider.position.y);
             }
         }
     }

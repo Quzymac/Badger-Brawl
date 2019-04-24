@@ -37,6 +37,7 @@ namespace Player {
         bool lastRoundBadger = false;
         bool lastRoundHuman = false;
 
+        bool kamikazeBugFix = false; // fix for spawning extra player if you kamikaze
 
         private void Update()
         {
@@ -44,30 +45,10 @@ namespace Player {
             {
                 multipleTargetCam.UpdateCamPos();
             }
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-
-                foreach (var badger in badgers)
-                {
-                    if(badger != null)
-                    {
-                        Destroy(badger.gameObject);
-                    }
-                }
-                foreach (var human in humans)
-                {
-                    if(human != null)
-                    {
-                        Destroy(human.gameObject);
-                    }
-                }
-                gameObject.GetComponent<SpawnPlayers>().Spawn();
-            }
         }
 
         void Start()
         {           
-            //cameraMovement = FindObjectOfType<CAM_CamerMovement>();
             winnerScript = FindObjectOfType<WinnerScript>().GetComponent<WinnerScript>();
             yTop = top.position.y;
             yBottom = bottom.position.y;
@@ -77,6 +58,13 @@ namespace Player {
 
         public bool TeamIsDead(PlayerScript.PlayerTeam team)
         {
+            if (BothTeamsDead())
+            {
+                kamikazeBugFix = !kamikazeBugFix;
+
+                NewRound(PlayerScript.PlayerTeam.none);
+                return true;
+            }
             if (team == PlayerScript.PlayerTeam.human)
             {
                 for (int i = 0; i < humans.Count; i++)
@@ -86,6 +74,7 @@ namespace Player {
                         return false;
                     }
                 }
+                kamikazeBugFix = !kamikazeBugFix;
                 NewRound(PlayerScript.PlayerTeam.badger);
                 return true;
             }
@@ -98,6 +87,7 @@ namespace Player {
                         return false;
                     }
                 }
+                kamikazeBugFix = !kamikazeBugFix;
                 NewRound(PlayerScript.PlayerTeam.human);
                 return true;
             }
@@ -106,39 +96,37 @@ namespace Player {
 
         public void NewRound(PlayerScript.PlayerTeam winner)
         {
-            
-            
-            if (winner == PlayerScript.PlayerTeam.badger)
+            if (kamikazeBugFix)
             {
-                camRoundPosition--;
-                ChangeCameraPos(-cameraValue);
-            }
-            else if (winner == PlayerScript.PlayerTeam.human)
-            {
-                camRoundPosition++;
-                ChangeCameraPos(cameraValue);
-            }
-
-            foreach (var badger in badgers)
-            {
-                if (badger != null)
+                if (winner == PlayerScript.PlayerTeam.badger)
                 {
-                    multipleTargetCam.targets.Clear();
-                    Destroy(badger.gameObject);
+                    camRoundPosition--;
+                    ChangeCameraPos(-cameraValue);
                 }
-            }
-            foreach (var human in humans)
-            {
-                if (human != null)
+                else if (winner == PlayerScript.PlayerTeam.human)
                 {
-                    multipleTargetCam.targets.Clear();
-                    Destroy(human.gameObject);
+                    camRoundPosition++;
+                    ChangeCameraPos(cameraValue);
                 }
-            }
-            StartCoroutine(Wait());
 
-            //gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
-            //gameObject.GetComponent<SpawnPlayers>().Spawn();
+                foreach (var badger in badgers)
+                {
+                    if (badger != null)
+                    {
+                        multipleTargetCam.targets.Clear();
+                        Destroy(badger.gameObject);
+                    }
+                }
+                foreach (var human in humans)
+                {
+                    if (human != null)
+                    {
+                        multipleTargetCam.targets.Clear();
+                        Destroy(human.gameObject);
+                    }
+                }
+                StartCoroutine(Wait());
+            }
         }
         IEnumerator Wait()
         {
@@ -146,6 +134,26 @@ namespace Player {
 
             gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
             gameObject.GetComponent<SpawnPlayers>().Spawn();
+            kamikazeBugFix = false;
+        }
+        bool BothTeamsDead()
+        {
+            for (int i = 0; i < humans.Count; i++)
+            {
+                if (humans[i].dead == false)
+                {
+                    return false;
+                }
+            }
+
+            for (int i = 0; i < badgers.Count; i++)
+            {
+                if (badgers[i].dead == false)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
         private void CalculatePosition() //Calcutes the position to which the camera should move to. Win condition needs to be here
         {
@@ -198,11 +206,5 @@ namespace Player {
         {
             return camRoundPosition;
         }
-        //public void UpdateCamPos()
-        //{
-        //    Vector3 desiredPos = target.position;
-        //    Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, camSpeed * Time.deltaTime);
-        //    transform.position = smoothPos;
-        //}
     }
 }

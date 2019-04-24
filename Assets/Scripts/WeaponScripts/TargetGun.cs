@@ -6,13 +6,16 @@ namespace Player
 {
     public class TargetGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 20f;
+        public float Damage { get; } = 30f;
         public float ShotsPerSecond { get; } = 0.5f;
-        public float ProjectileSpeed { get; } = 20f;
+        public float ProjectileSpeed { get; } = 15f;
+        public float KnockBackPower { get { return knockBackPower; } }
+
         float currentShotsPerSecond;
         float shotTimer;
 
         public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
+        [SerializeField] float knockBackPower = 15f;
 
         [SerializeField] float seakingStrenght = 0.4f;
         public float SeakingStrenght { get { return seakingStrenght; } }

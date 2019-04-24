@@ -8,6 +8,10 @@ namespace Player
         public float Damage { get; } = 20f;
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
+        public float KnockBackPower { get { return knockBackPower; } }
+
+        [SerializeField] float knockBackPower = 5f;
+
         public GameObject Parent { get; set; }
         [SerializeField] Transform leftHandPos;
         [SerializeField] Transform rightHandPos;
@@ -49,7 +53,6 @@ namespace Player
                 if (!beamStart.isPlaying)
                 {
                     beamStart.Play();
-                    ;
                 }
                 holdCharge += Time.deltaTime;
                 if (holdCharge >= maxCharge)
@@ -71,6 +74,10 @@ namespace Player
             {
                 beamStart.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             }
+            if(Firing && Owner == null)
+            {
+                Firing = false;
+            }
         }
         IEnumerator ShootLaser()
         {
@@ -82,6 +89,7 @@ namespace Player
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
+                    hit.collider.GetComponent<ControllerMovement>().KnockBack(transform.position, knockBackPower);
                     hit.collider.GetComponent<PlayerScript>().TakeDamage(Damage);
                 }
             }

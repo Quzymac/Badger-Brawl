@@ -6,10 +6,13 @@ namespace Player
 {
     public class GrenadeScript : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 20f;
+        public float Damage { get; } = 30f;
         public float ShotsPerSecond { get; } = 0.5f;
         public float ProjectileSpeed { get; } = 25f;
         public bool Firing { get; set; } = false;
+        public float KnockBackPower { get { return knockBackPower; } }
+
+        [SerializeField] float knockBackPower = 20f;
 
         public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.throwable;
         public GameObject Owner { get; set; }
@@ -88,6 +91,8 @@ namespace Player
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
                     explosion.GetComponent<ExplosionDamage>().Damage = Damage;
+                    explosion.GetComponent<ExplosionDamage>().KnockBackPower = KnockBackPower;
+
                     Destroy(gameObject);
                     startExplosion = false;
                     //blowUpTimer = 5f;

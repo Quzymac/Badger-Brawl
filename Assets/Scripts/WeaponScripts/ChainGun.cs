@@ -6,10 +6,13 @@ namespace Player
 {
     public class ChainGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 1f;
+        public float Damage { get; } = 2f;
         public float ShotsPerSecond { get; } = 8f;
         public float ProjectileSpeed { get; } = 20f;
         public bool Firing { get; set; } = false;
+        public float KnockBackPower { get { return knockBackPower; } }
+
+        [SerializeField] float knockBackPower = 1.5f;
 
         public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
 
@@ -46,8 +49,6 @@ namespace Player
 
             GameObject newParticleEffect = Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
             newParticleEffect.transform.parent = firePoint;
-
-
         }
 
         void Update()

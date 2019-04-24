@@ -95,7 +95,7 @@ namespace Player
                 if (playerHit.Team != Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team)
                 {
                     playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
-                    playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, 10);
+                    playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, Parent.GetComponent<IWeapon>().KnockBackPower);
 
                     Destroy(gameObject);
                 }

@@ -143,6 +143,7 @@ MonoBehaviour:
   dmg: 10
   shotsPerSecond: 2.5
   projectileSpeed: 20
+  knockBackPower: 2.5
   firePoint: {fileID: 5917344547601350658}
   bullet: {fileID: 6654680314636503775, guid: 2a9e1850142334406aafb22c65695e70, type: 3}
   leftHandPos: {fileID: 1305549024}

@@ -8,6 +8,7 @@ namespace Player
         float Damage { get; }
         float ShotsPerSecond { get; }
         float ProjectileSpeed { get; }
+        float KnockBackPower { get; }
 
         bool Firing { get; set; }
 
@@ -25,6 +26,8 @@ namespace Player
         public float Damage { get { return dmg; } }
         public float ShotsPerSecond { get { return shotsPerSecond; }}
         public float ProjectileSpeed { get { return projectileSpeed; }}
+        public float KnockBackPower { get { return knockBackPower; } }
+
 
         public enum TypeOfWeapon { Shooting, throwable };
         public TypeOfWeapon typeOfWeapon { get; set; } = TypeOfWeapon.Shooting;
@@ -38,6 +41,7 @@ namespace Player
         [SerializeField] float dmg = 5f;
         [SerializeField] float shotsPerSecond = 5f;
         [SerializeField] float projectileSpeed = 20f;
+        [SerializeField] float knockBackPower = 2.5f;
 
         private AudioSource shotSound;
         [SerializeField] Transform firePoint;

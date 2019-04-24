@@ -5,10 +5,13 @@ namespace Player
 {
     public class FlameThrower : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 5f;  //how much damage the weapon does
+        public float Damage { get; } = 8f;  //how much damage the weapon does
         public float ShotsPerSecond { get; } = 20f; // how many shots per second the weapon can shot
         public float ProjectileSpeed { get; } = 20f;  //the speed of the fire
         public float Range { get; } = 8f;
+        public float KnockBackPower { get { return knockBackPower; } }
+
+        [SerializeField] float knockBackPower = 0.1f;
 
         public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
 

@@ -8,6 +8,7 @@ namespace Player
     {
         float damageTimer = 0.3f;
         public float Damage { get; set; }
+        public float KnockBackPower { get; set; }
 
         public GameObject Weapon { get; set; }
 
@@ -38,7 +39,7 @@ namespace Player
             if (playerHit != null)
             {
                 playerHit.TakeDamage(Damage);
-                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position, 10);
+                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position + playerHit.gameObject.transform.position, Weapon.GetComponent<IWeapon>().KnockBackPower);
             }
         }
 

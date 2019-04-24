@@ -171,9 +171,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97596209938dacf439ba0c649477b51a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackPower: 5
   leftHandPos: {fileID: 448992216}
   rightHandPos: {fileID: 278126632}
   firePoint: {fileID: 894467303231372671}
+  particlePoint: {fileID: 0}
   beam: {fileID: 7054264469119287896}
   beamStart: {fileID: 5998671546452721579}
 --- !u!82 &5654330578115397277
@@ -189,7 +191,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: bc7126fe4625e604289cc8fcbba32f18, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

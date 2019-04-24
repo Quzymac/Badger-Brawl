@@ -7,9 +7,12 @@ namespace Player
     {
         private int framesBeforeNextShot = 5;
         private int currentShotFrame = 0;
-        public float Damage { get; } = 5f;
+        public float Damage { get; } = 15f;
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
+        public float KnockBackPower { get { return knockBackPower; } }
+
+        [SerializeField] float knockBackPower = 2f;
         [SerializeField] Transform leftHandPos;
         [SerializeField] Transform rightHandPos;
 

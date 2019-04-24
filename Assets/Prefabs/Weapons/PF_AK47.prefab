@@ -153,6 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e219df5b4566240a743e99b0e0bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmg: 7
+  shotsPerSecond: 5
+  projectileSpeed: 20
+  knockBackPower: 2.5
   firePoint: {fileID: 150122349505695005}
   bullet: {fileID: 6654680314636503775, guid: 2a9e1850142334406aafb22c65695e70, type: 3}
   leftHandPos: {fileID: 746500711}

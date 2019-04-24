@@ -6,10 +6,12 @@ namespace Player
 {
     public class ShotgunScript : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 1f; //damage per bullet
+        public float Damage { get; } = 3f; //damage per bullet
         public float ShotsPerSecond { get; } = 1f;
-        public float ProjectileSpeed { get; } = 30f;
+        public float ProjectileSpeed { get; } = 22f;
+        public float KnockBackPower { get { return knockBackPower; } }
 
+        [SerializeField] float knockBackPower = 1.5f;
         public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
