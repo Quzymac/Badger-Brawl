@@ -19,7 +19,6 @@ namespace Player
         public float Health { get; set; } = 100f;
         public int playerNumber;
         [SerializeField] int joystick;
-        [SerializeField] PlayerTeam t;
         public bool dead { get; set; } = false;
         MultipleTargetCam multipleTargetCam;
         public bool takeDmgOverTime;
@@ -38,7 +37,6 @@ namespace Player
             rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             animationHandler = GetComponent<AnimationHandler>();
-            t = Team;
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
             if (Team == PlayerTeam.badger)
@@ -83,7 +81,6 @@ namespace Player
                 Death();
             }
             healthBar.UpdateHealthBar();
-            Debug.Log("Player" + playerNumber + " - " + damage + " hp");
         }
 
         void Death()
@@ -91,11 +88,17 @@ namespace Player
             dead = true;
             gameManager.soundManager.PlayDeathSounds(this);
             gameObject.GetComponent<NewControllerInputs>().DropWeapon();
-            gameManager.TeamIsDead((PlayerTeam)playerNumber);
+            if(Team == PlayerTeam.human)
+            {
+                gameManager.allHumansDead = gameManager.TeamIsDead(Team);
+            }
+            if (Team == PlayerTeam.badger)
+            {
+                gameManager.allBadgersDead = gameManager.TeamIsDead(Team);
+            }
             multipleTargetCam.targets.Remove(transform);
             Instantiate(deathParticle[playerNumber - 1], transform.position, transform.rotation);
             Destroy(gameObject);
-            
         }
 
         public void CheckVelocity()
@@ -105,13 +108,6 @@ namespace Player
                 falling = true;
                 animationHandler.JumpingToFalling();
             }
-            //if (rb.velocity.y < 0 && falling == true)
-            //{
-            //    if (jumpScript.Running == false)
-            //    {
-            //        animationHandler.IdleFalling();
-            //    }            
-            //}
         }
 
         private void Update()

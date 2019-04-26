@@ -79,7 +79,7 @@ namespace Player
 
         void PickUpWeapon()
         {
-            if (canPickUp != null)
+            if (canPickUp != null && canPickUp.GetComponent<IWeapon>().Owner == null)
             {
                 if (currentWeapon != null)
                 {
@@ -155,7 +155,7 @@ namespace Player
             //AIMING
             aimInput = new Vector2(Input.GetAxis(aimHorizontal), Input.GetAxis(aimVertical));
 
-            if (aimInput.magnitude > 0.5f && Mathf.Abs(Input.GetAxis(aimHorizontal)) > rotationInputThreshold) //minimum input for aim && cant aim straigt up or down to fix rotation bug
+            if (aimInput.magnitude > 0.5f)
             {
                 if (lookingRight)
                 {
@@ -224,7 +224,6 @@ namespace Player
                         }
                     }
                 }
-                //Invoke("JumpScript.DropThrough", 0.5f);
                jumpScript.DropThrough();
             }
             //shoot

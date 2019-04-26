@@ -39,12 +39,13 @@ namespace Player {
 
         bool kamikazeBugFix = false; // fix for spawning extra player if you kamikaze
 
-        private void Update()
+        private void LateUpdate()
         {
             if(multipleTargetCam.targets.Count == 0)
             {
                 multipleTargetCam.UpdateCamPos();
             }
+            CheckForRoundWinner();
         }
 
         void Start()
@@ -54,18 +55,30 @@ namespace Player {
             yBottom = bottom.position.y;
             totalDistance = yTop - yBottom;
         }
+        public bool allHumansDead = false;
+        public bool allBadgersDead = false;
 
+        public void CheckForRoundWinner()
+        {
+            if(allBadgersDead && allHumansDead)
+            {
+                NewRound(PlayerScript.PlayerTeam.none);
+            }
+            else if(allHumansDead && !allBadgersDead)
+            {
+                NewRound(PlayerScript.PlayerTeam.badger);
+            }
+            else if (!allHumansDead && allBadgersDead)
+            {
+                NewRound(PlayerScript.PlayerTeam.human);
+            }
 
+            allBadgersDead = false;
+            allHumansDead = false;
+        }
         public bool TeamIsDead(PlayerScript.PlayerTeam team)
         {
-            if (BothTeamsDead())
-            {
-                kamikazeBugFix = !kamikazeBugFix;
-
-                NewRound(PlayerScript.PlayerTeam.none);
-                return true;
-            }
-            if (team == PlayerScript.PlayerTeam.human)
+            if(team == PlayerScript.PlayerTeam.human)
             {
                 for (int i = 0; i < humans.Count; i++)
                 {
@@ -74,11 +87,9 @@ namespace Player {
                         return false;
                     }
                 }
-                kamikazeBugFix = !kamikazeBugFix;
-                NewRound(PlayerScript.PlayerTeam.badger);
                 return true;
             }
-            else
+            else if (team == PlayerScript.PlayerTeam.badger)
             {
                 for (int i = 0; i < badgers.Count; i++)
                 {
@@ -87,8 +98,10 @@ namespace Player {
                         return false;
                     }
                 }
-                kamikazeBugFix = !kamikazeBugFix;
-                NewRound(PlayerScript.PlayerTeam.human);
+                return true;
+            }
+            else
+            {
                 return true;
             }
         }
@@ -96,37 +109,34 @@ namespace Player {
 
         public void NewRound(PlayerScript.PlayerTeam winner)
         {
-            if (kamikazeBugFix)
+            if (winner == PlayerScript.PlayerTeam.badger)
             {
-                if (winner == PlayerScript.PlayerTeam.badger)
-                {
-                    camRoundPosition--;
-                    ChangeCameraPos(-cameraValue);
-                }
-                else if (winner == PlayerScript.PlayerTeam.human)
-                {
-                    camRoundPosition++;
-                    ChangeCameraPos(cameraValue);
-                }
-
-                foreach (var badger in badgers)
-                {
-                    if (badger != null)
-                    {
-                        multipleTargetCam.targets.Clear();
-                        Destroy(badger.gameObject);
-                    }
-                }
-                foreach (var human in humans)
-                {
-                    if (human != null)
-                    {
-                        multipleTargetCam.targets.Clear();
-                        Destroy(human.gameObject);
-                    }
-                }
-                StartCoroutine(Wait());
+                camRoundPosition--;
+                ChangeCameraPos(-cameraValue);
             }
+            else if (winner == PlayerScript.PlayerTeam.human)
+            {
+                camRoundPosition++;
+                ChangeCameraPos(cameraValue);
+            }
+
+            foreach (var badger in badgers)
+            {
+                if (badger != null)
+                {
+                    multipleTargetCam.targets.Clear();
+                    Destroy(badger.gameObject);
+                }
+            }
+            foreach (var human in humans)
+            {
+                if (human != null)
+                {
+                    multipleTargetCam.targets.Clear();
+                    Destroy(human.gameObject);
+                }
+            }
+            StartCoroutine(Wait());
         }
         IEnumerator Wait()
         {

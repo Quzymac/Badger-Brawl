@@ -39,7 +39,7 @@ namespace Player
             if (playerHit != null)
             {
                 playerHit.TakeDamage(Damage);
-                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position + playerHit.gameObject.transform.position, Weapon.GetComponent<IWeapon>().KnockBackPower);
+                playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position + playerHit.gameObject.transform.position, KnockBackPower);
             }
         }
 
