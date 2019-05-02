@@ -82,7 +82,7 @@ namespace Player
                     Parent.transform.position = transform.position + offset;
                 }
 
-                owner.GetComponent<NewControllerInputs>().DropWeapon();
+                owner.GetComponent<ControllerInputs>().DropWeapon();
                 boomerang.enabled = true;
                 Destroy(this.gameObject);
             }
@@ -112,7 +112,7 @@ namespace Player
                     {
                         Parent.transform.position = transform.position + offset;
                     }
-                    owner.GetComponent<NewControllerInputs>().DropWeapon();
+                    owner.GetComponent<ControllerInputs>().DropWeapon();
                     boomerang.enabled = true;
                     Destroy(this.gameObject);
                 }

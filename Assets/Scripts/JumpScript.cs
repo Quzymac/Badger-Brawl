@@ -8,7 +8,7 @@ namespace Player
     {
         Rigidbody rb;
         Collider playerCollider;
-        NewControllerInputs controllerInputs;
+        ControllerInputs controllerInputs;
         GameObject collidedPlatform;
         public bool grounded;
         float jumpTime;
@@ -42,7 +42,7 @@ namespace Player
 
             rb = GetComponent<Rigidbody>();
             playerCollider = GetComponent<Collider>();
-            controllerInputs = GetComponent<NewControllerInputs>();
+            controllerInputs = GetComponent<ControllerInputs>();
 
             jumpDir = new Vector3(0, jumpForce, 0);
             Physics.gravity = new Vector3(0, -gravity, 0);

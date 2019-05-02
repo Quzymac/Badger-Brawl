@@ -60,7 +60,7 @@ namespace Player
             playerScript.playerNumber = playerNum;
             playerScript.joystick = joystickNum;
             playerScript.Team = playerTeam;            
-            player.GetComponent<NewControllerInputs>().SetJoystickNumber(joystickNum);
+            player.GetComponent<ControllerInputs>().SetJoystickNumber(joystickNum);
             return player;
         }
 
@@ -87,7 +87,7 @@ namespace Player
         {
             dead = true;
             gameManager.soundManager.PlayDeathSounds(this);
-            gameObject.GetComponent<NewControllerInputs>().DropWeapon();
+            gameObject.GetComponent<ControllerInputs>().DropWeapon();
             if(Team == PlayerTeam.human)
             {
                 gameManager.allHumansDead = gameManager.TeamIsDead(Team);

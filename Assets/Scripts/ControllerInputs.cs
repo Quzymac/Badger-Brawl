@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Player
 {
 
-    public class NewControllerInputs : MonoBehaviour
+    public class ControllerInputs : MonoBehaviour
     {
         GameObject currentWeapon;
         GameObject canPickUp;
