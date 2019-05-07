@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 5767975295677835664}
   - component: {fileID: 5767975297034744364}
   - component: {fileID: 7784883500795332452}
+  - component: {fileID: 5270352862311387366}
   m_Layer: 15
   m_Name: PF_AK47
   m_TagString: Weapon
@@ -287,6 +288,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5270352862311387366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848728012517841259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 5793903651737937511}
 --- !u!1001 &1615956569822632876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -370,6 +386,12 @@ GameObject:
 --- !u!4 &1204953890574369755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 492542578946054263, guid: 8a041c68f1e1d488298888e20f389f9b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1615956569822632876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5793903651737937511 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5045460246685892043, guid: 8a041c68f1e1d488298888e20f389f9b,
     type: 3}
   m_PrefabInstance: {fileID: 1615956569822632876}
   m_PrefabAsset: {fileID: 0}

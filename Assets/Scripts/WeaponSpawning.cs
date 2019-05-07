@@ -17,31 +17,23 @@ namespace Player
 
         [SerializeField] int maxNumberOfWeapons = 6;
         public int numberOfWeapons { get; set; } = 0;
-        int waitSpawnCounter = 0;
-        float nextWeaponSpawnTimer = 0;
+        float nextWeaponSpawnTimer = 0.5f;
 
-        void Start()
-        {
-            
-        }
+        [SerializeField] float timeBetweenSpawns = 2f;
+
 
         void Update()
         {
-            waitSpawnCounter++;
-            nextWeaponSpawnTimer -= Time.deltaTime;
-            if (waitSpawnCounter >= 2)
+            if (numberOfWeapons < maxNumberOfWeapons)
             {
-                if (numberOfWeapons < maxNumberOfWeapons)
+                nextWeaponSpawnTimer -= Time.deltaTime;
+
+                if (nextWeaponSpawnTimer < 0)
                 {
-                    waitSpawnCounter = 0;
-                    if (nextWeaponSpawnTimer <= 0)
-                    {
-                        SpawnWeapon();
-                        nextWeaponSpawnTimer = 5;
-                    }
+                    SpawnWeapon();
+                    nextWeaponSpawnTimer = timeBetweenSpawns;
                 }
             }
-          
         }
 
         Transform CheckSpawnPosition() 
@@ -61,7 +53,14 @@ namespace Player
             numberOfWeapons++;
             int randomWeapon = Random.Range(0, weapons.Count);
             GameObject specificWeapon = Instantiate(weapons[randomWeapon], CheckSpawnPosition().position, Quaternion.Euler(0, 90, 0));
+            specificWeapon.GetComponent<WeaponDespawn>().weaponSpawnManager = this;
             spawnedWeapons.Add(specificWeapon);
+        }
+        public void DespawnWeapon(GameObject weapon)
+        {
+            spawnedWeapons.Remove(weapon);
+            numberOfWeapons--;
+            Destroy(weapon);
         }
 
         public void ClearWeapons()

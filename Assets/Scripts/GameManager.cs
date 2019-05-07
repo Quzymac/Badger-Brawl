@@ -37,8 +37,6 @@ namespace Player {
         bool lastRoundBadger = false;
         bool lastRoundHuman = false;
 
-        bool kamikazeBugFix = false; // fix for spawning extra player if you kamikaze
-
         private void LateUpdate()
         {
             if(multipleTargetCam.targets.Count == 0)
@@ -144,7 +142,6 @@ namespace Player {
 
             gameObject.GetComponent<WeaponSpawning>().ClearWeapons();
             gameObject.GetComponent<SpawnPlayers>().Spawn();
-            kamikazeBugFix = false;
         }
         bool BothTeamsDead()
         {

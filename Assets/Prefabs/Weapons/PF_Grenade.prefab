@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8442241910972318550}
   - component: {fileID: 8442241910972318549}
   - component: {fileID: 4134342812171922780}
+  - component: {fileID: 2156421243889277449}
   m_Layer: 15
   m_Name: PF_Grenade
   m_TagString: Weapon
@@ -76,6 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6631a0c8497ba0444a742731b9d5221d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackPower: 20
   leftHandPos: {fileID: 0}
   rightHandPos: {fileID: 0}
   Explosion: {fileID: 5255831688567592006, guid: f537dc9fdb8703b449180e8bec36c8c1,
@@ -177,6 +179,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2156421243889277449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8442241910972318545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 5004353299741065829}
 --- !u!1001 &8963101902601612617
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249,6 +266,12 @@ PrefabInstance:
 --- !u!4 &8859108760968159886 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 473640790455521223, guid: bdcd47a02d1224c968dbaffddf0fe195,
+    type: 3}
+  m_PrefabInstance: {fileID: 8963101902601612617}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5004353299741065829 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4111889258886508332, guid: bdcd47a02d1224c968dbaffddf0fe195,
     type: 3}
   m_PrefabInstance: {fileID: 8963101902601612617}
   m_PrefabAsset: {fileID: 0}

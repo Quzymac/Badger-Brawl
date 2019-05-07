@@ -86,6 +86,7 @@ GameObject:
   - component: {fileID: 3895767881819167554}
   - component: {fileID: 3895767881819167555}
   - component: {fileID: 7282744546544433339}
+  - component: {fileID: 8320966996998583285}
   m_Layer: 15
   m_Name: PF_ShurikenVapen
   m_TagString: Weapon
@@ -122,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd0d16a0a4e4324ea5b76b76649f3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackPower: 2
   leftHandPos: {fileID: 0}
   rightHandPos: {fileID: 1281304529}
   firePoint: {fileID: 8377389747834339670}
@@ -253,6 +255,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8320966996998583285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895767881819167553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 6331666064074051495}
 --- !u!1001 &5618029199235304577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -336,6 +353,12 @@ GameObject:
 --- !u!4 &2530069109123869048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7992661981560907257, guid: 1a80a44adc56048c492840b01adcfe69,
+    type: 3}
+  m_PrefabInstance: {fileID: 5618029199235304577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6331666064074051495 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1885222051253764902, guid: 1a80a44adc56048c492840b01adcfe69,
     type: 3}
   m_PrefabInstance: {fileID: 5618029199235304577}
   m_PrefabAsset: {fileID: 0}

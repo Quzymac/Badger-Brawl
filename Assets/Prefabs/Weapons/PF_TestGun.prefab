@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 1382474895}
   - component: {fileID: 42352435}
   - component: {fileID: 7629501856945882417}
+  - component: {fileID: 5825980682992671901}
   m_Layer: 15
   m_Name: PF_TestGun
   m_TagString: Weapon
@@ -274,6 +275,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5825980682992671901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4388685767232541812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 5912484613935846188}
 --- !u!65 &6106792119601627435
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -385,6 +401,12 @@ GameObject:
 --- !u!4 &889272909252401772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9156689658398579307, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8305847473072046087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5912484613935846188 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2398467155056317227, guid: dec8a56e1dd924f5e8d0e80ce6f531f0,
     type: 3}
   m_PrefabInstance: {fileID: 8305847473072046087}
   m_PrefabAsset: {fileID: 0}

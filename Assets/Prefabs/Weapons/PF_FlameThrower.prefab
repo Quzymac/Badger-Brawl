@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 2158067891753746012}
   - component: {fileID: 2158067891753746013}
   - component: {fileID: 4347293844209846021}
+  - component: {fileID: 8399552886752711565}
   m_Layer: 15
   m_Name: PF_FlameThrower
   m_TagString: Weapon
@@ -111,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1e493505bd28c45ac6dcead84cad8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackPower: 0.1
   leftHandPos: {fileID: 1612155954}
   rightHandPos: {fileID: 25309930}
   firePoint: {fileID: 2158067892267576322}
@@ -241,6 +243,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8399552886752711565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158067891753746014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 5306023180730414196}
 --- !u!1 &2158067892267576323
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +355,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5497343732472383121, guid: 670273544362c48d8a81cc5dd313e713,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6002617891201774122, guid: 670273544362c48d8a81cc5dd313e713,
         type: 3}
       propertyPath: m_Size.x
@@ -363,6 +385,12 @@ PrefabInstance:
 --- !u!4 &7976828650098648405 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7736014705123776432, guid: 670273544362c48d8a81cc5dd313e713,
+    type: 3}
+  m_PrefabInstance: {fileID: 425795807674905317}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5306023180730414196 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5497343732472383121, guid: 670273544362c48d8a81cc5dd313e713,
     type: 3}
   m_PrefabInstance: {fileID: 425795807674905317}
   m_PrefabAsset: {fileID: 0}

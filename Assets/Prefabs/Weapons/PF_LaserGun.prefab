@@ -103,8 +103,9 @@ GameObject:
   - component: {fileID: 894467303231372657}
   - component: {fileID: 6640549454733685031}
   - component: {fileID: 5654330578115397277}
+  - component: {fileID: 6213990039831232549}
   m_Layer: 0
-  m_Name: LaserGun
+  m_Name: PF_LaserGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,6 +276,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6213990039831232549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894467303231372668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 1494113140440544477}
 --- !u!65 &6344216989126600484
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -533,6 +549,12 @@ GameObject:
 --- !u!4 &605794355340185600 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5150986026881852902, guid: 5a892a9b92a784c73989004c51415822,
+    type: 3}
+  m_PrefabInstance: {fileID: 5698122536248030694}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1494113140440544477 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6606758377865707835, guid: 5a892a9b92a784c73989004c51415822,
     type: 3}
   m_PrefabInstance: {fileID: 5698122536248030694}
   m_PrefabAsset: {fileID: 0}

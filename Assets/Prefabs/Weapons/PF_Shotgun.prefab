@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 1072029984325106594}
   - component: {fileID: 1574123379}
   - component: {fileID: 5069725472185866802}
+  - component: {fileID: 3199998046324075092}
   m_Layer: 15
   m_Name: PF_Shotgun
   m_TagString: Weapon
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8096e20f5b73064ca1650811e638514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackPower: 1.5
   leftHandPos: {fileID: 1076311186}
   rightHandPos: {fileID: 882426400}
   shotSound: {fileID: 1666706938121975551, guid: fd490b6a6eaba624da6b8c65d746f684,
@@ -248,6 +250,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3199998046324075092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574123378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 6076685477617018968}
 --- !u!1 &8508645928115346709
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,6 +382,12 @@ PrefabInstance:
 --- !u!4 &8192399880248255082 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8471377059490115485, guid: e0d846d1f2a1b4848acf48e9f235db76,
+    type: 3}
+  m_PrefabInstance: {fileID: 297555078001937911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6076685477617018968 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5797709400173471151, guid: e0d846d1f2a1b4848acf48e9f235db76,
     type: 3}
   m_PrefabInstance: {fileID: 297555078001937911}
   m_PrefabAsset: {fileID: 0}

@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 1030088376493883455}
   - component: {fileID: 8738569617030950675}
   - component: {fileID: 5563427448553272977}
+  - component: {fileID: 8767174562682618631}
   m_Layer: 15
   m_Name: PF_Boomerang
   m_TagString: Weapon
@@ -138,12 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7bf4650d216c24ea13a621a776b2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seakingStrenght: 0.4
+  knockBackPower: 2.5
   leftHandPos: {fileID: 0}
   rightHandPos: {fileID: 1929429120}
   boomerangerMesh: {fileID: 433209179127490401}
-  shotSound: {fileID: 8829417947017883652, guid: c14376d7d61528849bb9ffb078e55f8e,
-    type: 3}
   firePoint: {fileID: 2467013648387528566}
   boomer: {fileID: 4666175471752378852, guid: 0a3552b1fcf3d3547a348f6befbee186, type: 3}
 --- !u!82 &5563427448553272977
@@ -243,6 +242,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8767174562682618631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738569617030950674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 433209179127490401}
 --- !u!1001 &7289178547331894991
 PrefabInstance:
   m_ObjectHideFlags: 0

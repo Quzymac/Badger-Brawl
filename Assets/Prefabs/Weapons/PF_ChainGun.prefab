@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 3692721280842994387}
   - component: {fileID: 3692721280842994386}
   - component: {fileID: 7576872137447007172}
+  - component: {fileID: 6547358413441325145}
   m_Layer: 15
   m_Name: PF_ChainGun
   m_TagString: Weapon
@@ -139,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ea556d5e3fef27459a397237baffbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knockBackPower: 1.5
   buildUpTime: 0.2
   minShotsPerSeconds: 2
   leftHandPos: {fileID: 668868791}
@@ -244,6 +246,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6547358413441325145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692721280842994397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2852fb4e8fe7cbe41bd61ca821ef689d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSpawnManager: {fileID: 0}
+  despawnTimer: 0
+  mesh: {fileID: 7374744393327936221}
 --- !u!1 &3692721282046853315
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +393,12 @@ PrefabInstance:
 --- !u!4 &1571115351634280419 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2457066856605051705, guid: 26b93e43071764ac58ff5b5ebb9345c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4023113454759351514}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7374744393327936221 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5876250476845667847, guid: 26b93e43071764ac58ff5b5ebb9345c1,
     type: 3}
   m_PrefabInstance: {fileID: 4023113454759351514}
   m_PrefabAsset: {fileID: 0}
