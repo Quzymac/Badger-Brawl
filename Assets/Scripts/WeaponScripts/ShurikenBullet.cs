@@ -15,6 +15,7 @@ namespace Player
 
         void Start()
         {
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             lastPos = transform.position;
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * Parent.GetComponent<IWeapon>().ProjectileSpeed;
@@ -45,7 +46,8 @@ namespace Player
                     Destroy(gameObject);
                 }
             }
-            else {
+            else
+            {
                 if (other.tag != "Weapon")
                 {
                     Debug.Log("destroy");

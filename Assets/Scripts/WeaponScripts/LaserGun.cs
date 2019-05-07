@@ -38,12 +38,16 @@ namespace Player
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
 
+        PlayerScript.PlayerTeam team;
+
         void Start()
         {
+            
             audioSource = GetComponent<AudioSource>();
             audioSource.Stop();
             layerMask |= (1 << LayerMask.NameToLayer("Player"));
             layerMask |= (1 << LayerMask.NameToLayer("jumpingPlayer"));
+            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
         }
         void Update()
         {
@@ -89,8 +93,12 @@ namespace Player
             {
                 if (hit.collider.gameObject.tag == "Player")
                 {
-                    hit.collider.GetComponent<ControllerMovement>().KnockBack(transform.position, knockBackPower);
-                    hit.collider.GetComponent<PlayerScript>().TakeDamage(Damage);
+                    PlayerScript playerHit = GetComponent<PlayerScript>();
+                    if (playerHit.Team != team)
+                    {
+                        hit.collider.GetComponent<ControllerMovement>().KnockBack(transform.position, knockBackPower);
+                        hit.collider.GetComponent<PlayerScript>().TakeDamage(Damage);
+                    }
                 }
             }
         }
