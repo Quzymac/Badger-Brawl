@@ -189,6 +189,7 @@ namespace Player
             //jump
             if (Input.GetButtonDown(aButton))
             {
+                Debug.Log(jumpScript.Running);
                 if (jumpScript.Running == false)
                 {
                     animationHandler.IdleToJump();

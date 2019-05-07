@@ -26,6 +26,19 @@ namespace Player {
             rb = GetComponent<Rigidbody>();
             speed = moveSpeed;
         }
+
+        private void Update()
+        {
+            if (jumpScript.Running == true)
+            {
+                animationHandler.IdleToRun();
+            }
+            else if (jumpScript.Running == false)
+            {
+                animationHandler.RunToIdle();
+            }
+        }
+
         private void FixedUpdate()
         {
             //rotate to match movement direction
@@ -56,14 +69,7 @@ namespace Player {
                 rb.AddForce(Vector2.right * MoveDir * moveForce);
 
             }
-            if (jumpScript.Running == true)
-            {
-                animationHandler.IdleToRun();              
-            }
-            else if (jumpScript.Running == false)
-            {
-                animationHandler.RunToIdle();
-            }
+   
             if (Mathf.Abs(rb.velocity.x) > speed)
             {
                 rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * speed, rb.velocity.y);

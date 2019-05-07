@@ -147,7 +147,7 @@ MonoBehaviour:
   GFX: {fileID: 6430503498261932872}
   playerNumber: 0
   joystick: 0
-  t: 0
+  takeDmgOverTime: 0
   falling: 0
   deathParticle:
   - {fileID: 7670490129525665866, guid: 36fb5fc742bf2434594eb26443fd19c1, type: 3}
