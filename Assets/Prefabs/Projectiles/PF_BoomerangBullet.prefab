@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6792345381892410906}
   - component: {fileID: 4021623144585041609}
   - component: {fileID: 1579771247279932631}
-  m_Layer: 15
+  m_Layer: 0
   m_Name: PF_BoomerangBullet
   m_TagString: Weapon
   m_Icon: {fileID: 0}
@@ -75,10 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 744c70be3a9752a478e1dd39bcedc9c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boomerang: {fileID: 0}
-  gameManager: {fileID: 0}
-  owner: {fileID: 0}
-  itemToRotate: {fileID: 0}
 --- !u!1001 &6677829299766810681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90,6 +86,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Boomerang
+      objectReference: {fileID: 0}
+    - target: {fileID: 8593423934925760679, guid: b56a3b1bf756b4e778646ac7ec24940a,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}

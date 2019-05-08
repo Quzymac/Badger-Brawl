@@ -96,6 +96,7 @@ namespace Player
                 currentWeapon.GetComponent<Rigidbody>().useGravity = false;
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
                 currentWeapon.GetComponent<IWeapon>().Owner = gameObject;
+                currentWeapon.GetComponent<WeaponDespawn>().StopDespawn();
 
                 ikHandler.RightHand = currentWeapon.GetComponent<IWeapon>().RightHand;
                 ikHandler.LeftHand = currentWeapon.GetComponent<IWeapon>().LeftHand;

@@ -17,6 +17,9 @@ public class WeaponDespawn : MonoBehaviour
     Coroutine flashCorutine;
 
     float despawnTimer = 15f;
+
+    public float GetTimer()  {   return timer;    }
+
     void Start()
     {
         weapon = GetComponent<IWeapon>();
@@ -28,27 +31,29 @@ public class WeaponDespawn : MonoBehaviour
         if (weapon.Owner == null)
         {
             timer -= Time.deltaTime;
+            if (timer < 0f)
+            {
+                Despawn();
+            }
             if (timer < flashStart && !flashingActive)
             {
                 flashingActive = true;
                 flashCorutine = StartCoroutine(Flashing());
             }
-            if (timer < 0f)
-            {
-                Despawn();
-            }
-        }
-        else // testing move to pickupwwweapon
-        {
-            if (flashCorutine != null)
-            {
-                StopCoroutine(flashCorutine);
-                mesh.enabled = true;
-            }
-            flashingActive = false;
-            timer = despawnTimer;
         }
     }
+    
+    public void StopDespawn()
+    {
+        if (flashCorutine != null)
+        {
+            StopCoroutine(flashCorutine);
+            mesh.enabled = true;
+        }
+        flashingActive = false;
+        timer = despawnTimer;
+    }
+
     IEnumerator Flashing()
     {
         float flashFasterOverTime = 0f;
@@ -61,12 +66,8 @@ public class WeaponDespawn : MonoBehaviour
             mesh.enabled = true;
         }
     }
-    void Despawn() //remove weapon from list of weapons and destroys gameObject
+    public void Despawn() //remove weapon from list of weapons and destroys gameObject
     {
         weaponSpawnManager.DespawnWeapon(gameObject);
-
-        //flashingActive = false;
-        //despawnTimer = CONSTtimer;
-        Debug.Log("DESPAWN " + gameObject.name);
     }
 }

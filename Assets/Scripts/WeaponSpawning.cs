@@ -8,12 +8,10 @@ namespace Player
     {
         public List<GameObject> weapons = new List<GameObject>();
         public List<GameObject> spawnPositions = new List<GameObject>();
-        List<Transform> usedSpawnPositions = new List<Transform>();
         List<GameObject> spawnedWeapons = new List<GameObject>();
 
         [SerializeField] Transform upperCollider;
         [SerializeField] Transform bottomCollider;
-        public bool newRound { get; set; } = false;
 
         [SerializeField] int maxNumberOfWeapons = 6;
         public int numberOfWeapons { get; set; } = 0;
@@ -74,7 +72,10 @@ namespace Player
                 }
             }
             spawnedWeapons.Clear();
-            newRound = true;
+            foreach (GameObject spawnPos in spawnPositions)
+            {
+                spawnPos.GetComponent<WeaponSpawnPosition>().occupied = false;
+            }
         }
     }
 }

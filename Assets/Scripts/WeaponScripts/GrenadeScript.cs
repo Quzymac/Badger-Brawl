@@ -19,7 +19,7 @@ namespace Player
         float timer = 0f;
         public GameObject Parent { get; set; }
 
-        float holdIncreaseThrow = 0f;
+        float holdIncreaseThrow = 0.5f;
         float getHoldValue = 0f;
         float maxHoldThrow = 3f;
         [SerializeField] Transform leftHandPos;
@@ -51,10 +51,10 @@ namespace Player
                 if (holdIncreaseThrow >= maxHoldThrow)
                 {
                     Instantiate(Explosion, transform.position, transform.rotation);
-                    Destroy(gameObject);
+                    GetComponent<WeaponDespawn>().Despawn(); //destroy and remove from list of weapons
                 }
             }
-            else if (Firing == false && holdIncreaseThrow > 1)
+            else if (Firing == false && holdIncreaseThrow > 0.5f)
             {
                 getHoldValue = holdIncreaseThrow;
                 holdIncreaseThrow = 0;
@@ -64,7 +64,7 @@ namespace Player
             {
                 getHoldValue = holdIncreaseThrow;
                 Instantiate(Explosion, transform.position, transform.rotation);
-                Destroy(gameObject);
+                GetComponent<WeaponDespawn>().Despawn(); //destroy and remove from list of weapons
             }
 
             if (isThrown == true)
@@ -93,9 +93,8 @@ namespace Player
                     explosion.GetComponent<ExplosionDamage>().Damage = Damage;
                     explosion.GetComponent<ExplosionDamage>().KnockBackPower = KnockBackPower;
 
-                    Destroy(gameObject);
+                    GetComponent<WeaponDespawn>().Despawn(); //destroy and remove from list of weapons
                     startExplosion = false;
-                    //blowUpTimer = 5f;
                 }              
             }
         }
@@ -106,8 +105,6 @@ namespace Player
 
             blowUpTimer = 5f;
             rb.AddForce(transform.forward * (ProjectileSpeed * (getHoldValue * 20)) + new Vector3(0, getHoldValue * 100, 0));
-
-            
         }
 
         private void OnTriggerEnter(Collider other)

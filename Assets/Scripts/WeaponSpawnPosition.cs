@@ -8,6 +8,9 @@ namespace Player
     {
         public bool occupied = false;
         GameManager gameManager;
+        float timer;
+
+        IWeapon weapon;
 
         private void Start()
         {
@@ -16,32 +19,27 @@ namespace Player
 
         private void OnTriggerStay(Collider other)
         {
-            if (other.gameObject.tag == "Weapon" && occupied == false)
+            if (occupied == false)
             {
+                weapon = other.GetComponent<IWeapon>();
+                timer = other.GetComponent<WeaponDespawn>().GetTimer();
                 occupied = true;
             }
         }
-
-        private void OnTriggerExit(Collider other) //fungerar inte och behövs förmodligen inte
-        {
-            if (other.gameObject.tag == "Weapon")
-            {
-                occupied = false;
-            }
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (other.gameObject.tag != "Weapon")
-            {
-                Physics.IgnoreCollision(other, gameObject.GetComponent<Collider>());
-            }
-        }
+        
         private void Update()
         {
-            if (gameManager.GetComponent<WeaponSpawning>().newRound == true)
+           if (occupied)
             {
-                occupied = false;
+                timer -= Time.deltaTime;
+                if (timer < 0)
+                {
+                    occupied = false;
+                }
+                else if (weapon != null && weapon.Owner != null)
+                {
+                    occupied = false;
+                }
             }
         }
     }
