@@ -38,20 +38,17 @@ namespace Player
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
 
-        PlayerScript.PlayerTeam team;
-
         void Start()
         {
-            
             audioSource = GetComponent<AudioSource>();
             audioSource.Stop();
             layerMask |= (1 << LayerMask.NameToLayer("Player"));
             layerMask |= (1 << LayerMask.NameToLayer("jumpingPlayer"));
-            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
+            
         }
         void Update()
         {
-            Debug.DrawRay(firePoint.position, firePoint.TransformDirection(Vector3.forward) *10,Color.red, 0.1f, true);
+
             if (Firing == true)
             {
                 if (!beamStart.isPlaying)
@@ -91,10 +88,10 @@ namespace Player
 
             if (Physics.Raycast(firePoint.transform.position, aim, out hit, 20f, layerMask))
             {
-                if (hit.collider.gameObject.tag == "Player")
+                PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
+                if (playerHit != null)
                 {
-                    PlayerScript playerHit = GetComponent<PlayerScript>();
-                    if (playerHit.Team != team)
+                    if (playerHit.Team != Owner.GetComponent<PlayerScript>().Team)
                     {
                         hit.collider.GetComponent<ControllerMovement>().KnockBack(transform.position, knockBackPower);
                         hit.collider.GetComponent<PlayerScript>().TakeDamage(Damage);
