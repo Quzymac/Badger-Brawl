@@ -26,17 +26,13 @@ namespace Player
 
         private void Update()
         {
-            if (anim.GetBool("Jumping") == true && anim.GetBool("Idle") == true)
-            {
-                anim.SetBool("Jumping", false);
-                Debug.Log("Maybe jumping no longer bugged?");
-            }
+            BugFix();      
         }
 
         public void IdleJump() //Animation från idle till jump
         {
-            //anim.SetBool("Idle", false);
-            //anim.SetBool("Jumping", true);
+            anim.SetBool("Idle", false);
+            anim.SetBool("Jumping", true);
             anim.SetTrigger("IdleJumpTrigger");
         }
 
@@ -69,9 +65,9 @@ namespace Player
 
         public void JumpingFalling() //animation från jumping till falling
         {
-            //anim.SetBool("Jumping", false);
-            //anim.SetBool("Falling", true);
-            anim.SetTrigger("JumpingFallingTrigger");
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Falling", true);
+            //anim.SetTrigger("JumpingFallingTrigger");
         }
 
         public void FallingLanding() //animation från falling till landing
@@ -460,6 +456,26 @@ namespace Player
         public void Throwing()
         {
             anim.SetTrigger("Throwing");
+        }
+
+        public void BugFix() // ska försöka fixa så flera animationer inte försöker spelas samtidigt
+        {
+            if (anim.GetBool("Jumping") == true && (anim.GetBool("Jumping") == true || anim.GetBool("IdleHold") == true || anim.GetBool("Falling") == true || anim.GetBool("Running") == true))
+            {
+                anim.SetBool("Jumping", false);
+            }
+            else if (anim.GetBool("Idle") == true && (anim.GetBool("Jumping") == true || anim.GetBool("IdleHold") == true || anim.GetBool("Falling") == true || anim.GetBool("Running") == true))
+            {
+                anim.SetBool("IdleHold", false);
+            }
+            else if (anim.GetBool("FallingHold") == true && (anim.GetBool("Idle") == true || anim.GetBool("IdleHold") == true || anim.GetBool("Falling") == true || anim.GetBool("Running") == true))
+            {
+                anim.SetBool("FallingHold", false);
+            }
+            else if (anim.GetBool("Falling") == true && (anim.GetBool("Idle") == true || anim.GetBool("IdleHold") == true || anim.GetBool("FallingHold") == true || anim.GetBool("RunningHold") == true))
+            {
+                anim.SetBool("Falling", false);
+            }
         }
     }
 }

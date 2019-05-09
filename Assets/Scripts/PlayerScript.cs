@@ -108,6 +108,7 @@ namespace Player
                 falling = true;
                 animationHandler.JumpingToFalling();
             }
+            
         }
 
         private void Update()
