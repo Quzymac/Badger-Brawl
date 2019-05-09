@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8618ffde36e4aad4d914c980f1ba5df6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  removeTargets: {fileID: 0}
+  multipleTargetCam: {fileID: 0}
   soundManager: {fileID: 1214476625}
   top: {fileID: 0}
   bottom: {fileID: 0}
@@ -281,6 +281,8 @@ MonoBehaviour:
   pctValue: 0
   camRoundPosition: 0
   progs: {fileID: 0}
+  allHumansDead: 0
+  allBadgersDead: 0
 --- !u!114 &2804229538860892923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -375,6 +377,9 @@ MonoBehaviour:
   upperCollider: {fileID: 0}
   bottomCollider: {fileID: 0}
   maxNumberOfWeapons: 6
+  timeBetweenSpawns: 2
+  weaponSpawnEffect: {fileID: 4102236933514221811, guid: 1b14550faa910034d8fb15b40942b34c,
+    type: 3}
 --- !u!114 &7513932278190038987
 MonoBehaviour:
   m_ObjectHideFlags: 0
