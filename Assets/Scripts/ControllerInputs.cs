@@ -171,21 +171,6 @@ namespace Player
             //calculate movement velocity
             controllerMovement.MoveDir = Input.GetAxisRaw(horizontalAxis);
 
-            //Animations
-            //if ((Input.GetAxisRaw(horizontalAxis) > 0 || Input.GetAxisRaw(horizontalAxis) < 0) && jumpScript.grounded == true)
-            //{
-            //    animationHandler.IdleToRun();
-            //}
-            //else if (Input.GetAxisRaw(horizontalAxis) == 0 && jumpScript.grounded == true)
-            //{
-            //    animationHandler.RunToIdle();
-            //}
-
-            //else if (jumpScript.grounded == false && rb.velocity.y > 0 || jumpScript.grounded == false && rb.velocity.y < 0)
-            //{
-            //    animationHandler.IdleBool = false;
-            //}
-
 
             //jump
             if (Input.GetButtonDown(aButton))
@@ -197,7 +182,7 @@ namespace Player
                 }
                 else if (jumpScript.Running == true)
                 {
-                    animationHandler.RunToJump();
+                    //animationHandler.RunToJump(); //SPelar inte hopp animationen om spelaren vill springa i luften
                 }
                 jumpScript.Jump();
             }
@@ -206,26 +191,27 @@ namespace Player
             if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
                 //animation för falla igenom
-                if (jumpScript.Running == false)
-                {
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
-                    {
-                        if (hit.transform.gameObject.layer == groundLayer)
-                        {
-                            animationHandler.IdleToFall();
-                        }
-                    }
-                }
-                else if (jumpScript.Running == true)
-                {
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
-                    {
-                        if (hit.transform.gameObject.layer == groundLayer)
-                        {
-                            animationHandler.RunningToFall();
-                        }
-                    }
-                }
+                //if (jumpScript.Running == false)
+                //{
+                //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
+                //    {
+                //        if (hit.transform.gameObject.layer == groundLayer)
+                //        {
+                //            animationHandler.IdleToFall();
+                //            Debug.Log("Idle to fall");
+                //        }
+                //    }
+                //}
+                //else if (jumpScript.Running == true)
+                //{
+                //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
+                //    {
+                //        if (hit.transform.gameObject.layer == groundLayer)
+                //        {
+                //            animationHandler.RunningToFall();
+                //        }
+                //    }
+                //}
                jumpScript.DropThrough();
             }
             //shoot

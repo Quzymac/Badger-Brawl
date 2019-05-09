@@ -26,7 +26,7 @@ namespace Player
 
         private void Update()
         {
-            BugFix();      
+            TwoAnimationsFix();      
         }
 
         public void IdleJump() //Animation från idle till jump
@@ -47,6 +47,7 @@ namespace Player
         {
             anim.SetBool("Idle", false);
             anim.SetBool("Falling", true);
+            //anim.SetTrigger("IdleFallingTrigger");
         }
 
         public void RunningIdle() // animation från running till idle
@@ -88,6 +89,7 @@ namespace Player
         {
             anim.SetBool("Running", false);
             anim.SetBool("Falling", true);
+            //anim.SetTrigger("RunningFallingTrigger");
         }
 
         public void LandingRunning()
@@ -458,7 +460,7 @@ namespace Player
             anim.SetTrigger("Throwing");
         }
 
-        public void BugFix() // ska försöka fixa så flera animationer inte försöker spelas samtidigt
+        public void TwoAnimationsFix() // ska försöka fixa så flera animationer inte försöker spelas samtidigt
         {
             if (anim.GetBool("Jumping") == true && (anim.GetBool("Jumping") == true || anim.GetBool("IdleHold") == true || anim.GetBool("Falling") == true || anim.GetBool("Running") == true))
             {
@@ -472,9 +474,14 @@ namespace Player
             {
                 anim.SetBool("FallingHold", false);
             }
-            else if (anim.GetBool("Falling") == true && (anim.GetBool("Idle") == true || anim.GetBool("IdleHold") == true || anim.GetBool("FallingHold") == true || anim.GetBool("RunningHold") == true))
+            else if (anim.GetBool("Falling") == true && (anim.GetBool("Idle") == true || anim.GetBool("IdleHold") == true || anim.GetBool("FallingHold") == true))
             {
                 anim.SetBool("Falling", false);
+            }
+            else if (anim.GetBool("IdleHold") == true && (anim.GetBool("Running") == true || anim.GetBool("FallingHold") == true || anim.GetBool("RunningHold") == true))
+            {
+                anim.SetBool("Running", false);
+                anim.SetBool("RunningHold", false);
             }
         }
     }

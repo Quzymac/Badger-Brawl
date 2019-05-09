@@ -25,6 +25,7 @@ namespace Player
         Rigidbody rb;
         public bool falling  = false;
         JumpScript jumpScript;
+        SpawnPlayers spawnPlayers;
         AnimationHandler animationHandler;
         [SerializeField] List<GameObject> deathParticle = new List<GameObject>();
         [SerializeField] List<Material> specificMaterial = new List<Material>();
@@ -39,15 +40,6 @@ namespace Player
             animationHandler = GetComponent<AnimationHandler>();
             gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
             healthBar = FindObjectOfType<HealthBarManager>().GetComponent<HealthBarManager>().healthBars[playerNumber - 1];
-            if (Team == PlayerTeam.badger)
-            {
-                healthBar.badger.enabled = true;
-            }
-            if (Team == PlayerTeam.human)
-            {
-                healthBar.human.enabled = true;
-            }
-
             mat = PolySurface.GetComponent<Renderer>();
             mat.material = specificMaterial[playerNumber - 1];
 

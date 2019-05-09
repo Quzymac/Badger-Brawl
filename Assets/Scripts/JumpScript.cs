@@ -153,10 +153,6 @@ namespace Player
             {
                 landed = true;
             }
-            //else if (landed == true && grounded == true && player.falling == false && animationHandler.Jumping == false)
-            //{
-            //    landed = false;
-            //}
         }
        
         
@@ -176,14 +172,6 @@ namespace Player
                 player.falling = false;
                 animationHandler.Jumping = false;
                 animationHandler.FallingToLanding();
-                //if (rb.velocity.x > 0.1 || rb.velocity.x < -0.1)
-                //{
-                //    animationHandler.LandingToRunning();
-                //}
-                //else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
-                //{
-                //    animationHandler.LandingToIdle();
-                //}
                 landed = false;
                 checkLanding = true;
             }
