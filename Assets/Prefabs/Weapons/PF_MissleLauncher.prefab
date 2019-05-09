@@ -287,7 +287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpawnManager: {fileID: 0}
-  despawnTimer: 0
+  timer: 0
   mesh: {fileID: 1180233935691450458}
 --- !u!65 &3957046606430365774
 BoxCollider:
@@ -318,6 +318,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162074080400637170, guid: 04dba341d283d4d7ca85dfe85780a84d,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5411085370446766706, guid: 04dba341d283d4d7ca85dfe85780a84d,
         type: 3}

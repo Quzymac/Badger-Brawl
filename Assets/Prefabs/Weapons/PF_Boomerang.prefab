@@ -269,6 +269,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_Boomerang
       objectReference: {fileID: 0}
+    - target: {fileID: 7145889006575200686, guid: b56a3b1bf756b4e778646ac7ec24940a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 422156a30db1f4b13a2d4f3e7dcd446a, type: 2}
+    - target: {fileID: 7145889006575200686, guid: b56a3b1bf756b4e778646ac7ec24940a,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -324,11 +334,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
-    - target: {fileID: 7145889006575200686, guid: b56a3b1bf756b4e778646ac7ec24940a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 422156a30db1f4b13a2d4f3e7dcd446a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56a3b1bf756b4e778646ac7ec24940a, type: 3}
 --- !u!4 &6653662583427370668 stripped

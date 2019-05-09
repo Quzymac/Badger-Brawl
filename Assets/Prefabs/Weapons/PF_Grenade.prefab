@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpawnManager: {fileID: 0}
-  despawnTimer: 0
+  timer: 0
   mesh: {fileID: 5004353299741065829}
 --- !u!1001 &8963101902601612617
 PrefabInstance:
@@ -205,6 +205,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 4111889258886508332, guid: bdcd47a02d1224c968dbaffddf0fe195,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 473640790455521223, guid: bdcd47a02d1224c968dbaffddf0fe195,
         type: 3}

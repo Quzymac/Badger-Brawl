@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpawnManager: {fileID: 0}
-  despawnTimer: 0
+  timer: 0
   mesh: {fileID: 6331666064074051495}
 --- !u!1001 &5618029199235304577
 PrefabInstance:
@@ -342,6 +342,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1885222051253764902, guid: 1a80a44adc56048c492840b01adcfe69,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1885222051253764902, guid: 1a80a44adc56048c492840b01adcfe69,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e15efafe793f04dcca76e28cae29635b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a80a44adc56048c492840b01adcfe69, type: 3}
 --- !u!1 &1889146090352998271 stripped

@@ -71,7 +71,7 @@ SkinnedMeshRenderer:
   m_GameObject: {fileID: 1017724885936763116}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -79,7 +79,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88be8a10113c8904c91a9f9ea7b24aa5, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -703,7 +703,7 @@ Animator:
   m_GameObject: {fileID: 7573615816348176929}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e5ea211272cc76947b022232293d03f0, type: 3}
-  m_Controller: {fileID: 9100000, guid: 64ca4565975ccde48a4fb608b9aa5623, type: 2}
+  m_Controller: {fileID: 9100000, guid: e9ff089c42315f9458ff0da06d7641b2, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -762,12 +762,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f3751db08439943b988a15c43af78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: 88be8a10113c8904c91a9f9ea7b24aa5, type: 2}
+  defaultMaterial: {fileID: 0}
   redMaterial: {fileID: 2100000, guid: 01b7e030bc04aa140b6b8c9505fdd26e, type: 2}
   GFX: {fileID: 1017724885936763116}
   playerNumber: 0
   joystick: 0
-  t: 0
+  takeDmgOverTime: 0
   falling: 0
   deathParticle:
   - {fileID: 7670490129525665866, guid: 36fb5fc742bf2434594eb26443fd19c1, type: 3}

@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpawnManager: {fileID: 0}
-  despawnTimer: 0
+  timer: 0
   mesh: {fileID: 5306023180730414196}
 --- !u!1 &2158067892267576323
 GameObject:
@@ -299,6 +299,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Flamethrower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497343732472383121, guid: 670273544362c48d8a81cc5dd313e713,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497343732472383121, guid: 670273544362c48d8a81cc5dd313e713,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7736014705123776432, guid: 670273544362c48d8a81cc5dd313e713,
         type: 3}
@@ -354,11 +364,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497343732472383121, guid: 670273544362c48d8a81cc5dd313e713,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6002617891201774122, guid: 670273544362c48d8a81cc5dd313e713,
         type: 3}

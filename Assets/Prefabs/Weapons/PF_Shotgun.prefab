@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpawnManager: {fileID: 0}
-  despawnTimer: 0
+  timer: 0
   mesh: {fileID: 6076685477617018968}
 --- !u!1 &8508645928115346709
 GameObject:
@@ -306,6 +306,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5797709400173471151, guid: e0d846d1f2a1b4848acf48e9f235db76,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8471377059490115485, guid: e0d846d1f2a1b4848acf48e9f235db76,
         type: 3}

@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSpawnManager: {fileID: 0}
-  despawnTimer: 0
+  timer: 0
   mesh: {fileID: 1494113140440544477}
 --- !u!65 &6344216989126600484
 BoxCollider:
@@ -536,6 +536,11 @@ PrefabInstance:
     - target: {fileID: 5150986026881852902, guid: 5a892a9b92a784c73989004c51415822,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6606758377865707835, guid: 5a892a9b92a784c73989004c51415822,
+        type: 3}
+      propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
