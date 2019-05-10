@@ -228,10 +228,10 @@ MonoBehaviour:
   gameManager: {fileID: 2804229538860892920}
   humanCharacters:
   - {fileID: 242719694596590642, guid: 27193fc47255a5d408ff9217b81712a9, type: 3}
-  - {fileID: 7573615816348176929, guid: 9f70ead09b1b2574085634282b971ee9, type: 3}
+  - {fileID: 5658386064917308624, guid: 4d95f376863d44b4aadc722db9d8d9fd, type: 3}
   badgerCharacters:
-  - {fileID: 570735910292819638, guid: b7080db2e7d4e9e4e86c686692f5cf7c, type: 3}
-  - {fileID: 6088017714779087161, guid: 45645063ec379df4f8a36692fe60851f, type: 3}
+  - {fileID: 8833186667037995700, guid: a72b0a5a7a6c22d4780e9c3ad01aa369, type: 3}
+  - {fileID: 1402285957492260740, guid: 9a078dbe38c98ef4b81ac274a93374be, type: 3}
   addTargets: {fileID: 0}
   playerNum: 00000000000000000000000000000000
   playerController: 00000000000000000000000000000000
