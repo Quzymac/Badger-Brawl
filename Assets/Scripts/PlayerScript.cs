@@ -95,7 +95,7 @@ namespace Player
 
         public void CheckVelocity()
         {
-            if (rb.velocity.y < -1 && falling == false && jumpScript.grounded == false)
+            if (rb.velocity.y < 0 && falling == false && jumpScript.grounded == false)
             {
                 falling = true;
                 animationHandler.JumpingToFalling();
