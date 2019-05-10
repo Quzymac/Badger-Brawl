@@ -18,8 +18,11 @@ namespace Player
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
         LayerMask platformLayer;
+        LayerMask jumpThroughLayer;
         Vector3 jumpDir;
         PlayerScript player;
+
+        Vector3 colloffset = new Vector3(0, 0.3f, 0);
 
         [SerializeField] AudioClip jumpSound;
         [SerializeField] AudioClip landingSound;
@@ -38,6 +41,7 @@ namespace Player
             animationHandler = GetComponent<AnimationHandler>();
             platformLayer |= (1 << LayerMask.NameToLayer("Platform"));
             platformLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
+            jumpThroughLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
 
 
             rb = GetComponent<Rigidbody>();
@@ -59,18 +63,19 @@ namespace Player
                     jumpCount--;
                 rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
                 rb.AddForce(jumpDir);
-                gameObject.layer = 12;
+                //gameObject.layer = 12;
                 grounded = false;
             }
         }
 
         public void DropThrough()
         {
-            if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
-            {
-                gameObject.layer = 12;
-                dropTimer = 0;
-            }
+            gameObject.layer = 12;
+            //if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
+            //{
+            //    gameObject.layer = 12;
+            //    dropTimer = 0;
+            //}
         }
         
         private void FixedUpdate()
@@ -100,6 +105,15 @@ namespace Player
         }
         void Update()
         {
+            Collider[] hits = Physics.OverlapBox(transform.position + colloffset, new Vector3(0.5f, 0.7f, 0.2f), Quaternion.identity, jumpThroughLayer);
+            if (hits.Length == 0)
+            {
+                gameObject.layer = 10;
+            }
+            else
+            {
+                gameObject.layer = 12;
+            }
             CheckRunning();
             GroundDetection();
             CheckLanded();
@@ -117,13 +131,19 @@ namespace Player
                 }               
             }
 
-            if (rb.velocity.y < 0f && gameObject.layer == 12 && collidedPlatform != null &&  dropTimer > 0.2f) // resets layer 
-            {
-                gameObject.layer = 10;
-            }
-            dropTimer += Time.deltaTime;
+            //if (rb.velocity.y < 0f && gameObject.layer == 12 && collidedPlatform != null &&  dropTimer > 0.2f) // resets layer 
+            //{
+            //    gameObject.layer = 10;
+            //}
+            //dropTimer += Time.deltaTime;
         }
+        void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
 
+            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
+            Gizmos.DrawWireCube(transform.position + colloffset, new Vector3(1f, 1.4f, 0.4f));
+        }
         private void GroundDetection()
         {
             RaycastHit hit;
