@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultMaterial: {fileID: 0}
   redMaterial: {fileID: 2100000, guid: 01b7e030bc04aa140b6b8c9505fdd26e, type: 2}
-  GFX: {fileID: 0}
+  GFX: {fileID: 4654768464694749086}
   playerNumber: 0
   joystick: 0
   takeDmgOverTime: 0

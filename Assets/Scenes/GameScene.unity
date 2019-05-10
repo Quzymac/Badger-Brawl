@@ -2458,7 +2458,7 @@ PrefabInstance:
       objectReference: {fileID: 2037910925}
     - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
-      propertyPath: removeTargets
+      propertyPath: multipleTargetCam
       value: 
       objectReference: {fileID: 587052443}
     - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
@@ -2481,11 +2481,6 @@ PrefabInstance:
       propertyPath: progs
       value: 
       objectReference: {fileID: 551442645}
-    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: multipleTargetCam
-      value: 
-      objectReference: {fileID: 587052443}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc, type: 3}
 --- !u!1 &1820365270
