@@ -19,6 +19,7 @@ public class PauseManager : MonoBehaviour
     public GameObject PausePanel;
     public GameObject OptionsPanel;
     public GameObject ExitToMainMenuPanel;
+    public GameObject HowToPlayPanel;
 
     float buttonTimer = 0.1f;
 
@@ -56,6 +57,7 @@ public class PauseManager : MonoBehaviour
     public void BackToPauseMenu()
     {
         PausePanel.SetActive(true);
+        HowToPlayPanel.SetActive(false);
         OptionsPanel.SetActive(false);
         ExitToMainMenuPanel.SetActive(false);
     }
@@ -66,7 +68,13 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene("MainMenuScene");
     }
 
-   
+    public void HowToPlayChosen()
+    {
+        HowToPlayPanel.SetActive(true);
+        PausePanel.SetActive(false);
+    }
+
+
 
     // Update is called once per frame
     void Update()
