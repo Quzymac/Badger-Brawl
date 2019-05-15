@@ -20,10 +20,14 @@ namespace Player
 
         float time;
         float minDistance = 1000;
+        float seekingDelay = 1f;
+        float strenghtOfSeeking;
+
 
         void Start()
         {
             time = 0.0f;
+            strenghtOfSeeking = 0.0f;
             team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             gameManager = FindObjectOfType<GameManager>();
             
@@ -40,10 +44,14 @@ namespace Player
 
             if (enemyPosition != null)
             {
-                rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght;
+                if (time < seekingDelay)
+                {
+                    strenghtOfSeeking = time; //seekingStrenght from 0 to full strenght
+                }
+                rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght * strenghtOfSeeking;
                 rb.velocity = rb.velocity.normalized * Parent.GetComponent<IWeapon>().ProjectileSpeed;
                 Vector3 vel = enemyPosition.transform.position - rb.velocity;
-                transform.LookAt(vel);
+                transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
             }
             if (time > Parent.GetComponent<TargetGun>().MaxTravelTime)
             {

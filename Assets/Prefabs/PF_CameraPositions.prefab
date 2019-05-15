@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 244481886}
   - component: {fileID: 244481887}
-  m_Layer: 9
+  m_Layer: 16
   m_Name: upCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ PrefabInstance:
     - target: {fileID: 2603716233650898158, guid: e6953de5cafd708479263de9758c7b6a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 2603716233650898158, guid: e6953de5cafd708479263de9758c7b6a,
         type: 3}
