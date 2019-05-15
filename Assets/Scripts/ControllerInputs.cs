@@ -175,14 +175,21 @@ namespace Player
             //jump
             if (Input.GetButtonDown(aButton))
             {
-                Debug.Log(jumpScript.Running);
-                if (jumpScript.Running == false)
+                if (animationHandler.Jumping == false)
                 {
-                    animationHandler.IdleToJump();
+                    Debug.Log(jumpScript.Running);
+                    if (jumpScript.Running == false)
+                    {
+                        animationHandler.IdleToJump();
+                    }
+                    else if (jumpScript.Running == true)
+                    {
+                        animationHandler.RunToJump(); //SPelar inte hopp animationen om spelaren vill springa i luften
+                    }
                 }
-                else if (jumpScript.Running == true)
+                else
                 {
-                    //animationHandler.RunToJump(); //SPelar inte hopp animationen om spelaren vill springa i luften
+                    animationHandler.JumpToJump();
                 }
                 jumpScript.Jump();
             }

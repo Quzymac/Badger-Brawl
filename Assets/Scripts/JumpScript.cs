@@ -29,7 +29,6 @@ namespace Player
         [SerializeField] AudioSource audioSource;
         public bool landed = false;
         public bool Running { get; set; }
-        bool checkLanding = false;
 
         AnimationHandler animationHandler;
 
@@ -117,19 +116,7 @@ namespace Player
             CheckRunning();
             GroundDetection();
             CheckLanded();
-            if (checkLanding == true)
-            {
-                if (Running == true)
-                {
-                    animationHandler.LandingToRunning();
-                    checkLanding = false;
-                }
-                else if (Running == false)
-                {
-                    animationHandler.LandingToIdle();
-                    checkLanding = false;
-                }               
-            }
+           
 
             //if (rb.velocity.y < 0f && gameObject.layer == 12 && collidedPlatform != null &&  dropTimer > 0.2f) // resets layer 
             //{
@@ -169,7 +156,7 @@ namespace Player
                 grounded = false;
             }
 
-            if (player.falling == true && landed == false && grounded == true && animationHandler.Jumping == true)
+            if (player.falling == true && landed == false && grounded == true ) //&& animationHandler.Jumping == true
             {
                 landed = true;
             }
@@ -193,7 +180,16 @@ namespace Player
                 animationHandler.Jumping = false;
                 animationHandler.FallingToLanding();
                 landed = false;
-                checkLanding = true;
+
+                if (Running == true)
+                {
+                    animationHandler.LandingToRunning();
+                }
+                else if (Running == false)
+                {
+                    animationHandler.LandingToIdle();
+                }
+
             }
         }
 

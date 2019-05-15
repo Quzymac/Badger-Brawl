@@ -460,6 +460,11 @@ namespace Player
             anim.SetTrigger("Throwing");
         }
 
+        public void JumpToJump()
+        {
+            anim.SetTrigger("JumpJump");
+        }
+
         public void TwoAnimationsFix() // ska försöka fixa så flera animationer inte försöker spelas samtidigt
         {
             if (anim.GetBool("Jumping") == true && (anim.GetBool("Jumping") == true || anim.GetBool("IdleHold") == true || anim.GetBool("Falling") == true || anim.GetBool("Running") == true))

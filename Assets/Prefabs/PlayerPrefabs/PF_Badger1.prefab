@@ -75,7 +75,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &8833186667037995711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,20 +366,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6132101280319264779, guid: b7080db2e7d4e9e4e86c686692f5cf7c,
+    - target: {fileID: 6586889395834665784, guid: b7080db2e7d4e9e4e86c686692f5cf7c,
         type: 3}
-      propertyPath: m_Controller
-      value: 
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4728777381486609417, guid: b7080db2e7d4e9e4e86c686692f5cf7c,
         type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 6586889395834665784, guid: b7080db2e7d4e9e4e86c686692f5cf7c,
+    - target: {fileID: 6132101280319264779, guid: b7080db2e7d4e9e4e86c686692f5cf7c,
         type: 3}
-      propertyPath: m_Layer
-      value: 10
+      propertyPath: m_Controller
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1470930147849922054, guid: b7080db2e7d4e9e4e86c686692f5cf7c, type: 3}
