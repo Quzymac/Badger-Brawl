@@ -32,9 +32,7 @@ namespace Player
         bool isThrown = false;
         bool startExplosion = false;
         [SerializeField] GameObject Explosion;
-        float blowUpTimer = 5f;
-
-        
+        [SerializeField] float blowUpTimer = 3f;
 
         void Start()
         {
@@ -50,8 +48,8 @@ namespace Player
                 holdIncreaseThrow += Time.deltaTime;
                 if (holdIncreaseThrow >= maxHoldThrow)
                 {
-                    Instantiate(Explosion, transform.position, transform.rotation);
-                    GetComponent<WeaponDespawn>().Despawn(); //destroy and remove from list of weapons
+                    startExplosion = true;
+                    blowUpTimer = 0f;
                 }
             }
             else if (Firing == false && holdIncreaseThrow > 0.5f)
@@ -70,23 +68,22 @@ namespace Player
             if (isThrown == true)
             {
                 isThrown = false;
-                GetComponent<Collider>().enabled = true;
-                rb.useGravity = true;
+
+                Owner.GetComponent<ControllerInputs>().DropWeapon();
                 rb.constraints = RigidbodyConstraints.None;
-                rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-                transform.parent = null;
-                Owner.GetComponent<IKHandler>().RightHand = null;
-                Owner.GetComponent<IKHandler>().LeftHand = null;
-                Owner = null;
+                rb.constraints = RigidbodyConstraints.FreezePositionZ;
+
+                GetComponent<SphereCollider>().enabled = false;
+                transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
 
                 Fire();
                 startExplosion = true;
+            
             }
 
             if (startExplosion == true)
             {
                 blowUpTimer -= Time.deltaTime;
-                Debug.Log(blowUpTimer);
                 if (blowUpTimer <= 0)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
@@ -105,17 +102,6 @@ namespace Player
 
             blowUpTimer = 5f;
             rb.AddForce(transform.forward * (ProjectileSpeed * (getHoldValue * 20)) + new Vector3(0, getHoldValue * 100, 0));
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            if (startExplosion == true)
-            {
-                if (other.tag == "Platform")
-                {
-                    blowUpTimer *= 0.5f;
-                }
-            }
         }
     }
 }

@@ -59,7 +59,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 30
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -265,6 +265,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633169714990676833, guid: bdcd47a02d1224c968dbaffddf0fe195,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: a2a8bdf5c7513a84c952ac7848abd3db,
+        type: 2}
+    - target: {fileID: 2633169714990676833, guid: bdcd47a02d1224c968dbaffddf0fe195,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2633169714990676833, guid: bdcd47a02d1224c968dbaffddf0fe195,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.46
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdcd47a02d1224c968dbaffddf0fe195, type: 3}
