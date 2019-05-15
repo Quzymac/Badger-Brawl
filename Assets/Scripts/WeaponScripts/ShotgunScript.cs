@@ -47,12 +47,13 @@ namespace Player
             firePoint.SetParent(gameObject.transform);
             GameObject thisFlash = Instantiate(muzzleFlash, firePoint.position, firePoint.rotation);
             thisFlash.transform.parent = firePoint;
+
             foreach (GameObject pel in pellets)
             {
-                GameObject thisPellet = Instantiate(pellet, firePoint.position, firePoint.rotation);
+                GameObject thisPellet = Instantiate(pellet, firePoint.position, Quaternion.Euler(firePoint.rotation.eulerAngles + new Vector3(Random.Range(-maxSpread, maxSpread),0,0)));
                 thisPellet.GetComponent<PelletScript>().Parent = gameObject;
                 rb = thisPellet.GetComponent<Rigidbody>();
-                rb.velocity = transform.forward * ProjectileSpeed + new Vector3(0, Random.Range(minSpread, maxSpread), 0);              
+                rb.velocity = thisPellet.transform.forward * ProjectileSpeed;             
             }
         }
 
