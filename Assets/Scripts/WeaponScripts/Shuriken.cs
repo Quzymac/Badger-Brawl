@@ -26,7 +26,7 @@ namespace Player
         [SerializeField] Transform firePoint;
 
         [SerializeField] GameObject shurikenBull;
-        
+
 
         public bool Firing { get; set; } = false;
         public GameObject Owner { get; set; }
@@ -59,7 +59,6 @@ namespace Player
             }
             GameObject newBullet = Instantiate(shurikenBull, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<ShurikenBullet>().Parent = gameObject;
-            
         }
     }
 }

@@ -101,6 +101,7 @@ namespace Player
                 ikHandler.RightHand = currentWeapon.GetComponent<IWeapon>().RightHand;
                 ikHandler.LeftHand = currentWeapon.GetComponent<IWeapon>().LeftHand;
                 animationHandler.PickUp();
+                canPickUp = null;
             }
         }
         public void DropWeapon()
@@ -138,7 +139,14 @@ namespace Player
                 canPickUp = null;
             }
         }
-        
+        private void OnTriggerStay(Collider other)
+        {
+            if (canPickUp == null && other.CompareTag("Weapon"))
+            {
+                canPickUp = other.gameObject;
+            }
+        }
+
         void PlayerControlls()
         {
             //Rotate to look left/ right
@@ -187,9 +195,10 @@ namespace Player
                         animationHandler.RunToJump(); //SPelar inte hopp animationen om spelaren vill springa i luften
                     }
                 }
-                else
+                else if (animationHandler.Jumping == true && jumpScript.jumpCount > 0)
                 {
-                    animationHandler.JumpToJump();
+                    Debug.Log("Dubble jump animation");
+                    animationHandler.FallingJumpingCheck();
                 }
                 jumpScript.Jump();
             }
@@ -197,28 +206,6 @@ namespace Player
             //drop
             if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
-                //animation för falla igenom
-                //if (jumpScript.Running == false)
-                //{
-                //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
-                //    {
-                //        if (hit.transform.gameObject.layer == groundLayer)
-                //        {
-                //            animationHandler.IdleToFall();
-                //            Debug.Log("Idle to fall");
-                //        }
-                //    }
-                //}
-                //else if (jumpScript.Running == true)
-                //{
-                //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, Mathf.Infinity))
-                //    {
-                //        if (hit.transform.gameObject.layer == groundLayer)
-                //        {
-                //            animationHandler.RunningToFall();
-                //        }
-                //    }
-                //}
                jumpScript.DropThrough();
             }
             //shoot

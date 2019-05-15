@@ -43,7 +43,7 @@ namespace Player
         public void Fire()
         {
             shotSound.Play();
-
+            
             GameObject newBullet = Instantiate(bullet, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TestBullet>().Parent = gameObject;
 

@@ -455,6 +455,18 @@ namespace Player
             }
         }
 
+        public void FallingJumpingCheck()
+        {
+            if (playerScript.GetComponentInChildren<IWeapon>() != null)
+            {
+                FallingJumpHold();
+            }
+            else if (playerScript.GetComponentInChildren<IWeapon>() == null)
+            {
+                FallingJump();
+            }
+        }
+
         public void Throwing()
         {
             anim.SetTrigger("Throwing");
@@ -463,6 +475,16 @@ namespace Player
         public void JumpToJump()
         {
             anim.SetTrigger("JumpJump");
+        }
+
+        public void FallingJump()
+        {
+            anim.SetTrigger("FallingJumping");
+        }
+
+        public void FallingJumpHold()
+        {
+            anim.SetTrigger("FallingJumpingHold");
         }
 
         public void TwoAnimationsFix() // ska försöka fixa så flera animationer inte försöker spelas samtidigt
