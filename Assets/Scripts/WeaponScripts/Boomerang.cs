@@ -6,7 +6,7 @@ namespace Player
     public class Boomerang : MonoBehaviour, IWeapon
     {
         public float Damage { get; } = 15f;
-        public float ShotsPerSecond { get; } = 1f;
+        public float ShotsPerSecond { get; } = 0.5f;
         public float ProjectileSpeed { get; } = 20f;
         public float KnockBackPower { get { return knockBackPower; } }
         [SerializeField] float knockBackPower = 2.5f;
