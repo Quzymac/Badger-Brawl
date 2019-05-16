@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-    public class Boomeranger : MonoBehaviour
+    public class BoomerangBullet : MonoBehaviour
     {
         public float ProjectileSpeed { get; } = 10f;
         public GameObject Owner { get; set; }
@@ -16,7 +16,7 @@ namespace Player
         GameObject owner;
 
         Rigidbody rb;
-        Transform itemToRotate;
+        public Transform itemToRotate;
         Vector3 locationInFrontOfPlayer;
         Vector3 lastWeaponPos;
         Vector3 startPos;
@@ -34,7 +34,7 @@ namespace Player
             boomerang = Parent.GetComponent<Boomerang>().boomerangerMesh;
 
             boomerang.enabled = false;
-            locationInFrontOfPlayer = new Vector3(owner.transform.position.x, owner.transform.position.y + 1, 0) + owner.transform.forward * 10f;
+            locationInFrontOfPlayer = Parent.transform.position + Parent.transform.forward * 10f;
             startPos = transform.position;
             rb = GetComponent<Rigidbody>();
             rb.velocity = transform.forward * ProjectileSpeed;
@@ -55,15 +55,17 @@ namespace Player
                 locationInFrontOfPlayer = Parent.transform.position;
                 if (transform.position == Parent.transform.position)
                 {
-                    boomerang.enabled = true;
                     Destroy(this.gameObject);
+                    boomerang.enabled = true;
+                    
                 }
 
             }
-            if (!go && Vector3.Distance(Parent.transform.position, transform.position) < 1.5f)
+            if (!go && Vector3.Distance(Parent.transform.position, transform.position) < 1f)
             {
-                boomerang.enabled = true;
                 Destroy(this.gameObject);
+                boomerang.enabled = true;
+                
             }
         }
 

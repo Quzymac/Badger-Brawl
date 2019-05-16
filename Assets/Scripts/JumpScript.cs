@@ -11,6 +11,7 @@ namespace Player
         ControllerInputs controllerInputs;
         GameObject collidedPlatform;
         public bool grounded;
+        public bool fallThrough = false;
         float jumpTime;
         public float jumpCount;
         [SerializeField] float jumpForce = 700f;
@@ -70,6 +71,7 @@ namespace Player
         public void DropThrough()
         {
             gameObject.layer = 12;
+            fallThrough = true;
             //if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
             //{
             //    gameObject.layer = 12;
@@ -105,13 +107,14 @@ namespace Player
         void Update()
         {
             Collider[] hits = Physics.OverlapBox(transform.position + colloffset, new Vector3(0.5f, 0.7f, 0.2f), Quaternion.identity, jumpThroughLayer);
-            if (hits.Length == 0)
+            if (hits.Length == 0 && fallThrough == false)
             {
                 gameObject.layer = 10;
             }
-            else
+            else if (hits.Length > 0)
             {
                 gameObject.layer = 12;
+                fallThrough = false;
             }
             CheckRunning();
             GroundDetection();

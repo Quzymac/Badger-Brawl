@@ -22,7 +22,7 @@ namespace Player
         public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
         private AudioSource shotSound;
-        [SerializeField] Transform firePoint;
+        [SerializeField] public Transform firePoint;
         [SerializeField] GameObject boomer;
 
         public bool Firing { get; set; } = false;
@@ -52,8 +52,8 @@ namespace Player
             shotSound.Play();
             GameObject clone = Instantiate(boomer, firePoint.position, firePoint.rotation);
 
-            clone.GetComponent<Boomeranger>().Owner = gameObject;
-            clone.GetComponent<Boomeranger>().Parent = gameObject;
+            clone.GetComponent<BoomerangBullet>().Owner = gameObject;
+            clone.GetComponent<BoomerangBullet>().Parent = gameObject;
         }
     }
 }
