@@ -99,25 +99,19 @@ namespace Player
                     playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
                     playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, Parent.GetComponent<IWeapon>().KnockBackPower);
 
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
-            }
-            else
-            {
-                if (other.tag == "Player")
+                if (transform.position.x >= 0)
                 {
-                    if (transform.position.x >= 0)
-                    {
-                        Parent.transform.position = transform.position + negativeOffset;
-                    }
-                    else
-                    {
-                        Parent.transform.position = transform.position + offset;
-                    }
-                    owner.GetComponent<ControllerInputs>().DropWeapon();
-                    boomerang.enabled = true;
-                    Destroy(this.gameObject);
+                    Parent.transform.position = transform.position + negativeOffset;
                 }
+                else
+                {
+                    Parent.transform.position = transform.position + offset;
+                }
+                owner.GetComponent<ControllerInputs>().DropWeapon();
+                boomerang.enabled = true;
+                Destroy(this.gameObject);
             }
         }
     }
