@@ -16,7 +16,7 @@ namespace Player
 
         public TestGun.TypeOfWeapon typeOfWeapon { get; set; } = TestGun.TypeOfWeapon.Shooting;
 
-        [SerializeField] float buildUpTime = 0.2f;
+        [SerializeField] float buildUpTime = 1f;
 
         private AudioSource shotSound;
 
@@ -39,6 +39,7 @@ namespace Player
         public void Start()
         {
             shotSound = GetComponent<AudioSource>();
+            currentShotsPerSecond = minShotsPerSeconds;
         }
         public void Fire()
         {
@@ -53,7 +54,14 @@ namespace Player
 
         void Update()
         {
-            if(Owner == null && Firing)
+            currentShotsPerSecond += Time.deltaTime * buildUpTime;
+
+            if (currentShotsPerSecond >= ShotsPerSecond)
+            {
+                currentShotsPerSecond = ShotsPerSecond;
+            }
+
+            if (Owner == null && Firing)
             {
                 Firing = false;
             }
@@ -61,12 +69,8 @@ namespace Player
             {
                 Fire();
                 timer = Time.time;
-                currentShotsPerSecond += (timer - prevTimer) * buildUpTime;
             }
-            if (currentShotsPerSecond >= ShotsPerSecond)
-            {
-                currentShotsPerSecond = ShotsPerSecond;
-            }
+
             if (Firing == false)
             {
                 currentShotsPerSecond = minShotsPerSeconds;

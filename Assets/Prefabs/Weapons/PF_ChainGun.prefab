@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockBackPower: 1.5
-  buildUpTime: 0.2
+  buildUpTime: 1.5
   minShotsPerSeconds: 2
   leftHandPos: {fileID: 668868791}
   rightHandPos: {fileID: 1896129141}

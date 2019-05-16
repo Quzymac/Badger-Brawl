@@ -80,23 +80,5 @@ namespace Player {
             Vector3 dir = (transform.position - origin).normalized;
             rb.AddForce(dir * power, ForceMode.Impulse);
         }
-
-        //public void CheckAnimationState()
-        //{
-        //    if (animationHandler.Idle == true)
-        //    {
-        //        animationHandler.IdleFallingBool = true;
-        //        animationHandler.IdleJumpBool = true;
-        //        animationHandler.RunningFallingBool = false;
-        //        animationHandler.RunningJumpingBool = false;
-        //    }
-        //    else if (animationHandler.Idle == false)
-        //    {
-        //        animationHandler.RunningFallingBool = true;
-        //        animationHandler.RunningJumpingBool = true;
-        //        animationHandler.IdleFallingBool = false;
-        //        animationHandler.IdleJumpBool = false;
-        //    }
-        //}
     }
 }
