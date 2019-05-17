@@ -69,7 +69,6 @@ namespace Player
             {
                 isThrown = false;
 
-                Owner.GetComponent<ControllerInputs>().DropWeapon();
                 rb.constraints = RigidbodyConstraints.None;
                 rb.constraints = RigidbodyConstraints.FreezePositionZ;
 
@@ -77,6 +76,8 @@ namespace Player
                 transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
 
                 Fire();
+                Owner.GetComponent<ControllerInputs>().DropWeapon();
+
                 startExplosion = true;
             
             }
@@ -102,6 +103,11 @@ namespace Player
 
             blowUpTimer = 5f;
             rb.AddForce(transform.forward * (ProjectileSpeed * (getHoldValue * 20)) + new Vector3(0, getHoldValue * 100, 0));
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            blowUpTimer *= 0.8f;
         }
     }
 }

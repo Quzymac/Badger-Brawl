@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 0.3
   m_CustomReflection: {fileID: 8900000, guid: beb1457d375110e468b8d8e1f29fccea, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15800023, g: 0.36205235, b: 0.5800276, a: 0.3}
+  m_IndirectSpecularColor: {r: 0.15794182, g: 0.36204416, b: 0.5800299, a: 0.3}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 70076451}
   - component: {fileID: 70076450}
   - component: {fileID: 70076449}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394659887}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a182147c0c73e8c44a98c30888b9f9f5, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -670,7 +670,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436864479}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a182147c0c73e8c44a98c30888b9f9f5, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -2495,7 +2495,7 @@ GameObject:
   - component: {fileID: 1820365274}
   - component: {fileID: 1820365273}
   - component: {fileID: 1820365272}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Side Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}

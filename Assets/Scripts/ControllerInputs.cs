@@ -116,7 +116,10 @@ namespace Player
                 currentWeapon.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
                 currentWeapon.transform.parent = null;
                 currentWeapon.GetComponent<IWeapon>().Owner = null;
-                currentWeapon.GetComponent<Transform>().transform.eulerAngles = new Vector3(0, 90, 0);
+                if(currentWeapon.GetComponent<IWeapon>().typeOfWeapon != TestGun.TypeOfWeapon.throwable)
+                {
+                    currentWeapon.GetComponent<Transform>().transform.eulerAngles = new Vector3(0, 90, 0);
+                }
                 ikHandler.RightHand = null;
                 ikHandler.LeftHand = null;
 
