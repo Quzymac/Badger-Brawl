@@ -71,7 +71,6 @@ namespace Player
         public void DropThrough()
         {
             gameObject.layer = 12;
-            fallThrough = true;
             //if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
             //{
             //    gameObject.layer = 12;

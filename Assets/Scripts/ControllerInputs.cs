@@ -206,7 +206,12 @@ namespace Player
             //drop
             if (Input.GetAxis(verticalAxis) <= -0.8f)
             {
-               jumpScript.DropThrough();
+                jumpScript.fallThrough = true;
+                jumpScript.DropThrough();
+            }
+            if (Input.GetAxis(verticalAxis) >= -0.1f)
+            {
+                jumpScript.fallThrough = false;
             }
             //shoot
             if (Input.GetAxisRaw(shootButton)> 0.2f && currentWeapon != null)
