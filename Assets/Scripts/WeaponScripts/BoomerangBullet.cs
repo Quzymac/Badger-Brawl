@@ -75,7 +75,7 @@ namespace Player
         IEnumerator ColliderOff()
         {
             boomerangerColl.enabled = false;
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             boomerangerColl.enabled = true;
         }
 
