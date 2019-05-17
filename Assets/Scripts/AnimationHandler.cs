@@ -12,6 +12,8 @@ namespace Player
         ControllerInputs controllerInputs;
         JumpScript jumpScript;
         Rigidbody rb;
+        ControllerMovement controllerMovement;
+        float moveSpeed;
         public bool IdleBool { get; set; }
         public bool Jumping { get; set; }
 
@@ -22,6 +24,8 @@ namespace Player
             controllerInputs = GetComponent<ControllerInputs>();
             jumpScript = GetComponent<JumpScript>();
             rb = GetComponent<Rigidbody>();
+            controllerMovement = GetComponent<ControllerMovement>();
+            moveSpeed = controllerMovement.MovementReturn();
         }
 
         private void Update()
@@ -40,6 +44,7 @@ namespace Player
         {
             anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
+            //anim.SetFloat("Speed", Mathf.Abs(moveSpeed));
             //anim.SetTrigger("IdleRunTrigger");
         }
 
@@ -54,6 +59,7 @@ namespace Player
         {
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
+            //anim.SetFloat("Speed", 0);
             //anim.SetTrigger("RunIdleTrigger");
         }
 

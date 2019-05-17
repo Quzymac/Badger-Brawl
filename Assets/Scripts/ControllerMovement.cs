@@ -18,12 +18,15 @@ namespace Player {
 
         JumpScript jumpScript;
         AnimationHandler animationHandler;
+        Animator animator;
+        [SerializeField] AnimationClip running;
 
         private void Start()
         {
             jumpScript = GetComponent<JumpScript>();
             animationHandler = GetComponent<AnimationHandler>();
             rb = GetComponent<Rigidbody>();
+            animator = GetComponent<Animator>();
             speed = moveSpeed;
         }
 
@@ -44,12 +47,10 @@ namespace Player {
             //rotate to match movement direction
             if (MoveDir < 0 && lookingRight)
             {
-                //transform.Rotate(new Vector3(0, 180, 0));
                 lookingRight = false;
             }
             else if (MoveDir > 0 && !lookingRight)
             {
-                //transform.Rotate(new Vector3(0, -180, 0));
                 lookingRight = true;
             }
 
@@ -80,5 +81,13 @@ namespace Player {
             Vector3 dir = (transform.position - origin).normalized;
             rb.AddForce(dir * power, ForceMode.Impulse);
         }
+
+        public float MovementReturn()
+        {
+            float movementReturn;
+            movementReturn = moveSpeed;
+            return movementReturn;
+        }
+
     }
 }

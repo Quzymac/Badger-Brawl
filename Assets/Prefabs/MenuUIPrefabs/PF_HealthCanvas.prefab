@@ -243,11 +243,11 @@ MonoBehaviour:
   image: {fileID: 755446016}
   player: 2
   BadgerFace:
-  - {fileID: 21300000, guid: d1333c47f2ae52443a931d130214dc2c, type: 3}
-  - {fileID: 21300000, guid: f93be997d94a8dc4b99984c8885ad9b7, type: 3}
+  - {fileID: 21300000, guid: adf00e8e2ff91de4d9280de5a2699387, type: 3}
+  - {fileID: 21300000, guid: 98bb1cd10be8f91469d05b247a67d262, type: 3}
   HumanFace:
-  - {fileID: 21300000, guid: 66692cb19a365d24a85c223aef775acd, type: 3}
-  - {fileID: 21300000, guid: 1c404143410214a468352d880559b027, type: 3}
+  - {fileID: 21300000, guid: 82e0174a11f339e44b603011f5f215e8, type: 3}
+  - {fileID: 21300000, guid: 8f508c1efbf5b4244b9c5a568f31a669, type: 3}
 --- !u!1 &601826587
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755446014}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.59, y: 0, z: 0}
+  m_LocalPosition: {x: -1.585, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 579260003}
@@ -400,7 +400,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 755446014}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -430,7 +430,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 111
-  m_Sprite: {fileID: 21300000, guid: 9d44544d447e3af418f826cd98d84909, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -438,7 +438,7 @@ SpriteRenderer:
   m_Size: {x: 10.66, y: 5.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &818525243
@@ -792,11 +792,11 @@ MonoBehaviour:
   image: {fileID: 1522693623}
   player: 1
   BadgerFace:
-  - {fileID: 21300000, guid: d1333c47f2ae52443a931d130214dc2c, type: 3}
-  - {fileID: 21300000, guid: f93be997d94a8dc4b99984c8885ad9b7, type: 3}
+  - {fileID: 21300000, guid: adf00e8e2ff91de4d9280de5a2699387, type: 3}
+  - {fileID: 21300000, guid: 98bb1cd10be8f91469d05b247a67d262, type: 3}
   HumanFace:
-  - {fileID: 21300000, guid: 66692cb19a365d24a85c223aef775acd, type: 3}
-  - {fileID: 21300000, guid: 1c404143410214a468352d880559b027, type: 3}
+  - {fileID: 21300000, guid: 82e0174a11f339e44b603011f5f215e8, type: 3}
+  - {fileID: 21300000, guid: 8f508c1efbf5b4244b9c5a568f31a669, type: 3}
 --- !u!1 &1342344876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,7 +1138,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674339807}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.62, y: 0, z: 0}
+  m_LocalPosition: {x: -1.592, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 2139253755}
@@ -1151,7 +1151,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674339807}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1181,7 +1181,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 111
-  m_Sprite: {fileID: 21300000, guid: d9d3eb001cb4bbe43ae60fde261c4dee, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1189,7 +1189,7 @@ SpriteRenderer:
   m_Size: {x: 10.66, y: 5.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1826902633
@@ -1327,7 +1327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904276390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.62, y: 0, z: 0}
+  m_LocalPosition: {x: -1.582, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 1926443768}
@@ -1340,7 +1340,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1904276390}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1370,7 +1370,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 111
-  m_Sprite: {fileID: 21300000, guid: 193550126c8feaa4bbb1d856c9674974, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1378,7 +1378,7 @@ SpriteRenderer:
   m_Size: {x: 10.66, y: 5.01}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1926443767
@@ -1431,11 +1431,11 @@ MonoBehaviour:
   image: {fileID: 1904276392}
   player: 4
   BadgerFace:
-  - {fileID: 21300000, guid: d1333c47f2ae52443a931d130214dc2c, type: 3}
-  - {fileID: 21300000, guid: f93be997d94a8dc4b99984c8885ad9b7, type: 3}
+  - {fileID: 21300000, guid: adf00e8e2ff91de4d9280de5a2699387, type: 3}
+  - {fileID: 21300000, guid: 98bb1cd10be8f91469d05b247a67d262, type: 3}
   HumanFace:
-  - {fileID: 21300000, guid: 66692cb19a365d24a85c223aef775acd, type: 3}
-  - {fileID: 21300000, guid: 1c404143410214a468352d880559b027, type: 3}
+  - {fileID: 21300000, guid: 82e0174a11f339e44b603011f5f215e8, type: 3}
+  - {fileID: 21300000, guid: 8f508c1efbf5b4244b9c5a568f31a669, type: 3}
 --- !u!1 &1973831721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,11 +1583,11 @@ MonoBehaviour:
   image: {fileID: 1674339809}
   player: 3
   BadgerFace:
-  - {fileID: 21300000, guid: d1333c47f2ae52443a931d130214dc2c, type: 3}
-  - {fileID: 21300000, guid: f93be997d94a8dc4b99984c8885ad9b7, type: 3}
+  - {fileID: 21300000, guid: adf00e8e2ff91de4d9280de5a2699387, type: 3}
+  - {fileID: 21300000, guid: 98bb1cd10be8f91469d05b247a67d262, type: 3}
   HumanFace:
-  - {fileID: 21300000, guid: 66692cb19a365d24a85c223aef775acd, type: 3}
-  - {fileID: 21300000, guid: 1c404143410214a468352d880559b027, type: 3}
+  - {fileID: 21300000, guid: 82e0174a11f339e44b603011f5f215e8, type: 3}
+  - {fileID: 21300000, guid: 8f508c1efbf5b4244b9c5a568f31a669, type: 3}
 --- !u!1 &3948233013602361448
 GameObject:
   m_ObjectHideFlags: 0
