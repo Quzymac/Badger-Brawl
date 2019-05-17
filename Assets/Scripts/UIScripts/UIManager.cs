@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject credits;
     [SerializeField] GameObject options;
     [SerializeField] GameObject quit;
+    [SerializeField] GameObject howToPlay;
     
     float buttonTimer = 0.1f;
 
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
         credits.SetActive(false);
         options.SetActive(false);
         quit.SetActive(false);
+        howToPlay.SetActive(false); 
     }
 
   
@@ -52,7 +54,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((credits.activeInHierarchy || options.activeInHierarchy || quit.activeInHierarchy) && Input.GetButtonDown("BackController"))
+        if ((credits.activeInHierarchy || options.activeInHierarchy || quit.activeInHierarchy || howToPlay.activeInHierarchy) && Input.GetButtonDown("BackController"))
         {
             BackToMain();
         }
