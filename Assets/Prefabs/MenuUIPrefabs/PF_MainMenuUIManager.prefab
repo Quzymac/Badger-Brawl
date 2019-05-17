@@ -1028,6 +1028,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: BackToMain
       objectReference: {fileID: 0}
+    - target: {fileID: 3156969346538051826, guid: 5f1d8dc484419b0458b316fe404eaa08,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7989347649353580238}
+    - target: {fileID: 3156969346538051826, guid: 5f1d8dc484419b0458b316fe404eaa08,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: soundBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917330780035212940, guid: 5f1d8dc484419b0458b316fe404eaa08,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7989347649353580238}
+    - target: {fileID: 1917330780035212940, guid: 5f1d8dc484419b0458b316fe404eaa08,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: screenBack
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5109685601716687747, guid: 5f1d8dc484419b0458b316fe404eaa08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5f1d8dc484419b0458b316fe404eaa08, type: 3}
