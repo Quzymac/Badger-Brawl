@@ -24,8 +24,12 @@ namespace Player
         bool go;
         PlayerScript.PlayerTeam team;
 
+        [SerializeField]
+        Collider boomerangerColl;
+
         void Start()
         {
+            StartCoroutine("ColliderOff");
             team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             go = true;
             itemToRotate = gameObject.transform.GetChild(0);
@@ -68,6 +72,12 @@ namespace Player
                 
             }
         }
+        IEnumerator ColliderOff()
+        {
+            boomerangerColl.enabled = false;
+            yield return new WaitForSeconds(0.5f);
+            boomerangerColl.enabled = true;
+        }
 
         Vector3 offset = new Vector3(0.5f, 0, 0);
         Vector3 negativeOffset = new Vector3(-0.5f, 0, 0);
@@ -100,6 +110,7 @@ namespace Player
                     playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, Parent.GetComponent<IWeapon>().KnockBackPower);
 
                 }
+
                 if (transform.position.x >= 0)
                 {
                     Parent.transform.position = transform.position + negativeOffset;

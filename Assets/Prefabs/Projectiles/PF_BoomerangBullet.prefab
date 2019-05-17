@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemToRotate: {fileID: 0}
+  boomerangerColl: {fileID: 5962231014914481151}
 --- !u!1001 &6677829299766810681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -148,11 +149,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 1014000249531827142, guid: b56a3b1bf756b4e778646ac7ec24940a,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56a3b1bf756b4e778646ac7ec24940a, type: 3}
 --- !u!4 &7337131007376185434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4142981361686446179, guid: b56a3b1bf756b4e778646ac7ec24940a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6677829299766810681}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5962231014914481151 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1014000249531827142, guid: b56a3b1bf756b4e778646ac7ec24940a,
     type: 3}
   m_PrefabInstance: {fileID: 6677829299766810681}
   m_PrefabAsset: {fileID: 0}
