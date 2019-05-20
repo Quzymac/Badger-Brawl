@@ -34,7 +34,7 @@ namespace Player
         void Start()
         {
             shotSound = GetComponent<AudioSource>();
-            shotSound.Stop();
+            //shotSound.Stop();
         }
 
         // Update is called once per frame

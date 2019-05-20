@@ -31,7 +31,7 @@ namespace Player
         void Start()
         {
             shotSound = GetComponent<AudioSource>();
-            shotSound.Stop();
+            //shotSound.Stop();
         }
 
         void Update()
