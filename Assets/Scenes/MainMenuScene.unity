@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &367119608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 592023610802786833, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+    type: 3}
+  m_PrefabInstance: {fileID: 383598261}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &383598261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -124,6 +136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MainMenuUIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1923506165177951163, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: audioScript
+      value: 
+      objectReference: {fileID: 975234337}
     - target: {fileID: 423727389099893398, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,7 +196,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6407398267369606076, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+    - target: {fileID: 2820089906830373353, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: audioScript
+      value: 
+      objectReference: {fileID: 975234337}
+    - target: {fileID: 5417749464906926570, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: audioScript
+      value: 
+      objectReference: {fileID: 975234337}
+    - target: {fileID: 775697864559014439, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: audioScript
       value: 
@@ -194,27 +221,17 @@ PrefabInstance:
       propertyPath: audioScript
       value: 
       objectReference: {fileID: 975234337}
-    - target: {fileID: 775697864559014439, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+    - target: {fileID: 7719307754459580121, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
-      propertyPath: audioScript
+      propertyPath: highlightedButtons.Array.data[1]
       value: 
-      objectReference: {fileID: 975234337}
-    - target: {fileID: 1923506165177951163, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+      objectReference: {fileID: 367119608}
+    - target: {fileID: 6407398267369606076, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: audioScript
       value: 
       objectReference: {fileID: 975234337}
     - target: {fileID: 4266155432406703215, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
-        type: 3}
-      propertyPath: audioScript
-      value: 
-      objectReference: {fileID: 975234337}
-    - target: {fileID: 2820089906830373353, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
-        type: 3}
-      propertyPath: audioScript
-      value: 
-      objectReference: {fileID: 975234337}
-    - target: {fileID: 5417749464906926570, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
         type: 3}
       propertyPath: audioScript
       value: 
