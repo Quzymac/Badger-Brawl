@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class ButtonsInMenu : MonoBehaviour
+public class OptionsSliderMenu : MonoBehaviour
 {
     [SerializeField] UIAudioScript audioScript;
-    [SerializeField] Button[] highlightedButtons;
+    [SerializeField] GameObject[] highlightedButtons;
     int currentButton = 0;
     float timer;
     bool canMove = true;
+    [SerializeField] float sliderAdd = 2f;
+    [SerializeField] Slider[] sliders;
 
-    
+
     private void Start()
     {
-        foreach (Button button in highlightedButtons)
+        foreach (GameObject obj in highlightedButtons)
         {
-            button.gameObject.SetActive(false);
+            obj.gameObject.SetActive(false);
         }
         highlightedButtons[currentButton].gameObject.SetActive(true);
     }
@@ -26,6 +27,7 @@ public class ButtonsInMenu : MonoBehaviour
     {
         if (highlightedButtons.Length > 1)
         {
+
             highlightedButtons[currentButton].gameObject.SetActive(false);
             audioScript.uiSounds.PlayOneShot(audioScript.hoverSound);
 
@@ -53,17 +55,29 @@ public class ButtonsInMenu : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetAxis("MenuVertical2") > 0.5f || Input.GetAxis("MenuHorizontal2") > 0.5f) && Time.unscaledTime > 0.2f + timer) //move up
+        if (Input.GetAxis("MenuVertical2") > 0.5f && Time.unscaledTime > 0.2f + timer) //move up
         {
             SelectButton(true);
         }
-        if ((Input.GetAxis("MenuVertical2") < -0.5f || Input.GetAxis("MenuHorizontal2") < -0.5f) && Time.unscaledTime > 0.2f + timer) //move down
+        if (Input.GetAxis("MenuVertical2") < -0.5f && Time.unscaledTime > 0.2f + timer) //move down
         {
             SelectButton(false);
         }
-        if (Input.GetButtonDown("PlayerJoiningGame")) 
+        if (Input.GetAxis("MenuHorizontal2") < -0.5f && Time.unscaledTime > 0.2f + timer && sliders[currentButton] != null) //move slider right/up
         {
-            highlightedButtons[currentButton].onClick.Invoke(); //click button
+            sliders[currentButton].GetComponent<Slider>().value += sliderAdd;
+        }
+        if (Input.GetAxis("MenuHorizontal2") > 0.5f && Time.unscaledTime > 0.2f + timer && sliders[currentButton] != null) //move slider left/down
+        {
+            sliders[currentButton].GetComponent<Slider>().value -= sliderAdd;
+        }
+
+        if (Input.GetButtonDown("PlayerJoiningGame"))
+        {
+            if (highlightedButtons[currentButton].GetComponent<Button>() != null)
+            {
+                highlightedButtons[currentButton].GetComponent<Button>().onClick.Invoke(); //click button
+            }
         }
     }
 }
