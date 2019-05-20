@@ -7,8 +7,6 @@ public class CreditsScript : MonoBehaviour
     [SerializeField] GameObject panelOne;
     [SerializeField] GameObject panelTwo;
     [SerializeField] GameObject panelThree;
-  //  [SerializeField] GameObject panelFour;
-
 
 
     public void NextOne()
@@ -23,12 +21,6 @@ public class CreditsScript : MonoBehaviour
         panelTwo.SetActive(false);
     }
 
-    // public void NextThree()
-    // {
-
-    //panelFour.SetActive(true);
-       // panelThree.SetActive(false);
-   // }
 
     public void PreviousOne()
     {
@@ -41,11 +33,6 @@ public class CreditsScript : MonoBehaviour
         panelTwo.SetActive(true);
         panelThree.SetActive(false);        
     }
-   // public void PreviousThree()
-    //{
-      //  panelThree.SetActive(true);
-        //panelFour.SetActive(false);
-       
-    //}
+ 
 
 }
