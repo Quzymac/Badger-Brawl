@@ -16,6 +16,7 @@ public class OptionsScript : MonoBehaviour
     [SerializeField] AudioMixer am; //our audiomixer from unity
     [SerializeField] Slider m;
     [SerializeField] Slider s;
+    [SerializeField] Toggle fullscreenToggle;
 
     void Start ()
     {
@@ -70,6 +71,11 @@ public class OptionsScript : MonoBehaviour
     {
         howToPlayPanel.SetActive(false);
         optionpanel.SetActive(true);
+    }
+
+    public void ToggleFullScreen()
+    {
+        fullscreenToggle.isOn = !fullscreenToggle.isOn;
     }
    
     //lånad från Brackeys
