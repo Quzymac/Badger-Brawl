@@ -245,6 +245,41 @@ PrefabInstance:
       propertyPath: audioScript
       value: 
       objectReference: {fileID: 975234337}
+    - target: {fileID: 6826072846628686814, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066036656326617954, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608235595334907721, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 608235595334907721, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 186.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 608235595334907721, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 608235595334907721, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 565.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234626295181760365, guid: 9c7dce4574dc3fc4b83971476ad1dc31,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c7dce4574dc3fc4b83971476ad1dc31, type: 3}
 --- !u!1 &473457246
