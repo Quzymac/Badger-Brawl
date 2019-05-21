@@ -582,7 +582,6 @@ GameObject:
   - component: {fileID: 7935158844886051623}
   - component: {fileID: 9017924861381847227}
   - component: {fileID: 3410087953364054594}
-  - component: {fileID: 1638106955535217021}
   m_Layer: 5
   m_Name: PF_SoundPanel
   m_TagString: Untagged
@@ -652,21 +651,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &1638106955535217021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3241125919512171587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a1e373bb1177a74889824831015e293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioScript: {fileID: 0}
-  highlightedButtons:
-  - {fileID: 364900193704095773}
 --- !u!1 &3312325407780923468
 GameObject:
   m_ObjectHideFlags: 0
