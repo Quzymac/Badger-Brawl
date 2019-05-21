@@ -19033,6 +19033,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0a1d0bf33fab58e4080b241dcbb77923, type: 3}
   - {fileID: 8300000, guid: 6746d4ebcd185ce479c41b72bd26c351, type: 3}
   audioSource: {fileID: 0}
+  explosions:
+  - {fileID: 5255831688299752728}
+  - {fileID: 5255831687249474264}
+  - {fileID: 5255831687416969682}
+  - {fileID: 5255831686523524979}
 --- !u!82 &3981426545433157993
 AudioSource:
   m_ObjectHideFlags: 0

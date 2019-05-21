@@ -22,6 +22,7 @@ namespace Player
         float minDistance = 1000;
         float seekingDelay = 1f;
         float strenghtOfSeeking;
+        float radius = 1f;
 
 
         void Start()
@@ -55,7 +56,12 @@ namespace Player
             }
             if (time > Parent.GetComponent<TargetGun>().MaxTravelTime)
             {
-                Instantiate(Explosion, transform.position, transform.rotation);
+                GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
+                explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<IWeapon>().Damage;
+                explosion.GetComponent<ExplosionDamage>().KnockBackPower = Parent.GetComponent<IWeapon>().KnockBackPower;
+
+                explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
                 Destroy(gameObject);
             }
         }
@@ -68,6 +74,7 @@ namespace Player
                 if (playerHit.Team != team)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
                     explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<IWeapon>().Damage;
                     explosion.GetComponent<ExplosionDamage>().KnockBackPower = Parent.GetComponent<IWeapon>().KnockBackPower;
 
@@ -80,6 +87,7 @@ namespace Player
                 if (other.tag != "Weapon")
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
                     explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<IWeapon>().Damage;
                     explosion.GetComponent<ExplosionDamage>().KnockBackPower = Parent.GetComponent<IWeapon>().KnockBackPower;
 

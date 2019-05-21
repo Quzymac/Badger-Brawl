@@ -22,6 +22,7 @@ namespace Player
         float holdIncreaseThrow = 0.5f;
         float getHoldValue = 0f;
         float maxHoldThrow = 3f;
+        float radius = 2f;
         [SerializeField] Transform leftHandPos;
         [SerializeField] Transform rightHandPos;
 
@@ -88,6 +89,7 @@ namespace Player
                 if (blowUpTimer <= 0)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
                     explosion.GetComponent<ExplosionDamage>().Damage = Damage;
                     explosion.GetComponent<ExplosionDamage>().KnockBackPower = KnockBackPower;
 

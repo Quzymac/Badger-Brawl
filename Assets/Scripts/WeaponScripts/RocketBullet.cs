@@ -11,7 +11,7 @@ namespace Player
         Rigidbody rb;
         public GameObject Parent { get; set; }
         public float Damage { get; set; }
-
+        float radius = 1.5f;
         [SerializeField] GameObject Explosion; // Tillfällig explosionseffekt
         PlayerScript.PlayerTeam team;
 
@@ -31,6 +31,7 @@ namespace Player
             if (distTraveled > 20)
             {
                 GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
                 explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<RocketLauncher>().Damage;
 
                 Destroy(gameObject);
@@ -46,6 +47,7 @@ namespace Player
                 if (playerHit.Team != team)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
                     explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<RocketLauncher>().Damage;
                     explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
 
@@ -57,6 +59,7 @@ namespace Player
                 if (other.tag != "Weapon")
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
+                    explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
                     explosion.GetComponent<ExplosionDamage>().Damage = Parent.GetComponent<IWeapon>().Damage;
                     explosion.GetComponent<ExplosionDamage>().KnockBackPower = Parent.GetComponent<IWeapon>().KnockBackPower;
 

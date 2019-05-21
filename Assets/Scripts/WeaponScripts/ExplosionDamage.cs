@@ -14,7 +14,8 @@ namespace Player
 
         [SerializeField] List<AudioClip> explosionSounds = new List<AudioClip>();
         [SerializeField] AudioSource audioSource;
-
+        [SerializeField] ParticleSystem[] explosions; 
+        float radius;
         private void Start()
         {
             audioSource = GetComponent<AudioSource>();
@@ -47,6 +48,14 @@ namespace Player
         {
             audioSource.clip = explosionSounds[Random.Range(0, explosionSounds.Count)];
             audioSource.Play();
+        }
+        public void ParticleScale(float radius)
+        {
+            transform.localScale = new Vector3(radius, radius, radius);
+            foreach (ParticleSystem expl in explosions)
+            {
+                expl.transform.localScale = new Vector3(radius, radius, radius);
+            }
         }
     }
 }
