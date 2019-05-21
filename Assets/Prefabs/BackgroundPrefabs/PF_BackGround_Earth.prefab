@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8534240634354873325}
   - component: {fileID: 7883113914100876587}
   m_Layer: 0
-  m_Name: BB_BackGround_Earth
+  m_Name: PF_BackGround_Earth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
