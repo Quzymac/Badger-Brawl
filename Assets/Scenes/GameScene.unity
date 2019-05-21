@@ -765,12 +765,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442093767}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &490918844 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5110502009393703912, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+--- !u!114 &490918845 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5110502009393703914, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
     type: 3}
   m_PrefabInstance: {fileID: 1791099352}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9a15e8cea7ab642a85832f3e28f5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &551442645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 954541820, guid: e1384269f2530bb428d648e1f935e42d,
@@ -3229,16 +3235,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3122479788569633300, guid: b640d038c3cbbd24680a47eb513d773f,
-        type: 3}
-      propertyPath: Audio
+    - target: {fileID: 243628052, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
+      propertyPath: audioScript
       value: 
-      objectReference: {fileID: 490918844}
-    - target: {fileID: 5672173396739015713, guid: b640d038c3cbbd24680a47eb513d773f,
-        type: 3}
-      propertyPath: Audio
-      value: 
-      objectReference: {fileID: 490918844}
+      objectReference: {fileID: 490918845}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
 --- !u!1001 &1582400848
