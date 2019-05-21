@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860c8e0709daa4b45b7750fe15b9605d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisDamage: 30
   knockBackPower: 15
   seakingStrenght: 0.4
   maxTravelTime: 4

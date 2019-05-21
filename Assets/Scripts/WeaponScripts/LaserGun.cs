@@ -5,7 +5,7 @@ namespace Player
 {
     public class LaserGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 20f;
+        public float Damage { get; } = 50f;
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
         public float KnockBackPower { get { return knockBackPower; } }
@@ -86,7 +86,7 @@ namespace Player
             RaycastHit hit;
             Vector3 aim = firePoint.forward;
 
-            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 20f, layerMask))
+            if (Physics.Raycast(firePoint.transform.position, aim, out hit, 30f, layerMask))
             {
                 PlayerScript playerHit = hit.collider.GetComponent<PlayerScript>();
                 if (playerHit != null)

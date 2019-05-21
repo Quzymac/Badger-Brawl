@@ -6,7 +6,8 @@ namespace Player
 {
     public class GrenadeScript : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 30f;
+        public float Damage { get; set; }
+        [SerializeField] float ThisDamage;
         public float ShotsPerSecond { get; } = 0.5f;
         public float ProjectileSpeed { get; } = 25f;
         public bool Firing { get; set; } = false;
@@ -37,6 +38,7 @@ namespace Player
 
         void Start()
         {
+            Damage = ThisDamage;
             rb = GetComponent<Rigidbody>();
             shotSound = GetComponent<AudioSource>();
             shotSound.Stop();

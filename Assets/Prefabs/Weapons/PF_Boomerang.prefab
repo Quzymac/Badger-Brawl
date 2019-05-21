@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a7bf4650d216c24ea13a621a776b2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisDamage: 45
   knockBackPower: 2.5
   leftHandPos: {fileID: 0}
   rightHandPos: {fileID: 1929429120}
@@ -157,7 +158,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 243208536903064508, guid: 694dedb6ece6f7c49896ce46de2bc618,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 9e45705859315394b8cd8b23ef11cb45, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.3
   m_Pitch: 1
   Loop: 0

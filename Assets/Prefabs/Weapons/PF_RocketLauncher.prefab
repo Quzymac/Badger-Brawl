@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee19b5ac9ea37e4b94f882fdcf63621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisDamage: 40
   knockBackPower: 15
   shotSound: {fileID: 5595949130563578821, guid: df3062529cbc49341931a91e1d91f74f,
     type: 3}

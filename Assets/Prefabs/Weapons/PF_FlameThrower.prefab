@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b1e493505bd28c45ac6dcead84cad8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisDamage: 10
   knockBackPower: 0.1
   leftHandPos: {fileID: 1612155954}
   rightHandPos: {fileID: 25309930}

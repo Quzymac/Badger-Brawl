@@ -5,7 +5,8 @@ namespace Player
 {
     public class FlameThrower : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 8f;  //how much damage the weapon does
+        public float Damage { get; set; }  //how much damage the weapon does
+        [SerializeField] float ThisDamage;
         public float ShotsPerSecond { get; } = 20f; // how many shots per second the weapon can shot
         public float ProjectileSpeed { get; } = 20f;  //the speed of the fire
         public float Range { get; } = 8f;
@@ -34,6 +35,7 @@ namespace Player
         public GameObject Owner { get; set; }  //depends on which player picks up the flamethrower
         public void Start()
         {
+            Damage = ThisDamage;
             shotSound = GetComponent<AudioSource>();
         }
         public void Fire()

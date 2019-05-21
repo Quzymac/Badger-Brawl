@@ -6,7 +6,8 @@ namespace Player
 {
     public class ShotgunScript : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 3f; //damage per bullet
+        [SerializeField] public float Damage { get; set; } //damage per bullet
+        [SerializeField] float ThisDamage;
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 22f;
         public float KnockBackPower { get { return knockBackPower; } }
@@ -59,6 +60,7 @@ namespace Player
 
         void Start()
         {
+            Damage = ThisDamage;
             shotSound = GetComponent<AudioSource>();
             pellets = new List<GameObject>(pelletCount);
             for (int i = 0; i < pelletCount; i++)
@@ -86,17 +88,16 @@ namespace Player
             }
         }
 
-        float thisDamage;
+        float multiplePlayerDamage;
 
         public void MultiplePlayerHit(PlayerScript hitPlayer) //hanterar skada ifall olika kulor skullle träffa olika spelare
         {
-            thisDamage = Damage;
+            multiplePlayerDamage = ThisDamage;
             for (int i = 0; i < amountHit[hitPlayer.playerNumber - 1]; i++)
             {
-                thisDamage *= 0.5f;
+                multiplePlayerDamage *= 0.5f;
             }
-            hitPlayer.TakeDamage(thisDamage);
-            Debug.Log(thisDamage);
+            hitPlayer.TakeDamage(multiplePlayerDamage);
         }
     }
 }

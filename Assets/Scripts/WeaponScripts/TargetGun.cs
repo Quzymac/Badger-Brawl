@@ -6,9 +6,10 @@ namespace Player
 {
     public class TargetGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 30f;
+        public float Damage { get; set; }
+        [SerializeField] float ThisDamage;
         public float ShotsPerSecond { get; } = 0.5f;
-        public float ProjectileSpeed { get; } = 15f;
+        public float ProjectileSpeed { get; } = 13f;
         public float KnockBackPower { get { return knockBackPower; } }
 
         float currentShotsPerSecond;
@@ -36,6 +37,7 @@ namespace Player
 
         public void Start()
         {
+            Damage = ThisDamage;
             shotSound = GetComponent<AudioSource>();
         }
 

@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd0d16a0a4e4324ea5b76b76649f3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thisDamage: 20
   knockBackPower: 2
   leftHandPos: {fileID: 0}
   rightHandPos: {fileID: 1281304529}

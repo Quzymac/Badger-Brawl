@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8096e20f5b73064ca1650811e638514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisDamage: 5
   knockBackPower: 1.5
   leftHandPos: {fileID: 1076311186}
   rightHandPos: {fileID: 882426400}
@@ -148,8 +149,8 @@ MonoBehaviour:
   firePoint: {fileID: 545992808}
   pellet: {fileID: 6654680314636503775, guid: 828aaa491e9c87842817e82aba6d14f6, type: 3}
   pelletCount: 5
-  minSpread: -5
-  maxSpread: 5
+  minSpread: -4
+  maxSpread: 4
   muzzleFlash: {fileID: 7575112730694906672, guid: 6aed509d9a7373047a2eeb485cfc74e4,
     type: 3}
   amountHit: 00000000000000000000000000000000

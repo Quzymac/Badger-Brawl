@@ -5,7 +5,8 @@ namespace Player
 {
     public class Boomerang : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 15f;
+        public float Damage { get; set; }
+        [SerializeField] float ThisDamage;
         public float ShotsPerSecond { get; } = 0.5f;
         public float ProjectileSpeed { get; } = 20f;
         public float KnockBackPower { get { return knockBackPower; } }
@@ -30,6 +31,7 @@ namespace Player
 
         void Start()
         {
+            Damage = ThisDamage;
             shotSound = GetComponent<AudioSource>();
             //shotSound.Stop();
         }

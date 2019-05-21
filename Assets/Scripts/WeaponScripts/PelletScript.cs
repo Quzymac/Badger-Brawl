@@ -48,10 +48,6 @@ namespace Player
             {
                 if (other.tag != "Weapon" && other.tag != "Pellet")
                 {
-                    if (other.tag == "Pellet")
-                    {
-                        Debug.Log("Collided with self lul");
-                    }
                     Destroy(gameObject);
                 }
             }

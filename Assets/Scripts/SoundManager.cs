@@ -8,6 +8,7 @@ namespace Player
     {
         [SerializeField] List<AudioClip> deathSounds = new List<AudioClip>();
         [SerializeField] GameObject deathSound;
+        GameManager gameManager;
         AudioSource audioSource;
 
         public void PlayDeathSounds(PlayerScript deadPlayer)
@@ -20,14 +21,7 @@ namespace Player
             }
             else if (deadPlayer.Team == PlayerScript.PlayerTeam.human) //olika för female och male human så småning om
             {
-                if (deadPlayer.gameObject.name == ("PF_PlayerHuman2"))
-                {
-                    audioSource.clip = deathSounds[3];
-                }
-                else
-                {
-                    audioSource.clip = deathSounds[2];
-                }
+                audioSource.clip = deathSounds[2];               
                 audioSource.Play();
             }
 
@@ -36,6 +30,7 @@ namespace Player
         void Start()
         {
             audioSource = deathSound.GetComponent<AudioSource>();
+            gameManager = GetComponent<GameManager>();
         }
 
         void Update()

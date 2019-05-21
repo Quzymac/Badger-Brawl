@@ -7,7 +7,8 @@ namespace Player
     {
         private int framesBeforeNextShot = 5;
         private int currentShotFrame = 0;
-        public float Damage { get; } = 15f;
+        public float Damage { get; set; }
+        [SerializeField] float thisDamage;
         public float ShotsPerSecond { get; } = 1f;
         public float ProjectileSpeed { get; } = 20f;
         public float KnockBackPower { get { return knockBackPower; } }
@@ -33,6 +34,7 @@ namespace Player
         // Start is called before the first frame update
         void Start()
         {
+            Damage = thisDamage;
             shotSound = GetComponent<AudioSource>();
             //shotSound.Stop();
         }

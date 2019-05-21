@@ -6,9 +6,10 @@ namespace Player
 {
     public class RocketLauncher : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 30f;
+        public float Damage { get; set; }
+        [SerializeField] float ThisDamage;
         public float ShotsPerSecond { get; } = 0.5f;
-        public float ProjectileSpeed { get; } = 17f;
+        public float ProjectileSpeed { get; } = 15f;
         public float KnockBackPower { get { return knockBackPower; } }
 
         [SerializeField] float knockBackPower = 15f;
@@ -34,6 +35,7 @@ namespace Player
         public void Start()
         {
             shotSound = GetComponent<AudioSource>();
+            Damage = ThisDamage;
         }
         public void Fire()
         {
