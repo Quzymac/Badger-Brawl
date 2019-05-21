@@ -6,7 +6,7 @@ namespace Player
 {
     public class ChainGun : MonoBehaviour, IWeapon
     {
-        public float Damage { get; } = 2f;
+        [SerializeField] public float Damage { get; } = 3f;
         public float ShotsPerSecond { get; } = 8f;
         public float ProjectileSpeed { get; } = 20f;
         public bool Firing { get; set; } = false;

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01e219df5b4566240a743e99b0e0bd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 7
+  dmg: 6
   shotsPerSecond: 5
   projectileSpeed: 20
   knockBackPower: 2.5
@@ -204,7 +204,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 2999260bfdf960c429957524405bc309, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0

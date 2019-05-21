@@ -20,7 +20,14 @@ namespace Player
             }
             else if (deadPlayer.Team == PlayerScript.PlayerTeam.human) //olika för female och male human så småning om
             {
-                audioSource.clip = deathSounds[2];
+                if (deadPlayer.gameObject.name == ("PF_PlayerHuman2"))
+                {
+                    audioSource.clip = deathSounds[3];
+                }
+                else
+                {
+                    audioSource.clip = deathSounds[2];
+                }
                 audioSource.Play();
             }
 
