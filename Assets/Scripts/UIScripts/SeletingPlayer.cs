@@ -23,12 +23,7 @@ public class SeletingPlayer : MonoBehaviour
     {
         for (int i = 0; i < playerDone.Length; i++)
         {
-            playerDone[i] = false;
-
-            PlayerPrefs.DeleteKey("Player" + i.ToString());
-            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Joystick");
-            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Team");
-            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Character");
+            playerDone[i] = false; 
         }
 
         for (int i = 0; i < PressToJoin.Length; i++)
@@ -40,18 +35,19 @@ public class SeletingPlayer : MonoBehaviour
         {
             selectTeam[j].SetActive(false);
         }
+        float tempSFX = PlayerPrefs.GetFloat("sfxvolume");
+        float tempMusic = PlayerPrefs.GetFloat("musicvolume");
+
         PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetFloat("sfxvolume", tempSFX);
+        PlayerPrefs.SetFloat("musicvolume", tempMusic);
     }
     void Start()
     {
         for (int i = 0; i < playerDone.Length; i++)
         {
             playerDone[i] = false;
-
-            PlayerPrefs.DeleteKey("Player" + i.ToString());
-            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Joystick");
-            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Team");
-            PlayerPrefs.DeleteKey("Player" + i.ToString() + "Character");
         }
 
         for (int i = 0; i < PressToJoin.Length; i++)
@@ -63,7 +59,14 @@ public class SeletingPlayer : MonoBehaviour
         {
             selectTeam[j].SetActive(false);
         }
+
+        float tempSFX = PlayerPrefs.GetFloat("sfxvolume");
+        float tempMusic = PlayerPrefs.GetFloat("musicvolume");
+
         PlayerPrefs.DeleteAll();
+
+        PlayerPrefs.SetFloat("sfxvolume", tempSFX);
+        PlayerPrefs.SetFloat("musicvolume", tempMusic);
 
     }
 
