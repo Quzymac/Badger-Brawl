@@ -13,10 +13,7 @@ namespace Player {
         public List<PlayerScript> Humans { get { return humans; } set { humans = value; } } //hålla koll på humans
 
         [SerializeField] MultipleTargetCam multipleTargetCam;
-        //CAM_CamerMovement cameraMovement;
         float cameraValue = 25f;
-
-        int winningPlayer;
 
         public SoundManager soundManager;
 
@@ -53,8 +50,8 @@ namespace Player {
             yBottom = bottom.position.y;
             totalDistance = yTop - yBottom;
         }
-        public bool allHumansDead = false;
-        public bool allBadgersDead = false;
+        bool allHumansDead = false;
+        bool allBadgersDead = false;
 
         public void CheckForRoundWinner()
         {
@@ -82,9 +79,11 @@ namespace Player {
                 {
                     if (humans[i].dead == false)
                     {
+                        allHumansDead = false;
                         return false;
                     }
                 }
+                allHumansDead = true;
                 return true;
             }
             else if (team == PlayerScript.PlayerTeam.badger)
@@ -93,9 +92,11 @@ namespace Player {
                 {
                     if (badgers[i].dead == false)
                     {
+                        allBadgersDead = false;
                         return false;
                     }
                 }
+                allBadgersDead = true;
                 return true;
             }
             else

@@ -42,6 +42,7 @@ namespace Player
                     Parent.GetComponent<ShotgunScript>().MultiplePlayerHit(playerHit);
                     playerHit.TakeDamage(Parent.GetComponent<IWeapon>().Damage);
                     playerHit.gameObject.GetComponent<ControllerMovement>().KnockBack(transform.position - rb.velocity, Parent.GetComponent<IWeapon>().KnockBackPower);
+                    Destroy(gameObject);
                 }
             }
             else

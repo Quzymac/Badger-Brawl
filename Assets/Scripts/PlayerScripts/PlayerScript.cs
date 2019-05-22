@@ -80,14 +80,7 @@ namespace Player
             dead = true;
             gameManager.soundManager.PlayDeathSounds(this);
             gameObject.GetComponent<ControllerInputs>().DropWeapon();
-            if(Team == PlayerTeam.human)
-            {
-                gameManager.allHumansDead = gameManager.TeamIsDead(Team);
-            }
-            if (Team == PlayerTeam.badger)
-            {
-                gameManager.allBadgersDead = gameManager.TeamIsDead(Team);
-            }
+            gameManager.TeamIsDead(Team);
             multipleTargetCam.targets.Remove(transform);
             Instantiate(deathParticle[playerNumber - 1], transform.position, transform.rotation);
             Destroy(gameObject);
