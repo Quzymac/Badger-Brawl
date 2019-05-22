@@ -11341,7 +11341,12 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 631876905, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 631876905, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
 --- !u!1 &202707653542514908 stripped
 GameObject:
@@ -11457,7 +11462,16 @@ PrefabInstance:
       propertyPath: m_Size.z
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 631876905, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 631876905, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 631876905, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 95d2e8757a7e8084ab19cb7f063f3ef8, type: 3}
 --- !u!4 &8142481726348589750 stripped
 Transform:
