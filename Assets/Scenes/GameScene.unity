@@ -3235,6 +3235,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 243628052, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
+      propertyPath: audioScript
+      value: 
+      objectReference: {fileID: 490918845}
     - target: {fileID: 5812105692732431987, guid: b640d038c3cbbd24680a47eb513d773f,
         type: 3}
       propertyPath: s
@@ -3250,10 +3254,6 @@ PrefabInstance:
       propertyPath: fullscreenToggle
       value: 
       objectReference: {fileID: 1901755842}
-    - target: {fileID: 243628052, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
-      propertyPath: audioScript
-      value: 
-      objectReference: {fileID: 490918845}
     - target: {fileID: 7651853865658864630, guid: b640d038c3cbbd24680a47eb513d773f,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3457,7 +3457,7 @@ PrefabInstance:
     - target: {fileID: 4290861066268700751, guid: f67e0d47362cd404b993c37241f9d459,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4290861066268700751, guid: f67e0d47362cd404b993c37241f9d459,
         type: 3}

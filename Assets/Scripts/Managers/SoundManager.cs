@@ -8,7 +8,6 @@ namespace Player
     {
         [SerializeField] List<AudioClip> deathSounds = new List<AudioClip>();
         [SerializeField] GameObject deathSound;
-        GameManager gameManager;
         AudioSource audioSource;
 
         public void PlayDeathSounds(PlayerScript deadPlayer)
@@ -30,7 +29,6 @@ namespace Player
         void Start()
         {
             audioSource = deathSound.GetComponent<AudioSource>();
-            gameManager = GetComponent<GameManager>();
         }
 
         void Update()

@@ -9,7 +9,6 @@ namespace Player
     {
         Animator anim;
         PlayerScript playerScript;
-        ControllerInputs controllerInputs;
         JumpScript jumpScript;
         Rigidbody rb;
         ControllerMovement controllerMovement;
@@ -21,7 +20,6 @@ namespace Player
         {
             anim = GetComponent<Animator>();
             playerScript = GetComponent<PlayerScript>();
-            controllerInputs = GetComponent<ControllerInputs>();
             jumpScript = GetComponent<JumpScript>();
             rb = GetComponent<Rigidbody>();
             controllerMovement = GetComponent<ControllerMovement>();

@@ -98,7 +98,7 @@ namespace Player
             {
                 Running = true;
             }
-            else if (rb.velocity.x <= 0.1 || rb.velocity.x >= -0.1)
+            else if (rb.velocity.x < 0.1 || rb.velocity.x > -0.1)
             {
                 Running = false;
             }
