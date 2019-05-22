@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SeletingPlayer : MonoBehaviour
 {
     [SerializeField] UIManager uiManager;
-    [SerializeField] Canvas loadingScreen;
+    [SerializeField] GameObject loadingScreen;
 
     public bool[] playerDone = new bool[4];
     bool playersAreReady = false;
@@ -46,7 +46,6 @@ public class SeletingPlayer : MonoBehaviour
     }
     void Start()
     {
-        loadingScreen.enabled = false;
         for (int i = 0; i < playerDone.Length; i++)
         {
             playerDone[i] = false;
@@ -147,7 +146,7 @@ public class SeletingPlayer : MonoBehaviour
         }
         if(Input.GetButtonDown("StartGame") && playersAreReady)
         {
-            loadingScreen.enabled = true;
+            loadingScreen.SetActive(true);
             UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
         }
         if(!playersAreReady && PlayersReady() && AnyPlayerDone())
@@ -161,7 +160,10 @@ public class SeletingPlayer : MonoBehaviour
             playersReadyText.SetActive(false);
         }
     }
-
+    void LoadGameScene()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameScene");
+    }
     bool AnyPlayerDone()
     {
         for (int i = 0; i < 3; i++)

@@ -8,7 +8,12 @@ public class CreditsScript : MonoBehaviour
     [SerializeField] GameObject panelTwo;
     [SerializeField] GameObject panelThree;
 
-
+    private void OnEnable()
+    {
+        panelOne.SetActive(true);
+        panelTwo.SetActive(false);
+        panelThree.SetActive(false);
+    }
     public void NextOne()
     {
         panelTwo.SetActive(true);

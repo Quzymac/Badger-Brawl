@@ -428,7 +428,8 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1613878850}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4976622409546473963, guid: e1384269f2530bb428d648e1f935e42d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e1384269f2530bb428d648e1f935e42d, type: 3}
 --- !u!114 &328488619 stripped
 MonoBehaviour:
@@ -3254,11 +3255,6 @@ PrefabInstance:
       propertyPath: fullscreenToggle
       value: 
       objectReference: {fileID: 1901755842}
-    - target: {fileID: 5669577374892183296, guid: b640d038c3cbbd24680a47eb513d773f,
-        type: 3}
-      propertyPath: upDownMovement
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7651853865658864630, guid: b640d038c3cbbd24680a47eb513d773f,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3279,7 +3275,13 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SFXVolume
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5669577374892183296, guid: b640d038c3cbbd24680a47eb513d773f,
+        type: 3}
+      propertyPath: upDownMovement
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1082835419, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b640d038c3cbbd24680a47eb513d773f, type: 3}
 --- !u!1001 &1582400848
 PrefabInstance:
@@ -4212,7 +4214,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8858894332055697173, guid: 005be29fd3ce0c746b7cd0480234336d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 005be29fd3ce0c746b7cd0480234336d, type: 3}
 --- !u!1 &2037910925 stripped
 GameObject:
