@@ -11,6 +11,7 @@ public class ButtonsInMenu : MonoBehaviour
     int currentButton = 0;
     float timer;
     bool canMove = true;
+    [SerializeField] bool upDownMovement = true;
 
     
     private void Start()
@@ -53,14 +54,24 @@ public class ButtonsInMenu : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetAxis("MenuVertical2") > 0.5f || Input.GetAxis("MenuHorizontal2") > 0.5f) && Time.unscaledTime > 0.2f + timer) //move up
+        if (Input.GetAxis("MenuVertical2") > 0.5f && upDownMovement && Time.unscaledTime > 0.2f + timer) //move up
         {
             SelectButton(true);
         }
-        if ((Input.GetAxis("MenuVertical2") < -0.5f || Input.GetAxis("MenuHorizontal2") < -0.5f) && Time.unscaledTime > 0.2f + timer) //move down
+        if (Input.GetAxis("MenuVertical2") < -0.5f && upDownMovement && Time.unscaledTime > 0.2f + timer) //move down
         {
             SelectButton(false);
         }
+
+        if (Input.GetAxis("MenuHorizontal2") > 0.5f && !upDownMovement && Time.unscaledTime > 0.2f + timer) //move left
+        {
+            SelectButton(true);
+        }
+        if (Input.GetAxis("MenuHorizontal2") < -0.5f && !upDownMovement && Time.unscaledTime > 0.2f + timer) //move right
+        {
+            SelectButton(false);
+        }
+
         if (Input.GetButtonDown("PlayerJoiningGame")) 
         {
             highlightedButtons[currentButton].onClick.Invoke(); //click button

@@ -170,7 +170,7 @@ namespace Player {
                 pctDamage = 100;
                 if (lastRoundHuman)
                 {
-                    winnerScript.humansWon();
+                    winnerScript.Win(PlayerScript.PlayerTeam.human);
                     lastRoundHuman = false;
                 }
                 lastRoundHuman = true;
@@ -180,7 +180,7 @@ namespace Player {
                 pctDamage = 0;
                 if (lastRoundBadger)
                 {
-                    winnerScript.badgersWon();
+                    winnerScript.Win(PlayerScript.PlayerTeam.badger);
                     lastRoundBadger = false;
                 }
                 lastRoundBadger = true;
