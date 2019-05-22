@@ -12,7 +12,6 @@ namespace Player
         public float Damage { get; set; }
 
         MeshRenderer boomerang;
-        GameManager gameManager;
         GameObject owner;
 
         Rigidbody rb;
@@ -22,7 +21,6 @@ namespace Player
         Vector3 startPos;
         float distTraveled;
         bool go;
-        PlayerScript.PlayerTeam team;
 
         [SerializeField]
         Collider boomerangerColl;
@@ -30,10 +28,8 @@ namespace Player
         void Start()
         {
             StartCoroutine("ColliderOff");
-            team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             go = true;
             itemToRotate = gameObject.transform.GetChild(0);
-            gameManager = FindObjectOfType<GameManager>();
             owner = Owner.GetComponent<IWeapon>().Owner;
             boomerang = Parent.GetComponent<Boomerang>().boomerangerMesh;
 

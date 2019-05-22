@@ -32,11 +32,11 @@ namespace Player {
 
         private void Update()
         {
-            if (jumpScript.Running == true)
+            if (jumpScript.Running)
             {
                 animationHandler.IdleToRun();
             }
-            else if (jumpScript.Running == false)
+            else
             {
                 animationHandler.RunToIdle();
             }

@@ -47,6 +47,7 @@ namespace Player
         {
             GameObject newBullet = Instantiate(rocket, firePoint.position, firePoint.rotation);
             newBullet.GetComponent<TargetMissle>().Parent = gameObject;
+            shotSound.Play();
         }
 
         void Update()

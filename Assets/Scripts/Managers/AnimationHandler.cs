@@ -10,9 +10,6 @@ namespace Player
         Animator anim;
         PlayerScript playerScript;
         JumpScript jumpScript;
-        Rigidbody rb;
-        ControllerMovement controllerMovement;
-        float moveSpeed;
         public bool IdleBool { get; set; }
         public bool Jumping { get; set; }
 
@@ -21,9 +18,6 @@ namespace Player
             anim = GetComponent<Animator>();
             playerScript = GetComponent<PlayerScript>();
             jumpScript = GetComponent<JumpScript>();
-            rb = GetComponent<Rigidbody>();
-            controllerMovement = GetComponent<ControllerMovement>();
-            moveSpeed = controllerMovement.MovementReturn();
         }
 
         private void Update()
@@ -42,65 +36,54 @@ namespace Player
         {
             anim.SetBool("Idle", false);
             anim.SetBool("Running", true);
-            //anim.SetFloat("Speed", Mathf.Abs(moveSpeed));
-            //anim.SetTrigger("IdleRunTrigger");
         }
 
         public void IdleFalling() //animation från idle till falling
         {
             anim.SetBool("Idle", false);
             anim.SetBool("Falling", true);
-            //anim.SetTrigger("IdleFallingTrigger");
         }
 
         public void RunningIdle() // animation från running till idle
         {
             anim.SetBool("Running", false);
             anim.SetBool("Idle", true);
-            //anim.SetFloat("Speed", 0);
-            //anim.SetTrigger("RunIdleTrigger");
         }
 
         public void RunningJumping() //animation från running till jumping
         {
             anim.SetBool("Running", false);
             anim.SetBool("Jumping", true);
-            //anim.SetTrigger("RunningJumpingTrigger");
         }
 
         public void JumpingFalling() //animation från jumping till falling
         {
             anim.SetBool("Jumping", false);
             anim.SetBool("Falling", true);
-            //anim.SetTrigger("JumpingFallingTrigger");
         }
 
         public void FallingLanding() //animation från falling till landing
         {
             anim.SetBool("Falling", false);
             anim.SetBool("Landing", true);
-            //anim.SetTrigger("LandingTrigger");
         }
 
         public void LandingIdle() //animation från landing till idle
         {
             anim.SetBool("Landing", false);
             anim.SetBool("Idle", true);
-            //anim.SetTrigger("LandingIdleTrigger");
         }
 
         public void RunningFalling() //animation från running till falling
         {
             anim.SetBool("Running", false);
             anim.SetBool("Falling", true);
-            //anim.SetTrigger("RunningFallingTrigger");
         }
 
         public void LandingRunning()
         {
             anim.SetBool("Landing", false);
             anim.SetBool("Running", true);
-            //anim.SetTrigger("LandingRunningTrigger");
         }
 
         public void FallingRunning()
@@ -134,7 +117,6 @@ namespace Player
         {
             anim.SetBool("Idle", false);
             anim.SetBool("IdleHold", true);
-            //anim.SetTrigger("PickUpTrigger");
         }
 
         public void IdleDrop()
@@ -168,36 +150,22 @@ namespace Player
         {
             anim.SetBool("IdleHold", false);
             anim.SetBool("RunningHold", true);
-            //anim.SetTrigger("IdleRunHoldTrigger");
         }
 
         //Jumping
         public void IdleJumpHold()
         {
-            //anim.SetBool("IdleHold", false);
-            //anim.SetBool("JumpingHold", true);
             anim.SetTrigger("IdleJumpHoldTrigger");
         }
 
         public void RunningJumpingHold()
         {
-            //anim.SetBool("RunningHold", false);
-            //anim.SetBool("JumpingHold", true);
             anim.SetTrigger("RunningJumpingHoldTrigger");
         }
-
-
-        //public void JumpingDrop()
-        //{
-        //    anim.SetBool("JumpingHold", false);
-        //    anim.SetBool("Jumping", true);
-        //}
 
         //Falling
         public void JumpingFallingHold()
         {
-            //anim.SetBool("JumpingHold", false);
-            //anim.SetBool("FallingHold", true);
             anim.SetTrigger("JumpingFallingHoldTrigger");
         }
 
@@ -210,8 +178,6 @@ namespace Player
         //Landing
         public void FallingLandingHold()
         {
-            //anim.SetBool("FallingHold", false);
-            //anim.SetBool("LandingHold", true);
             anim.SetTrigger("LandingTriggerHold");
         }
 
@@ -241,15 +207,11 @@ namespace Player
 
         public void LandingIdleHold()
         {
-            //anim.SetBool("LandingHold", false);
-            //anim.SetBool("IdleHold", true);
             anim.SetTrigger("LandingIdleHoldTrigger");
         }
 
         public void LandingRunningHold()
         {
-            //anim.SetBool("LandingHold", false);
-            //anim.SetBool("RunningHold", true);
             anim.SetTrigger("LandingRunningHoldTrigger");
         }
 
@@ -491,7 +453,7 @@ namespace Player
             anim.SetTrigger("FallingJumpingHold");
         }
 
-        public void TwoAnimationsFix() // ska försöka fixa så flera animationer inte försöker spelas samtidigt
+        public void TwoAnimationsFix() // fixa så flera animationer inte försöker spelas samtidigt
         {
             if (anim.GetBool("Jumping") == true && (anim.GetBool("Jumping") == true || anim.GetBool("IdleHold") == true || anim.GetBool("Falling") == true || anim.GetBool("Running") == true))
             {

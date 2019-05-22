@@ -9,7 +9,6 @@ namespace Player
     {
         GameObject currentWeapon;
         GameObject canPickUp;
-        Rigidbody rb;
         JumpScript jumpScript;
         ControllerMovement controllerMovement;
         [SerializeField] Transform holdPosition; // players hand holding the weapon
@@ -30,10 +29,8 @@ namespace Player
 
         AnimationHandler animationHandler;
         Animator anim;
-        PlayerScript playerScript;
 
         RaycastHit hit;
-        int groundLayer;
 
         IKHandler ikHandler;
 
@@ -47,10 +44,7 @@ namespace Player
         {
             ikHandler = GetComponent<IKHandler>();
             anim = GetComponent<Animator>();
-            groundLayer = LayerMask.NameToLayer("PlatformJumpThrough");
-            playerScript = GetComponent<PlayerScript>();
             animationHandler = GetComponent<AnimationHandler>();
-            rb = GetComponent<Rigidbody>();
             jumpScript = GetComponent<JumpScript>();
             controllerMovement = GetComponent<ControllerMovement>();
         }
@@ -189,18 +183,17 @@ namespace Player
                 if (animationHandler.Jumping == false)
                 {
                     Debug.Log(jumpScript.Running);
-                    if (jumpScript.Running == false)
+                    if (jumpScript.Running == true)
+                    {
+                        animationHandler.RunToJump();
+                    }
+                    else
                     {
                         animationHandler.IdleToJump();
-                    }
-                    else if (jumpScript.Running == true)
-                    {
-                        animationHandler.RunToJump(); //SPelar inte hopp animationen om spelaren vill springa i luften
                     }
                 }
                 else if (animationHandler.Jumping == true && jumpScript.jumpCount > 0)
                 {
-                    Debug.Log("Dubble jump animation");
                     animationHandler.FallingJumpingCheck();
                 }
                 jumpScript.Jump();

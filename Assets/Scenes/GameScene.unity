@@ -3254,6 +3254,11 @@ PrefabInstance:
       propertyPath: fullscreenToggle
       value: 
       objectReference: {fileID: 1901755842}
+    - target: {fileID: 5669577374892183296, guid: b640d038c3cbbd24680a47eb513d773f,
+        type: 3}
+      propertyPath: upDownMovement
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7651853865658864630, guid: b640d038c3cbbd24680a47eb513d773f,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3752,11 +3757,6 @@ PrefabInstance:
       objectReference: {fileID: 328488619}
     - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
-      propertyPath: weapons.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
       propertyPath: spawnPositions.Array.data[0]
       value: 
       objectReference: {fileID: 1513112358}
@@ -3950,24 +3950,6 @@ PrefabInstance:
       propertyPath: bottomCollider
       value: 
       objectReference: {fileID: 368915847}
-    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: weapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 8442241910972318545, guid: 67ba94835eb4496479207b56273aad75,
-        type: 3}
-    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: weapons.Array.data[1]
-      value: 
-      objectReference: {fileID: 252582501, guid: 27744ead126e74a44ac01c0339056f63,
-        type: 3}
-    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: weapons.Array.data[2]
-      value: 
-      objectReference: {fileID: 1709704426, guid: c41ade66fd5fee04382d55e02d95ca57,
-        type: 3}
     - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: HumansWin
@@ -3978,6 +3960,11 @@ PrefabInstance:
       propertyPath: BadgersWin
       value: 
       objectReference: {fileID: 2037910925}
+    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: buttons
+      value: 
+      objectReference: {fileID: 2037910927}
     - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: multipleTargetCam
@@ -4236,6 +4223,12 @@ GameObject:
 --- !u!1 &2037910926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8858894330816941998, guid: 005be29fd3ce0c746b7cd0480234336d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2037910924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2037910927 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3158279118674106379, guid: 005be29fd3ce0c746b7cd0480234336d,
     type: 3}
   m_PrefabInstance: {fileID: 2037910924}
   m_PrefabAsset: {fileID: 0}

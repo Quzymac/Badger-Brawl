@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 787577074150326382}
   - component: {fileID: 1636790884075793715}
   - component: {fileID: 1725212192725182494}
-  m_Layer: 13
+  - component: {fileID: 631876905}
+  m_Layer: 9
   m_Name: PF_dirtplatform_2
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -89,5 +90,18 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.0673285, y: 5.453433, z: 2.331341}
-  m_Center: {x: 0, y: -0.00000047683716, z: 0}
+  m_Size: {x: 4.9, y: 0.1, z: 2.331341}
+  m_Center: {x: 0, y: -2.6, z: 0}
+--- !u!65 &631876905
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202707652854896083}
+  m_Material: {fileID: 13400000, guid: a182147c0c73e8c44a98c30888b9f9f5, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.9, y: 5.453433, z: 2.331341}
+  m_Center: {x: 0, y: 0.15, z: 0}
