@@ -6,34 +6,38 @@ namespace Player
 {
     public class JumpScript : MonoBehaviour
     {
+        PlayerScript player;
+
         Rigidbody rb;
         Collider playerCollider;
         ControllerInputs controllerInputs;
         GameObject collidedPlatform;
+        public bool Running { get; set; }
         public bool grounded;
         public bool fallThrough = false;
-        float jumpTime;
+        public bool landed = false;
+
         public float jumpCount;
+        float jumpTime;
         [SerializeField] float jumpForce = 700f;
         [SerializeField] float gravity = 16f;
         [SerializeField] float fallMultiplier = 2.5f;
         [SerializeField] float lowJumpMultiplier = 2f;
+
         LayerMask platformLayer;
         LayerMask jumpThroughLayer;
-        Vector3 jumpDir;
-        PlayerScript player;
 
+        Vector3 jumpDir;
         Vector3 colloffset = new Vector3(0, 0.3f, 0);
 
         [SerializeField] AudioClip jumpSound;
         [SerializeField] AudioClip landingSound;
         [SerializeField] AudioSource audioSource;
-        public bool landed = false;
-        public bool Running { get; set; }
+        
+
 
         AnimationHandler animationHandler;
 
-        float dropTimer = 0;
         void Start()
         {
             player = GetComponent<PlayerScript>();
@@ -42,7 +46,6 @@ namespace Player
             platformLayer |= (1 << LayerMask.NameToLayer("Platform"));
             platformLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
             jumpThroughLayer |= (1 << LayerMask.NameToLayer("PlatformJumpThrough"));
-
 
             rb = GetComponent<Rigidbody>();
             playerCollider = GetComponent<Collider>();
@@ -63,7 +66,6 @@ namespace Player
                     jumpCount--;
                 rb.velocity = new Vector3(rb.velocity.x, 0f, 0f);
                 rb.AddForce(jumpDir);
-                //gameObject.layer = 12;
                 grounded = false;
             }
         }
@@ -71,11 +73,6 @@ namespace Player
         public void DropThrough()
         {
             gameObject.layer = 12;
-            //if (collidedPlatform != null && collidedPlatform.layer == 13 && collidedPlatform.transform.position.y <= gameObject.transform.position.y)
-            //{
-            //    gameObject.layer = 12;
-            //    dropTimer = 0;
-            //}
         }
         
         private void FixedUpdate()
@@ -90,7 +87,6 @@ namespace Player
                 rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
             }
         }
-
 
         void CheckRunning()
         {
@@ -118,22 +114,8 @@ namespace Player
             CheckRunning();
             GroundDetection();
             CheckLanded();
-           
-
-            //if (rb.velocity.y < 0f && gameObject.layer == 12 && collidedPlatform != null &&  dropTimer > 0.2f) // resets layer 
-            //{
-            //    gameObject.layer = 10;
-            //}
-            //dropTimer += Time.deltaTime;
         }
-        void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-
-            //Draw a cube where the OverlapBox is (positioned where your GameObject is as well as a size)
-            Gizmos.DrawWireCube(transform.position + colloffset, new Vector3(1f, 1.4f, 0.4f));
-        }
-        private void GroundDetection()
+        private bool GroundDetection()
         {
             RaycastHit hit;
             Vector2 physicsCentre = transform.position + this.GetComponent<CapsuleCollider>().center;
@@ -142,14 +124,13 @@ namespace Player
             {
                 grounded = true;
                 jumpCount = 1;
-   
             }
             else if (Physics.Raycast(transform.position, new Vector2(-1, -1), out hit, 1.2f, platformLayer) && rb.velocity.y <= 0 || Physics.Raycast(transform.position, new Vector2(1, -1), out hit, 1.2f, platformLayer) && rb.velocity.y <= 0)
             {
                 grounded = true;
-                jumpCount = 1;
-                
-            } else
+                jumpCount = 1;               
+            }
+            else
             {
                 if (grounded)
                 {
@@ -158,20 +139,19 @@ namespace Player
                 grounded = false;
             }
 
-            if (player.falling == true && landed == false && grounded == true ) //&& animationHandler.Jumping == true
+            if (player.falling == true && landed == false && grounded == true )
             {
                 landed = true;
             }
-        }
-       
+            return grounded;
+        }      
         
         private void OnCollisionEnter(Collision collision)
         {
             collidedPlatform = collision.gameObject;
         }
 
-
-        public void CheckLanded() //HÄR LIGGER EN DEL AV PROBLEMT MED ANIMATIONER TYP (SPECIFIKT LANDING)
+        public bool CheckLanded()
         {
             if (landed == true)
             {
@@ -191,9 +171,8 @@ namespace Player
                 {
                     animationHandler.LandingToIdle();
                 }
-
             }
+            return landed;
         }
-
     }
 }
