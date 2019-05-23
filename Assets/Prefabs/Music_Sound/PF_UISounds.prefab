@@ -40,7 +40,8 @@ AudioSource:
   m_GameObject: {fileID: 92250355878957826}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243208536903064508, guid: 694dedb6ece6f7c49896ce46de2bc618,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.2
@@ -138,7 +139,7 @@ GameObject:
   - component: {fileID: 92250356347589737}
   - component: {fileID: 92250356347589738}
   m_Layer: 0
-  m_Name: UISounds
+  m_Name: PF_UISounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

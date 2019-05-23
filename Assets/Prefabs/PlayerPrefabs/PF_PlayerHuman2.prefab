@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
+  fallThrough: 0
+  landed: 0
   jumpCount: 0
   jumpForce: 700
   gravity: 16
@@ -97,7 +99,6 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: 7fb0111c468e3c84d9d7d665810d1a37, type: 3}
   landingSound: {fileID: 8300000, guid: 310063e7cc138f440a76dd9905423ec7, type: 3}
   audioSource: {fileID: 0}
-  landed: 0
 --- !u!114 &5658386064917308617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 8
+  running: {fileID: 0}
 --- !u!136 &5658386064917308628
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -179,7 +181,8 @@ AudioSource:
   m_GameObject: {fileID: 5658386064917308624}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243208536903064508, guid: 694dedb6ece6f7c49896ce46de2bc618,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.7
