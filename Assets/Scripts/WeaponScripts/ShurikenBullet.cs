@@ -48,9 +48,8 @@ namespace Player
             }
             else
             {
-                if (other.tag != "Weapon")
+                if (other.tag != "Weapon" && other.tag != "Flame")
                 {
-                    Debug.Log("destroy");
                     Destroy(gameObject);
                 }
             }

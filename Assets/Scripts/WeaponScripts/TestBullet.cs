@@ -47,7 +47,7 @@ namespace Player
             }
             else
             {
-                if (other.tag != "Weapon")
+                if (other.tag != "Weapon" && other.tag != "Flame")
                 {
                     Destroy(gameObject);
                 }

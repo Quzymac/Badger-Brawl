@@ -56,7 +56,7 @@ namespace Player
             }
             else {
 
-                if (other.tag != "Weapon")
+                if (other.tag != "Weapon" && other.tag != "Flame")
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
                     explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);

@@ -56,5 +56,13 @@ namespace Player
             //    Destroy(gameObject);
             //}
         }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.tag == "NonDestroy")
+            {
+                Physics.IgnoreCollision(collision.gameObject.GetComponent<Collider>(), this.gameObject.GetComponent<Collider>());
+            }
         }
+    }
     }
