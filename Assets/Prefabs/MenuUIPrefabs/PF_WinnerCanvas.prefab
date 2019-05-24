@@ -193,6 +193,7 @@ MonoBehaviour:
   highlightedButtons:
   - {fileID: 3050133965189588277}
   - {fileID: 3674265649152749334}
+  upDownMovement: 1
 --- !u!1 &3375504826069184113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,6 +1396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PF_UISounds
       objectReference: {fileID: 0}
+    - target: {fileID: 92250356347589738, guid: 24f98aa0ed7dd9d41966cba8480a8282,
+        type: 3}
+      propertyPath: uiSounds
+      value: 
+      objectReference: {fileID: 2842934670048935591}
     - target: {fileID: 92250356347589737, guid: 24f98aa0ed7dd9d41966cba8480a8282,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1450,11 +1456,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 92250356347589738, guid: 24f98aa0ed7dd9d41966cba8480a8282,
-        type: 3}
-      propertyPath: uiSounds
-      value: 
-      objectReference: {fileID: 2842934670048935591}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f98aa0ed7dd9d41966cba8480a8282, type: 3}
 --- !u!4 &2842934671593535946 stripped
