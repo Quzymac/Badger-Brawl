@@ -47,7 +47,7 @@ namespace Player
             }
             else
             {
-                if (other.tag != "Weapon" && other.tag != "Pellet")
+                if (other.tag != "Weapon" && other.tag != "Pellet" && other.tag != "Flame")
                 {
                     Destroy(gameObject);
                 }
