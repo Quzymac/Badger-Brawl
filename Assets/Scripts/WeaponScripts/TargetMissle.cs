@@ -94,8 +94,7 @@ namespace Player
                     explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
                     Destroy(gameObject);
                 }
-            }
-            
+            }    
         }
 
         GameObject FindingEnemy()
@@ -110,7 +109,6 @@ namespace Player
             {
                 enemies.AddRange(gameManager.Badgers);
             }
-            Debug.Log(enemies.Count);
             GameObject closestEnemy = null;
             if (enemies.Count > 0)
             {
@@ -119,7 +117,6 @@ namespace Player
                     if (enemy != null && Vector2.Distance(enemy.transform.position, transform.position) < minDistance)
                     {
                         closestEnemy = enemy.gameObject;
-                        Debug.Log(closestEnemy);
                     }
                 }
             }

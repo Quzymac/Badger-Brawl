@@ -34,7 +34,6 @@ namespace Player
         [SerializeField] float maxSpread;
         [SerializeField] GameObject muzzleFlash;
         float flashDestroy = 2f;
-        //public float amountHit { get; set; } = 0;
         public int[] amountHit = new int[4];
 
         public void Fire()
@@ -70,8 +69,7 @@ namespace Player
         }
 
         void Update()
-        {
-            
+        {   
             if (Owner == null && Firing)
             {
                 Firing = false;

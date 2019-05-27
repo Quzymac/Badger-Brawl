@@ -8,7 +8,6 @@ namespace Player
     {
         float distTraveled;
         Vector3 startPos;
-        //Vector3 currentPos;
         Rigidbody rb;
         public GameObject Parent { get; set; }
         PlayerScript.PlayerTeam team;

@@ -28,7 +28,6 @@ namespace Player
         public float ProjectileSpeed { get { return projectileSpeed; }}
         public float KnockBackPower { get { return knockBackPower; } }
 
-
         public enum TypeOfWeapon { Shooting, throwable };
         public TypeOfWeapon typeOfWeapon { get; set; } = TypeOfWeapon.Shooting;
 
@@ -55,8 +54,6 @@ namespace Player
 
         public Transform RightHand { get { return rightHandPos; } set { rightHandPos = value; } }
         public Transform LeftHand { get { return leftHandPos; } set { leftHandPos = value; } }
-
-
 
         public void Start()
         {

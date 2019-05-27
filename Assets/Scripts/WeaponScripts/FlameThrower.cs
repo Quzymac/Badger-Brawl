@@ -39,13 +39,10 @@ namespace Player
             shotSound = GetComponent<AudioSource>();
         }
         public void Fire()
-        {
-       
+        {   
             GameObject newFlame = Instantiate(flame, firePoint.position, firePoint.rotation);
             newFlame.GetComponent<Flame>().Parent = gameObject;
-
         }
-
 
         void Update()
         {

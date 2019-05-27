@@ -36,7 +36,6 @@ namespace Player
         {
             Damage = thisDamage;
             shotSound = GetComponent<AudioSource>();
-            //shotSound.Stop();
         }
 
         // Update is called once per frame

@@ -36,7 +36,6 @@ namespace Player
 
                 Destroy(gameObject);
             }
-
         }
 
         private void OnTriggerEnter(Collider other)
@@ -66,8 +65,7 @@ namespace Player
                     Destroy(gameObject);
 
                 }
-            }
-            
+            }       
         }
     }
 }

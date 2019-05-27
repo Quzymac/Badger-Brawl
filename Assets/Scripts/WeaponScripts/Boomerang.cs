@@ -33,7 +33,6 @@ namespace Player
         {
             Damage = ThisDamage;
             shotSound = GetComponent<AudioSource>();
-            //shotSound.Stop();
         }
 
         void Update()
