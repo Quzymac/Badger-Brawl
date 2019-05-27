@@ -3759,6 +3759,11 @@ PrefabInstance:
       objectReference: {fileID: 328488619}
     - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
+      propertyPath: weapons.Array.size
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
       propertyPath: spawnPositions.Array.data[0]
       value: 
       objectReference: {fileID: 1513112358}
@@ -3952,6 +3957,12 @@ PrefabInstance:
       propertyPath: bottomCollider
       value: 
       objectReference: {fileID: 368915847}
+    - target: {fileID: 2804229538860892922, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: weapons.Array.data[25]
+      value: 
+      objectReference: {fileID: 894467303231372668, guid: f39fd8def3f14c740b44f5f195e71772,
+        type: 3}
     - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: HumansWin
