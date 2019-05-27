@@ -10,11 +10,9 @@ public class PauseManager : MonoBehaviour
     public void QuitGame()
     {
         SceneManager.LoadScene("MainMenuScene");
-        //selectPlayer.GetComponent<SeletingPlayer>().enabled = false;
     }
 
     public bool PauseMenu = false;
-
 
     public GameObject PausePanel;
     public GameObject OptionsPanel;
@@ -23,9 +21,6 @@ public class PauseManager : MonoBehaviour
 
     float buttonTimer = 0.1f;
 
-
-   
-
     //this method will enable the pausepanel in Unity, set the timescale to 0 so the game will pause and then turn the PauseMenu bool to true 
     void PauseGame()
     {
@@ -33,7 +28,6 @@ public class PauseManager : MonoBehaviour
         PausePanel.SetActive(true);
 
         PauseMenu = true;
-
     }
 
     //this method will disable the pausepanel in Unity, set the timescale to normal and then turn the PauseMenu bool to false
@@ -74,8 +68,6 @@ public class PauseManager : MonoBehaviour
         PausePanel.SetActive(false);
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
@@ -89,5 +81,4 @@ public class PauseManager : MonoBehaviour
             }
         }
     }
-
 }

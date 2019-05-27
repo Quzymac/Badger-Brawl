@@ -186,7 +186,6 @@ namespace Player {
                 lastRoundBadger = true;
             }
             pctValue = totalDistance * (pctDamage / 100);
-            Debug.Log(pctValue);
             target.position = new Vector3(0, yBottom + pctValue, -20);
             progs.dpctDamage = pctDamage;
             progs.CalculatePosition();

@@ -182,7 +182,6 @@ namespace Player
             {
                 if (animationHandler.Jumping == false)
                 {
-                    Debug.Log(jumpScript.Running);
                     if (jumpScript.Running == true)
                     {
                         animationHandler.RunToJump();

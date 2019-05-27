@@ -11,7 +11,6 @@ namespace Player
         Rigidbody rb;
         Collider playerCollider;
         ControllerInputs controllerInputs;
-        GameObject collidedPlatform;
         public bool Running { get; set; }
         public bool grounded;
         public bool fallThrough = false;
@@ -145,11 +144,6 @@ namespace Player
             }
             return grounded;
         }      
-        
-        private void OnCollisionEnter(Collision collision)
-        {
-            collidedPlatform = collision.gameObject;
-        }
 
         public bool CheckLanded()
         {

@@ -10,8 +10,6 @@ namespace Player
         [SerializeField] GameObject[] humanCharacters = new GameObject[2];
         [SerializeField] GameObject[] badgerCharacters = new GameObject[2];
         [SerializeField] MultipleTargetCam addTargets;
-        //[SerializeField] GameObject player;
-        //[SerializeField] GameObject badger;
 
         [SerializeField] int[] playerNum = new int[4];
         [SerializeField] int[] playerController = new int[4];

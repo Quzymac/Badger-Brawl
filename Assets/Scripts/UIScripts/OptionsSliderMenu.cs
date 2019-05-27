@@ -13,7 +13,6 @@ public class OptionsSliderMenu : MonoBehaviour
     [SerializeField] float sliderAdd = 2f;
     [SerializeField] Slider[] sliders;
 
-
     private void Start()
     {
         foreach (GameObject obj in highlightedButtons)

@@ -17,5 +17,4 @@ public class UIAudioScript : MonoBehaviour
     {
         uiSounds.PlayOneShot(clickSound);
     }
-    
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEditor.Animations;
 
 namespace Player
 {
@@ -257,7 +256,6 @@ namespace Player
             if (playerScript.GetComponentInChildren<IWeapon>() != null)
             {
                 IdleRunHold();
-                Debug.Log("Should play running hold animation");
             }
             else if (playerScript.GetComponentInChildren<IWeapon>() == null)
             {

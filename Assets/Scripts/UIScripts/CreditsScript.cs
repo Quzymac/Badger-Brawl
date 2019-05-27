@@ -26,7 +26,6 @@ public class CreditsScript : MonoBehaviour
         panelTwo.SetActive(false);
     }
 
-
     public void PreviousOne()
     {
         panelOne.SetActive(true);
@@ -38,6 +37,4 @@ public class CreditsScript : MonoBehaviour
         panelTwo.SetActive(true);
         panelThree.SetActive(false);        
     }
- 
-
 }

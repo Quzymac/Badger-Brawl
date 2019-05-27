@@ -14,11 +14,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject howToPlay;
     
     float buttonTimer = 0.1f;
-
-
     public void QuitGame()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
     
@@ -46,10 +43,7 @@ public class UIManager : MonoBehaviour
         options.SetActive(false);
         quit.SetActive(false);
         howToPlay.SetActive(false); 
-    }
-
-  
-
+    } 
   
     // Update is called once per frame
     void Update()

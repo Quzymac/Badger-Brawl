@@ -34,8 +34,6 @@ namespace Player
         public void UpdateHealthBar()
         {
             bar.localScale = new Vector3((SpecificPlayer.Health / maxHealth) * 0.59f , 0.6f);
-
-            Debug.Log(SpecificPlayer.playerNumber + " Hit");
         }
 
         public void SetHealthBarCharacter() //sätter spriten av ansiktet för respektive karaktär på healtBar

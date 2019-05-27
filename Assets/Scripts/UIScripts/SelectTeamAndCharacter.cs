@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SelectTeamAndCharacter : MonoBehaviour
 {
-
     public int Controller { get; set; } = 0;
     public int PlayerNum { get; set; } = 0;
     int team = 1;

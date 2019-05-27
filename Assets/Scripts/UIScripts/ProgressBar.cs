@@ -6,7 +6,6 @@ namespace Player
 {
     public class ProgressBar : MonoBehaviour
     {
-
         public Transform dtop;
         public Transform dbottom;
         public Transform dtarget;
@@ -19,11 +18,6 @@ namespace Player
         float dpctValue;
 
         public float dpctDamage;
-
-
-        private void Start()
-        {
-        }
 
         void FixedUpdate()
         {
@@ -48,15 +42,12 @@ namespace Player
             if (dpctDamage > 100)
             {
                 dpctDamage = 100;
-                Debug.Log("Humans win");
             }
             if (dpctDamage < 0)
             {
                 dpctDamage = 0;
-                Debug.Log("Badgers win");
             }
             dpctValue = dtotalDistance * (dpctDamage / 100);
-            Debug.Log(dpctValue);
             dtarget.position = new Vector3(dbottom.position.x, dyBottom + dpctValue, dbottom.position.z);
         }
         public void ChangeCameraPos(float value)

@@ -6,7 +6,6 @@ using UnityEngine;
 namespace Player {
     public class ControllerMovement : MonoBehaviour
     {
-
         [SerializeField] float moveSpeed = 8f;
 
         bool lookingRight = true;
