@@ -12,8 +12,6 @@ namespace Player
         [SerializeField] GameObject Explosion; 
         [SerializeField]GameManager gameManager;
         public GameObject enemyPosition;
-        public float Damage { get; set; }
-       
 
         List<PlayerScript> enemies = new List<PlayerScript>();
         PlayerScript.PlayerTeam team;
@@ -21,14 +19,14 @@ namespace Player
         float time;
         float minDistance = 1000;
         float seekingDelay = 1f;
-        float strenghtOfSeeking;
+        float strenghtOfSeekingMultiplier;
         float radius = 1f;
 
 
         void Start()
         {
             time = 0.0f;
-            strenghtOfSeeking = 0.0f;
+            strenghtOfSeekingMultiplier = 0.0f;
             team = Parent.GetComponent<IWeapon>().Owner.GetComponent<PlayerScript>().Team;
             gameManager = FindObjectOfType<GameManager>();
             
@@ -47,14 +45,14 @@ namespace Player
             {
                 if (time < seekingDelay)
                 {
-                    strenghtOfSeeking = time; //seekingStrenght from 0 to full strenght
+                    strenghtOfSeekingMultiplier = time; //seekingStrenght from 0 to full strenght
                 }
-                rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght * strenghtOfSeeking;
+                rb.velocity -= (transform.position - enemyPosition.transform.position) * Parent.GetComponent<TargetGun>().SeakingStrenght * strenghtOfSeekingMultiplier;
                 rb.velocity = rb.velocity.normalized * Parent.GetComponent<IWeapon>().ProjectileSpeed;
                 Vector3 vel = enemyPosition.transform.position - rb.velocity;
                 transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
             }
-            if (time > Parent.GetComponent<TargetGun>().MaxTravelTime)
+            if (Parent != null && time > Parent.GetComponent<TargetGun>().MaxTravelTime)
             {
                 GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
                 explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
@@ -64,6 +62,10 @@ namespace Player
                 explosion.GetComponent<ExplosionDamage>().Weapon = Parent;
                 Destroy(gameObject);
             }
+            else if(Parent == null)
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -71,7 +73,7 @@ namespace Player
             PlayerScript playerHit = other.GetComponent<PlayerScript>();
             if (playerHit != null)
             {
-                if (playerHit.Team != team)
+                if (playerHit.Team != team && Parent != null)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
                     explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);
@@ -84,7 +86,7 @@ namespace Player
             }
             else
             {
-                if (other.tag != "Weapon" && other.tag != "Flame")
+                if (other.tag != "Weapon" && other.tag != "Flame" && Parent != null)
                 {
                     GameObject explosion = Instantiate(Explosion, transform.position, transform.rotation);
                     explosion.GetComponent<ExplosionDamage>().ParticleScale(radius);

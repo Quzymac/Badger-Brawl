@@ -36,6 +36,10 @@ namespace Player
 
                 Destroy(gameObject);
             }
+            if (Parent == null)
+            {
+                Destroy(gameObject);
+            }
         }
 
         private void OnTriggerEnter(Collider other)

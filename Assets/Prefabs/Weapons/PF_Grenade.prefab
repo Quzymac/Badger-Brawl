@@ -114,7 +114,7 @@ MonoBehaviour:
   rightHandPos: {fileID: 8085409445355568504}
   Explosion: {fileID: 5255831688567592006, guid: f537dc9fdb8703b449180e8bec36c8c1,
     type: 3}
-  blowUpTimer: 3
+  blowUpTimer: 2
 --- !u!82 &4134342812171922780
 AudioSource:
   m_ObjectHideFlags: 0
