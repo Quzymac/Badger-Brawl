@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         selectPlayer.SetActive(false);
     }
 }
