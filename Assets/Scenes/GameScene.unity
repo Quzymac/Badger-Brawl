@@ -2410,6 +2410,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4737426423354320270, guid: ddeddaccd02c34a49b00bedefc037f33,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5864386938978544552, guid: ddeddaccd02c34a49b00bedefc037f33,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddeddaccd02c34a49b00bedefc037f33, type: 3}
 --- !u!1 &986037435
@@ -3562,6 +3572,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: HumansWin
+      value: 
+      objectReference: {fileID: 2037910926}
+    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: BadgersWin
+      value: 
+      objectReference: {fileID: 2037910925}
+    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: buttons
+      value: 
+      objectReference: {fileID: 2037910927}
     - target: {fileID: 2804229538860892919, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: m_Name
@@ -3737,6 +3762,31 @@ PrefabInstance:
       propertyPath: bottomCollider
       value: 
       objectReference: {fileID: 1613878851}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: multipleTargetCam
+      value: 
+      objectReference: {fileID: 587052443}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: top
+      value: 
+      objectReference: {fileID: 1460941960}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: bottom
+      value: 
+      objectReference: {fileID: 1460941961}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1460941962}
+    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
+        type: 3}
+      propertyPath: progs
+      value: 
+      objectReference: {fileID: 551442645}
     - target: {fileID: 2804229538860892923, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
         type: 3}
       propertyPath: healthBars.Array.data[0]
@@ -3963,46 +4013,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 894467303231372668, guid: f39fd8def3f14c740b44f5f195e71772,
         type: 3}
-    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: HumansWin
-      value: 
-      objectReference: {fileID: 2037910926}
-    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: BadgersWin
-      value: 
-      objectReference: {fileID: 2037910925}
-    - target: {fileID: 7513932278190038987, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: buttons
-      value: 
-      objectReference: {fileID: 2037910927}
-    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: multipleTargetCam
-      value: 
-      objectReference: {fileID: 587052443}
-    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: top
-      value: 
-      objectReference: {fileID: 1460941960}
-    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: bottom
-      value: 
-      objectReference: {fileID: 1460941961}
-    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 1460941962}
-    - target: {fileID: 2804229538860892920, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc,
-        type: 3}
-      propertyPath: progs
-      value: 
-      objectReference: {fileID: 551442645}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8fef3cd8c1ffa2d43b7ca31af48d1ffc, type: 3}
 --- !u!1 &1820365270
